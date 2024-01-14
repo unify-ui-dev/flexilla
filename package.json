@@ -4,7 +4,11 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "format": "biome format --write ./"
+  },
   "devDependencies": {
+    "@biomejs/biome": "1.5.1",
     "lerna": "^8.0.2",
     "vite": "^5.0.11"
   }
