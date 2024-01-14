@@ -1,0 +1,11 @@
+{
+  "name": "fx-lib",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^8.0.2",
+    "vite": "^5.0.11"
+  }
+}
