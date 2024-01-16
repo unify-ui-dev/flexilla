@@ -7,13 +7,13 @@ type BackdropHidden = {
     visibility:"hidden"
 }
 
-export type OffcanvasOptions = BackdropVisible | BackdropHidden
+export type BackdropOptions = BackdropVisible | BackdropHidden
 
 export type OffcanvasParams = {
     offCanvasElement: HTMLElement,
     options?: {
         staticBackdrop?: boolean,
         allowBodyScroll?: boolean,
-        backdrop?:OffcanvasOptions
+        backdrop?:BackdropOptions
     }
 }

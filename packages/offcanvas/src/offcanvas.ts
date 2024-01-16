@@ -1,28 +1,28 @@
 
-import { OffcanvasParams } from "./types"
-import { createOverlay } from "./offCanvasOverlay"
+import { BackdropOptions, OffcanvasParams } from "./types"
 import { injectStyles } from "./injectStyle"
 import { closeAllOpenedOffcanvas, toggleOffCanvasState } from "./helpers"
-import { findAll, appendBefore } from "@fx-lib/utilities"
+import { findAll } from "@fx-lib/utilities"
 
 /**
  * Class representing an Offcanvas element.
  */
 class Offcanvas {
     private offCanvasElement: HTMLElement
+    private offCanvasId: string
     private offCanvasTriggers: HTMLElement[]
     private offCanvasCloseBtns: HTMLElement[]
     private allowBodyScroll: boolean
     private staticBackdrop: boolean
-    private overlayElement: HTMLDivElement | undefined
-    public instance: Offcanvas; 
+    public instance: Offcanvas;
+    private backdrop: BackdropOptions | undefined
 
     /**
    * Create an Offcanvas instance.
    * @param {OffcanvasParams} options - The options for configuring the Offcanvas.
    */
     constructor({ offCanvasElement, options = {} }: OffcanvasParams) {
-        this.instance = this; 
+        this.instance = this;
         if (!(offCanvasElement instanceof HTMLElement)) throw new Error("Invalid Offcanvas, the provided Element is not a valid HTMLElement")
         const { staticBackdrop, allowBodyScroll, backdrop: overlay } = options
         this.offCanvasElement = offCanvasElement
@@ -32,13 +32,14 @@ class Offcanvas {
         const offCanvasId = this.offCanvasElement.getAttribute("id")
         this.offCanvasTriggers = this.findOffCanvasElements("[data-offcanvas-trigger]", offCanvasId);
         this.offCanvasCloseBtns = this.findOffCanvasElements("[data-offcanvas-close]", offCanvasId);
-        this.overlayElement = createOverlay(overlay, offCanvasElement.dataset.fxOffcanvasBackdrop || "", offCanvasId || "")
+        this.offCanvasId = this.offCanvasElement.getAttribute("") as string
+        this.backdrop = overlay
         this.init()
     }
 
     private findOffCanvasElements(selector: string, offCanvasId: string | null) {
         return findAll({
-            selector: `${selector}[data-target=${offCanvasId}]`,
+            selector: `${selector}[data-target*=${offCanvasId}]`,
             parentElement: document.body,
         });
     }
@@ -57,16 +58,34 @@ class Offcanvas {
     }
 
     private closeOffCanvas() {
-        toggleOffCanvasState(this.offCanvasElement, this.overlayElement, this.allowBodyScroll, "close")
+        const overlayElement = document.querySelector(`[data-fx-offcanvas-overlay][data-offcanvas-el=${this.offCanvasId}]`)
+        toggleOffCanvasState(
+            this.offCanvasElement,
+            this.offCanvasId,
+            this.allowBodyScroll,
+            "close"
+        )
         document.removeEventListener("keydown", this.closeWithEsc)
-        !this.allowBodyScroll && !this.overlayElement && document.removeEventListener("click", (event) => this.closeWhenClickOutSide(event))
+        !this.allowBodyScroll && !overlayElement && document.removeEventListener("click", (event) => this.closeWhenClickOutSide(event))
     }
 
     private openOffCanvas() {
         closeAllOpenedOffcanvas(this.offCanvasElement)
-        toggleOffCanvasState(this.offCanvasElement, this.overlayElement, this.allowBodyScroll, "open")
+        toggleOffCanvasState(
+            this.offCanvasElement, 
+            this.offCanvasId, 
+            this.allowBodyScroll, 
+            "open",
+            this.staticBackdrop,
+            {
+                options: this.backdrop,
+                overlayClassName: "",
+                offcanvasId: this.offCanvasId,
+                closeOverlayCallBak() {
+
+                },
+            })
         document.addEventListener("keydown", (event) => this.closeWithEsc(event))
-        !this.allowBodyScroll && !this.overlayElement && document.addEventListener("click", (event) => this.closeWhenClickOutSide(event))
     }
 
     /**
@@ -76,16 +95,11 @@ class Offcanvas {
         if (event.key === "Escape") { this.closeOffCanvas() }
     }
 
-    private closeWithOverlay() {
-        if (!(this.overlayElement instanceof HTMLDivElement)) return
-        this.overlayElement.addEventListener("click", () => this.closeOffCanvas())
-    }
 
     private initCloseBtns() {
         for (const closeOffCanvas of this.offCanvasCloseBtns) {
             closeOffCanvas.addEventListener("click", this.closeOffCanvas)
         }
-        !this.staticBackdrop && this.closeWithOverlay()
     }
 
     private changeState() {
@@ -100,7 +114,6 @@ class Offcanvas {
     private init() {
         this.initTriggers()
         this.initCloseBtns()
-        if (this.overlayElement instanceof HTMLDivElement) appendBefore({ newElement: this.overlayElement, existingElement: this.offCanvasElement })
         injectStyles()
     }
 
