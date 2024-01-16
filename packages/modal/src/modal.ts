@@ -14,7 +14,6 @@ class Modal {
     public isHidden: () => boolean
     /**
      * Creates and initializes a modal.
-     * @param modalParams - Parameters for modal creation and initialization.
      */
     public instance: Modal
     constructor({ modalElement, triggerElement, options = {} }: ModalParams) {

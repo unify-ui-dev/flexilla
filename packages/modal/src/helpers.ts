@@ -1,5 +1,6 @@
-import { appendBefore, find, findAll } from "@fx-lib/utilities"
+import { find, findAll } from "@fx-lib/utilities"
 import { ModalOptions } from "./types";
+import { buildOverlay, destroyOverlay } from "./modalOverlay";
 
 /**
  * Toggles the state of the modal (open or close).
@@ -35,8 +36,7 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
     let isKeyDownEventRegistered = false;
 
     modalElement.setAttribute("data-allow-body-scroll", `${allowBodyScroll_}`)
-    const overlayEl = document.createElement("span");
-    overlayEl.setAttribute("aria-hidden", "true");
+
 
     const modalContent = modalElement.querySelector("[data-modal-content]");
     const closeButtons = findAll({ selector: "[data-close-modal]", parentElement: modalElement });
@@ -46,10 +46,9 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
     const animationEnter = modalContent.dataset.enterAnimation || "";
     const animationExit = modalContent.dataset.exitAnimation || "";
 
-    appendBefore({ newElement: overlayEl, existingElement: modalContent });
+
     modalContent.setAttribute("data-state", 'close');
-    overlayEl.classList.add(...overlayClassName);
-    overlayEl.setAttribute("data-modal-overlay", "overlay-bg");
+
 
     const closeModalEsc = (e: KeyboardEvent) => {
         document.removeEventListener("keydown", closeModalEsc);
@@ -65,12 +64,19 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
             if (shownModal !== currentModal) {
                 const modalContent_ = find({ selector: "[data-modal-content]", parentElement: shownModal })
                 toggleModalState(shownModal, modalContent_, "close");
+                const modalOverlay = find({ selector: "[data-modal-overlay]", parentElement: shownModal }) as HTMLElement
+                destroyOverlay(modalOverlay)
             }
         }
     }
 
     const showModal = () => {
         closeAll(modalElement)
+        const overlayElement = buildOverlay({
+            modalContent: modalContent,
+            overlayClassName: overlayClassName,
+        })
+
         if (animateContent || animationEnter !== "") {
             const contentAnimation = animateContent ? animateContent.enterAnimation : animationEnter;
             contentAnimation !== "" && modalContent.style.setProperty("--un-modal-animation", contentAnimation);
@@ -84,6 +90,8 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
             document.addEventListener("keydown", closeModalEsc);
             isKeyDownEventRegistered = true;
         }
+
+        !preventCloseModal_ && overlayElement.addEventListener("click", hideModal);
         onShow?.()
         onToggle?.({ isHidden: false })
     };
@@ -113,12 +121,13 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
             isKeyDownEventRegistered = false;
         }
 
+        const modalOverlay = find({ selector: "[data-modal-overlay]", parentElement: modalElement }) as HTMLElement
+        destroyOverlay(modalOverlay)
+
         onHide?.()
         onToggle?.({ isHidden: true })
     };
 
-
-    !preventCloseModal_ && overlayEl.addEventListener("click", hideModal);
 
     const autoInitModal = () => {
         if (triggerButton instanceof HTMLElement) triggerButton.addEventListener("click", showModal);

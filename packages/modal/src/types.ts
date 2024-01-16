@@ -20,14 +20,6 @@ export type ModalOptions = {
     onToggle?:({isHidden}:{isHidden:boolean})=>void
 };
 
-/**
- * Defines the return types for the accordion functionality.
- */
-export type ModalReturns = {
-    showModal: () => void;
-    hideModal: () => void;
-    isHidden: () => boolean;
-};
 
 /**
  * Defines parameters for modal initialization.
