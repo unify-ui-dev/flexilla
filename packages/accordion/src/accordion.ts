@@ -14,7 +14,7 @@ class Accordion {
     private allowTriggerOnFocus: boolean
     private accordionType: string
     private defaultItemValue: string
-    private defaultItem: HTMLElement
+    private defaultItem: HTMLElement | null
     public instance: Accordion
 
     /**
@@ -33,9 +33,12 @@ class Accordion {
         const { defaultValue, accordionType, preventClosingAll = false, allowTriggerOnFocus = false } = this.options
         this.preventFromClosingAll = preventClosingAll || (this.accordionElement.hasAttribute("data-prevent-closing-all") && this.accordionElement.getAttribute("data-prevent-closing-all") !== "false") || false
         this.allowTriggerOnFocus = allowTriggerOnFocus || this.accordionElement.hasAttribute("data-allow-trigger-on-focus") && this.accordionElement.getAttribute("data-allow-trigger-on-focus") !== "false" || false
-        this.accordionType = accordionType || this.accordionElement.getAttribute("data-accordion-type") || "single"
-        this.defaultItemValue = defaultValue || this.accordionElement.getAttribute("data-default-value") || ""
-        this.defaultItem = find({ selector: `[data-accordion-item][data-accordion-value="${this.defaultItemValue}"]`, parentElement: accordionElement }) as HTMLElement
+        this.accordionType = accordionType || this.accordionElement.dataset.accordionType || "single"
+        this.defaultItemValue = defaultValue || this.accordionElement.dataset.defaultValue || ""
+        this.defaultItem = find({
+            selector: `[data-accordion-item][data-accordion-value="${this.defaultItemValue}"]`,
+            parentElement: accordionElement
+        })
         this.init()
     }
     showItem = ({ itemSelector }: { itemSelector: string }) => {
@@ -57,7 +60,7 @@ class Accordion {
 
     private init() {
         activeAlwaysOpen(this.accordionElement)
-        activateDefaultAccordionItem(this.defaultItem)
+        if (this.defaultItem instanceof HTMLElement) activateDefaultAccordionItem(this.defaultItem)
         closeOtherAccordionItems(this.accordionElement, this.defaultItemValue)
         initItems(this.accordionElement, this.accordionType, this.preventFromClosingAll, this.allowTriggerOnFocus, this.options)
     }
