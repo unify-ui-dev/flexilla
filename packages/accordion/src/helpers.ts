@@ -13,6 +13,7 @@ const expandAccordionItem = (accordionItem: HTMLElement, state: "open" | "close"
     })
     accordionContentElement.style.height = state === "open" ?
         `${accordionContentElement.scrollHeight}px` : "0px"
+    accordionContentElement.style.overflow = state === "open" ? "" : "hidden"
 }
 
 

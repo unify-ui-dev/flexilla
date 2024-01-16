@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + TS</title>
+</head>
+
+<body>
+  <section class="mx-auto space-y-16 max-w2xl py20">
+    <div class="space-y-6">
+      <h1 class="text-xl font-semibold text-gray9 dark-text-white">
+        Collapse
+      </h1>
+      <div class="p10 rd-lg bg-gradient-to-bl from-blue6 via-indigo4 to-sky6">
+        <div class="flex flex-col space-y-3">
+          <button data-collapse-trigger data-target="collapse1"
+            class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+            Toggle Content
+          </button>
+          <div data-collapsible-1 id="collapse1" class="transition-all duration-300 linear overflow-hidden">
+            <div class="rd-md w-full bg-gray1/5 dark-bg-gray9/5 b b-gray2 bg-gray1/80 p4">
+              <p class="">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam illo expedita adipisci labore, debitis ipsam cupiditate autem sed laborum doloribus praesentium quam, necessitatibus optio a mollitia alias fugiat omnis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="space-y-6">
+      <h1 class="text-xl font-semibold text-gray9 dark-text-white">
+        Direction
+      </h1>
+      <div class="p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6">
+        <div flex gap6>
+          <div class="flex flex-col space-y-3 flex-1">
+            <button data-collapse-trigger data-target="collapse2"
+              class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+              Orizontal
+            </button>
+            <div data-collapsible-2 id="collapse2" class="transition-all duration-300 linear overflow-hidden w-full">
+              <div class="rd-md w-full bg-gray1/5 dark-bg-gray9/5 b b-gray2 bg-gray1/80 p4 h44 max-h44 flex overflow-hidden">
+                <p>
+                  Yes. It adheres to the WAI-ARIA design pattern.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col space-y-3 flex-1">
+            <button data-collapse-trigger data-target="collapse3"
+              class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+              Vertical
+            </button>
+            <div data-collapsible-3 id="collapse3" class="transition-all duration-300 linear overflow-hidden">
+              <div class="rd-md w-full bg-gray1/5 dark-bg-gray9/5 b b-gray2 bg-gray1/80 p4 h44 min-h-44">
+                <p class="">
+                  Yes. It adheres to the WAI-ARIA design pattern.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="space-y-6">
+      <h1 class="text-xl font-semibold text-gray9 dark-text-white">
+        Trigger Multiple Collapse
+      </h1>
+      <div class="p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6">
+        <div flex flex-col gap3>
+          <div class="flex wmax">
+            <button data-collapse-trigger data-target="collapse4 collapse5"
+              class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+              Trigger Two Collapse
+            </button>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div data-collapsible-4 id="collapse4" class="transition-all duration-300 linear overflow-hidden w-full">
+              <div class=" rd-md w-full bg-gray1/5 dark-bg-gray9/5 b b-gray2 bg-gray1/80 p4 h44 max-h44 inline-flex overflow-hidden">
+                <p class="inline-flex">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam, dolorum, incidunt facilis quasi non ea mollitia odio, iure adipisci 
+                </p>
+              </div>
+            </div>
+            <div data-collapsible-5 id="collapse5" class="transition-all duration-300 linear overflow-hidden">
+              <div class="rd-md w-full bg-gray1/5 dark-bg-gray9/5 b b-gray2 bg-gray1/80 p4 h44 min-h-44">
+                <p class="">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam, dolorum, incidunt facilis quasi non ea mollitia odio, iure adipisci 
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="module" src="./main.ts"></script>
+</body>
+
+</html>
