@@ -1,0 +1,61 @@
+{
+  "name": "@fx-lib/dismissible",
+  "private": false,
+  "version": "0.0.1",
+  "type": "module",
+  "description": "A lightweight JavaScript component that automatically resizes text areas based on content",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/dismissible.umd.js",
+  "module": "./dist/dismissible.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types":"./dist/index.d.ts",
+        "default":"./dist/dismissible.js"
+      },
+      "require": {
+        "types":"./dist/index.d.ts",
+        "default":"./dist/dismissible.umd.js"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "!vite.config.ts",
+    "!.gitignore"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.7.0"
+  },
+  "keywords": [
+    "dismissible",
+    "remove-element",
+    "js",
+    "ts",
+    "component",
+    "interactive",
+    "intercative component"
+  ],
+  "homepage": "",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "bugs": {
+    "url": "https://github.com/unify-ui-dev"
+  },
+  "license": "MIT",
+  "author": "johnkat-mj"
+}
