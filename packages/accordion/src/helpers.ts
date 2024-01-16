@@ -2,19 +2,10 @@ import { getAccordionItemMetadata, getAllAlwaysOpen, getElementExceptActivedAndA
 import { AccordionOptions } from "./types";
 import { findAll, setAttributes } from "@fx-lib/utilities";
 
-const getAccordionPaddingY = (accordionItem: HTMLElement) => {
-    const computedStyle = getComputedStyle(accordionItem)
-    return {
-        pt: parseFloat(computedStyle.paddingTop),
-        pb: parseFloat(computedStyle.paddingBottom)
-    }
-}
-
 const expandAccordionItem = (accordionItem: HTMLElement, state: "open" | "close") => {
     if (!(accordionItem instanceof HTMLElement)) throw new Error("accordion item not a valid HTMLELement")
     accordionItem.setAttribute("data-state", state)
     const { accordionTriggerElement, accordionContentElement } = getAccordionItemMetadata(accordionItem)
-    const { pt, pb } = getAccordionPaddingY(accordionItem)
     setAttributes(accordionTriggerElement, { "aria-expanded": state === "open" ? "true" : "false" })
     setAttributes(accordionContentElement, {
         "aria-hidden": state === "open" ? "false" : "true",
@@ -22,8 +13,6 @@ const expandAccordionItem = (accordionItem: HTMLElement, state: "open" | "close"
     })
     accordionContentElement.style.height = state === "open" ?
         `${accordionContentElement.scrollHeight}px` : "0px"
-    if (pt > 0) accordionContentElement.style.paddingTop = state === "open" ? `${pt}px` : "0px"
-    if (pb > 0) accordionContentElement.style.paddingBottom = state === "open" ? `${pb}px` : "0px"
 }
 
 
