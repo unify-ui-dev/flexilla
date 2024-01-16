@@ -1,0 +1,64 @@
+{
+  "name": "@fx-lib/offcanvas",
+  "private": false,
+  "version": "0.0.1",
+  "type": "module",
+  "description": "An offcanvas component for creating responsive and off-screen navigation panels in web applications.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/offcanvas.umd.js",
+  "module": "./dist/offcanvas.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/offcanvas.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/offcanvas.umd.js"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "!vite.config.ts",
+    "!.gitignore"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.7.0"
+  },
+  "dependencies": {
+    "@fx-lib/utilities": "^0.0.1"
+  },
+  "keywords": [
+    "offcanvas",
+    "drawer",
+    "js",
+    "ts",
+    "component",
+    "interactive",
+    "intercative component"
+  ],
+  "homepage": "",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "bugs": {
+    "url": "https://github.com/unify-ui-dev"
+  },
+  "license": "MIT",
+  "author": "johnkat-mj"
+}
