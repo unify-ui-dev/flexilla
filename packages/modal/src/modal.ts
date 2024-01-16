@@ -1,5 +1,5 @@
 
-import { ModalParams } from "./types";
+import { ModalOptions, ModalParams } from "./types";
 import { initModal } from "./helpers";
 import { injectStyles } from "./injectStyle";
 import { find } from "@fx-lib/utilities";
@@ -12,6 +12,7 @@ class Modal {
     public showModal: () => void
     public hideModal: () => void
     public isHidden: () => boolean
+    private options:ModalOptions
     /**
      * Creates and initializes a modal.
      */
@@ -22,6 +23,7 @@ class Modal {
         
         injectStyles()
         this.modalElement = modalElement
+        this.options = options
         this.modalElement.setAttribute("data-fx-modal", "");
         const modalId = modalElement.dataset.modalId;
 
@@ -30,7 +32,7 @@ class Modal {
             parentElement: document.body
         });
 
-        const { showModal, hideModal, autoInitModal, isHidden } = initModal(modalElement, triggerButton, options);
+        const { showModal, hideModal, autoInitModal, isHidden } = initModal(modalElement, triggerButton, this.options);
 
         autoInitModal()
         this.showModal = showModal

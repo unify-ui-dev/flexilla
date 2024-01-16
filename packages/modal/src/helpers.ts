@@ -65,13 +65,14 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
                 const modalContent_ = find({ selector: "[data-modal-content]", parentElement: shownModal })
                 toggleModalState(shownModal, modalContent_, "close");
                 const modalOverlay = find({ selector: "[data-modal-overlay]", parentElement: shownModal }) as HTMLElement
-                destroyOverlay(modalOverlay)
+                destroyOverlay(modalOverlay, shownModal)
             }
         }
     }
 
     const showModal = () => {
         closeAll(modalElement)
+
         const overlayElement = buildOverlay({
             modalContent: modalContent,
             overlayClassName: overlayClassName,
@@ -122,7 +123,9 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
         }
 
         const modalOverlay = find({ selector: "[data-modal-overlay]", parentElement: modalElement }) as HTMLElement
-        destroyOverlay(modalOverlay)
+        console.log(modalOverlay)
+        // modalElement.removeChild(modalOverlay)
+        destroyOverlay(modalOverlay, modalElement)
 
         onHide?.()
         onToggle?.({ isHidden: true })
