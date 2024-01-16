@@ -32,11 +32,7 @@ export type TabsOptions = {
     onChangeTab?: ({ currentTrigger, currentPanel }: { currentTrigger?: HTMLElement, currentPanel?: HTMLElement }) => void
 };
 
-export type TabsReturns = {
-    showPanel: (value: string) => void,
-    activePanel: HTMLElement,
-    activeTrigger: HTMLElement
-};
+
 
 export type TabsParams = {
     tabsElement: HTMLElement;

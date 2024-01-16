@@ -129,4 +129,4 @@ class Tabs {
   }
 }
 
-export { Tabs };
+export default Tabs

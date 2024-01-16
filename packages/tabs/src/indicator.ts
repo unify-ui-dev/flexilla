@@ -1,4 +1,4 @@
-import { find, appendBefore } from "@unifyui-js/dom_util";
+import { find, appendBefore } from "@fx-lib/utilities";
 import { VERTICAL_ORIENTATION } from "./const";
 import { IndicatorOptions } from "./types";
 
