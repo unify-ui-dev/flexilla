@@ -1,5 +1,5 @@
+import { afterTransition } from "@fx-lib/utilities";
 import { BackdropOptions } from "./types";
-import { afterTransition } from "./utils";
 
 const getOptionClassNameFromOptions = (options: BackdropOptions | undefined) => {
     if (!options) return
