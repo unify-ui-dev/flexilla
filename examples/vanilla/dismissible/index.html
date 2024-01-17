@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + TS</title>
+</head>
+
+<body>
+  <section class="mx-auto space-y-16 max-w2xl py20">
+    <div class="space-y-6">
+      <h1 class="text-xl font-semibold text-gray9 dark-text-white">
+        Remove From DOM
+      </h1>
+      <div
+        class="p10 rd-lg bg-gradient-to-bl from-blue6 via-indigo4 to-sky6 h96 flex gap-4 items-center justify-center">
+        <div data-remove-from-dom class="wfull p5 rd-lg bg-white">
+          <div bg-gray1 rd-md px3 py1.5 flex items-center justify-between>
+            <h2 text-gray8 text-lg font-semibold>
+              Remove Element From Dom
+            </h2>
+            <button data-dismiss-btn aria-label="remove from screen" p2 text-gray7 p3 hover-bg-gray2 rd-full>
+              <span flex i-carbon-close></span>
+            </button>
+          </div>
+          <div pt5 space-y-4>
+            <div class="wmax p3 rd-full bg-red2 text-red6">
+              <span flex i-carbon-accessibility text-lg></span>
+            </div>
+            <h2 class="font-semibold text-xl text-gray9 dark-text-white">
+              You neen to add new user
+            </h2>
+            <p class="text-gray7 dark-text-gray3">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      <div space-y-1>
+        <h1 class="text-xl font-semibold text-gray9 dark-text-white">
+          Animated with KeyFrame
+        </h1>
+        <p text-gray7>
+          On dismiss the element will be just hidden from screen view but not in DOM
+        </p>
+      </div>
+      <div
+        class="p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6 h96 flex items-center justify-center gap-4">
+        <div data-remove-from-screen data-action="hide-from-screen" class="wfull p5 rd-lg bg-white">
+          <div bg-gray1 rd-md px3 py1.5 flex items-center justify-between>
+            <h2 text-gray8 text-lg font-semibold>
+              Hide Element From Screen Only
+            </h2>
+            <button data-dismiss-btn aria-label="remove from screen" p2 text-gray7 p3 hover-bg-gray2 rd-full>
+              <span flex i-carbon-close></span>
+            </button>
+          </div>
+          <div pt5 space-y-4>
+            <div class="wmax p3 rd-full bg-red2 text-red6">
+              <span flex i-carbon-accessibility text-lg></span>
+            </div>
+            <h2 class="font-semibold text-xl text-gray9 dark-text-white">
+              You neen to add new user
+            </h2>
+            <p class="text-gray7 dark-text-gray3">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="module" src="./main.ts"></script>
+</body>
+
+</html>

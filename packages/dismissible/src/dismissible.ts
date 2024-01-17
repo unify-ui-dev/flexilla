@@ -1,4 +1,5 @@
-import { dismissElement } from "./helpers";
+import { afterTransition, findAll } from "@fx-lib/utilities"
+
 import { DismissibleParams } from "./types";
 
 class Dismissible {
@@ -11,8 +12,9 @@ class Dismissible {
         if (!(dismissibleElement instanceof HTMLElement)) throw new Error("Provided Element not a valid HTMLElement")
         this.dismissibleElement = dismissibleElement
         this.action = action || this.dismissibleElement.dataset.action as "remove-from-dom" | "hide-from-screen" || "hide-from-screen"
-        this.dismissButtons = Array.from((dismissibleElement).querySelectorAll("[data-dismiss-btn]"));
+        this.dismissButtons = findAll({ selector: "[data-dismiss-btn]", parentElement: this.dismissibleElement })
         this.onDismiss = onDissmiss
+        this.dismissibleElement.setAttribute("aria-hidden", "false")
         this.init()
     }
 
@@ -30,17 +32,17 @@ class Dismissible {
         switch (this.action) {
             case "hide-from-screen":
                 this.dismissibleElement.setAttribute("aria-hidden", "true")
-                dismissElement({
-                    dismissibleElement: this.dismissibleElement,
-                    callback: this.hideFromScreen
+                afterTransition({
+                    element:this.dismissibleElement,
+                    callback:this.hideFromScreen
                 })
                 break;
             default:
                 this.dismissibleElement.setAttribute("data-hidden", "")
                 this.dismissibleElement.setAttribute("aria-hidden", "true")
-                dismissElement({
-                    dismissibleElement: this.dismissibleElement,
-                    callback: this.removeFromDom
+                afterTransition({
+                    element:this.dismissibleElement,
+                    callback:this.removeFromDom
                 })
                 break;
         }
