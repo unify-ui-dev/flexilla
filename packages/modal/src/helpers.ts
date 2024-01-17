@@ -38,7 +38,7 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
     modalElement.setAttribute("data-allow-body-scroll", `${allowBodyScroll_}`)
 
 
-    const modalContent = modalElement.querySelector("[data-modal-content]");
+    const modalContent = find({ selector: "[data-modal-content]", parentElement: modalElement });
     const closeButtons = findAll({ selector: "[data-close-modal]", parentElement: modalElement });
 
     if (!(modalContent instanceof HTMLElement)) throw new Error("Modal content element not found");

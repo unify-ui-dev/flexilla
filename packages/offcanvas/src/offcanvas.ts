@@ -2,18 +2,19 @@
 import { BackdropOptions, OffcanvasParams } from "./types"
 import { injectStyles } from "./injectStyle"
 import { closeAllOpenedOffcanvas, toggleOffCanvasState } from "./helpers"
-import { findAll } from "@fx-lib/utilities"
+import { appendBefore, findAll, find } from "@fx-lib/utilities"
+import { createOverlay, destroyOverlay } from "./offCanvasOverlay"
 
 /**
  * Class representing an Offcanvas element.
  */
 class Offcanvas {
     private offCanvasElement: HTMLElement
-    private offCanvasId: string
     private offCanvasTriggers: HTMLElement[]
     private offCanvasCloseBtns: HTMLElement[]
     private allowBodyScroll: boolean
     private staticBackdrop: boolean
+    private backdropClass: string
     public instance: Offcanvas;
     private backdrop: BackdropOptions | undefined
 
@@ -32,8 +33,8 @@ class Offcanvas {
         const offCanvasId = this.offCanvasElement.getAttribute("id")
         this.offCanvasTriggers = this.findOffCanvasElements("[data-offcanvas-trigger]", offCanvasId);
         this.offCanvasCloseBtns = this.findOffCanvasElements("[data-offcanvas-close]", offCanvasId);
-        this.offCanvasId = this.offCanvasElement.getAttribute("") as string
         this.backdrop = overlay
+        this.backdropClass = this.offCanvasElement.dataset.offcanvasBackdrop || ""
         this.init()
     }
 
@@ -58,13 +59,15 @@ class Offcanvas {
     }
 
     private closeOffCanvas() {
-        const overlayElement = document.querySelector(`[data-fx-offcanvas-overlay][data-offcanvas-el=${this.offCanvasId}]`)
+        const id = this.offCanvasElement.getAttribute("id")
+        const overlayElement = find({ selector: `[data-fx-offcanvas-overlay][data-offcanvas-el=${id}]`, parentElement: this.offCanvasElement.parentElement as HTMLElement })
         toggleOffCanvasState(
             this.offCanvasElement,
-            this.offCanvasId,
             this.allowBodyScroll,
             "close"
         )
+        if (overlayElement instanceof HTMLElement)
+            destroyOverlay(overlayElement, this.offCanvasElement.parentElement as HTMLElement)
         document.removeEventListener("keydown", this.closeWithEsc)
         !this.allowBodyScroll && !overlayElement && document.removeEventListener("click", (event) => this.closeWhenClickOutSide(event))
     }
@@ -72,19 +75,22 @@ class Offcanvas {
     private openOffCanvas() {
         closeAllOpenedOffcanvas(this.offCanvasElement)
         toggleOffCanvasState(
-            this.offCanvasElement, 
-            this.offCanvasId, 
-            this.allowBodyScroll, 
-            "open",
-            this.staticBackdrop,
-            {
-                options: this.backdrop,
-                overlayClassName: "",
-                offcanvasId: this.offCanvasId,
-                closeOverlayCallBak() {
-
-                },
-            })
+            this.offCanvasElement,
+            this.allowBodyScroll,
+            "open")
+        const id = this.offCanvasElement.getAttribute("id") as string
+        const overlayElement = createOverlay(
+            this.backdrop,
+            this.backdropClass,
+            id
+        )
+        if (overlayElement instanceof HTMLElement) {
+            appendBefore({ newElement: overlayElement, existingElement: this.offCanvasElement })
+            if (!this.staticBackdrop)
+                overlayElement.addEventListener("click", () => {
+                    this.closeOffCanvas()
+                })
+        }
         document.addEventListener("keydown", (event) => this.closeWithEsc(event))
     }
 
@@ -117,10 +123,10 @@ class Offcanvas {
         injectStyles()
     }
 
-    public close() {
+    public open() {
         this.openOffCanvas()
     }
-    public open() {
+    public close() {
         this.closeOffCanvas()
     }
 }

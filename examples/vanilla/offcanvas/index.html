@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes slide-in {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slide-in-out {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes slide-down {
+            from {
+                transform: translateY(-100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slide-down-out {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-100%);
+            }
+        }
+
+        @keyframes slide-up {
+            from {
+                transform: translateY(100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slide-up-out {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(100%);
+            }
+        }
+
+        @keyframes slide-right {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slide-right-out {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(100%);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white dark-bg-gray950 pt14">
+    <section class="max-w3xl mxauto space-y-16 relative z20 pb20">
+        <div class="space-y-6">
+            <h1 class="text-xl font-semibold text-gray9 dark-text-white">
+                SlideOver
+            </h1>
+            <div class="p10 rd-lg bg-gradient-to-bl from-blue6 via-indigo4 to-sky6 h96 flex gap-4 items-center justify-center">
+                <div>
+                    <button data-offcanvas-trigger data-target="slide-over-from-left"
+                        aria-controls="slide-over-from-left" class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+                        Open from left
+                    </button>
+                    <div data-slideover-from-left role="slideover" data-offcanvas-backdrop="bg-gray9/8"
+                        id="slide-over-from-left" aria-labelledby="slide-over-from-left"
+                        class="fixed h100dvh wfull max-wsm -left-full top-0 data-[state=open]-left-0 ease-linear duration-200 p4 bg-gray1 dark-bg-gray9 flex">
+                        <div class="size-full b b-dashed b-gray2 dark-b-gray8">
+
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button data-offcanvas-trigger data-target="slide-over-top" aria-controls="slide-over-top"
+                        class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+                        Open from top
+                    </button>
+                    <div data-slideover-from-top role="slideover" aria-labelledby="slide-over-top" id="slide-over-top"
+                        class="fixed left-0 wscreen h64 -top-full ease-linear duration-200 data-[state=open]-top-0 flex p4 bg-gray1 dark-bg-gray9">
+                        <div class="size-full b b-dashed b-gray2 dark-b-gray8">
+
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button data-offcanvas-trigger data-target="slide-over-bottom" aria-controls="slide-over-bottom"
+                        class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+                        Open from bottom
+                    </button>
+                    <div data-slideover-from-bottom role="slideover" aria-labelledby="slide-over-bottom"
+                        id="slide-over-bottom"
+                        class="fixed left-0 wscreen h64 -bottom-full ease-linear duration-200 data-[state=open]-bottom-0 flex p4 bg-gray1 dark-bg-gray9">
+                        <div class="size-full b b-dashed b-gray2 dark-b-gray8">
+
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button data-offcanvas-trigger data-target="slide-over-from-right"
+                        aria-controls="slide-over-from-right" class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+                        Open from right
+                    </button>
+                    <div data-slideover-from-right role="slideover" id="slide-over-from-right"
+                        aria-labelledby="slide-over-from-right"
+                        class="fixed h100dvh wfull max-wsm -right-full top-0 data-[state=open]-right-0 ease-linear duration-200 p4 bg-gray1 dark-bg-gray9 flex">
+                        <div class="size-full b b-dashed b-gray2 dark-b-gray8">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="space-y-6">
+            <div space-y-1>
+                <h1 class="text-xl font-semibold text-gray9 dark-text-white">
+                  Backdrop
+                </h1>
+                <p text-gray7>
+                  Overlay backdrop
+                </p>
+              </div>
+            <div class="p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6 h96 flex items-center justify-center gap-4">
+                <div>
+                    <button data-offcanvas-trigger data-target="slide-over-overlay" aria-controls="slide-over-overlay"
+                        class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+                        Overlay
+                    </button>
+                    <div data-offcanvas-withbackdrop data-offcanvas-backdrop="bg-gray8/80" role="slideover"
+                        id="slide-over-overlay" aria-labelledby="slide-over-overlay"
+                        class="fixed h100dvh wfull max-wsm -right-full top-0 data-[state=open]-right-0 ease-linear duration-200 p4 bg-gray1 dark-bg-gray9 flex">
+                        <div class="size-full b b-dashed b-gray2 dark-b-gray8">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <button data-offcanvas-trigger data-target="slide-over-overlay1" aria-controls="slide-over-overlay1"
+                        class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+                        Overlay with blur
+                    </button>
+                    <div data-offcanvas-backdrop-blur role="slideover"
+                        data-offcanvas-backdrop="bg-gray8/20 backdrop-filter backdrop-blur-md"
+                        id="slide-over-overlay1" aria-labelledby="slide-over-overlay1"
+                        class="fixed h100dvh wfull max-wsm -right-full top-0 data-[state=open]-right-0 ease-linear duration-200 p4 bg-gray1 dark-bg-gray9 flex">
+                        <div class="size-full b b-dashed b-gray2 dark-b-gray8">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="space-y-6">
+            <div space-y-1>
+                <h1 class="text-xl font-semibold text-gray9 dark-text-white">
+                  Body Scroll
+                </h1>
+                <p text-gray7>
+                  Allow body scroll when offcanvas Opened
+                </p>
+              </div>
+            <div class="p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6 h96 flex items-center justify-center gap-4">
+                <div>
+                    <button data-offcanvas-trigger data-target="slide-overscrollbody"
+                        aria-controls="slide-overscrollbody" class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+                        Scroll body
+                    </button>
+                    <div data-offcanvas-bodyscroll data-allow-body-scroll role="slideover" id="slide-overscrollbody"
+                        aria-labelledby="slide-overscrollbody"
+                        class="fixed h100dvh wfull max-wsm -right-full top-0 data-[state=open]-right-0 ease-linear duration-200 p4 bg-gray1 dark-bg-gray9 flex">
+                        <div class="size-full b b-dashed b-gray2 dark-b-gray8">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <button data-offcanvas-trigger data-target="slide-overbodyscroll_overlay"
+                        aria-controls="slide-overbodyscroll_overlay" class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+                        Body Scroll With Overlay
+                    </button>
+                    <div data-offcanvas-bodyscroll-overlay role="slideover"
+                        data-offcanvas-backdrop="backdrop-filter backdrop-blur-xl bg-gray8/50"
+                        id="slide-overbodyscroll_overlay" aria-labelledby="slide-overbodyscroll_overlay"
+                        class="fixed h100dvh wfull max-wsm -right-full top-0 data-[state=open]-right-0 ease-linear duration-200 p4 bg-gray1 dark-bg-gray9 flex">
+                        <div class="size-full b b-dashed b-gray2 dark-b-gray8">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="space-y-6">
+            <div space-y-1>
+                <h1 class="text-xl font-semibold text-gray9 dark-text-white">
+                    Static Backdrop
+                </h1>
+                <p text-gray7>
+                    Offcanvas will not close if cliked on the Overlay Element
+                </p>
+            </div>
+            <div class="p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6 h96 flex items-center justify-center gap-4">
+                <div class="">
+                    <button data-offcanvas-trigger data-target="static-overlay-offcanvas"
+                        aria-controls="static-overlay-offcanvas" class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+                        Static Backdrop
+                    </button>
+                    <div data-offcanvas-static-overlay data-static-backdrop role="slideover"
+                        data-offcanvas-backdrop="backdrop-filter backdrop-blur-xl bg-gray8/50"
+                        id="static-overlay-offcanvas" aria-labelledby="static-overlay-offcanvas"
+                        class="fixed h100dvh wfull max-wsm -right-full top-0 data-[state=open]-right-0 ease-linear duration-200 p4 bg-gray1 dark-bg-gray9 flex">
+                        <div class="size-full b b-dashed b-gray2 dark-b-gray8">
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <button data-offcanvas-trigger data-target="static-overlay-offcanvas-2"
+                        aria-controls="static-overlay-offcanvas-2" class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+                        Static Backdrop
+                    </button>
+                    <div data-offcanvas-static-overlay-2 data-static-backdrop role="slideover"
+                        data-offcanvas-backdrop="backdrop-filter backdrop-blur-xl bg-gray8/50"
+                        id="static-overlay-offcanvas-2" aria-labelledby="static-overlay-offcanvas-2"
+                        class="fixed h100dvh wfull max-wsm -right-full top-0 data-[state=open]-right-0 ease-linear duration-200 p4 bg-gray1 dark-bg-gray9 flex">
+                        <div class="size-full b b-dashed b-gray2 dark-b-gray8">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="./main.ts"></script>
+</body>
+
+</html>
