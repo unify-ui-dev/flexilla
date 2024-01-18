@@ -1,0 +1,1 @@
+export { default as AutoResizeTextArea} from "./auto-resize-area"

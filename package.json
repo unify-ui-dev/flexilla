@@ -1,6 +1,6 @@
 {
   "name": "fx-lib",
-  "private": true,
+  "private": false,
   "workspaces": [
     "packages/*"
   ],
