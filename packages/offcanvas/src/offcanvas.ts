@@ -40,7 +40,7 @@ class Offcanvas {
 
     private findOffCanvasElements(selector: string, offCanvasId: string | null) {
         return findAll({
-            selector: `${selector}[data-target*=${offCanvasId}]`,
+            selector: `${selector}[data-target=${offCanvasId}]`,
             parentElement: document.body,
         });
     }

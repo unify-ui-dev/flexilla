@@ -123,8 +123,6 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
         }
 
         const modalOverlay = find({ selector: "[data-modal-overlay]", parentElement: modalElement }) as HTMLElement
-        console.log(modalOverlay)
-        // modalElement.removeChild(modalOverlay)
         destroyOverlay(modalOverlay, modalElement)
 
         onHide?.()
