@@ -1,0 +1,60 @@
+{
+  "name": "@fx-lib/popper",
+  "private": false,
+  "version": "0.0.1",
+  "type": "module",
+  "description": "A JavaScript library for positioning dropdown, popovers and tooltips",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/popper.umd.js",
+  "module": "./dist/popper.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/popper.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/popper.umd.js"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "!vite.config.ts",
+    "!.gitignore"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.7.0"
+  },
+  "keywords": [
+    "popper",
+    "dropdown",
+    "popover",
+    "tooltip",
+    "js",
+    "ts"
+  ],
+  "homepage": "",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "bugs": {
+    "url": "https://github.com/unify-ui-dev"
+  },
+  "license": "MIT",
+  "author": "johnkat-mj"
+}
