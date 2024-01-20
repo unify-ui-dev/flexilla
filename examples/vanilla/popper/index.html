@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + TS</title>
+  <style>
+    body {
+      overflow: hidden;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+
+<body class="">
+  <section class="mx-auto space-y-16 max-w2xl py20">
+    <div class="space-y-6">
+      <h1 class="text-xl font-semibold text-gray9 dark-text-white">
+        Popper
+      </h1>
+      <div class="p10 rd-lg bg-gradient-to-bl from-blue6 via-indigo4 to-sky6 flex flex-col items-center gap-14">
+        <div relative flex items-center justify-center wmax>
+          <div relative data-reference-1 bg-white rd-md flex class="w80 h30"></div>
+          <div data-popper-demo-1 data-popper-ls
+            class="absolute px2 py0.5 rd-md bg-zinc8 text-white text-sm b b-zinc6 invisible">
+            Left-start</div>
+          <div data-popper-demo-1 data-popper-lm
+            class="absolute px2 py0.5 rd-md bg-zinc8 text-white text-sm b b-zinc6 invisible">
+            Left/Left-Middle</div>
+          <div data-popper-demo-1 data-popper-le
+            class="absolute px2 py0.5 rd-md bg-zinc8 text-white text-sm b b-zinc6 invisible">Left-end
+          </div>
+          <div data-popper-demo-1 data-popper-ts
+            class="absolute px2 py0.5 rd-md bg-zinc8 text-white text-sm b b-zinc6 invisible">top-start
+          </div>
+          <div data-popper-demo-1 data-popper-tm
+            class="absolute px2 py0.5 rd-md bg-zinc8 text-white text-sm b b-zinc6 invisible">
+            top/top-middle</div>
+          <div data-popper-demo-1 data-popper-te
+            class="absolute px2 py0.5 rd-md bg-zinc8 text-white text-sm b b-zinc6 invisible">top-end
+          </div>
+          <div data-popper-demo-1 data-popper-rs
+            class="absolute px2 py0.5 rd-md bg-zinc8 text-white text-sm b b-zinc6 invisible">
+            right-start</div>
+          <div data-popper-demo-1 data-popper-rm
+            class="absolute px2 py0.5 rd-md bg-zinc8 text-white text-sm b b-zinc6 invisible">
+            right/right-middle</div>
+          <div data-popper-demo-1 data-popper-re
+            class="absolute px2 py0.5 rd-md bg-zinc8 text-white text-sm b b-zinc6 invisible">right-end
+          </div>
+          <div data-popper-demo-1 data-popper-bs
+            class="absolute px2 py0.5 rd-md bg-zinc8 text-white text-sm b b-zinc6 invisible">
+            Bottom-start</div>
+          <div data-popper-demo-1 data-popper-bm
+            class="absolute px2 py0.5 rd-md bg-zinc8 text-white text-sm b b-zinc6 invisible">
+            Bottom/Bottom-middle</div>
+          <div data-popper-demo-1 data-popper-be
+            class="absolute px2 py0.5 rd-md bg-zinc8 text-white text-sm b b-zinc6 invisible">
+            Bottom-end</div>
+        </div>
+        <div flex flex-wrap justify-center gap3>
+          <button data-trigger-bm class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+            Bottom/Bottom-middle
+          </button>
+          <button data-trigger-bs class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+            Bottom-start
+          </button>
+          <button data-trigger-be class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+            Bottom-end
+          </button>
+          <button data-trigger-tm class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+            Top/Top-middle
+          </button>
+          <button data-trigger-ts class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+            Top-start
+          </button>
+          <button data-trigger-te class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+            Top-end
+          </button>
+          <button data-trigger-lm class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+            Left/Left-middle
+          </button>
+          <button data-trigger-ls class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+            Left-start
+          </button>
+          <button data-trigger-le class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+            Left-end
+          </button>
+          <button data-trigger-rm class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+            Right/Right-middle
+          </button>
+          <button data-trigger-rs class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+            Right-start
+          </button>
+          <button data-trigger-re class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+            Right-end
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="module" src="./main.ts"></script>
+</body>
+
+</html>
