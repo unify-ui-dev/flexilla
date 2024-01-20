@@ -31,4 +31,24 @@ const setAttributes = (element: HTMLElement, attributes: Record<string, string>)
     for (const [key, value] of Object.entries(attributes)) element.setAttribute(key, value)
 }
 
-export { find, findAll, appendBefore, injectStyle, setAttributes }
+const afterTransition = (
+    { element, callback }:
+        {
+            element: HTMLElement,
+            callback: (() => void)
+        }
+) => {
+    const elementTransition = getComputedStyle(element).transition
+    if (elementTransition !== "none" && elementTransition !== "" && elementTransition!== "all 0s ease 0s") {
+        element.addEventListener("transitionend",
+            function handleTransitionEnd() {
+                element.removeEventListener("transitionend", handleTransitionEnd)
+                callback()
+            },
+            { once: true }
+        )
+    } else callback()
+}
+
+
+export { find, findAll, appendBefore, injectStyle, setAttributes, afterTransition}

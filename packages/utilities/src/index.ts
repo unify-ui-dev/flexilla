@@ -3,5 +3,6 @@ export {
     findAll,
     appendBefore,
     injectStyle,
-    setAttributes
+    setAttributes,
+    afterTransition
 } from "./utilities"
