@@ -1,7 +1,7 @@
 {
   "name": "@fx-lib/modal",
   "private": false,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "description": "A customizable modal component for creating interactive pop-up dialogs in web applications.",
   "publishConfig": {
@@ -27,20 +27,22 @@
     "README.md",
     "package.json",
     "!vite.config.ts",
-    "!.gitignore"
+    "!.gitignore",
+    "!tsconfig.json",
+    "!biome.js"
   ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "biome format --write ./src"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
-    "vite-plugin-dts": "^3.7.0"
-  },
-  "dependencies": {
-    "@fx-lib/utilities": "^0.0.1"
+    "vite-plugin-dts": "^3.7.0",
+    "@biomejs/biome": "1.5.1",
+    "@fx-lib/utilities": "^1.0.0"
   },
   "keywords": [
     "modal",

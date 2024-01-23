@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import sharedConfig from './../../vite.config.shared';
+import sharedConfig from './../../shared/vite.config.shared';
 
 export default defineConfig({
   ...sharedConfig,

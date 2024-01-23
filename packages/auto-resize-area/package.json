@@ -1,7 +1,7 @@
 {
   "name": "@fx-lib/auto-resize-area",
   "private": false,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "description": "A lightweight JavaScript component that automatically resizes text areas based on content",
   "publishConfig": {
@@ -13,12 +13,12 @@
   "exports": {
     ".": {
       "import": {
-        "types":"./dist/index.d.ts",
-        "default":"./dist/auto-resize-area.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/auto-resize-area.js"
       },
       "require": {
-        "types":"./dist/index.d.ts",
-        "default":"./dist/auto-resize-area.umd.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/auto-resize-area.umd.js"
       }
     }
   },
@@ -28,17 +28,20 @@
     "package.json",
     "!vite.config.ts",
     "!.gitignore",
-    "!tsconfig.json"
+    "!tsconfig.json",
+    "!biome.js"
   ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "biome format --write ./src"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
-    "vite-plugin-dts": "^3.7.0"
+    "vite-plugin-dts": "^3.7.0",
+    "@biomejs/biome": "1.5.1"
   },
   "keywords": [
     "text-area",
@@ -48,7 +51,8 @@
     "ts",
     "component",
     "interactive",
-    "intercative component"
+    "intercative component",
+    "flexilla"
   ],
   "homepage": "",
   "repository": {
