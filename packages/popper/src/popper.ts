@@ -1,6 +1,4 @@
-import { createArrow } from "./arrow";
-import { setArrowPosition } from "./arrow-helpers";
-import { DEFAULT_OFFSETDISTANCE, DEFAULT_PLACEMENT, ARROW_SIZE } from "./const";
+import { DEFAULT_OFFSETDISTANCE, DEFAULT_PLACEMENT } from "./const";
 import { getDimensions } from "./helper";
 import { injectStyle } from "./injectStyles";
 import { PopperParams, Placement } from "./types";
@@ -16,9 +14,6 @@ class CreatePopper {
     private placement: Placement
     private disableOnResize: boolean
     private disableOnScroll: boolean
-    private enableArrow: boolean
-    private arrowSize: number
-    private arrowClassName: string
     /**
      * CREATE POPPER
      */
@@ -29,7 +24,6 @@ class CreatePopper {
             offsetDistance = DEFAULT_OFFSETDISTANCE,
             placement = DEFAULT_PLACEMENT,
             eventEffect = {},
-            arrow = {},
         } = options
         if (!(reference instanceof HTMLElement)) throw new Error("Invalid HTMLElement for Reference Element");
         if (!(popper instanceof HTMLElement)) throw new Error("Invalid HTMLElement for Popper");
@@ -37,16 +31,12 @@ class CreatePopper {
         injectStyle()
 
         const { disableOnResize, disableOnScroll } = eventEffect
-        const { enableArrow, arrowSize = ARROW_SIZE, customClass } = arrow
         this.reference = reference
         this.popper = popper
         this.offsetDistance = offsetDistance
         this.placement = placement
         this.disableOnResize = disableOnResize || false
         this.disableOnScroll = disableOnScroll || false
-        this.enableArrow = enableArrow || false
-        this.arrowSize = arrowSize
-        this.arrowClassName = customClass || ""
         this.popper.setAttribute("data-fx-popper", '')
     }
 
@@ -92,16 +82,6 @@ class CreatePopper {
                 offsetDistance: this.offsetDistance
             }
         );
-        if (this.enableArrow) {
-            const { addToParent } = createArrow({ customClass: this.arrowClassName, })
-            addToParent(this.popper.parentElement as HTMLElement, this.popper)
-        }
-
-        setArrowPosition({
-            popper: this.popper,
-            arrowSize: this.arrowSize,
-            offsetDistance: this.offsetDistance, placement: this.placement, refWidth, refHeight, x, y
-        })
 
         this.setPopperStyleProperty(x, y)
     };
