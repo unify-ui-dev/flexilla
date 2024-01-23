@@ -15,8 +15,5 @@
     "typescript": "^5.2.2",
     "unocss": "^0.58.3",
     "vite": "^5.0.8"
-  },
-  "dependencies": {
-    "@ftest-lib/package1": "^0.0.3"
   }
 }
