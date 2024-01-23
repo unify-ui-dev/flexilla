@@ -1,0 +1,68 @@
+{
+  "name": "@fx-lib/dropdown",
+  "private": false,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Utilities package for flexilla library",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/dropdown.umd.js",
+  "module": "./dist/dropdown.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/dropdown.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/dropdown.umd.js"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "!vite.config.ts",
+    "!.gitignore",
+    "!tsconfig.json",
+    "!biome.js"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "format": "biome format --write ./src"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.7.0",
+    "@biomejs/biome": "1.5.1",
+    "@fx-lib/utilities": "^1.0.0"
+  },
+  "dependencies": {
+    "@fx-lib/popper": "^1.0.0"
+  },
+  "keywords": [
+    "dropdown",
+    "js",
+    "ts",
+    "component",
+    "interactive",
+    "intercative component"
+  ],
+  "homepage": "",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "bugs": {
+    "url": "https://github.com/unify-ui-dev"
+  },
+  "license": "MIT",
+  "author": "johnkat-mj"
+}
