@@ -1,6 +1,6 @@
 {
-  "name": "fx-lib",
-  "private": false,
+  "name": "root",
+  "private": true,
   "workspaces": [
     "packages/*"
   ],
@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.1",
+    "@types/node": "^20.11.5",
     "lerna": "^8.0.2",
     "vite": "^5.0.11"
   }

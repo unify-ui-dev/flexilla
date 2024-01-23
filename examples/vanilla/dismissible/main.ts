@@ -1,4 +1,4 @@
-import { Dismissible } from "@fx-lib/dismissible"
+import { Dismissible } from "fx-lib"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 

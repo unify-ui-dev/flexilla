@@ -1,6 +1,6 @@
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
-import { Accordion } from "@fx-lib/accordion"
+import { Accordion } from "fx-lib"
 
 new Accordion({
     accordionElement: document.querySelector("[data-accordion-1]") as HTMLElement

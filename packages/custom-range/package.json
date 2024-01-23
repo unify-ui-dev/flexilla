@@ -1,0 +1,64 @@
+{
+  "name": "@fx-lib/custom-range",
+  "private": false,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A lightweight JavaScript component to add range indicator to a custom range component",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/custom-range.umd.js",
+  "module": "./dist/custom-range.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types":"./dist/index.d.ts",
+        "default":"./dist/custom-range.js"
+      },
+      "require": {
+        "types":"./dist/index.d.ts",
+        "default":"./dist/custom-range.umd.js"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "!vite.config.ts",
+    "!.gitignore",
+    "!tsconfig.json",
+    "!biome.js"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "format": "biome format --write ./src"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.7.0",
+    "@biomejs/biome": "1.5.1"
+  },
+  "keywords": [
+    "custom-range",
+    "js",
+    "ts",
+    "component",
+    "interactive",
+    "intercative component"
+  ],
+  "homepage": "",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "bugs": {
+    "url": "https://github.com/unify-ui-dev"
+  },
+  "license": "MIT",
+  "author": "johnkat-mj"
+}

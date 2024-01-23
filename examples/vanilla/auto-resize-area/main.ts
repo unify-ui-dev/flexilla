@@ -1,7 +1,7 @@
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 
-import { AutoResizeTextArea } from "@fx-lib/auto-resize-area"
+import { AutoResizeTextArea } from "fx-lib"
 
 const textArea = document.querySelector("[data-autoresizable]")
 

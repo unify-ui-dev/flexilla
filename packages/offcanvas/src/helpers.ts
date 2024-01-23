@@ -19,7 +19,8 @@ export const toggleOffCanvasState = (
 * Toggle body scroll based on the Offcanvas state.
 */
 const toggleBodyScroll = (state: "open" | "close") => {
-    document.body.style.overflow = state === "open" ? "hidden" : "auto";
+    document.body.style.overflow = state === "open" ? "hidden" : "";
+    document.body.style.overflowY = state === "open" ? "hidden" : "auto";
 }
 
 /**
