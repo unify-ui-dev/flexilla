@@ -1,8 +1,8 @@
 export {
-    find,
-    findAll,
-    appendBefore,
-    injectStyle,
-    setAttributes,
-    afterTransition
-} from "./utilities"
+	find,
+	findAll,
+	appendBefore,
+	injectStyle,
+	setAttributes,
+	afterTransition,
+} from "./utilities";
