@@ -1,7 +1,7 @@
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 
-import { Tabs } from "@fx-lib/tabs"
+import { Tabs } from "fx-lib"
 
 const element = document.querySelector("[data-tabs]")
 if (element instanceof HTMLElement) {

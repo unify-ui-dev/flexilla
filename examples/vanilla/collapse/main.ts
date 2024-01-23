@@ -1,6 +1,6 @@
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
-import { Collapse } from "@fx-lib/collapse"
+import { Collapse } from "fx-lib"
 
 new Collapse({
     collapseElement: document.querySelector("[data-collapsible-1]") as HTMLElement

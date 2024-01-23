@@ -1,4 +1,4 @@
-import { OffCanvas } from "@fx-lib/offcanvas"
+import { OffCanvas } from "fx-lib"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 

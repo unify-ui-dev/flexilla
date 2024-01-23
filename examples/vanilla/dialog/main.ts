@@ -1,4 +1,4 @@
-import { Modal, ModalOptions } from "@fx-lib/modal"
+import { Modal, ModalOptions } from "fx-lib"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 
