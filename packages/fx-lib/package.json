@@ -1,24 +1,24 @@
 {
-  "name": "@fx-lib/collapse",
+  "name": "fx-lib",
   "private": false,
   "version": "1.0.0",
   "type": "module",
-  "description": "A versatile and interactive collapse component for creating collapsible sections in web applications, conserving space and improving user experience.",
+  "description": "Flexilla is an open-source set of unstyled interactive UI components for building interactive, and customizable user interfaces.",
   "publishConfig": {
     "access": "public"
   },
-  "main": "./dist/collapse.umd.js",
-  "module": "./dist/collapse.js",
+  "main": "./dist/lib.umd.cjs",
+  "module": "./dist/lib.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/collapse.js"
+        "types":"./dist/lib.d.ts",
+        "default":"./dist/lib.js"
       },
       "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/collapse.umd.js"
+        "types":"./dist/lib.d.ts",
+        "default":"./dist/lib.umd.js"
       }
     }
   },
@@ -41,13 +41,25 @@
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
     "vite-plugin-dts": "^3.7.0",
-    "@biomejs/biome": "1.5.1"
+    "@biomejs/biome": "1.5.1",
+    "@fx-lib/accordion": "^1.0.0",
+    "@fx-lib/auto-resize-area": "^1.0.0",
+    "@fx-lib/collapse": "^1.0.0",
+    "@fx-lib/custom-range": "^1.0.0",
+    "@fx-lib/dismissible": "^1.0.0",
+    "@fx-lib/dropdown": "^1.0.0",
+    "@fx-lib/modal": "^1.0.0",
+    "@fx-lib/offcanvas": "^1.0.0",
+    "@fx-lib/tabs": "^1.0.0",
+    "@fx-lib/tooltip": "^1.0.0"
   },
   "keywords": [
-    "collapse",
-    "collapsible",
-    "js",
+    "Flexilla",
+    "fx-lib",
+    "interactive component",
+    "components library",
     "ts",
+    "js",
     "collapsible",
     "component",
     "interactive",

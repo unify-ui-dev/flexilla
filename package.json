@@ -5,7 +5,10 @@
     "packages/*"
   ],
   "scripts": {
-    "format": "biome format --write ./"
+    "format": "biome format --write ./",
+    "build-utilities":"npx lerna run build --scope=@fx-lib/utilities && npx lerna run build --scope=@fx-lib/popper",
+    "build-packages": "npx lerna run build --scope=@fx-lib/accordion && npx lerna run build --scope=@fx-lib/auto-resize-area && npx lerna run build --scope=@fx-lib/collapse && npx lerna run build --scope=@fx-lib/custom-range && npx lerna run build --scope=@fx-lib/dismissible && npx lerna run build --scope=@fx-lib/dropdown && npx lerna run build --scope=@fx-lib/modal && npx lerna run build --scope=@fx-lib/offcanvas && npx lerna run build --scope=@fx-lib/tabs && npx lerna run build --scope=@fx-lib/tooltip",
+    "build":"npm run build-utilities && npm run build-packages && npx lerna run build --scope=fx-lib"
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.1",

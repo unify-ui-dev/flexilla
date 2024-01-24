@@ -55,11 +55,11 @@
   ],
   "homepage": "",
   "repository": {
-    "type": "",
-    "url": ""
+    "type": "git",
+    "url": "https://github.com/unify-ui-dev/flexilla"
   },
   "bugs": {
-    "url": "https://github.com/unify-ui-dev"
+    "url": "https://github.com/unify-ui-dev/flexilla/issues"
   },
   "license": "MIT",
   "author": "johnkat-mj"
