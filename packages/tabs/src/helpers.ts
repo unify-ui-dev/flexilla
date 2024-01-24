@@ -1,4 +1,4 @@
-import { find } from "@fx-lib/utilities";
+import { find } from "@flexilla/utilities";
 import { STATE_TO_FALSE, STATE_TO_TRUE, VERTICAL_ORIENTATION } from "./const";
 import { moveIndicator } from "./indicator";
 

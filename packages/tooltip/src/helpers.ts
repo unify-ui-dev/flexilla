@@ -1,4 +1,4 @@
-import { setAttributes } from "@fx-lib/utilities"
+import { setAttributes } from "@flexilla/utilities"
 
 const updateTooltipState = (
     { state, container, trigger, popper }: {

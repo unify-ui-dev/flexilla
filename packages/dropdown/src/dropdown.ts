@@ -1,8 +1,8 @@
 import { DropdownOptions, DropdownParams, Placement } from "./types"
-import { CreatePopper } from '@fx-lib/popper'
+import { CreatePopper } from '@flexilla/popper'
 import { handleDocKeyDown, hideDropdown, initDropdownAttributes, showDropdown } from "./helpers"
-import { findAll, find, afterTransition } from "@fx-lib/utilities"
-import { injectStyles } from "./injectStyle"
+import { findAll, find, afterTransition } from "@flexilla/utilities"
+import { injectStyles } from "./injectStyles"
 
 
 class Dropdown {

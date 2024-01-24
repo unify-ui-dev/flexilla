@@ -1,7 +1,6 @@
-
 import { AccordionOptions, AccordionParams } from "./types";
 import { activeAlwaysOpen, activateDefaultAccordionItem, closeOtherAccordionItems, initItems, expandAccordionItem } from "./helpers";
-import { find, findAll } from "@fx-lib/utilities";
+import { find, findAll } from "@flexilla/utilities";
 
 /**
 * Accordion Component

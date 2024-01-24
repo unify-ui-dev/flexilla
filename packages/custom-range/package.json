@@ -1,5 +1,5 @@
 {
-  "name": "@fx-lib/custom-range",
+  "name": "@flexilla/custom-range",
   "private": false,
   "version": "1.0.0",
   "type": "module",
@@ -13,12 +13,12 @@
   "exports": {
     ".": {
       "import": {
-        "types":"./dist/index.d.ts",
-        "default":"./dist/custom-range.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/custom-range.js"
       },
       "require": {
-        "types":"./dist/index.d.ts",
-        "default":"./dist/custom-range.umd.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/custom-range.umd.js"
       }
     }
   },
@@ -29,7 +29,8 @@
     "!vite.config.ts",
     "!.gitignore",
     "!tsconfig.json",
-    "!biome.js"
+    "!biome.js",
+    "Flexilla"
   ],
   "scripts": {
     "dev": "vite",
@@ -38,10 +39,10 @@
     "format": "biome format --write ./src"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.5.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
-    "vite-plugin-dts": "^3.7.0",
-    "@biomejs/biome": "1.5.1"
+    "vite-plugin-dts": "^3.7.0"
   },
   "keywords": [
     "custom-range",

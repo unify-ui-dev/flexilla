@@ -1,4 +1,4 @@
-import { Placement } from "@fx-lib/popper"
+import { Placement } from "@flexilla/popper"
 
 export type Arrow = {
     enableArrow?: boolean,

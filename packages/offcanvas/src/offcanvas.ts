@@ -1,8 +1,8 @@
 
 import { BackdropOptions, OffcanvasParams } from "./types"
-import { injectStyles } from "./injectStyle"
+import { injectStyles } from "./injectStyles"
 import { closeAllOpenedOffcanvas, toggleOffCanvasState } from "./helpers"
-import { appendBefore, findAll, find } from "@fx-lib/utilities"
+import { appendBefore, findAll, find } from "@flexilla/utilities"
 import { createOverlay, destroyOverlay } from "./offCanvasOverlay"
 
 /**

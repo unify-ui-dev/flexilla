@@ -1,7 +1,7 @@
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 
-import { Tabs } from "fx-lib"
+import { Tabs } from "flexilla"
 
 const element = document.querySelector("[data-tabs]")
 if (element instanceof HTMLElement) {

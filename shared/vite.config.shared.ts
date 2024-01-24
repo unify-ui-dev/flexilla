@@ -2,7 +2,7 @@ import { UserConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 const sharedConfig: UserConfig = {
-  plugins: [dts()],
+  plugins: [dts({ rollupTypes: true })],
   build: {
     outDir: 'dist',
     rollupOptions: {
@@ -10,7 +10,7 @@ const sharedConfig: UserConfig = {
       output: {
         globals: {},
       },
-    },
+    }
   },
 };
 

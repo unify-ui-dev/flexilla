@@ -1,21 +1,21 @@
-# @fx-lib/modal | Modal/Overlay component
+# @flexilla/modal | Modal/Overlay component
 
 ## Installation
 
-To install the @fx-lib/modal package, you can use npm:
+To install the @flexilla/modal package, you can use npm:
 
 ```shell
-npm install @fx-lib/modal
+npm install @flexilla/modal
 ```
 
 ## Usage
 
 To use the Modal component, follow these steps:
 
-1. Import the Modal class from @fx-lib/modal:
+1. Import the Modal class from @flexilla/modal:
 
 ```js
-import { Modal } from '@fx-lib/modal';
+import { Modal } from '@flexilla/modal';
 ```
 2. Create an instance of the Modal class by providing the necessary parameters
 

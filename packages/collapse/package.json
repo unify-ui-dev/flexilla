@@ -1,5 +1,5 @@
 {
-  "name": "@fx-lib/collapse",
+  "name": "@flexilla/collapse",
   "private": false,
   "version": "1.0.0",
   "type": "module",
@@ -38,20 +38,20 @@
     "format": "biome format --write ./src"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.5.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
-    "vite-plugin-dts": "^3.7.0",
-    "@biomejs/biome": "1.5.1"
+    "vite-plugin-dts": "^3.7.0"
   },
   "keywords": [
     "collapse",
     "collapsible",
     "js",
     "ts",
-    "collapsible",
     "component",
     "interactive",
-    "intercative component"
+    "intercative component",
+    "Flexilla"
   ],
   "homepage": "",
   "repository": {

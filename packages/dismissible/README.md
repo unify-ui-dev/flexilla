@@ -1,15 +1,15 @@
-# @fx-lib/dismissible | Dismissible Component
+# @flexilla/dismissible | Dismissible Component
 
-`@fx-lib/dismissible` is a lightweight package that provides a way to dismiss elements from the DOM or hide them from the screen.
+`@flexilla/dismissible` is a lightweight package that provides a way to dismiss elements from the DOM or hide them from the screen.
 
 ## Installation
 
 ```shell
-npm install @fx-lib/dismissible
+npm install @flexilla/dismissible
 ```
 Import 
 ```js
-import Dismissible from '@fx-lib/dismissible';
+import Dismissible from '@flexilla/dismissible';
 ```
 
 ## Params

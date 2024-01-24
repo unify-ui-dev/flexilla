@@ -1,4 +1,4 @@
-import { Modal } from "fx-lib"
+import { Modal } from "flexilla"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 

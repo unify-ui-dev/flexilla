@@ -1,5 +1,5 @@
 {
-  "name": "@fx-lib/tooltip",
+  "name": "@flexilla/tooltip",
   "private": false,
   "version": "1.0.0",
   "type": "module",
@@ -29,7 +29,8 @@
     "!vite.config.ts",
     "!.gitignore",
     "!tsconfig.json",
-    "!biome.js"
+    "!biome.js",
+    "flexilla"
   ],
   "scripts": {
     "dev": "vite",
@@ -38,14 +39,14 @@
     "format": "biome format --write ./src"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.5.1",
+    "@flexilla/utilities": "1.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
-    "vite-plugin-dts": "^3.7.0",
-    "@biomejs/biome": "1.5.1",
-    "@fx-lib/utilities": "^1.0.0"
+    "vite-plugin-dts": "^3.7.0"
   },
   "dependencies": {
-    "@fx-lib/popper": "^1.0.0"
+    "@flexilla/popper": "1.0.0"
   },
   "keywords": [
     "popper",

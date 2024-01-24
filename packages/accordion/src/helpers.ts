@@ -1,6 +1,6 @@
 import { getAccordionItemMetadata, getAllAlwaysOpen, getElementExceptActivedAndAlwaysOpen } from "./util";
 import { AccordionOptions } from "./types";
-import { findAll, setAttributes } from "@fx-lib/utilities";
+import { findAll, setAttributes } from "@flexilla/utilities";
 
 const expandAccordionItem = (accordionItem: HTMLElement, state: "open" | "close") => {
     if (!(accordionItem instanceof HTMLElement)) throw new Error("accordion item not a valid HTMLELement")

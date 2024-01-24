@@ -1,4 +1,4 @@
-import { afterTransition, findAll } from "@fx-lib/utilities"
+import { afterTransition, findAll } from "@flexilla/utilities"
 
 import { DismissibleParams } from "./types";
 

@@ -1,8 +1,8 @@
-# Flexilla (fx-lib) Contributing Guide
+# Flexilla (flexilla) Contributing Guide
 
 Every contribution is welcome to this open source project. However, before submitting your contribution, be sure to take a moment and read the following guidelines.
 
-- [Flexilla (fx-lib) Contributing Guide](#flexilla-fx-lib-contributing-guide)
+- [Flexilla (flexilla) Contributing Guide](#flexilla-flexilla-contributing-guide)
   - [Don't know how to contribute or new to Open Source?](#dont-know-how-to-contribute-or-new-to-open-source)
   - [Have a question?](#have-a-question)
     - [Prerequisites](#prerequisites)
@@ -11,6 +11,7 @@ Every contribution is welcome to this open source project. However, before submi
   - [Pull Request Guidelines](#pull-request-guidelines)
     - [Steps to PR](#steps-to-pr)
   - [Local Development](#local-development)
+    - [Build packages](#build-packages)
 
 
 ## Don't know how to contribute or new to Open Source?
@@ -66,7 +67,7 @@ Make sure to install the dependencies:
 npm install
 ```
 
-2. Link a package on local
+1. Link a package on local
 
 - navigate to the package folder
 ```bash
@@ -82,4 +83,8 @@ npm link
 npm link package-name
 ```
 
+### Build packages
 
+```bash
+npx lerna run build
+```
