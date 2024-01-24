@@ -44,7 +44,6 @@ To contribute to this project, please make sure you read our [contributing guide
 ## 🙌 Credit
 
 
-
 ## 📄 License
 
 This project is licensed under the **MIT License** - see the [**MIT License**](LICENSE) file for details.

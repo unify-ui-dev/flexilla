@@ -21,9 +21,8 @@ Take a look at :
 
 ## Have a question?
 
-1. Check our [Github Issues](){:target="_blank"} to see if someone has already answered your question.
-2. Join our community on [Discord](){:target="_blank"} and feel free to ask everything you want.
-
+1. Check our [Github Issues](https://github.com/unify-ui-dev/flexilla/issues){:target="_blank"} to see if someone has already answered your question.
+2. Or Contact one of maintainers
 
 ### Prerequisites
 
@@ -32,7 +31,9 @@ Take a look at :
 
 #### Vs Code Extensions
 
-1. [Biome](){:target="_blank"}
+1. [Biome JS](https://biomejs.dev/){:target="_blank"}
+2. [Vite JS](https://lerna.js.org/){:target="_blank"}
+3. [Lerna](https://biomejs.dev/){:target="_blank"}
 
 
 
@@ -65,5 +66,20 @@ Make sure to install the dependencies:
 npm install
 ```
 
-2. Test a package
+2. Link a package on local
+
+- navigate to the package folder
+```bash
+npm run build
+```
+And
+```bash
+npm link
+```
+
+- navigate to the folder where you want to link the package
+```bash
+npm link package-name
+```
+
 
