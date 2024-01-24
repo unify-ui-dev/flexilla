@@ -1,7 +1,7 @@
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 
-import { AutoResizeTextArea } from "flexilla"
+import { AutoResizeTextArea } from "@flexilla/flexilla"
 
 const textArea = document.querySelector("[data-autoresizable]")
 

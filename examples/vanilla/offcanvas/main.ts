@@ -1,4 +1,4 @@
-import { OffCanvas } from "flexilla"
+import { OffCanvas } from "@flexilla/flexilla"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 

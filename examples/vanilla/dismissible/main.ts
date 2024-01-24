@@ -1,4 +1,4 @@
-import { Dismissible } from "flexilla"
+import { Dismissible } from "@flexilla/flexilla"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 

@@ -1,4 +1,4 @@
-import { Modal } from "flexilla"
+import { Modal } from "@flexilla/flexilla"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 
