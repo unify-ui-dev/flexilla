@@ -1,5 +1,5 @@
 {
-  "name": "flexilla",
+  "name": "@flexilla/flexilla",
   "private": false,
   "version": "1.0.1",
   "type": "module",
@@ -39,6 +39,11 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.7.0"
+  },
+  "dependencies": {
     "@flexilla/accordion": "^1.0.1",
     "@flexilla/auto-resize-area": "^1.0.1",
     "@flexilla/collapse": "^1.0.1",
@@ -48,10 +53,7 @@
     "@flexilla/modal": "^1.0.1",
     "@flexilla/offcanvas": "^1.0.1",
     "@flexilla/tabs": "^1.0.1",
-    "@flexilla/tooltip": "^1.0.1",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.8",
-    "vite-plugin-dts": "^3.7.0"
+    "@flexilla/tooltip": "^1.0.1"
   },
   "keywords": [
     "Flexilla",
