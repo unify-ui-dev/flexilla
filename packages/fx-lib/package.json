@@ -13,12 +13,12 @@
   "exports": {
     ".": {
       "import": {
-        "types":"./dist/lib.d.ts",
-        "default":"./dist/lib.js"
+        "types": "./dist/lib.d.ts",
+        "default": "./dist/lib.js"
       },
       "require": {
-        "types":"./dist/lib.d.ts",
-        "default":"./dist/lib.umd.js"
+        "types": "./dist/lib.d.ts",
+        "default": "./dist/lib.umd.js"
       }
     }
   },
@@ -38,20 +38,20 @@
     "format": "biome format --write ./src"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.5.1",
+    "@fx-lib/accordion": "1.0.0",
+    "@fx-lib/auto-resize-area": "1.0.0",
+    "@fx-lib/collapse": "1.0.0",
+    "@fx-lib/custom-range": "1.0.0",
+    "@fx-lib/dismissible": "1.0.0",
+    "@fx-lib/dropdown": "1.0.0",
+    "@fx-lib/modal": "1.0.0",
+    "@fx-lib/offcanvas": "1.0.0",
+    "@fx-lib/tabs": "1.0.0",
+    "@fx-lib/tooltip": "1.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
-    "vite-plugin-dts": "^3.7.0",
-    "@biomejs/biome": "1.5.1",
-    "@fx-lib/accordion": "^1.0.0",
-    "@fx-lib/auto-resize-area": "^1.0.0",
-    "@fx-lib/collapse": "^1.0.0",
-    "@fx-lib/custom-range": "^1.0.0",
-    "@fx-lib/dismissible": "^1.0.0",
-    "@fx-lib/dropdown": "^1.0.0",
-    "@fx-lib/modal": "^1.0.0",
-    "@fx-lib/offcanvas": "^1.0.0",
-    "@fx-lib/tabs": "^1.0.0",
-    "@fx-lib/tooltip": "^1.0.0"
+    "vite-plugin-dts": "^3.7.0"
   },
   "keywords": [
     "Flexilla",

@@ -13,12 +13,12 @@
   "exports": {
     ".": {
       "import": {
-        "types":"./dist/index.d.ts",
-        "default":"./dist/custom-range.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/custom-range.js"
       },
       "require": {
-        "types":"./dist/index.d.ts",
-        "default":"./dist/custom-range.umd.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/custom-range.umd.js"
       }
     }
   },
@@ -38,10 +38,10 @@
     "format": "biome format --write ./src"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.5.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
-    "vite-plugin-dts": "^3.7.0",
-    "@biomejs/biome": "1.5.1"
+    "vite-plugin-dts": "^3.7.0"
   },
   "keywords": [
     "custom-range",
