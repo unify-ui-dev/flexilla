@@ -6,7 +6,7 @@ import 'virtual:uno.css'
 const modalEl = document.querySelector("[data-modal-test-1]")
 if (modalEl instanceof HTMLElement) {
 
-    new Modal({
+    const b =new Modal({
         modalElement: modalEl,
     })
 }

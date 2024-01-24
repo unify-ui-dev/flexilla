@@ -3,6 +3,8 @@
 Flexilla is an open-source set of unstyled interactive UI components for building interactive and customizable user interfaces.
 
 
+> **Note:** : All dependencies used by flexilla are are internal library packages and not external third-party packages. 
+
 ## Why Flexilla(flexilla)
 
 Flexilla(flexilla) is a set of unstyled components  that help you quickly add interactivity to your UI Element with accessibility in mind. Flexilla includes Dropdown, collapse, accordion, tabs, Offcanvas and more.
@@ -18,7 +20,7 @@ Flexilla(flexilla) is a set of unstyled components  that help you quickly add in
 ### Install the library
 
 ```shell
-npm install flexilla
+npm install @flexilla/flexilla
 ```
 
 ### Install a package
