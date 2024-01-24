@@ -1,5 +1,5 @@
 {
-  "name": "@fx-lib/dropdown",
+  "name": "@flexilla/dropdown",
   "private": false,
   "version": "1.0.0",
   "type": "module",
@@ -39,13 +39,13 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.1",
-    "@fx-lib/utilities": "1.0.0",
+    "@flexilla/utilities": "1.0.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
     "vite-plugin-dts": "^3.7.0"
   },
   "dependencies": {
-    "@fx-lib/popper": "1.0.0"
+    "@flexilla/popper": "1.0.0"
   },
   "keywords": [
     "dropdown",
@@ -53,7 +53,8 @@
     "ts",
     "component",
     "interactive",
-    "intercative component"
+    "intercative component",
+    "flexilla"
   ],
   "homepage": "",
   "repository": {

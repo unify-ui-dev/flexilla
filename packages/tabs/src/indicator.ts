@@ -1,4 +1,4 @@
-import { find, appendBefore } from "@fx-lib/utilities";
+import { find, appendBefore } from "@flexilla/utilities";
 import { VERTICAL_ORIENTATION } from "./const";
 import { IndicatorOptions } from "./types";
 

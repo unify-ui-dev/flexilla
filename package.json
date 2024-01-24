@@ -6,9 +6,9 @@
   ],
   "scripts": {
     "format": "biome format --write ./",
-    "build-utilities":"npx lerna run build --scope=@fx-lib/utilities && npx lerna run build --scope=@fx-lib/popper",
-    "build-packages": "npx lerna run build --scope=@fx-lib/accordion && npx lerna run build --scope=@fx-lib/auto-resize-area && npx lerna run build --scope=@fx-lib/collapse && npx lerna run build --scope=@fx-lib/custom-range && npx lerna run build --scope=@fx-lib/dismissible && npx lerna run build --scope=@fx-lib/dropdown && npx lerna run build --scope=@fx-lib/modal && npx lerna run build --scope=@fx-lib/offcanvas && npx lerna run build --scope=@fx-lib/tabs && npx lerna run build --scope=@fx-lib/tooltip",
-    "build":"npm run build-utilities && npm run build-packages && npx lerna run build --scope=fx-lib"
+    "build-utilities":"npx lerna run build --scope=@flexilla/utilities && npx lerna run build --scope=@flexilla/popper",
+    "build-packages": "npx lerna run build --scope=@flexilla/accordion && npx lerna run build --scope=@flexilla/auto-resize-area && npx lerna run build --scope=@flexilla/collapse && npx lerna run build --scope=@flexilla/custom-range && npx lerna run build --scope=@flexilla/dismissible && npx lerna run build --scope=@flexilla/dropdown && npx lerna run build --scope=@flexilla/modal && npx lerna run build --scope=@flexilla/offcanvas && npx lerna run build --scope=@flexilla/tabs && npx lerna run build --scope=@flexilla/tooltip",
+    "build":"npm run build-utilities && npm run build-packages && npx lerna run build --scope=flexilla"
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.1",

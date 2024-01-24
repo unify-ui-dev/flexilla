@@ -1,5 +1,5 @@
 {
-  "name": "@fx-lib/utilities",
+  "name": "@flexilla/utilities",
   "private": false,
   "version": "1.0.0",
   "type": "module",
@@ -38,7 +38,10 @@
     "vite": "^5.0.8",
     "vite-plugin-dts": "^3.7.0"
   },
-  "keywords": [],
+  "keywords": [
+    "flexilla",
+    "flexilla utilities"
+  ],
   "homepage": "",
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-import { Dismissible } from "fx-lib"
+import { Dismissible } from "flexilla"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 

@@ -1,4 +1,4 @@
-import { find, findAll } from "@fx-lib/utilities";
+import { find, findAll } from "@flexilla/utilities";
 import { IndicatorOptions, TabsOptions, TabsParams } from "./types";
 import { DEFAULT_ORIENTATION, TRANSFORM_DURATION, TRANSFORM_EASING } from "./const";
 import { createIndicator } from "./indicator";

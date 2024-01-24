@@ -1,4 +1,4 @@
-import { setAttributes } from "@fx-lib/utilities"
+import { setAttributes } from "@flexilla/utilities"
 
 const updateDropDownState = (
     { state, container, trigger, content }: {

@@ -1,4 +1,4 @@
-import { CreatePopper } from '@fx-lib/popper'
+import { CreatePopper } from '@flexilla/popper'
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 

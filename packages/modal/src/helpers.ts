@@ -1,4 +1,4 @@
-import { find, findAll } from "@fx-lib/utilities"
+import { find, findAll } from "@flexilla/utilities"
 import { ModalOptions } from "./types";
 import { buildOverlay, destroyOverlay } from "./modalOverlay";
 

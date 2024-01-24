@@ -1,21 +1,21 @@
-# @fx-lib/accordion 
+# @flexilla/accordion 
 
 
 ## Installation
 
-You can install the `@fx-lib/accordion` package using npm:
+You can install the `@flexilla/accordion` package using npm:
 
 ```shell
-npm install @fx-lib/accordion
+npm install @flexilla/accordion
 ```
 
 ## Usage
 
 To use the accordion component, follow these steps:
-Import the Accordion class from the @fx-lib/accordion package:
+Import the Accordion class from the @flexilla/accordion package:
 
 ```ts
-import { Accordion } from '@fx-lib/accordion';
+import { Accordion } from '@flexilla/accordion';
 ```
 
 Create an instance of the Accordion class by passing the required parameters:
@@ -53,7 +53,7 @@ const options = {
 
 If using with TS, you can even import the type from accodion
 ```ts
-import {Accordion, AccordionOptions} from "@fx-lib/accordion"
+import {Accordion, AccordionOptions} from "@flexilla/accordion"
 const options:AccordionOptions = {
 
 }
@@ -91,7 +91,7 @@ accordion.hideItem({ itemSelector: '.accordion-item' });
 
 ## Examples
 
-Here are a few examples to demonstrate the usage of the @fx-lib/accordion package:
+Here are a few examples to demonstrate the usage of the @flexilla/accordion package:
 
 1. For Examples I'm using UnoCSS for styling but you can use any CSS Library, Frameworkm or even write you're own CSS.
 
@@ -139,7 +139,7 @@ Here are a few examples to demonstrate the usage of the @fx-lib/accordion packag
     </div>
 </div>
 <script>
-  import { Accordion } from '@fx-lib/accordion';
+  import { Accordion } from '@flexilla/accordion';
   const accordionElement = document.querySelector("[data-accordion-example]");
   const accordion = new Accordion({ accordionElement });
 </script>
@@ -160,7 +160,7 @@ Here are a few examples to demonstrate the usage of the @fx-lib/accordion packag
   <!-- other items -->
 </div>
 <script>
-  import { Accordion } from '@fx-lib/accordion';
+  import { Accordion } from '@flexilla/accordion';
 
   const accordionElement = document.getElementById('accordion');
   const options = {
@@ -171,4 +171,4 @@ Here are a few examples to demonstrate the usage of the @fx-lib/accordion packag
 </script>
 ```
 
-That's it! You can now use the @fx-lib/accordion package to create interactive accordion menus in your web applications.
+That's it! You can now use the @flexilla/accordion package to create interactive accordion menus in your web applications.

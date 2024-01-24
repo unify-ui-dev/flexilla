@@ -1,4 +1,4 @@
-import { afterTransition, appendBefore } from "@fx-lib/utilities"
+import { afterTransition, appendBefore } from "@flexilla/utilities"
 
 const destroyAfter = (overlayElement: HTMLElement, modalElement: HTMLElement) => {
     modalElement.removeChild(overlayElement)

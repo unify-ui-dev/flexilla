@@ -1,4 +1,4 @@
-import { Dropdown } from 'fx-lib'
+import { Dropdown } from 'flexilla'
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 

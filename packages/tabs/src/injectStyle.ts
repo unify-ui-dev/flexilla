@@ -1,4 +1,4 @@
-import { injectStyle } from "@fx-lib/utilities"
+import { injectStyle } from "@flexilla/utilities"
 
 export const injectStyles = () => {
     injectStyle({

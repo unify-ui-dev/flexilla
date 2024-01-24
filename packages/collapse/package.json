@@ -1,5 +1,5 @@
 {
-  "name": "@fx-lib/collapse",
+  "name": "@flexilla/collapse",
   "private": false,
   "version": "1.0.0",
   "type": "module",
@@ -48,10 +48,10 @@
     "collapsible",
     "js",
     "ts",
-    "collapsible",
     "component",
     "interactive",
-    "intercative component"
+    "intercative component",
+    "Flexilla"
   ],
   "homepage": "",
   "repository": {

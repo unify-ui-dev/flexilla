@@ -1,6 +1,6 @@
 import { TooltipOptions, TooltipParams, Arrow } from "./types"
-import { find } from "@fx-lib/utilities"
-import { CreatePopper, Placement } from '@fx-lib/popper'
+import { find } from "@flexilla/utilities"
+import { CreatePopper, Placement } from '@flexilla/popper'
 import { hidePopover, initPoppoverAttributes, showTooltip } from "./helpers"
 import { injectStyles } from "./injectStyle"
 

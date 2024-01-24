@@ -1,8 +1,8 @@
 
 import { ModalOptions, ModalParams } from "./types";
 import { initModal } from "./helpers";
-import { injectStyles } from "./injectStyle";
-import { find } from "@fx-lib/utilities";
+import { injectStyles } from "./injectStyles";
+import { find } from "@flexilla/utilities";
 
 /**
  * Modal Class

@@ -1,5 +1,5 @@
 {
-  "name": "@fx-lib/custom-range",
+  "name": "@flexilla/custom-range",
   "private": false,
   "version": "1.0.0",
   "type": "module",
@@ -29,7 +29,8 @@
     "!vite.config.ts",
     "!.gitignore",
     "!tsconfig.json",
-    "!biome.js"
+    "!biome.js",
+    "Flexilla"
   ],
   "scripts": {
     "dev": "vite",

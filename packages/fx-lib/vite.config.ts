@@ -8,7 +8,7 @@ export default defineConfig({
     ...sharedConfig.build,
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'fx-lib',
+      name: 'flexilla',
       fileName: 'lib',
     },
   },
