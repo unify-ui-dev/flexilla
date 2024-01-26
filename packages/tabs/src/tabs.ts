@@ -3,7 +3,6 @@ import { IndicatorOptions, TabsOptions, TabsParams } from "./types";
 import { DEFAULT_ORIENTATION, TRANSFORM_DURATION, TRANSFORM_EASING } from "./const";
 import { createIndicator } from "./indicator";
 import { activeTab, handleKeyEvent } from "./helpers";
-import { injectStyles } from "./injectStyle";
 
 class Tabs {
   private tabsElement: HTMLElement;
@@ -65,7 +64,6 @@ class Tabs {
 
   init() {
     this.tabsElement.setAttribute("data-fx-tabs", "");
-    injectStyles();
     this.initializeTab();
   }
 

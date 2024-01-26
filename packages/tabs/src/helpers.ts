@@ -3,8 +3,8 @@ import { ACTIVE_STATE, INACTIVE_STATE, STATE_TO_FALSE, STATE_TO_TRUE, VERTICAL_O
 import { moveIndicator } from "./indicator";
 
 /**
-     * Sets all triggers' data-state attribute to false except the active trigger.
-     */
+ * Sets all triggers' data-state attribute to false except the active trigger.
+ */
 const setAllTriggerToFalse = (activeTrigger: HTMLElement, tabTriggers: HTMLElement[]) => {
   for (const tabTrigger of tabTriggers) {
     if (tabTrigger !== activeTrigger) {
@@ -42,8 +42,6 @@ export const activeTab = ({ triggerElement, tabTriggers, tabPanels, tabsElement,
   toSelectTab.setAttribute("aria-hidden", STATE_TO_FALSE);
   toSelectTab.hidden = false;
   if (showAnimation && showAnimation !== "") {
-  console.log(`Hummm showAnimation ${showAnimation}`)
-    // toSelectTab.style.animation = `${showAnimation}`
     toSelectTab.style.setProperty("--un-tab-show-animation", `${showAnimation}`)
   }
   if (indicator_ instanceof HTMLElement) {
