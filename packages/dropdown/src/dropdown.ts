@@ -1,5 +1,5 @@
-import { DropdownOptions, DropdownParams, Placement } from "./types"
-import { CreatePopper } from '@flexilla/popper'
+import { DropdownOptions, DropdownParams } from "./types"
+import { CreatePopper, Placement } from '@flexilla/popper'
 import { handleDocKeyDown, hideDropdown, initDropdownAttributes, removeFocusOnItem, showDropdown } from "./helpers"
 import { findAll, find, afterTransition } from "@flexilla/utilities"
 
