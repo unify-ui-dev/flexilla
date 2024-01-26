@@ -1,8 +1,8 @@
 import { DropdownOptions, DropdownParams, Placement } from "./types"
 import { CreatePopper } from '@flexilla/popper'
-import { handleDocKeyDown, hideDropdown, initDropdownAttributes, showDropdown } from "./helpers"
+import { handleDocKeyDown, hideDropdown, initDropdownAttributes, removeFocusOnItem, showDropdown } from "./helpers"
 import { findAll, find, afterTransition } from "@flexilla/utilities"
-import { injectStyles } from "./injectStyles"
+
 
 
 class Dropdown {
@@ -16,7 +16,6 @@ class Dropdown {
     private preventFromCloseInside: boolean
     private options: DropdownOptions
     private dropdownItems: HTMLElement[]
-    private defineRequiredStyles: "inject" | "custom"
 
     private popper: CreatePopper
     constructor({ dropdownElement, options = {} }: DropdownParams) {
@@ -35,7 +34,6 @@ class Dropdown {
         this.offsetDistante = this.options.offsetDistante || parseInt(`${this.dropdownElement.dataset.offsetDistance}`) | 6
         this.preventFromCloseOutside = this.options.preventCloseFromOutside || this.dropdownElement.hasAttribute("data-prevent-close-outside") && this.dropdownElement.dataset.preventCloseOutside !== "false" || false
         this.preventFromCloseInside = this.options.preventCloseFromInside || this.dropdownElement.hasAttribute("data-prevent-close-inside") && this.dropdownElement.dataset.preventCloseInside !== "false" || false
-        this.defineRequiredStyles = this.options.defineRequiredStyles || this.contentElement.dataset.defineStyles as "inject" | "custom" || "inject"
 
         this.dropdownItems = findAll({
             selector: "a:not([disabled]), button:not([disabled])",
@@ -123,6 +121,7 @@ class Dropdown {
     }
 
     hide() {
+        removeFocusOnItem(this.dropdownItems)
         hideDropdown({
             container: this.dropdownElement,
             trigger: this.triggerElement,
@@ -141,7 +140,6 @@ class Dropdown {
     }
 
     private init() {
-        this.defineRequiredStyles === "inject" && injectStyles()
         initDropdownAttributes({
             container: this.dropdownElement,
             trigger: this.triggerElement,

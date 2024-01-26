@@ -9,8 +9,7 @@ export const injectStyles = () => {
     }
     [data-fx-dropdown][data-state="open"] [data-dropdown-content]{
         visibility: visible;
-    }
-    `
+    }`
     injectStyle({
         newStyles: newStyles,
         identifier: "[data-fx-tooltip]"
