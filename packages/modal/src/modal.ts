@@ -1,7 +1,6 @@
 
 import { ModalOptions, ModalParams } from "./types";
 import { initModal } from "./helpers";
-import { injectStyles } from "./injectStyles";
 import { find } from "@flexilla/utilities";
 
 /**
@@ -21,7 +20,6 @@ class Modal {
         this.instance = this
         if(!(modalElement instanceof HTMLElement)) throw new Error("Invalid provided HTMLElement")
         
-        injectStyles()
         this.modalElement = modalElement
         this.options = options
         this.modalElement.setAttribute("data-fx-modal", "");
