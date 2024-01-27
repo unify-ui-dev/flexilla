@@ -1,6 +1,5 @@
 import { DEFAULT_OFFSETDISTANCE, DEFAULT_PLACEMENT } from "./const";
 import { getDimensions } from "./helper";
-import { injectStyle } from "./injectStyles";
 import { PopperParams, Placement } from "./types";
 import { determinePosition } from "./utils";
 
@@ -28,7 +27,6 @@ class CreatePopper {
         if (!(reference instanceof HTMLElement)) throw new Error("Invalid HTMLElement for Reference Element");
         if (!(popper instanceof HTMLElement)) throw new Error("Invalid HTMLElement for Popper");
         if (typeof options.offsetDistance !== "number") throw new Error("OffsetDistance must be a number");
-        injectStyle()
 
         const { disableOnResize, disableOnScroll } = eventEffect
         this.reference = reference

@@ -1,4 +1,4 @@
-export const injectStyle = () => {
+export const injectStyles = () => {
     const existingStyleTag = document.head.querySelector("[data-fx-style]")
     const newStyles = "[data-fx-popper] {position: absolute; left: 0px;top: 0px; transform: translateX(var(--fx-popper-placement-x)) translateY(var(--fx-popper-placement-y));}"
     if (existingStyleTag) {

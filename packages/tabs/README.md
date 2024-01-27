@@ -1,1 +1,1 @@
-# Accordion 
+# Tabs (@flexilla/tabs)
