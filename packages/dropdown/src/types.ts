@@ -11,5 +11,5 @@ export type DropdownOptions = {
 
 export type DropdownParams = {
     dropdownElement: HTMLElement,
-    options: DropdownOptions
+    options?: DropdownOptions
 }
