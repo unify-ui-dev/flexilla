@@ -2,7 +2,6 @@ import { TooltipOptions, TooltipParams, Arrow } from "./types"
 import { find } from "@flexilla/utilities"
 import { CreatePopper, Placement } from '@flexilla/popper'
 import { hidePopover, initPoppoverAttributes, showTooltip } from "./helpers"
-import { injectStyles } from "./injectStyle"
 
 
 class Tooltip {
@@ -15,7 +14,6 @@ class Tooltip {
     private popper: CreatePopper
     private offsetDistance: number
     private triggerStrategy: "hover" | "click"
-    private defineRequiredStyles: "inject" | "custom"
 
     constructor({ containerElement, triggerElement, options = {} }: TooltipParams) {
         if (!(containerElement instanceof HTMLElement)) {
@@ -34,7 +32,6 @@ class Tooltip {
 
         this.offsetDistance = this.options.offsetDistance || parseInt(`${containerElement.dataset.offsetDistance}`) || 10
         this.triggerStrategy = this.options.triggerStrategy || this.containerElement.dataset.triggerStrategy as "hover" | "click" || "hover"
-        this.defineRequiredStyles = this.options.defineRequiredStyles || this.containerElement.dataset.defineStyles as "inject" | "custom" || "inject"
         this.arrow = this.options.arrow
         this.popper = new CreatePopper({
             reference: this.referenceElement,
@@ -123,7 +120,6 @@ class Tooltip {
         const reference = this.referenceElement
         const containerElement = this.containerElement
         const triggerStrategy = this.triggerStrategy
-        this.defineRequiredStyles === "inject" && injectStyles()
         initPoppoverAttributes({
             container: this.containerElement,
             trigger: this.referenceElement,

@@ -19,6 +19,14 @@ const updateDropDownState = (
     })
 }
 
+export const removeFocusOnItem = (items:HTMLElement[]) => {
+    const focusedElement = document.activeElement
+    if(!(focusedElement instanceof HTMLElement)) return
+    if(items.includes(focusedElement)){
+        focusedElement.blur()
+    }
+}
+
 export const initDropdownAttributes = ({ container, trigger, popper }: {
     container: HTMLElement,
     trigger: HTMLElement,

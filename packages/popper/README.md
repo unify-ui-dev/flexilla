@@ -1,1 +1,1 @@
-# Popper (fx-popper)
+# Popper (@flexilla/popper)

@@ -26,7 +26,7 @@ export const createOverlay = (options: BackdropOptions | undefined, overlayClass
     if (!options && overlayClassName === "") return
     const overlayElement = document.createElement("div")
     overlayElement.setAttribute("aria-hidden", "true")
-    overlayElement.setAttribute("data-state", "open")
+    overlayElement.setAttribute("data-state", "visible")
     overlayElement.setAttribute("data-fx-offcanvas-overlay", "")
     overlayElement.setAttribute("data-offcanvas-el", offcanvasId)
     const backdropClass = getOptionClassNameFromOptions(options)

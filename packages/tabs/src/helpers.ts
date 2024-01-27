@@ -1,14 +1,14 @@
 import { find } from "@flexilla/utilities";
-import { STATE_TO_FALSE, STATE_TO_TRUE, VERTICAL_ORIENTATION } from "./const";
+import { ACTIVE_STATE, INACTIVE_STATE, STATE_TO_FALSE, STATE_TO_TRUE, VERTICAL_ORIENTATION } from "./const";
 import { moveIndicator } from "./indicator";
 
 /**
-     * Sets all triggers' aria-selected attribute to false except the active trigger.
-     */
+ * Sets all triggers' data-state attribute to false except the active trigger.
+ */
 const setAllTriggerToFalse = (activeTrigger: HTMLElement, tabTriggers: HTMLElement[]) => {
   for (const tabTrigger of tabTriggers) {
     if (tabTrigger !== activeTrigger) {
-      tabTrigger.setAttribute("aria-selected", STATE_TO_FALSE);
+      tabTrigger.setAttribute("data-state", INACTIVE_STATE);
     }
   }
 };
@@ -19,7 +19,7 @@ const setAllTriggerToFalse = (activeTrigger: HTMLElement, tabTriggers: HTMLEleme
 const hideAllTabPanels = (activePanel: HTMLElement, tabPanels: HTMLElement[]) => {
   for (const tabPanel of tabPanels) {
     if (tabPanel !== activePanel) {
-      tabPanel.setAttribute("aria-selected", STATE_TO_FALSE);
+      tabPanel.setAttribute("data-state", INACTIVE_STATE);
       tabPanel.setAttribute("aria-hidden", STATE_TO_TRUE);
       tabPanel.hidden = true;
     }
@@ -37,13 +37,11 @@ export const activeTab = ({ triggerElement, tabTriggers, tabPanels, tabsElement,
   if (!toSelectTab) return;
   setAllTriggerToFalse(triggerElement, tabTriggers);
   hideAllTabPanels(toSelectTab, tabPanels);
-  toSelectTab.setAttribute("aria-selected", STATE_TO_TRUE);
-  triggerElement.setAttribute("aria-selected", STATE_TO_TRUE);
+  toSelectTab.setAttribute("data-state", ACTIVE_STATE);
+  triggerElement.setAttribute("data-state", ACTIVE_STATE);
   toSelectTab.setAttribute("aria-hidden", STATE_TO_FALSE);
   toSelectTab.hidden = false;
   if (showAnimation && showAnimation !== "") {
-  console.log(`Hummm showAnimation ${showAnimation}`)
-    // toSelectTab.style.animation = `${showAnimation}`
     toSelectTab.style.setProperty("--un-tab-show-animation", `${showAnimation}`)
   }
   if (indicator_ instanceof HTMLElement) {
@@ -69,7 +67,7 @@ export const activeTab = ({ triggerElement, tabTriggers, tabPanels, tabsElement,
 */
 export const handleKeyEvent = (event: KeyboardEvent, tabTriggers: HTMLElement[], tabsOrientation: string) => {
   const currentIndex = tabTriggers.findIndex(
-    (tabTrigger) => tabTrigger.getAttribute("aria-selected") === STATE_TO_TRUE
+    (tabTrigger) => tabTrigger.getAttribute("data-state") === ACTIVE_STATE
   );
 
   const direction =

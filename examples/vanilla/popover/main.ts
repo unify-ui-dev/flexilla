@@ -1,4 +1,4 @@
-import { Tooltip } from 'flexilla'
+import { Tooltip } from "@flexilla/flexilla"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 

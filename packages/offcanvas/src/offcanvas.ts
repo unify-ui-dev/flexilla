@@ -1,6 +1,5 @@
 
 import { BackdropOptions, OffcanvasParams } from "./types"
-import { injectStyles } from "./injectStyles"
 import { closeAllOpenedOffcanvas, toggleOffCanvasState } from "./helpers"
 import { appendBefore, findAll, find } from "@flexilla/utilities"
 import { createOverlay, destroyOverlay } from "./offCanvasOverlay"
@@ -120,7 +119,6 @@ class Offcanvas {
     private init() {
         this.initTriggers()
         this.initCloseBtns()
-        injectStyles()
     }
 
     public open() {

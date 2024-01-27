@@ -1,7 +1,7 @@
 {
   "name": "@flexilla/flexilla",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "description": "Flexilla is an open-source set of unstyled interactive UI components for building interactive, and customizable user interfaces.",
   "publishConfig": {
@@ -33,27 +33,24 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && cat src/types-declaration/*.d.ts > dist/index.d.ts",
     "preview": "vite preview",
     "format": "biome format --write ./src"
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.1",
+    "@flexilla/accordion": "^1.1.0",
+    "@flexilla/auto-resize-area": "^1.1.0",
+    "@flexilla/collapse": "^1.1.0",
+    "@flexilla/custom-range": "^1.1.0",
+    "@flexilla/dismissible": "^1.1.0",
+    "@flexilla/dropdown": "^1.1.0",
+    "@flexilla/modal": "^1.1.0",
+    "@flexilla/offcanvas": "^1.1.0",
+    "@flexilla/tabs": "^1.1.0",
+    "@flexilla/tooltip": "^1.1.0",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8",
-    "vite-plugin-dts": "^3.7.0"
-  },
-  "dependencies": {
-    "@flexilla/accordion": "^1.0.1",
-    "@flexilla/auto-resize-area": "^1.0.1",
-    "@flexilla/collapse": "^1.0.1",
-    "@flexilla/custom-range": "^1.0.1",
-    "@flexilla/dismissible": "^1.0.1",
-    "@flexilla/dropdown": "^1.0.1",
-    "@flexilla/modal": "^1.0.1",
-    "@flexilla/offcanvas": "^1.0.1",
-    "@flexilla/tabs": "^1.0.1",
-    "@flexilla/tooltip": "^1.0.1"
+    "vite": "^5.0.8"
   },
   "keywords": [
     "Flexilla",

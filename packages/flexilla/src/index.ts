@@ -1,19 +1,25 @@
-export { Accordion } from "@flexilla/accordion"
-export {AutoResizeTextArea} from "@flexilla/auto-resize-area"
-export { Collapse } from "@flexilla/collapse"
-export {CustomRange} from "@flexilla/custom-range"
-export { Dismissible } from "@flexilla/dismissible"
-export { Dropdown } from "@flexilla/dropdown"
-export { Modal } from "@flexilla/modal"
-export { OffCanvas } from "@flexilla/offcanvas"
-export { Tabs } from "@flexilla/tabs"
-export { Tooltip } from "@flexilla/tooltip"
+import { Accordion } from "@flexilla/accordion"
+import { AutoResizeTextArea } from "@flexilla/auto-resize-area"
+import { Collapse } from "@flexilla/collapse"
+import { CustomRange } from "@flexilla/custom-range"
+import { Dismissible } from "@flexilla/dismissible"
+import { Dropdown } from "@flexilla/dropdown"
+import { Modal } from "@flexilla/modal"
+import { OffCanvas } from "@flexilla/offcanvas"
+import { Tabs } from "@flexilla/tabs"
+import { Tooltip } from "@flexilla/tooltip"
 
-export type { AccordionOptions, AccordionParams } from "@flexilla/accordion"
-export type { CollapseOptions, CollapseParams } from "@flexilla/collapse"
-export type { DismissibleParams } from "@flexilla/dismissible"
-export type { ModalParams, ModalOptions } from "@flexilla/modal"
-export type { OffcanvasOptions, OffcanvasParams } from "@flexilla/offcanvas"
-export type { TabsParams, TabsOptions } from "@flexilla/tabs"
-export type { DropdownOptions, DropdownParams } from "@flexilla/dropdown"
-export type { TooltipOptions, TooltipParams } from "@flexilla/tooltip"
+import type { AccordionOptions, AccordionParams } from "@flexilla/accordion"
+import type { CollapseOptions, CollapseParams } from "@flexilla/collapse"
+import type { DismissibleParams } from "@flexilla/dismissible"
+import type { ModalParams, ModalOptions } from "@flexilla/modal"
+import type { OffcanvasOptions, OffcanvasParams } from "@flexilla/offcanvas"
+import type { TabsParams, TabsOptions } from "@flexilla/tabs"
+import type { DropdownOptions, DropdownParams } from "@flexilla/dropdown"
+import type { TooltipOptions, TooltipParams } from "@flexilla/tooltip"
+
+export {
+    Accordion, AutoResizeTextArea, Collapse, CustomRange, Dismissible, Dropdown, Modal, OffCanvas, Tabs, Tooltip, AccordionOptions, AccordionParams, CollapseOptions
+    , CollapseParams, DismissibleParams, ModalOptions, ModalParams, TabsOptions, TabsParams, OffcanvasOptions, OffcanvasParams,
+    DropdownOptions, DropdownParams, TooltipOptions, TooltipParams
+}

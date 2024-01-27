@@ -1,4 +1,5 @@
 import { injectStyle } from "@flexilla/utilities"
+
 export const injectStyles = () => {
     const newStyles = `
     [data-fx-tooltip] {position: relative;} 
