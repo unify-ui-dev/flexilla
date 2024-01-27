@@ -1,15 +1,24 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import sharedConfig from './../../shared/vite.config.shared';
+
 
 export default defineConfig({
-  ...sharedConfig,
+  plugins: [
+    
+  ],
   build: {
-    ...sharedConfig.build,
+    outDir: 'dist',
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: '@flexilla/flexilla',
       fileName: 'lib',
     },
+    rollupOptions: {
+      external: [],
+      output: {
+        globals: {},
+
+      },
+    }
   },
 });
