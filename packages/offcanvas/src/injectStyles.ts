@@ -1,9 +1,14 @@
 import { injectStyle } from "@flexilla/utilities"
 
-export const injectStyles = () => {
-    const newStyles = "[data-fx-offcanvas-overlay]{position: fixed;inset: 0;}[data-fx-offcanvas-overlay]:not(:hidden){display: flex;}[data-fx-offcanvas-overlay]:is(:hidden){display: none;}"
+const injectStyles = () => {
+    const newStyles = "[data-fx-offcanvas-overlay]{position: fixed;inset: 0;display: flex;}[data-fx-offcanvas-overlay][data-state=visible]{visibility: visible;}[data-fx-offcanvas-overlay][data-state=hidden]{visibility: hidden;}"
     injectStyle({
-        newStyles:newStyles,
-        identifier:"[data-fx-offcanvas]"
+        newStyles: newStyles,
+        identifier: "[data-fx-offcanvas]"
     })
+}
+
+export const injectDefault = () => {
+    const allOffcanvas = document.querySelectorAll("[data-fx-offcanvas]")
+    if (allOffcanvas.length > 0) injectStyles()
 }

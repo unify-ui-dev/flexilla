@@ -10,8 +10,6 @@ export const toggleOffCanvasState = (
     state: "open" | "close",) => {
     offCanvasElement.setAttribute("aria-hidden", state === "open" ? "false" : "true")
     offCanvasElement.setAttribute("data-state", state)
-
-
     if (!allowBodyScroll) toggleBodyScroll(state)
 }
 
