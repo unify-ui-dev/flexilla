@@ -1,7 +1,7 @@
 {
   "name": "@flexilla/dropdown",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "description": "Utilities package for flexilla library",
   "publishConfig": {
@@ -39,13 +39,13 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.1",
-    "@flexilla/utilities": "^1.0.1",
+    "@flexilla/utilities": "^1.1.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
     "vite-plugin-dts": "^3.7.0"
   },
   "dependencies": {
-    "@flexilla/popper": "^1.0.1"
+    "@flexilla/popper": "^1.1.0"
   },
   "keywords": [
     "dropdown",

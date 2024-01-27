@@ -1,7 +1,7 @@
 {
   "name": "@flexilla/utilities",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "description": "Utilities package for flexilla library",
   "publishConfig": {
