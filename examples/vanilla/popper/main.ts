@@ -2,6 +2,8 @@ import { CreatePopper } from '@flexilla/popper'
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 
+import "@flexilla/popper/popper.css"
+
 const ref1 = document.querySelector("[data-reference-1]")
 
 if (ref1 instanceof HTMLElement) {

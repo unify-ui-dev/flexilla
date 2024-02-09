@@ -60,6 +60,92 @@
     </div>
     <div class="space-y-6">
       <h1 class="text-xl font-semibold text-gray9 dark-text-white">
+        Nested Accordion
+      </h1>
+      <div class="p10 rd-lg bg-gradient-to-bl from-blue6 via-indigo4 to-sky6">
+        <div data-accordion-nested data-default-value="accordion-2" data-accordion-type="single" class="space-y-2 bg-white rd-md">
+          <div data-accordion-item data-accordion-value="accordion-1"
+            class="rd-md">
+            <button data-accordion-trigger aria-label="toggle button"
+              class="px4 wfull flex justify-between items-center py2 text-gray8 dark-text-gray2 font-medium text-lg ease-linear hover-bg-gray2/50 dark-hover-bg-gray8/40 rd-md focus:outline-blue6 aria-expanded-text-blue6">
+              Is it accessible?
+            </button>
+            <div aria-hidden="true" data-accordion-content
+              class="text-gray7 dark-text-gray3 duration-200 ease-linear overflow-hidden px2">
+              <div data-accordion-nested-child data-default-value="accordion-1" data-accordion-type="single" class="space-y-2 bg-gray2 rd-md">
+                <div data-accordion-item data-accordion-value="accordion-1"
+                  class="rd-md">
+                  <button data-accordion-trigger aria-label="toggle button"
+                    class="px4 wfull flex justify-between items-center py2 text-gray8 dark-text-gray2 font-medium text-lg ease-linear hover-bg-gray2/50 dark-hover-bg-gray8/40 rd-md focus:outline-blue6 aria-expanded-text-blue6">
+                    Is it accessible?
+                  </button>
+                  <div aria-hidden="true" data-accordion-content
+                    class="text-gray7 dark-text-gray3 duration-200 ease-linear overflow-hidden">
+                    <p class="p4">
+                      Yes. It adheres to the WAI-ARIA design pattern.
+                    </p>
+                  </div>
+                </div>
+                <div data-accordion-item data-accordion-value="accordion-2"
+                  class="rd-md">
+                  <button data-accordion-trigger aria-label="toggle button"
+                    class="px4 wfull flex justify-between items-center py2 text-gray8 dark-text-gray2 font-medium text-lg ease-linear hover-bg-gray2/50 dark-hover-bg-gray8/40 rd-md focus:outline-blue6 aria-expanded-text-blue6">
+                    Is it unstyled?
+                  </button>
+                  <div aria-hidden="true" data-accordion-content
+                    class="text-gray7 dark-text-gray3 duration-200 ease-linear overflow-hidden">
+                    <p class="p4">
+                      Yes. It's unstyled by default, giving you freedom over the look and feel.
+                    </p>
+                  </div>
+                </div>
+                <div data-accordion-item data-accordion-value="accordion-3"
+                  class="rd-md">
+                  <button data-accordion-trigger aria-label="toggle button"
+                    class="px4 wfull flex justify-between items-center py2 text-gray8 dark-text-gray2 font-medium text-lg ease-linear hover-bg-gray2/50 dark-hover-bg-gray8/40 rd-md focus:outline-blue6 aria-expanded-text-blue6">
+                    Can it be animated?
+                  </button>
+                  <div aria-hidden="true" data-accordion-content
+                    class="text-gray7 dark-text-gray3 duration-200 ease-linear h0 overflow-hidden">
+                    <p class="p4">
+                      Yes! You can use the transition prop to configure the animation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-accordion-item data-accordion-value="accordion-2"
+            class="rd-md">
+            <button data-accordion-trigger aria-label="toggle button"
+              class="px4 wfull flex justify-between items-center py2 text-gray8 dark-text-gray2 font-medium text-lg ease-linear hover-bg-gray2/50 dark-hover-bg-gray8/40 rd-md focus:outline-blue6 aria-expanded-text-blue6">
+              Is it unstyled?
+            </button>
+            <div aria-hidden="true" data-accordion-content
+              class="text-gray7 dark-text-gray3 duration-200 ease-linear overflow-hidden">
+              <p class="p4">
+                Yes. It's unstyled by default, giving you freedom over the look and feel.
+              </p>
+            </div>
+          </div>
+          <div data-accordion-item data-accordion-value="accordion-3"
+            class="rd-md">
+            <button data-accordion-trigger aria-label="toggle button"
+              class="px4 wfull flex justify-between items-center py2 text-gray8 dark-text-gray2 font-medium text-lg ease-linear hover-bg-gray2/50 dark-hover-bg-gray8/40 rd-md focus:outline-blue6 aria-expanded-text-blue6">
+              Can it be animated?
+            </button>
+            <div aria-hidden="true" data-accordion-content
+              class="text-gray7 dark-text-gray3 duration-200 ease-linear h0 overflow-hidden">
+              <p class="p4">
+                Yes! You can use the transition prop to configure the animation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="space-y-6">
+      <h1 class="text-xl font-semibold text-gray9 dark-text-white">
         Active Item & Arrow Indicator
       </h1>
       <div class="p6 rd-lg b b-gray2 dark-b-gray9">

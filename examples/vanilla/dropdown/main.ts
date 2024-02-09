@@ -1,10 +1,9 @@
-import { Dropdown, injectDropdownDefaultStyle } from "@flexilla/flexilla"
+import { Dropdown } from "@flexilla/dropdown"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
+import "@flexilla/dropdown/dropdown.css"
 
-injectDropdownDefaultStyle()
-
-const dropDown1 = new Dropdown({
+new Dropdown({
     dropdownElement: document.querySelector("[data-drop-down-1]") as HTMLElement,
     options: {}
 })

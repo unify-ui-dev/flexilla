@@ -5,87 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        @keyframes slide-in {
-            from {
-                transform: translateX(-100%);
-            }
-
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slide-in-out {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-100%);
-            }
-        }
-
-        @keyframes slide-down {
-            from {
-                transform: translateY(-100%);
-            }
-
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slide-down-out {
-            from {
-                transform: translateY(0);
-            }
-
-            to {
-                transform: translateY(-100%);
-            }
-        }
-
-        @keyframes slide-up {
-            from {
-                transform: translateY(100%);
-            }
-
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slide-up-out {
-            from {
-                transform: translateY(0);
-            }
-
-            to {
-                transform: translateY(100%);
-            }
-        }
-
-        @keyframes slide-right {
-            from {
-                transform: translateX(100%);
-            }
-
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slide-right-out {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(100%);
-            }
-        }
-    </style>
 </head>
 
 <body class="bg-white dark-bg-gray950 pt14">
@@ -100,7 +19,7 @@
                         aria-controls="slide-over-from-left" class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
                         Open from left
                     </button>
-                    <div data-slideover-from-left role="slideover" data-offcanvas-backdrop="bg-gray9/8"
+                    <div data-fx-offcanvas data-slideover-from-left role="slideover" data-offcanvas-backdrop="bg-gray9/8"
                         id="slide-over-from-left" aria-labelledby="slide-over-from-left"
                         class="fixed h100dvh wfull max-wsm -left-full top-0 data-[state=open]-left-0 ease-linear duration-200 p4 bg-gray1 dark-bg-gray9 flex">
                         <div class="size-full b b-dashed b-gray2 dark-b-gray8">
@@ -113,7 +32,7 @@
                         class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
                         Open from top
                     </button>
-                    <div data-slideover-from-top role="slideover" aria-labelledby="slide-over-top" id="slide-over-top"
+                    <div data-fx-offcanvas data-slideover-from-top role="slideover" aria-labelledby="slide-over-top" id="slide-over-top"
                         class="fixed left-0 wscreen h64 -top-full ease-linear duration-200 data-[state=open]-top-0 flex p4 bg-gray1 dark-bg-gray9">
                         <div class="size-full b b-dashed b-gray2 dark-b-gray8">
 
@@ -125,7 +44,7 @@
                         class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
                         Open from bottom
                     </button>
-                    <div data-slideover-from-bottom role="slideover" aria-labelledby="slide-over-bottom"
+                    <div data-fx-offcanvas data-slideover-from-bottom role="slideover" aria-labelledby="slide-over-bottom"
                         id="slide-over-bottom"
                         class="fixed left-0 wscreen h64 -bottom-full ease-linear duration-200 data-[state=open]-bottom-0 flex p4 bg-gray1 dark-bg-gray9">
                         <div class="size-full b b-dashed b-gray2 dark-b-gray8">
@@ -138,7 +57,7 @@
                         aria-controls="slide-over-from-right" class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
                         Open from right
                     </button>
-                    <div data-slideover-from-right role="slideover" id="slide-over-from-right"
+                    <div data-fx-offcanvas data-slideover-from-right role="slideover" id="slide-over-from-right"
                         aria-labelledby="slide-over-from-right"
                         class="fixed h100dvh wfull max-wsm -right-full top-0 data-[state=open]-right-0 ease-linear duration-200 p4 bg-gray1 dark-bg-gray9 flex">
                         <div class="size-full b b-dashed b-gray2 dark-b-gray8">

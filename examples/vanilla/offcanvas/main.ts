@@ -1,6 +1,7 @@
-import { OffCanvas } from "@flexilla/flexilla"
+import { OffCanvas } from "@flexilla/offcanvas"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
+import "@flexilla/offcanvas/offcanvas.css"
 
 const elemnt = document.querySelector("[data-slideover-from-left]")
 if (elemnt instanceof HTMLElement) {
