@@ -11,5 +11,10 @@ export default defineConfig({
       name: '@flexilla/tabs',
       fileName: 'tabs',
     },
+    rollupOptions: {
+      output: {
+        assetFileNames: "tabs.[ext]"
+      }
+    }
   },
 });

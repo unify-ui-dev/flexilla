@@ -1,6 +1,3 @@
-import { injectStyles as injectDefaultTabsStyles } from "./injectStyle"
+import "./tabs.css"
 export { default as Tabs } from "./tabs"
 export type { TabsOptions, TabsParams } from "./types"
-
-// Inject the styles for tabs and tab-panels when importing this module.
-injectDefaultTabsStyles()
