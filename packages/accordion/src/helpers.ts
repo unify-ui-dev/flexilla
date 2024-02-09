@@ -1,18 +1,31 @@
 import { getAccordionItemMetadata, getAllAlwaysOpen, getElementExceptActivedAndAlwaysOpen } from "./util";
 import { AccordionOptions } from "./types";
-import { findAll, setAttributes } from "@flexilla/utilities";
+import { afterTransition, findAll, findDirectDescendant, setAttributes } from "@flexilla/utilities";
 
 const expandAccordionItem = (accordionItem: HTMLElement, state: "open" | "close") => {
     if (!(accordionItem instanceof HTMLElement)) throw new Error("accordion item not a valid HTMLELement")
     accordionItem.setAttribute("data-state", state)
     const { accordionTriggerElement, accordionContentElement } = getAccordionItemMetadata(accordionItem)
     setAttributes(accordionTriggerElement, { "aria-expanded": state === "open" ? "true" : "false" })
+
     setAttributes(accordionContentElement, {
         "aria-hidden": state === "open" ? "false" : "true",
         "data-state": state
     })
     accordionContentElement.style.height = state === "open" ?
         `${accordionContentElement.scrollHeight}px` : "0px"
+
+    const parentAccordionItem = accordionItem.closest("[data-accordion-content]")
+    const accordionEl = accordionItem.parentElement as HTMLElement
+    if (parentAccordionItem instanceof HTMLElement &&
+        parentAccordionItem.hasAttribute("data-accordion-content") && parentAccordionItem.dataset.state === "open") {
+        afterTransition({
+            element: accordionContentElement,
+            callback() {
+                parentAccordionItem.style.height = `${accordionEl.scrollHeight}px`
+            },
+        })
+    }
     accordionContentElement.style.overflow = state === "open" ? "" : "hidden"
 }
 
@@ -30,12 +43,15 @@ const closeOtherAccordionItems = (accordion: HTMLElement, currentValue: string) 
 }
 
 const getAdjacentTrigger = (currentTrigger: HTMLElement, goUp: boolean, accordionElement: HTMLElement) => {
-    const accordionItems = accordionElement.querySelectorAll('[data-accordion-item]');
+
+    const allAccordionItems = findAll({ selector: "[data-accordion-item]", parentElement: accordionElement })
+    const accordionItems = allAccordionItems.filter((item) => item.parentElement === accordionElement);
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
     const currentTriggerIndex = Array.from(accordionItems).indexOf(currentTrigger.closest('[data-accordion-item]')!);
     const nextIndex = goUp ? currentTriggerIndex - 1 : currentTriggerIndex + 1;
-    const nextTrigger = accordionItems[nextIndex]?.querySelector('[data-accordion-trigger]') as HTMLElement
-    return nextTrigger ?? (goUp ? accordionItems[accordionItems.length - 1].querySelector('[data-accordion-trigger]') : accordionItems[0].querySelector('[data-accordion-trigger]'));
+    const nextTrigger = findDirectDescendant({ selector: "[data-accordion-trigger]", parentElement: accordionItems[nextIndex] }) as HTMLElement
+    
+    return nextTrigger ?? (goUp ? findDirectDescendant({ selector: "[data-accordion-trigger]", parentElement: accordionItems[accordionItems.length - 1] }) : findDirectDescendant({ selector: "[data-accordion-trigger]", parentElement: accordionItems[0] }))
 }
 
 const attachKeyEvent = (event: KeyboardEvent, accordionElement: HTMLElement, allowTriggerOnFocus: boolean) => {
@@ -66,7 +82,10 @@ const attachAccordionItemEvents = (accordionElement: HTMLElement, accordionItem:
 }
 
 const initItems = (accordionElement: HTMLElement, accordionType: string, preventClosingAll: boolean, allowTriggerOnFocus: boolean, options: AccordionOptions) => {
-    const accordionItems = findAll({ selector: "[data-accordion-item]", parentElement: accordionElement })
+    const allAccordionItems = findAll({ selector: "[data-accordion-item]", parentElement: accordionElement })
+    // Filter out only the direct descendants
+    const accordionItems = allAccordionItems.filter((item) => item.parentElement === accordionElement);
+
     for (const element of accordionItems) {
         attachAccordionItemEvents(accordionElement, element, accordionType, preventClosingAll, options)
     }
