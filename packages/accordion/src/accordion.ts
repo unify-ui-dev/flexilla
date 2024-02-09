@@ -1,6 +1,6 @@
 import { AccordionOptions, AccordionParams } from "./types";
 import { activeAlwaysOpen, activateDefaultAccordionItem, closeOtherAccordionItems, initItems, expandAccordionItem } from "./helpers";
-import { find, findAll } from "@flexilla/utilities";
+import { findAll, findDirectDescendant } from "@flexilla/utilities";
 
 /**
 * Accordion Component
@@ -13,7 +13,7 @@ class Accordion {
     private allowTriggerOnFocus: boolean
     private accordionType: string
     private defaultItemValue: string
-    private defaultItem: HTMLElement | null
+    private defaultItem: HTMLElement | null | undefined
     public instance: Accordion
 
     /**
@@ -24,7 +24,10 @@ class Accordion {
         if (!(accordionElement instanceof HTMLElement))
             throw new Error("Container not a valid HTML elemnt")
         this.accordionElement = accordionElement
-        this.items = findAll({ selector: "[data-accordion-item]", parentElement: accordionElement })
+        const items_ = findAll({ selector: "[data-accordion-item]", parentElement: accordionElement })
+        
+        // Filter out only the direct descendants
+        this.items = items_.filter((item) => item.parentElement === this.accordionElement);
 
         if (this.items.length <= 0) throw new Error("No item find")
         this.options = options
@@ -34,14 +37,14 @@ class Accordion {
         this.allowTriggerOnFocus = allowTriggerOnFocus || this.accordionElement.hasAttribute("data-allow-trigger-on-focus") && this.accordionElement.getAttribute("data-allow-trigger-on-focus") !== "false" || false
         this.accordionType = accordionType || this.accordionElement.dataset.accordionType || "single"
         this.defaultItemValue = defaultValue || this.accordionElement.dataset.defaultValue || ""
-        this.defaultItem = find({
+        this.defaultItem = findDirectDescendant({
             selector: `[data-accordion-item][data-accordion-value="${this.defaultItemValue}"]`,
             parentElement: accordionElement
         })
         this.init()
     }
     showItem = ({ itemSelector }: { itemSelector: string }) => {
-        const accordionItem = find({
+        const accordionItem = findDirectDescendant({
             selector: `${itemSelector}`,
             parentElement: this.accordionElement
         })
@@ -49,7 +52,7 @@ class Accordion {
         expandAccordionItem(accordionItem, "open")
     }
     hideItem = ({ itemSelector }: { itemSelector: string }) => {
-        const accordionItem = find({
+        const accordionItem = findDirectDescendant({
             selector: `${itemSelector}`,
             parentElement: this.accordionElement
         })
