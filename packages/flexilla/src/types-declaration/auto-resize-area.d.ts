@@ -1,4 +1,3 @@
-
 export declare class AutoResizeTextArea {
     private textareaElement;
     constructor({ textareaElement }: {

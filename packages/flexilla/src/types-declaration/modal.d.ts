@@ -1,15 +1,16 @@
-
 /**
  * Modal Class
  */
 export declare class Modal {
+    private modalElement;
     showModal: () => void;
     hideModal: () => void;
     isHidden: () => boolean;
-    instance: Modal;
+    private options;
     /**
      * Creates and initializes a modal.
      */
+    instance: Modal;
     constructor({ modalElement, triggerElement, options }: ModalParams);
 }
 

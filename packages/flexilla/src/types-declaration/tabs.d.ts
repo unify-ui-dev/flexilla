@@ -1,29 +1,26 @@
-
-declare type DefaultIndicator = {
-    position: "fill-trigger";
-};
-
-declare type IndicatorBottomTop = {
-    position: "bottom" | "top";
-    height: string;
-    width: "full" | string;
-};
-
 declare type IndicatorOptions = {
     useIndicator: boolean;
     className?: string;
-    customize?: DefaultIndicator | IndicatorBottomTop | IndicatorRightLeft;
     transformDuration?: number;
     transformEasing?: string;
 };
 
-declare type IndicatorRightLeft = {
-    position: "left" | "right";
-    height: "full" | string;
-    width: string;
-};
-
 export declare class Tabs {
+    private tabsElement;
+    private options;
+    private indicatorOptions;
+    private defaultTabValue;
+    private tabsOrientation;
+    private showAnimation;
+    private tabList;
+    private tabPanels;
+    private tabTriggers;
+    private activeTabTrigger;
+    private useIndicator;
+    private indicatorTransformEaseing;
+    private indicatorTransformDuration;
+    private indicator;
+    private panelsContainer;
     constructor({ tabsElement, options, indicatorOptions }: TabsParams);
     init(): void;
     attachTriggerEvents(triggerElement: HTMLElement): void;

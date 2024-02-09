@@ -1,6 +1,7 @@
-import { Tooltip } from "@flexilla/flexilla"
+import { Tooltip } from "@flexilla/tooltip"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
+import "@flexilla/tooltip/tooltip.css"
 
 new Tooltip({
   containerElement: document.querySelector("[data-popover-1]") as HTMLElement,

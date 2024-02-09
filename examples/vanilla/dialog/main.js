@@ -1,6 +1,7 @@
 import { Modal } from "@flexilla/flexilla"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
+import "@flexilla/modal/modal.css"
 
 
 const modalEl = document.querySelector("[data-modal-test-1]")

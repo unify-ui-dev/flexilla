@@ -22,7 +22,10 @@ class Modal {
         
         this.modalElement = modalElement
         this.options = options
-        this.modalElement.setAttribute("data-fx-modal", "");
+        
+        if(!this.modalElement.hasAttribute("data-fx-modal")){
+            this.modalElement.setAttribute("data-fx-modal", "");
+        }
         const modalId = modalElement.dataset.modalId;
 
         const triggerButton = triggerElement || find({

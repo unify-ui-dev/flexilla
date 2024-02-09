@@ -1,6 +1,7 @@
-import { Tooltip } from '@flexilla/flexilla'
+import { Tooltip } from "@flexilla/tooltip"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
+import "@flexilla/tooltip/tooltip.css"
 
 const tooltip1 = document.querySelector("[data-tooltip]#tooltip-test") as HTMLElement
 new Tooltip({

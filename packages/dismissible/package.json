@@ -1,7 +1,7 @@
 {
   "name": "@flexilla/dismissible",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "description": "A lightweight JavaScript component that automatically makes a component dismissible for easy user interaction.",
   "publishConfig": {
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.1",
-    "@flexilla/utilities": "^1.1.0",
+    "@flexilla/utilities": "latest",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
     "vite-plugin-dts": "^3.7.0"

@@ -1,8 +1,8 @@
 export {
 	find,
 	findAll,
+	findDirectDescendant,
 	appendBefore,
-	injectStyle,
 	setAttributes,
 	afterTransition,
 } from "./utilities";

@@ -1,7 +1,7 @@
 {
   "name": "@flexilla/custom-range",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "description": "A lightweight JavaScript component to add range indicator to a custom range component",
   "publishConfig": {

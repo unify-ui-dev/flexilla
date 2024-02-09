@@ -1,7 +1,7 @@
 {
   "name": "@flexilla/modal",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "description": "A customizable modal component for creating interactive pop-up dialogs in web applications.",
   "publishConfig": {
@@ -20,7 +20,8 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/modal.umd.js"
       }
-    }
+    },
+    "./modal.css":"./dist/modal.css"
   },
   "files": [
     "dist",
@@ -39,7 +40,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.1",
-    "@flexilla/utilities": "^1.1.0",
+    "@flexilla/utilities": "latest",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
     "vite-plugin-dts": "^3.7.0"

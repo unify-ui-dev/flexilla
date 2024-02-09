@@ -1,0 +1,12 @@
+@import url(@flexilla/popper/popper.css);
+[data-fx-dropdown] {
+    position: relative;
+}
+
+[data-fx-dropdown] [data-fx-popper] {
+    visibility: hidden;
+}
+
+[data-fx-dropdown][data-state="open"] [data-fx-popper] {
+    visibility: visible;
+}

@@ -5,41 +5,42 @@ import { Accordion } from "@flexilla/flexilla"
 new Accordion({
     accordionElement: document.querySelector("[data-accordion-1]") as HTMLElement
 })
-const accordion2 = document.querySelector("[data-accordion-2]")
-if (accordion2 instanceof HTMLElement)
-    new Accordion({
-        accordionElement: accordion2,
-        options: {
-            defaultValue: "accordion-1",
-        }
-    })
 
-const accordion3 = document.querySelector("[data-accordion-3]")
-if (accordion3 instanceof HTMLElement)
-    new Accordion({
-        accordionElement: accordion3,
-        options: {
-            defaultValue: "accordion-2",
-            accordionType: "multiple"
-        }
-    })
+new Accordion({
+    accordionElement: document.querySelector("[data-accordion-nested]") as HTMLElement
+})
+new Accordion({
+    accordionElement: document.querySelector("[data-accordion-nested-child]") as HTMLElement
+})
 
-const accordion4 = document.querySelector("[data-accordion-4]")
-if (accordion4 instanceof HTMLElement)
-    new Accordion({
-        accordionElement: accordion4,
-        options: {
-            defaultValue: "accordion-2",
-            preventClosingAll: true
-        }
-    })
+new Accordion({
+    accordionElement: document.querySelector("[data-accordion-2]") as HTMLElement,
+    options: {
+        defaultValue: "accordion-1",
+    }
+})
 
-const accordion5 = document.querySelector("[data-accordion-5]")
-if (accordion5 instanceof HTMLElement)
-    new Accordion({
-        accordionElement: accordion5,
-        options: {
-            defaultValue: "accordion-1",
-            allowTriggerOnFocus: true
-        }
-    })
+new Accordion({
+    accordionElement: document.querySelector("[data-accordion-3]") as HTMLElement,
+    options: {
+        defaultValue: "accordion-2",
+        accordionType: "multiple"
+    }
+})
+
+new Accordion({
+    accordionElement: document.querySelector("[data-accordion-4]") as HTMLElement,
+    options: {
+        defaultValue: "accordion-2",
+        preventClosingAll: true
+    }
+})
+
+
+new Accordion({
+    accordionElement: document.querySelector("[data-accordion-5]") as HTMLElement,
+    options: {
+        defaultValue: "accordion-1",
+        allowTriggerOnFocus: true
+    }
+})

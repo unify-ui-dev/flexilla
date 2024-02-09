@@ -35,7 +35,7 @@ class CreatePopper {
         this.placement = placement
         this.disableOnResize = disableOnResize || false
         this.disableOnScroll = disableOnScroll || false
-        this.popper.setAttribute("data-fx-popper", '')
+        if (!this.popper.hasAttribute("data-fx-popper")) { this.popper.setAttribute("data-fx-popper", '') }
     }
 
     /**

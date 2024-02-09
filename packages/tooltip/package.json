@@ -20,7 +20,8 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/tooltip.umd.js"
       }
-    }
+    },
+    "./tooltip.css": "./dist/tooltip.css"
   },
   "files": [
     "dist",
@@ -40,13 +41,13 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.1",
-    "@flexilla/utilities": "^1.1.0",
+    "@flexilla/utilities": "latest",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
     "vite-plugin-dts": "^3.7.0"
   },
   "dependencies": {
-    "@flexilla/popper": "^1.1.0"
+    "@flexilla/popper": "latest"
   },
   "keywords": [
     "popper",

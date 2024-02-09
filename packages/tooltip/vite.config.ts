@@ -11,5 +11,10 @@ export default defineConfig({
       name: '@flexilla/tooltip',
       fileName: 'tooltip',
     },
+    rollupOptions:{
+      output:{
+        assetFileNames:"tooltip.[ext]"
+      }
+    }
   },
 });

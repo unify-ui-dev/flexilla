@@ -22,7 +22,7 @@ class Tooltip {
         this.containerElement = containerElement
         this.referenceElement = triggerElement || this.containerElement
 
-        this.popperElement = this.findPopoverElements("[data-tooltip-content]") as HTMLElement
+        this.popperElement = this.findPopoverElements("[data-fx-popper]") || this.findPopoverElements("[data-tooltip-content]") as HTMLElement
 
         if (!(this.referenceElement instanceof HTMLElement)) throw new Error("No trigger Element in the provided Element!!!")
         if (!(this.popperElement instanceof HTMLElement)) throw new Error("No trigger Element in the provided Element!!! Trigger must have a data-tooltip-content attribute")
