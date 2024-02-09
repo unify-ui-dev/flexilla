@@ -1,4 +1,4 @@
-import { find, findAll } from "@flexilla/utilities";
+import { find, findAll, findDirectDescendant } from "@flexilla/utilities";
 import { IndicatorOptions, TabsOptions, TabsParams } from "./types";
 import { DEFAULT_ORIENTATION, TRANSFORM_DURATION, TRANSFORM_EASING } from "./const";
 import { createIndicator } from "./indicator";
@@ -19,6 +19,7 @@ class Tabs {
   private indicatorTransformEaseing: string;
   private indicatorTransformDuration: number;
   private indicator: HTMLSpanElement | undefined;
+  private panelsContainer: HTMLElement
 
   constructor({ tabsElement, options = {}, indicatorOptions = { useIndicator: false } }: TabsParams) {
     if (!(tabsElement instanceof HTMLElement)) {
@@ -26,6 +27,7 @@ class Tabs {
     }
 
     this.tabsElement = tabsElement;
+    this.panelsContainer = findDirectDescendant({ selector: "[data-panels-container]", parentElement: this.tabsElement }) || this.tabsElement
     this.options = options;
     this.indicatorOptions = indicatorOptions;
     const { orientation, defaultValue, animationOnShow } = this.options;
@@ -34,8 +36,9 @@ class Tabs {
     this.tabsOrientation = orientation || this.tabsElement.dataset.orientation || DEFAULT_ORIENTATION;
     this.showAnimation = animationOnShow || this.tabsElement.dataset.showAnimation || "";
 
-    this.tabList = find({ selector: "[data-tab-list]", parentElement: this.tabsElement }) as HTMLElement;
-    this.tabPanels = findAll({ selector: "[data-tab-panel]", parentElement: this.tabsElement });
+    this.tabList = findDirectDescendant({ selector: "[data-tab-list]", parentElement: this.tabsElement }) as HTMLElement;
+    const panels = findAll({ selector: "[data-tab-panel]", parentElement: this.panelsContainer });
+    this.tabPanels = panels.filter((panel) => panel.parentElement === this.panelsContainer)
     if (!(this.tabList instanceof HTMLElement)) {
       throw new Error("TabList Element is required");
     }
@@ -47,8 +50,7 @@ class Tabs {
     }
 
     this.activeTabTrigger =
-      find({ selector: `[data-tabs-trigger][data-target='${this.defaultTabValue}']`, parentElement: this.tabsElement }) ||
-      this.tabTriggers[0];
+      find({ selector: `[data-tabs-trigger][data-target='${this.defaultTabValue}']`, parentElement: this.tabList }) || this.tabTriggers[0];
 
     const { transformEasing, transformDuration, useIndicator } = this.indicatorOptions;
 
@@ -63,7 +65,9 @@ class Tabs {
   }
 
   init() {
-    this.tabsElement.setAttribute("data-fx-tabs", "");
+    if (!this.tabsElement.hasAttribute("data-fx-tabs")) {
+      this.tabsElement.setAttribute("data-fx-tabs", "");
+    }
     this.initializeTab();
   }
 
