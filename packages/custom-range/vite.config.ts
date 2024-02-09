@@ -11,5 +11,10 @@ export default defineConfig({
       name: '@flexilla/custom-range',
       fileName: 'custom-range',
     },
+    rollupOptions:{
+      output:{
+        assetFileNames:"custom-range.[ext]"
+      }
+    }
   },
 });

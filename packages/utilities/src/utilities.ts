@@ -10,6 +10,18 @@ const findAll = ({
 }: { selector: string; parentElement: HTMLElement }): HTMLElement[] =>
 	Array.from(parentElement.querySelectorAll(selector));
 
+const findDirectDescendant = ({
+	selector,
+	parentElement,
+}: { selector: string; parentElement: HTMLElement }): HTMLElement | undefined  => {
+	const allItems = findAll({ selector, parentElement });
+
+	// Find the first direct descendant
+	const directDescendant = Array.from(allItems).find((item) => item.parentElement === parentElement);
+	return directDescendant
+};
+
+
 const appendBefore = ({
 	newElement,
 	existingElement,
@@ -24,22 +36,6 @@ const appendBefore = ({
 	else throw new Error("Existing element must have a parent element.");
 };
 
-const injectStyle = ({
-	newStyles,
-	identifier,
-}: { newStyles: string; identifier: string }) => {
-	const existingStyleTag = document.head.querySelector("[data-fx-style]");
-	if (existingStyleTag) {
-		const currentStyle = existingStyleTag.textContent || "";
-		if (!currentStyle.includes(identifier))
-			existingStyleTag.textContent += newStyles;
-		return;
-	}
-	const styleElement = document.createElement("style");
-	styleElement.textContent = newStyles;
-	styleElement.setAttribute("data-fx-style", "");
-	document.head.appendChild(styleElement);
-};
 
 const setAttributes = (
 	element: HTMLElement,
@@ -76,8 +72,8 @@ const afterTransition = ({
 export {
 	find,
 	findAll,
+	findDirectDescendant,
 	appendBefore,
-	injectStyle,
 	setAttributes,
 	afterTransition,
 };
