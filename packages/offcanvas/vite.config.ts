@@ -11,5 +11,10 @@ export default defineConfig({
       name: '@flexilla/offcanvas',
       fileName: 'offcanvas',
     },
+    rollupOptions:{
+      output:{
+        assetFileNames:"offcanvas.[ext]"
+      }
+    }
   },
 });

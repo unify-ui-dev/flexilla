@@ -1,3 +1,4 @@
+import "./flexilla.css"
 import { Accordion } from "@flexilla/accordion"
 import { AutoResizeTextArea } from "@flexilla/auto-resize-area"
 import { Collapse } from "@flexilla/collapse"

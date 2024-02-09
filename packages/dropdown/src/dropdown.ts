@@ -22,7 +22,7 @@ class Dropdown {
         if (!(dropdownElement instanceof HTMLElement)) throw new Error("Provided Element is not a valid HTMLElement")
         this.dropdownElement = dropdownElement
         this.triggerElement = this.findDropdownElement("[data-dropdown-trigger]")
-        this.contentElement = this.findDropdownElement("[data-dropdown-content]")
+        this.contentElement = this.findDropdownElement("[data-fx-popper]") || this.findDropdownElement("[data-dropdown-content]")
 
         if (!(this.triggerElement instanceof HTMLElement)) throw new Error("")
         if (!(this.contentElement instanceof HTMLElement)) throw new Error("")

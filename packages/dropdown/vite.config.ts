@@ -11,5 +11,10 @@ export default defineConfig({
       name: '@flexilla/dropdown',
       fileName: 'dropdown',
     },
+    rollupOptions: {
+      output: {
+        assetFileNames: "dropdown.[ext]"
+      }
+    }
   },
 });

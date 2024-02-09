@@ -2,6 +2,14 @@
  * Accordion Component
  */
 export declare class Accordion {
+    private accordionElement;
+    private options;
+    private items;
+    private preventFromClosingAll;
+    private allowTriggerOnFocus;
+    private accordionType;
+    private defaultItemValue;
+    private defaultItem;
     instance: Accordion;
     /**
      * Creates an accordion with the specified parameters.
@@ -13,6 +21,7 @@ export declare class Accordion {
     hideItem: ({ itemSelector }: {
         itemSelector: string;
     }) => void;
+    private init;
 }
 
 export declare type AccordionOptions = {

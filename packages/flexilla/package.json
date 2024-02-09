@@ -1,7 +1,7 @@
 {
   "name": "@flexilla/flexilla",
   "private": false,
-  "version": "1.1.1",
+  "version": "1.2.0",
   "type": "module",
   "description": "Flexilla is an open-source set of unstyled interactive UI components for building interactive, and customizable user interfaces.",
   "publishConfig": {
@@ -20,7 +20,8 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/lib.umd.js"
       }
-    }
+    },
+    "./flexilla.css":"./dist/flexilla.css"
   },
   "files": [
     "dist",
@@ -39,16 +40,16 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.1",
-    "@flexilla/accordion": "^1.1.0",
-    "@flexilla/auto-resize-area": "^1.1.0",
-    "@flexilla/collapse": "^1.1.0",
-    "@flexilla/custom-range": "^1.1.0",
-    "@flexilla/dismissible": "^1.1.0",
-    "@flexilla/dropdown": "^1.1.0",
-    "@flexilla/modal": "^1.1.0",
-    "@flexilla/offcanvas": "^1.1.0",
-    "@flexilla/tabs": "^1.1.0",
-    "@flexilla/tooltip": "^1.1.0",
+    "@flexilla/accordion": "latest",
+    "@flexilla/auto-resize-area": "latest",
+    "@flexilla/collapse": "latest",
+    "@flexilla/custom-range": "latest",
+    "@flexilla/dismissible": "latest",
+    "@flexilla/dropdown": "latest",
+    "@flexilla/modal": "latest",
+    "@flexilla/offcanvas": "latest",
+    "@flexilla/tabs": "latest",
+    "@flexilla/tooltip": "latest",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
   },

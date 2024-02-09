@@ -11,5 +11,10 @@ export default defineConfig({
       name: '@flexilla/popper',
       fileName: 'popper',
     },
-  },
+    rollupOptions:{
+      output:{
+        assetFileNames:"popper.[ext]"
+      }
+    }
+  }
 });

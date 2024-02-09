@@ -11,5 +11,10 @@ export default defineConfig({
       name: '@flexilla/modal',
       fileName: 'modal',
     },
+    rollupOptions:{
+      output:{
+        assetFileNames:"modal.[ext]"
+      }
+    }
   },
 });

@@ -1,7 +1,7 @@
 {
   "name": "@flexilla/popper",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "description": "A JavaScript library for positioning dropdown, popovers and tooltips",
   "publishConfig": {
@@ -20,7 +20,8 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/popper.umd.js"
       }
-    }
+    },
+    "./popper.css":"./dist/popper.css"
   },
   "files": [
     "dist",

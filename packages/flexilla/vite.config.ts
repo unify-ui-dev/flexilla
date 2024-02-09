@@ -3,9 +3,6 @@ import { defineConfig } from 'vite';
 
 
 export default defineConfig({
-  plugins: [
-    
-  ],
   build: {
     outDir: 'dist',
     lib: {
@@ -17,7 +14,7 @@ export default defineConfig({
       external: [],
       output: {
         globals: {},
-
+        assetFileNames:"flexilla.[ext]"
       },
     }
   },

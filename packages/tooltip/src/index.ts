@@ -1,3 +1,3 @@
-export { injectStyles as injectDefaultTooltipStyle } from "./injectStyle"
+import "./tooltip.css"
 export { default as Tooltip } from "./tooltip"
 export type { TooltipOptions, TooltipParams } from "./types"
