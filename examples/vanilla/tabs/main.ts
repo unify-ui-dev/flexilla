@@ -10,7 +10,19 @@ if (element instanceof HTMLElement) {
         tabsElement: element,
     })
 }
-const element2 = document.querySelector("[data-use-indicator]")
+const elementNested1 = document.querySelector("[data-tabs-nested]")
+if (elementNested1 instanceof HTMLElement) {
+    new Tabs({
+        tabsElement: elementNested1,
+    })
+}
+const elementNested2 = document.querySelector("[data-tabs-nested2]")
+if (elementNested2 instanceof HTMLElement) {
+    new Tabs({
+        tabsElement: elementNested2,
+    })
+}
+const element2 = document.querySelector("[data-with-indicator]")
 if (element2 instanceof HTMLElement) {
     new Tabs({
         tabsElement: element2,
@@ -27,7 +39,6 @@ if (tabAnimated instanceof HTMLElement) {
             orientation: "horizontal"
         },
         indicatorOptions: {
-            useIndicator: true,
             className: "rd bg-gray3 absolute top-0 left-0",
         }
     })
@@ -50,7 +61,6 @@ if (verticalTab2 instanceof HTMLElement) {
             orientation: "vertical"
         },
         indicatorOptions: {
-            useIndicator: true,
             className: "rd bg-gray3 absolute top-0 left-0"
         }
     })
@@ -63,7 +73,6 @@ if (tabWithDefault instanceof HTMLElement) {
             orientation: "horizontal"
         },
         indicatorOptions: {
-            useIndicator: true,
             className: "rd bg-gray3 absolute top-0 left-0"
         }
     })
