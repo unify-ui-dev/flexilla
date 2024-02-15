@@ -5,6 +5,9 @@ import "@flexilla/modal/modal.css"
 
 new Modal({
     modalElement: document.querySelector("[data-modal-test-1]") as HTMLElement,
+    options:{
+        defaultState:"open"
+    }
 })
 
 new Modal({

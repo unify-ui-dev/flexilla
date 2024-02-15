@@ -12,6 +12,7 @@ class Modal {
     public hideModal: () => void
     public isHidden: () => boolean
     private options:ModalOptions
+    private state:string
     /**
      * Creates and initializes a modal.
      */
@@ -22,6 +23,8 @@ class Modal {
         
         this.modalElement = modalElement
         this.options = options
+
+        this.state = options?.defaultState || this.modalElement.dataset.state || "close"
         
         if(!this.modalElement.hasAttribute("data-fx-modal")){
             this.modalElement.setAttribute("data-fx-modal", "");
@@ -35,6 +38,9 @@ class Modal {
 
         const { showModal, hideModal, autoInitModal, isHidden } = initModal(modalElement, triggerButton, this.options);
 
+        if(this.state=== "open"){
+            showModal()
+        }
         autoInitModal()
         this.showModal = showModal
         this.hideModal = hideModal
