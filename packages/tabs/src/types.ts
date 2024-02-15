@@ -1,5 +1,4 @@
 export type IndicatorOptions = {
-    useIndicator: boolean,
     className?: string,
     transformDuration?: number,
     transformEasing?: string,

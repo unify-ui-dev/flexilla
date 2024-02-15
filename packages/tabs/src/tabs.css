@@ -4,7 +4,7 @@
     -webkit-animation: none;
 }
 
-[data-fx-tabs] [data-tab-panel][data-state="active"] {
+[data-fx-tabs] [data-tab-panel][data-state="active"], [data-fx-tabs] [data-tab-panel][data-initial-active]:not([data-initial-active="false"]) {
     display: flex;
 }
 

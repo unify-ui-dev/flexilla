@@ -34,7 +34,7 @@
                             class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
                             Tab 1
                         </button>
-                        <button data-tabs-trigger data-target="tab2" aria-controls="tab2"
+                        <button data-tabs-trigger data-state="active" data-target="tab2" aria-controls="tab2"
                             class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
                             Tab2
                         </button>
@@ -45,17 +45,17 @@
                     </div>
                     <div data-panels-container>
                         <div role="tabpanel"
-                            class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
-                            data-tab-panel id="tab1" aria-labelledby="tab1">
+                            class="ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
+                            data-tab-panel data-initial-active id="tab1" aria-labelledby="tab1">
                             Tab 1 Content
                         </div>
                         <div role="tabpanel"
-                            class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
+                            class="ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
                             data-tab-panel id="tab2" aria-labelledby="tab2">
                             Tab 2 Content
                         </div>
                         <div role="tabpanel"
-                            class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
+                            class="ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
                             data-tab-panel id="tab3" aria-labelledby="tab3">
                             Tab 3 Content
                         </div>
@@ -74,22 +74,19 @@
                 </p>
             </div>
             <div class="p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6">
-                <div data-use-indicator data-indicator-class-name="bg-gray3 flex rd absolute ease-linear duration-200"
-                    role="tab" wfull>
+                <div data-with-indicator data-fx-tabs
+                    data-indicator-class-name="bg-gray3 flex rd absolute ease-linear duration-200" role="tab" wfull>
                     <div data-tab-list role="tablist"
                         class="flex items-center relative p0.5 bg-gray1 dark-bg-gray9 wfull rd-md">
-                        <button data-tabs-trigger data-target="tab1" aria-controls="tab1"
-                           
+                        <button data-tabs-trigger data-target="tab1" aria-controls="tab1" data-state="active"
                             class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
                             Tab 1
                         </button>
                         <button data-tabs-trigger data-target="tab2" aria-controls="tab2"
-                           
                             class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
                             Tab2
                         </button>
                         <button data-tabs-trigger data-target="tab3" aria-controls="tab3"
-                           
                             class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
                             Tab3
                         </button>
@@ -98,12 +95,12 @@
                         <div role="tabpanel"
                             class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
                             data-tab-panel id="tab1" aria-labelledby="tab1">
-                            Tab 1 Content
+                            Tab1 Content
                         </div>
                         <div role="tabpanel"
                             class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
                             data-tab-panel id="tab2" aria-labelledby="tab2">
-                            Tab 2 Content
+                            Tab 2
                         </div>
                         <div role="tabpanel"
                             class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
@@ -119,9 +116,9 @@
             <h1 class="text-xl font-semibold text-gray9 dark-text-white">
                 Orientation : Vertical
             </h1>
-            <div
-                class="text-gray7 dark-text-gray3 p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6">
-                <div data-vertical-tab data-orientation="vertical" role="tab" class="flex items-start wfull">
+            <div class="text-gray7 dark-text-gray3 p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6">
+                <div data-vertical-tab data-fx-tabs data-orientation="vertical" role="tab"
+                    class="flex items-start wfull">
                     <div data-tab-list role="tablist"
                         class="flex flex-col p0.5 wmax relative bg-gray1 dark-bg-gray9 rd-md">
                         <button data-tabs-trigger data-target="tab1" aria-controls="tab1"
@@ -161,9 +158,8 @@
             <h1 class="text-xl font-semibold text-gray9 dark-text-white">
                 Orientation : Vertical With Indicator
             </h1>
-            <div
-                class="text-gray7 dark-text-gray3 p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6">
-                <div data-vertical-tab-2 data-use-indicator data-orientation="vertical" role="tab"
+            <div class="text-gray7 dark-text-gray3 p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6">
+                <div data-vertical-tab-2 data-fx-tabs data-orientation="vertical" role="tab"
                     class="flex items-start wfull">
                     <div data-tab-list role="tablist"
                         class="flex flex-col p0.5 wmax relative bg-gray1 dark-bg-gray9 rd-md">
@@ -205,7 +201,7 @@
                 With Default Index
             </h1>
             <div class="p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6 text-gray7 dark-text-gray3">
-                <div data-tab-default-indicator data-default-value="tab2" role="tab">
+                <div data-tab-default-indicator data-fx-tabs data-default-value="tab2" role="tab">
                     <div data-tab-list role="tablist"
                         class="flex items-center relative h12 px1 bg-gray1 dark-bg-gray9 wfull rd-md">
                         <button data-tabs-trigger data-target="tab1" aria-controls="tab1"
@@ -246,7 +242,7 @@
                 Show Panel With Animation : keyframes animation
             </h1>
             <div class="p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6 text-gray7 dark-text-gray3">
-                <div data-tab-animated-key data-show-animation="fadeIn .8s cubic-bezier(.48,1.55,.28,1)"
+                <div data-tab-animated-key data-fx-tabs data-show-animation="fadeIn .8s cubic-bezier(.48,1.55,.28,1)"
                     data-indicator-class-name="bg-gray2 dark-bg-gray8 rd" role="tab">
                     <div data-tab-list role="tablist"
                         class="flex items-center relative p0.5 bg-gray1 dark-bg-gray9 wfull rd-md">
