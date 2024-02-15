@@ -7,6 +7,7 @@ export declare class Modal {
     hideModal: () => void;
     isHidden: () => boolean;
     private options;
+    private state;
     /**
      * Creates and initializes a modal.
      */
@@ -26,6 +27,7 @@ declare type ModalContentAnimations = {
  * Defines options for modal behavior.
  */
 export declare type ModalOptions = {
+    defaultState?: "open" | "close";
     animateContent?: ModalContentAnimations;
     overlayClass?: string;
     preventCloseModal?: boolean;

@@ -57,7 +57,41 @@
                         <div role="tabpanel"
                             class="ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
                             data-tab-panel id="tab3" aria-labelledby="tab3">
-                            Tab 3 Content
+                            <div data-fx-tabs data-tabs-nested role="tab" class="bg-white wfull rd-lg">
+                                <div data-tab-list role="tablist"
+                                    class="flex items-center relative h12 px1 bg-gray1 dark-bg-gray9 wfull rd-t-md">
+                                    <button data-tabs-trigger data-target="tab1" aria-controls="tab1"
+                                        class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
+                                        Tab 1
+                                    </button>
+                                    <button data-tabs-trigger data-state="active" data-target="tab2"
+                                        aria-controls="tab2"
+                                        class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
+                                        Tab2
+                                    </button>
+                                    <button data-tabs-trigger data-target="tab3" aria-controls="tab3"
+                                        class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
+                                        Tab3
+                                    </button>
+                                </div>
+                                <div data-panels-container>
+                                    <div role="tabpanel"
+                                        class="ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
+                                        data-tab-panel data-initial-active id="tab1" aria-labelledby="tab1">
+                                        Tab 1 Content
+                                    </div>
+                                    <div role="tabpanel"
+                                        class="ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
+                                        data-tab-panel id="tab2" aria-labelledby="tab2">
+                                        Tab 2 Content
+                                    </div>
+                                    <div role="tabpanel"
+                                        class="ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
+                                        data-tab-panel id="tab3" aria-labelledby="tab3">
+                                        Tab 3 Content
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -103,9 +137,45 @@
                             Tab 2
                         </div>
                         <div role="tabpanel"
-                            class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
+                            class="ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
                             data-tab-panel id="tab3" aria-labelledby="tab3">
-                            Tab 3 Content
+                            <div data-tabs-nested2 data-fx-tabs
+                                data-indicator-class-name="bg-gray3 flex rd absolute ease-linear duration-200"
+                                role="tab" wfull>
+                                <div data-tab-list role="tablist"
+                                    class="flex items-center relative p0.5 bg-gray1 dark-bg-gray9 wfull rd-md">
+                                    <button data-tabs-trigger data-target="tab1" aria-controls="tab1"
+                                        data-state="active"
+                                        class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
+                                        Tab 1
+                                    </button>
+                                    <button data-tabs-trigger data-target="tab2" aria-controls="tab2"
+                                        class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
+                                        Tab2
+                                    </button>
+                                    <button data-tabs-trigger data-target="tab3" aria-controls="tab3"
+                                        class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
+                                        Tab3
+                                    </button>
+                                </div>
+                                <div data-panels-container hmax bg-white rd-lg>
+                                    <div role="tabpanel"
+                                        class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
+                                        data-tab-panel id="tab1" aria-labelledby="tab1">
+                                        Tab1 Content
+                                    </div>
+                                    <div role="tabpanel"
+                                        class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
+                                        data-tab-panel id="tab2" aria-labelledby="tab2">
+                                        Tab 2
+                                    </div>
+                                    <div role="tabpanel"
+                                        class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
+                                        data-tab-panel id="tab3" aria-labelledby="tab3">
+                                        Tab 3 Content
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

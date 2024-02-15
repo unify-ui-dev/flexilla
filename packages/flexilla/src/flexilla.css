@@ -24,12 +24,11 @@
     visibility: visible;
 }
 
+[data-fx-modal] {
+    display: none;
+}
 [data-fx-modal][data-state="open"] {
     display: flex;
-}
-
-[data-fx-modal][data-state="close"] {
-    display: none;
 }
 
 [data-fx-modal][data-state="open"] [data-modal-content] {
@@ -58,7 +57,7 @@
     -webkit-animation: none;
 }
 
-[data-fx-tabs] [data-tab-panel][data-state="active"] {
+[data-fx-tabs] [data-tab-panel][data-state="active"], [data-fx-tabs] [data-tab-panel][data-initial-active]:not([data-initial-active="false"]) {
     display: flex;
 }
 
