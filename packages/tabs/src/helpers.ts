@@ -16,15 +16,7 @@ const setAllTriggerToFalse = (activeTrigger: HTMLElement, tabTriggers: HTMLEleme
 /**
  * Setup the nested tabs if it has a custom indicator
  */
-export const onInitTabIfHasChildWithIndicator = ({ currentTab, tabsOrientation, indicatorTransformDuration, indicatorTransformEaseing }: { currentTab: HTMLElement, tabsOrientation: string, indicatorTransformDuration: number, indicatorTransformEaseing: string }) => {
-  if (!(currentTab instanceof HTMLElement)) return
-
-  const childrenTab = findDirectDescendant({ selector: "[data-fx-tabs]", parentElement: currentTab })
-  if (!(childrenTab instanceof HTMLElement)) return
-
-  const tabList = findDirectDescendant({ selector: "[data-tab-list]", parentElement: childrenTab }) as HTMLElement
-  const triggerElement = tabList.querySelector("[data-tabs-trigger][data-state=active]") as HTMLElement
-  const indicator = tabList.querySelector("span[data-tab-indicator]") as HTMLSpanElement
+const setNestedTabsIndicatorCorrectly = ({ tabsOrientation, indicatorTransformDuration, indicatorTransformEaseing, indicator, triggerElement, tabList }: { tabsOrientation: string, indicatorTransformDuration: number, indicatorTransformEaseing: string, indicator:HTMLSpanElement, triggerElement:HTMLElement, tabList:HTMLElement }) => {
 
   if (!(indicator instanceof HTMLSpanElement) || !(triggerElement instanceof HTMLElement)) return
   moveIndicator({
@@ -36,6 +28,7 @@ export const onInitTabIfHasChildWithIndicator = ({ currentTab, tabsOrientation, 
     tabList
   });
 }
+
 
 /**
 * Hides all tab panels except the active panel.
@@ -61,7 +54,7 @@ export const activeTab = ({ triggerElement, tabTriggers, tabPanels, tabsPanelCon
   const toSelectTab = findDirectDescendant(
     { selector: `[data-tab-panel]#${triggerElement.getAttribute("data-target")}`, parentElement: tabsPanelContainer }
   );
-  if (!toSelectTab) return;
+  if (!(toSelectTab instanceof HTMLElement)) return;
   setAllTriggerToFalse(triggerElement, tabTriggers);
   hideAllTabPanels(toSelectTab, tabPanels);
   toSelectTab.setAttribute("data-state", ACTIVE_STATE);
@@ -83,6 +76,25 @@ export const activeTab = ({ triggerElement, tabTriggers, tabPanels, tabsPanelCon
     transformEasing: indicatorTransformEaseing,
     tabList
   });
+
+  const childrenTab = findDirectDescendant({ selector: "[data-fx-tabs]", parentElement: toSelectTab })
+  if (childrenTab instanceof HTMLElement) {
+    const tabList = findDirectDescendant({ selector: "[data-tab-list]", parentElement: childrenTab }) as HTMLElement
+    const triggerElement = tabList.querySelector("[data-tabs-trigger][data-state=active]") as HTMLElement
+    const indicator = tabList.querySelector("span[data-tab-indicator]") as HTMLSpanElement
+    if(indicator instanceof HTMLSpanElement && triggerElement instanceof HTMLElement && !childrenTab.hasAttribute("data-nested-indicator-seteled")){
+      childrenTab.setAttribute("data-nested-indicator-seteled",'')
+      setNestedTabsIndicatorCorrectly({
+        tabsOrientation: tabsOrientation,
+        indicatorTransformDuration: indicatorTransformDuration,
+        indicatorTransformEaseing: indicatorTransformEaseing,
+        indicator: indicator,
+        triggerElement:triggerElement,
+        tabList:tabList
+      })
+    }
+  }
+
 
   return { currentTabPanel: toSelectTab }
 };

@@ -1,7 +1,7 @@
 {
   "name": "@flexilla/flexilla",
   "private": false,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "type": "module",
   "description": "Flexilla is an open-source set of unstyled interactive UI components for building interactive, and customizable user interfaces.",
   "publishConfig": {

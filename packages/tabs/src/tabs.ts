@@ -2,7 +2,7 @@ import { find, findAll, findDirectDescendant } from "@flexilla/utilities";
 import { IndicatorOptions, TabsOptions, TabsParams } from "./types";
 import { DEFAULT_INDICATOR, DEFAULT_ORIENTATION, TRANSFORM_DURATION, TRANSFORM_EASING } from "./const";
 import { createIndicator } from "./indicator";
-import { activeTab, handleKeyEvent, onInitTabIfHasChildWithIndicator } from "./helpers";
+import { activeTab, handleKeyEvent} from "./helpers";
 
 class Tabs {
   private tabsElement: HTMLElement;
@@ -42,7 +42,7 @@ class Tabs {
       throw new Error("TabList Element is required, tabList must have a data-tab-list attribute and be direct descendant of the tabs");
     }
     const isValidTabPanels = this.tabPanels.every(element => element instanceof HTMLElement)
-    if(!isValidTabPanels) {
+    if (!isValidTabPanels) {
       throw new Error("TabPanels Element are required, tabPanels must have a data-tab-panel attribute and be direct descendant of the tabs or the panels container (data-panels-container)");
     }
 
@@ -133,13 +133,6 @@ class Tabs {
       indicatorTransformDuration,
       indicatorTransformEaseing,
       tabList: tabList
-    });
-
-    onInitTabIfHasChildWithIndicator({
-      currentTab: tabAct?.currentTabPanel as HTMLElement,
-      tabsOrientation: tabsOrientation,
-      indicatorTransformDuration: indicatorTransformDuration,
-      indicatorTransformEaseing: indicatorTransformEaseing,
     });
 
     this.options.onChangeTab && (this.options.onChangeTab({

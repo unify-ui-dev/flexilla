@@ -10,14 +10,15 @@ export type ModalContentAnimations = {
  * Defines options for modal behavior.
  */
 export type ModalOptions = {
+    defaultState?: "open" | "close", // Whether the modal should be open by default or not (default is close)
     animateContent?: ModalContentAnimations;
     overlayClass?: string;
     preventCloseModal?: boolean;
     allowBodyScroll?: boolean;
-    enableStackedModals?:boolean
+    enableStackedModals?: boolean
     onShow?: () => void;
     onHide?: () => void;
-    onToggle?:({isHidden}:{isHidden:boolean})=>void
+    onToggle?: ({ isHidden }: { isHidden: boolean }) => void
 };
 
 
@@ -26,7 +27,7 @@ export type ModalOptions = {
  */
 export type ModalParams = {
     modalElement: HTMLElement;
-    triggerElement?:HTMLElement,
-    modalShown?:boolean,
+    triggerElement?: HTMLElement,
+    modalShown?: boolean,
     options?: ModalOptions;
 };

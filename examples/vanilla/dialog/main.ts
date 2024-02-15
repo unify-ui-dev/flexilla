@@ -1,10 +1,13 @@
-import { Modal, ModalOptions } from "@flexilla/modal"
+import { Modal, ModalOptions } from "@flexilla/flexilla"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
-import "@flexilla/modal/modal.css"
+import "@flexilla/flexilla/flexilla.css"
 
 new Modal({
     modalElement: document.querySelector("[data-modal-test-1]") as HTMLElement,
+    options:{
+        defaultState:"open"
+    }
 })
 
 new Modal({

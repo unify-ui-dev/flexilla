@@ -1,5 +1,4 @@
 declare type IndicatorOptions = {
-    useIndicator: boolean;
     className?: string;
     transformDuration?: number;
     transformEasing?: string;
@@ -16,15 +15,18 @@ export declare class Tabs {
     private tabPanels;
     private tabTriggers;
     private activeTabTrigger;
-    private useIndicator;
+    private indicatorClassName;
     private indicatorTransformEaseing;
     private indicatorTransformDuration;
-    private indicator;
     private panelsContainer;
     constructor({ tabsElement, options, indicatorOptions }: TabsParams);
-    init(): void;
-    attachTriggerEvents(triggerElement: HTMLElement): void;
-    initializeTab(): void;
+    private init;
+    private attachTriggerEvents;
+    private initializeTab;
+    /**
+     * @param tabValue {string} the value of the targeted tabpanel
+     */
+    changeTab: (tabValue: string) => void;
 }
 
 export declare type TabsOptions = {
