@@ -1,31 +1,15 @@
 import { find, appendBefore } from "@flexilla/utilities";
 import { VERTICAL_ORIENTATION } from "./const";
-import { IndicatorOptions } from "./types";
 
 
-/**
- * Sets up styles for the indicator element.
- */
-const createStylesForIndicator = (indicator_: HTMLElement) => {
-    if (!(indicator_ instanceof HTMLElement)) return;
-    const styles = {
-        "--un-tab-indicator-height": "2px",
-        "--un-tab-indicator-top": "0px",
-        "--un-tab-indicator-left": "0px",
-    };
-    for (const [property, value] of Object.entries(styles)) {
-        indicator_.style.setProperty(property, value);
-    }
-};
 /**
  * Creates the indicator element and appends it to the tabList.
  */
-export const createIndicator = ({activeTabTrigger, useIndicator, tabsOrientation, tabsElement, indicatorOptions, tabList}:{activeTabTrigger: HTMLElement, useIndicator: boolean, tabsOrientation: string, tabsElement: HTMLElement, indicatorOptions: IndicatorOptions, tabList: HTMLElement}) => {
-    if (!useIndicator) return;
+export const createIndicator = ({activeTabTrigger, indicatorClassName, tabsOrientation, tabList}:{activeTabTrigger: HTMLElement, indicatorClassName: string, tabsOrientation: string, tabList: HTMLElement}) => {
+    if (!indicatorClassName || indicatorClassName === "") return;
 
-    const { className } = indicatorOptions
 
-    const indicatorClasses = className || tabsElement.dataset.indicatorClassName || ""
+    const indicatorClasses = indicatorClassName 
 
     const indicator_ = document.createElement("span");
     indicator_.setAttribute("data-tab-indicator", '')
@@ -35,14 +19,11 @@ export const createIndicator = ({activeTabTrigger, useIndicator, tabsOrientation
     indicator_.style.setProperty(
         "transform", transformFunction(activeTabTrigger)
     );
-    if (indicatorClasses) {
-        const classesArray = indicatorClasses ? indicatorClasses.split(" ") : [];
+   
+    const classesArray = indicatorClasses ? indicatorClasses.split(" ") : [];
         indicator_.classList.add(...classesArray);
-    } else {
-        createStylesForIndicator(indicator_);
-    }
 
-    const firstTriggerElement = find({ selector: ":first-child", parentElement: tabList })
+    const firstTriggerElement = find({ selector: "[data-tabs-trigger]:first-child", parentElement: tabList })
     firstTriggerElement && appendBefore({ newElement: indicator_, existingElement: firstTriggerElement })
 
     return indicator_
@@ -73,13 +54,20 @@ const getTransformY = (triggerElement: HTMLElement) => {
 /**
  * Moves the indicator to the position of the given element.
  */
-export const moveIndicator = ({ triggerElement, indicator_, tabsOrientation, transformDuration, transformEasing }: {
+export const moveIndicator = ({ triggerElement, indicator_, tabsOrientation, transformDuration, transformEasing, tabList }: 
+    {
     triggerElement: HTMLElement,
     indicator_: HTMLSpanElement|undefined, tabsOrientation: string,
     transformDuration?: number,
-    transformEasing?: string
+    transformEasing?: string,
+    tabList:HTMLElement
 }) => {
 
+    tabList.style.setProperty("--un-tab-indicator-height", `${tabsOrientation === VERTICAL_ORIENTATION ? 10 : triggerElement.clientHeight}px`)
+    tabList.style.setProperty("--un-tab-indicator-width", `${tabsOrientation === VERTICAL_ORIENTATION ? triggerElement.clientWidth : 100}px`)
+    tabList.style.setProperty("--un-tab-indicator-top", `${tabsOrientation === VERTICAL_ORIENTATION ? 0 : triggerElement.offsetTop}px`)
+    tabList.style.setProperty("--un-tab-indicator-left", `${tabsOrientation === VERTICAL_ORIENTATION ? triggerElement.offsetLeft : 0}px`)
+    
     if (!(indicator_ instanceof HTMLElement)) return;
     indicator_.animate(
         [
