@@ -11,7 +11,7 @@ export declare class Dropdown {
     private options;
     private dropdownItems;
     private popper;
-    constructor({ dropdownElement, options }: DropdownParams);
+    constructor(dropdown: string | HTMLElement, options?: DropdownOptions);
     private handleDocumentClick;
     private handleKeyDown;
     private findDropdownElement;
@@ -33,9 +33,4 @@ export declare type DropdownOptions = {
     onToggle?: ({ isHidden }: {
         isHidden: boolean;
     }) => void;
-};
-
-export declare type DropdownParams = {
-    dropdownElement: HTMLElement;
-    options?: DropdownOptions;
 };

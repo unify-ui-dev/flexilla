@@ -2,6 +2,7 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
 
+
 export default defineConfig({
   build: {
     outDir: 'dist',
@@ -14,7 +15,7 @@ export default defineConfig({
       external: [],
       output: {
         globals: {},
-        assetFileNames:"flexilla.[ext]"
+        assetFileNames: "flexilla.[ext]"
       },
     }
   },

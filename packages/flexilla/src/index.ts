@@ -10,17 +10,16 @@ import { OffCanvas } from "@flexilla/offcanvas"
 import { Tabs } from "@flexilla/tabs"
 import { Tooltip } from "@flexilla/tooltip"
 
-import type { AccordionOptions, AccordionParams } from "@flexilla/accordion"
-import type { CollapseOptions, CollapseParams } from "@flexilla/collapse"
-import type { DismissibleParams } from "@flexilla/dismissible"
-import type { ModalParams, ModalOptions } from "@flexilla/modal"
-import type { OffcanvasOptions, OffcanvasParams } from "@flexilla/offcanvas"
-import type { TabsParams, TabsOptions } from "@flexilla/tabs"
-import type { DropdownOptions, DropdownParams } from "@flexilla/dropdown"
-import type { TooltipOptions, TooltipParams } from "@flexilla/tooltip"
+import type { AccordionOptions } from "@flexilla/accordion"
+import type { CollapseOptions } from "@flexilla/collapse"
+import type { ModalOptions } from "@flexilla/modal"
+import type { OffcanvasOptions } from "@flexilla/offcanvas"
+import type {  TabsOptions } from "@flexilla/tabs"
+import type { DropdownOptions } from "@flexilla/dropdown"
+import type { TooltipOptions } from "@flexilla/tooltip"
 
 export {
-    Accordion, AutoResizeTextArea, Collapse, CustomRange, Dismissible, Dropdown, Modal, OffCanvas, Tabs, Tooltip, AccordionOptions, AccordionParams, CollapseOptions
-    , CollapseParams, DismissibleParams, ModalOptions, ModalParams, TabsOptions, TabsParams, OffcanvasOptions, OffcanvasParams,
-    DropdownOptions, DropdownParams, TooltipOptions, TooltipParams
+    Accordion, AutoResizeTextArea, Collapse, CustomRange, Dismissible, Dropdown, Modal, OffCanvas, Tabs, Tooltip, AccordionOptions, CollapseOptions
+    ,  ModalOptions, TabsOptions, OffcanvasOptions, 
+    DropdownOptions,  TooltipOptions
 }

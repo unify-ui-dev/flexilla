@@ -1,6 +1,4 @@
-/**
- * Accordion Component
- */
+
 export declare class Accordion {
     private accordionElement;
     private options;
@@ -10,17 +8,14 @@ export declare class Accordion {
     private accordionType;
     private defaultItemValue;
     private defaultItem;
-    instance: Accordion;
     /**
-     * Creates an accordion with the specified parameters.
+     * Flexilla Accordion component
+     * @param accordion
+     * @param options
      */
-    constructor({ accordionElement, options }: AccordionParams);
-    showItem: ({ itemSelector }: {
-        itemSelector: string;
-    }) => void;
-    hideItem: ({ itemSelector }: {
-        itemSelector: string;
-    }) => void;
+    constructor(accordion: string | HTMLElement, options?: AccordionOptions);
+    showItem: (selector: string) => void;
+    hideItem: (selector: string) => void;
     private init;
 }
 
@@ -32,12 +27,6 @@ export declare type AccordionOptions = {
     onChangeItem?: ({ expandedItem }: {
         expandedItem?: ExpandedItem;
     }) => void;
-};
-
-export declare type AccordionParams = {
-    accordionElement: HTMLElement;
-    selector?: string;
-    options?: AccordionOptions;
 };
 
 declare type ExpandedItem = {

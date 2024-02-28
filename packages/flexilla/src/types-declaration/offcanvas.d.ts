@@ -1,6 +1,9 @@
+
 declare type BackdropHidden = {
     visibility: "hidden";
 };
+
+declare type BackdropOptions = BackdropVisible | BackdropHidden;
 
 declare type BackdropVisible = {
     visibility: "visible";
@@ -17,13 +20,13 @@ export declare class OffCanvas {
     private allowBodyScroll;
     private staticBackdrop;
     private backdropClass;
-    instance: OffCanvas;
     private backdrop;
     /**
-     * Create an Offcanvas instance.
-     * @param {OffcanvasParams} options - The options for configuring the Offcanvas.
+     * Offcanvas Component
+     * @param offcanvas
+     * @param options
      */
-    constructor({ offCanvasElement, options }: OffcanvasParams);
+    constructor(offcanvas: string | HTMLElement, options?: OffcanvasOptions);
     private findOffCanvasElements;
     private setupAttributes;
     /**
@@ -44,13 +47,8 @@ export declare class OffCanvas {
     close(): void;
 }
 
-export declare type OffcanvasOptions = BackdropVisible | BackdropHidden;
-
-export declare type OffcanvasParams = {
-    offCanvasElement: HTMLElement;
-    options?: {
-        staticBackdrop?: boolean;
-        allowBodyScroll?: boolean;
-        backdrop?: OffcanvasOptions;
-    };
+export declare type OffcanvasOptions = {
+    staticBackdrop?: boolean;
+    allowBodyScroll?: boolean;
+    backdrop?: BackdropOptions;
 };

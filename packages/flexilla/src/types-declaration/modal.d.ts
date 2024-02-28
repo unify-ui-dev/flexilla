@@ -1,6 +1,4 @@
-/**
- * Modal Class
- */
+
 export declare class Modal {
     private modalElement;
     showModal: () => void;
@@ -9,10 +7,12 @@ export declare class Modal {
     private options;
     private state;
     /**
-     * Creates and initializes a modal.
+     * Modal Component
+     * @param modal
+     * @param options
+     * @param triggerElement
      */
-    instance: Modal;
-    constructor({ modalElement, triggerElement, options }: ModalParams);
+    constructor(modal: string | HTMLElement, options?: ModalOptions, triggerElement?: string | HTMLElement);
 }
 
 /**
@@ -38,14 +38,4 @@ export declare type ModalOptions = {
     onToggle?: ({ isHidden }: {
         isHidden: boolean;
     }) => void;
-};
-
-/**
- * Defines parameters for modal initialization.
- */
-export declare type ModalParams = {
-    modalElement: HTMLElement;
-    triggerElement?: HTMLElement;
-    modalShown?: boolean;
-    options?: ModalOptions;
 };

@@ -1,8 +1,5 @@
-/**
- * Collapse Component
- */
+
 export declare class Collapse {
-    instance: Collapse;
     private collapseElement;
     private collapseOrientation;
     private defaultState;
@@ -10,7 +7,13 @@ export declare class Collapse {
     private collapseTrigger;
     private options;
     private collapseElementWidth;
-    constructor({ collapseElement, triggerElement, options }: CollapseParams);
+    /**
+     * Collapse Component
+     * @param selector
+     * @param triggerSelector
+     * @param options
+     */
+    constructor(selector: string | HTMLElement, options?: CollapseOptions, triggerSelector?: string);
     show: () => void;
     hide: () => void;
     toggle: () => void;
@@ -23,10 +26,4 @@ export declare type CollapseOptions = {
     onToggle?: ({ isExpanded }: {
         isExpanded: boolean;
     }) => void;
-};
-
-export declare type CollapseParams = {
-    collapseElement: HTMLElement;
-    triggerElement?: HTMLElement;
-    options?: CollapseOptions;
 };
