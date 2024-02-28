@@ -46,9 +46,6 @@
 [data-fx-offcanvas-overlay] {
     position: fixed;
     inset: 0;
-    position: fixed;
-    inset: 0;
-    display: flex;
 }
 
 [data-fx-tabs] [data-tab-panel] {
