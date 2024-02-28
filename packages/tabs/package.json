@@ -21,7 +21,7 @@
         "default": "./dist/tabs.umd.js"
       }
     },
-    "./tabs.css":"./dist/tabs.css"
+    "./tabs.css": "./dist/tabs.css"
   },
   "files": [
     "dist",

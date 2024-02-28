@@ -21,7 +21,7 @@
         "default": "./dist/dropdown.umd.js"
       }
     },
-    "./dropdown.css":"./dist/dropdown.css"
+    "./dropdown.css": "./dist/dropdown.css"
   },
   "files": [
     "dist",

@@ -21,7 +21,7 @@
         "default": "./dist/modal.umd.js"
       }
     },
-    "./modal.css":"./dist/modal.css"
+    "./modal.css": "./dist/modal.css"
   },
   "files": [
     "dist",

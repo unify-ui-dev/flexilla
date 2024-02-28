@@ -21,7 +21,7 @@
         "default": "./dist/popper.umd.js"
       }
     },
-    "./popper.css":"./dist/popper.css"
+    "./popper.css": "./dist/popper.css"
   },
   "files": [
     "dist",

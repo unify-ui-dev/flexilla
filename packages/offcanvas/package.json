@@ -21,7 +21,7 @@
         "default": "./dist/offcanvas.umd.js"
       }
     },
-    "./offcanvas.css":"./dist/offcanvas.css"
+    "./offcanvas.css": "./dist/offcanvas.css"
   },
   "files": [
     "dist",
