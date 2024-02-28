@@ -1,3 +1,4 @@
+
 declare type IndicatorOptions = {
     className?: string;
     transformDuration?: number;
@@ -19,7 +20,12 @@ export declare class Tabs {
     private indicatorTransformEaseing;
     private indicatorTransformDuration;
     private panelsContainer;
-    constructor({ tabsElement, options, indicatorOptions }: TabsParams);
+    /**
+     * Tabs Components
+     * @param tabs
+     * @param options
+     */
+    constructor(tabs: string | HTMLElement, options?: TabsOptions);
     private init;
     private attachTriggerEvents;
     private initializeTab;
@@ -33,15 +39,10 @@ export declare type TabsOptions = {
     orientation?: "horizontal" | "vertical";
     defaultValue?: string;
     animationOnShow?: string;
+    indicatorOptions?: IndicatorOptions;
     onChange?: () => void;
     onChangeTab?: ({ currentTrigger, currentPanel }: {
         currentTrigger?: HTMLElement;
         currentPanel?: HTMLElement;
     }) => void;
-};
-
-export declare type TabsParams = {
-    tabsElement: HTMLElement;
-    options?: TabsOptions;
-    indicatorOptions?: IndicatorOptions;
 };

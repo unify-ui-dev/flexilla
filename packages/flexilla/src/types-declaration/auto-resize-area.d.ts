@@ -1,7 +1,10 @@
+
 export declare class AutoResizeTextArea {
     private textareaElement;
-    constructor({ textareaElement }: {
-        textareaElement: HTMLTextAreaElement;
-    });
+    /**
+     * Auto-resize Area
+     * @param textarea
+     */
+    constructor(textarea: string | HTMLTextAreaElement);
     private autoresizeTextarea;
 }
