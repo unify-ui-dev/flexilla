@@ -1,7 +1,7 @@
-import { DropdownOptions, DropdownParams } from "./types"
+import { DropdownOptions } from "./types"
 import { CreatePopper, Placement } from '@flexilla/popper'
 import { handleDocKeyDown, hideDropdown, initDropdownAttributes, removeFocusOnItem, showDropdown } from "./helpers"
-import { findAll, find, afterTransition } from "@flexilla/utilities"
+import { $$, $, afterTransition } from "@flexilla/utilities"
 
 
 
@@ -18,7 +18,8 @@ class Dropdown {
     private dropdownItems: HTMLElement[]
 
     private popper: CreatePopper
-    constructor({ dropdownElement, options = {} }: DropdownParams) {
+    constructor(dropdown: string | HTMLElement, options: DropdownOptions = {}) {
+        const dropdownElement = typeof dropdown === "string" ? $(dropdown) : dropdown
         if (!(dropdownElement instanceof HTMLElement)) throw new Error("Provided Element is not a valid HTMLElement")
         this.dropdownElement = dropdownElement
         this.triggerElement = this.findDropdownElement("[data-dropdown-trigger]")
@@ -35,20 +36,16 @@ class Dropdown {
         this.preventFromCloseOutside = this.options.preventCloseFromOutside || this.dropdownElement.hasAttribute("data-prevent-close-outside") && this.dropdownElement.dataset.preventCloseOutside !== "false" || false
         this.preventFromCloseInside = this.options.preventCloseFromInside || this.dropdownElement.hasAttribute("data-prevent-close-inside") && this.dropdownElement.dataset.preventCloseInside !== "false" || false
 
-        this.dropdownItems = findAll({
-            selector: "a:not([disabled]), button:not([disabled])",
-            parentElement: this.contentElement
-        }).filter((el) => !el.classList.contains("disabled"));
+        this.dropdownItems = $$("a:not([disabled]), button:not([disabled])", this.contentElement).filter((el) => !el.classList.contains("disabled"));
 
-        this.popper = new CreatePopper({
-            reference: this.triggerElement,
-            popper: this.contentElement,
-            options: {
+        this.popper = new CreatePopper(
+            this.triggerElement,
+            this.contentElement,
+            {
                 placement: this.placement,
                 offsetDistance: this.offsetDistante,
-                // arrow
             }
-        })
+        )
         this.init()
     }
 
@@ -81,10 +78,7 @@ class Dropdown {
     }
 
     private findDropdownElement(selector: string) {
-        return find({
-            selector: `${selector}`,
-            parentElement: this.dropdownElement
-        }) as HTMLElement
+        return $(`${selector}`, this.dropdownElement) as HTMLElement
     }
 
     private onToggleState(isHidden: boolean) {

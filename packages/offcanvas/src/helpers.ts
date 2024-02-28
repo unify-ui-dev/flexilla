@@ -1,4 +1,4 @@
-import { find, findAll } from "@flexilla/utilities"
+import { $, $$ } from "@flexilla/utilities"
 import { destroyOverlay } from "./offCanvasOverlay"
 
 /**
@@ -28,10 +28,7 @@ const closeOpenedOffCanvas = (offcanvas: HTMLElement, currentOffcanvas: HTMLElem
     if (offcanvas === currentOffcanvas) return
     offcanvas.setAttribute("aria-hidden", "true")
     offcanvas.setAttribute("data-state", "close")
-    const overlayEl = find({
-        selector: `[data-fx-offcanvas-overlay][data-offcanvas-el=${offcanvas.getAttribute("id")}]`,
-        parentElement: offcanvas.parentElement as HTMLElement
-    })
+    const overlayEl = $(`[data-fx-offcanvas-overlay][data-offcanvas-el=${offcanvas.getAttribute("id")}]`, offcanvas.parentElement as HTMLElement)
     if (overlayEl instanceof HTMLElement) destroyOverlay(overlayEl, offcanvas.parentElement as HTMLElement)
 
 }
@@ -39,10 +36,7 @@ const closeOpenedOffCanvas = (offcanvas: HTMLElement, currentOffcanvas: HTMLElem
 * Close all opened Offcanvas elements.
 */
 export const closeAllOpenedOffcanvas = (currentOffcanvas: HTMLElement) => {
-    const openedOffCans = findAll({
-        selector: "[data-fx-offcanvas][data-state=open]",
-        parentElement: document.body
-    })
+    const openedOffCans = $$("[data-fx-offcanvas][data-state=open]")
     if (openedOffCans.length <= 0) return
     for (const openedOffCan of openedOffCans) closeOpenedOffCanvas(openedOffCan, currentOffcanvas)
 }

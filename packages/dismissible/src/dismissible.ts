@@ -1,6 +1,4 @@
-import { afterTransition, findAll } from "@flexilla/utilities"
-
-import { DismissibleParams } from "./types";
+import { afterTransition, $, $$ } from "@flexilla/utilities"
 
 class Dismissible {
     private dismissibleElement: HTMLElement
@@ -8,11 +6,18 @@ class Dismissible {
     private action: "remove-from-dom" | "hide-from-screen"
     private onDismiss: (() => void) | undefined
 
-    constructor({ dismissibleElement, action, onDissmiss }: DismissibleParams) {
+    /**
+     * Dismissible Component
+     * @param dismissible 
+     * @param action 
+     * @param onDissmiss 
+     */
+    constructor(dismissible: string | HTMLElement, action?: "remove-from-dom" | "hide-from-screen", onDissmiss?: () => void) {
+        const dismissibleElement = typeof dismissible === "string" ? $(dismissible, document.body) : dismissible
         if (!(dismissibleElement instanceof HTMLElement)) throw new Error("Provided Element not a valid HTMLElement")
         this.dismissibleElement = dismissibleElement
         this.action = action || this.dismissibleElement.dataset.action as "remove-from-dom" | "hide-from-screen" || "hide-from-screen"
-        this.dismissButtons = findAll({ selector: "[data-dismiss-btn]", parentElement: this.dismissibleElement })
+        this.dismissButtons = $$("[data-dismiss-btn]", this.dismissibleElement)
         this.onDismiss = onDissmiss
         this.dismissibleElement.setAttribute("aria-hidden", "false")
         this.init()
@@ -33,16 +38,16 @@ class Dismissible {
             case "hide-from-screen":
                 this.dismissibleElement.setAttribute("aria-hidden", "true")
                 afterTransition({
-                    element:this.dismissibleElement,
-                    callback:this.hideFromScreen
+                    element: this.dismissibleElement,
+                    callback: this.hideFromScreen
                 })
                 break;
             default:
                 this.dismissibleElement.setAttribute("data-hidden", "")
                 this.dismissibleElement.setAttribute("aria-hidden", "true")
                 afterTransition({
-                    element:this.dismissibleElement,
-                    callback:this.removeFromDom
+                    element: this.dismissibleElement,
+                    callback: this.removeFromDom
                 })
                 break;
         }

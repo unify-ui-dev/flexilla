@@ -1,7 +1,6 @@
 [data-fx-offcanvas-overlay] {
     position: fixed;
     inset: 0;
-    display: flex;
 }
 
 [data-fx-offcanvas-overlay][data-state=visible] {

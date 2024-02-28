@@ -7,16 +7,9 @@ type EventEffect = {
     disableOnResize?: boolean
 }
 
-export type Arrow = {
-    enableArrow?: boolean,
-    arrowSize?: number,
-    customClass?: string
-}
-
 export type PopperOptions = {
     placement?: Placement | "bottom",
     offsetDistance?: number,
-    arrow?: Arrow,
     eventEffect?: EventEffect
 }
 
@@ -33,10 +26,4 @@ export type Dimensions = {
 export type ElementType = {
     reference: HTMLElement,
     popper: HTMLElement
-}
-
-export type PopperParams = {
-    reference: HTMLElement,
-    popper: HTMLElement,
-    options?: PopperOptions
 }

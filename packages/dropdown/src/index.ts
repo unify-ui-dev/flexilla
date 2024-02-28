@@ -1,3 +1,3 @@
 import "./dropdown.css"
 export { default as Dropdown } from "./dropdown"
-export type { DropdownOptions, DropdownParams } from "./types"
+export type { DropdownOptions } from "./types"

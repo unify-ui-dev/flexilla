@@ -1,12 +1,12 @@
-import { findAll, findDirectDescendant } from "@flexilla/utilities";
+import { $$, $d } from "@flexilla/utilities";
 import { AccordionItemMetadata } from "./types";
 
 /**
  * Retrieves metadata (trigger, content, and value) of the accordion item.
  */
 function getAccordionItemMetadata(item: HTMLElement): AccordionItemMetadata {
-    const trigger = findDirectDescendant({ selector: "[data-accordion-trigger]", parentElement: item })
-    const content = findDirectDescendant({ selector: "[data-accordion-content]", parentElement: item })
+    const trigger = $d("[data-accordion-trigger]", item)
+    const content = $d("[data-accordion-content]", item)
     const isAlwaysOpen = item.hasAttribute("data-always-open") && item.dataset.alwaysOpen !== "false"
 
     if (!(trigger instanceof HTMLButtonElement)) throw new Error("The element does't have a Valid Trigger")
@@ -17,15 +17,14 @@ function getAccordionItemMetadata(item: HTMLElement): AccordionItemMetadata {
     return { accordionTriggerElement: trigger, accordionContentElement: content, accordionItemValue: value, isItemExpanded, isAlwaysOpen };
 }
 
-const getElementExceptActivedAndAlwaysOpen = (accordion: HTMLElement, activeValue: string) =>
-{
-    const allItems = findAll({ selector: `[data-accordion-item]:not([data-always-open]):not([data-accordion-value="${activeValue}"])`, parentElement: accordion })
+const getElementExceptActivedAndAlwaysOpen = (accordion: HTMLElement, activeValue: string) => {
+    const allItems = $$(`[data-accordion-item]:not([data-always-open]):not([data-accordion-value="${activeValue}"])`, accordion)
     return allItems.filter((item) => item.parentElement === accordion);
 }
-    
+
 
 const getAllAlwaysOpen = (accordion: HTMLElement) => {
-    const allItems = findAll({ selector: "[data-accordion-item][data-always-open]", parentElement: accordion })
+    const allItems = $$("[data-accordion-item][data-always-open]", accordion)
     return allItems.filter((item) => item.parentElement === accordion);
 }
 

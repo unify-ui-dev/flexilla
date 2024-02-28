@@ -18,7 +18,6 @@ export const canBeAlignedOnMiddleX = (popperWidth: number, refWidth: number, ref
     const spaceOnLeft = refLeft;
     const spaceOnRight = windowWidth - (refLeft + refWidth);
     return spaceOnLeft >= (popperWidth - refWidth) / 2 && spaceOnRight >= (popperWidth - refWidth) / 2;
-
 };
 
 export const canBeAlignedOnMiddleY = (popperHeight: number, refHeight: number, refTop: number, windowHeight: number): boolean => {

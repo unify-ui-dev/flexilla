@@ -8,14 +8,7 @@ export type TabsOptions = {
     orientation?: "horizontal" | "vertical"
     defaultValue?: string,
     animationOnShow?: string,
+    indicatorOptions?:IndicatorOptions,
     onChange?: () => void,
     onChangeTab?: ({ currentTrigger, currentPanel }: { currentTrigger?: HTMLElement, currentPanel?: HTMLElement }) => void
-};
-
-
-
-export type TabsParams = {
-    tabsElement: HTMLElement;
-    options?: TabsOptions;
-    indicatorOptions?: IndicatorOptions
 };

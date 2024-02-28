@@ -1,12 +1,9 @@
 
-import { CollapseOptions, CollapseParams } from "./types";
+import { CollapseOptions } from "./types";
 import { expandCollapse } from "./helpers";
 
-/**
-* Collapse Component
-*/
+
 class Collapse {
-    public instance: Collapse
     private collapseElement: HTMLElement
     private collapseOrientation: "vertical" | "horizontal"
     private defaultState: "open" | "close"
@@ -15,14 +12,20 @@ class Collapse {
     private options: CollapseOptions
     private collapseElementWidth: number
 
-    constructor({ collapseElement, triggerElement, options = {} }: CollapseParams) {
-        this.instance = this
+    /**
+     * Collapse Component
+     * @param selector 
+     * @param triggerSelector 
+     * @param options 
+     */
+    constructor(selector: string | HTMLElement, options: CollapseOptions = {}, triggerSelector?: string) {
+        const collapseElement = typeof selector === "string" ? document.querySelector(`${selector}`) : selector
         if (!(collapseElement instanceof HTMLElement))
             throw new Error("Provided element is not a valid HTMLElement")
         this.collapseElement = collapseElement
         this.collapseId = this.collapseElement.getAttribute("id") as string
 
-        this.collapseTrigger = triggerElement || document.querySelector(`[data-collapse-trigger][data-target*='${this.collapseId}']`)
+        this.collapseTrigger = document.querySelector(`${triggerSelector}`) || document.querySelector(`[data-collapse-trigger][data-target*='${this.collapseId}']`)
 
         this.options = options
         this.collapseOrientation = this.options.orientation || this.collapseElement.dataset.orientation as "vertical" | "horizontal" || "vertical"

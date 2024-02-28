@@ -20,20 +20,17 @@ The Collapse component is used to hide and show an element.
 
 ## Example
 
-```typescript
-const collapseElement = document.getElementById("myCollapseElement");
-const triggerElement = document.getElementById("myTriggerElement");
-
+```js
 const options = {
   orientation: "vertical",
   defaultState: "close",
 };
 
-const collapse = new Collapse({
-  collapseElement,
-  triggerElement,
+const collapse = new Collapse(
+  '#myCollapseElement',
   options,
-});
+  '#myTriggerElement',
+);
 
 // Show the collapse element
 collapse.show();

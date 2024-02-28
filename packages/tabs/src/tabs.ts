@@ -1,8 +1,8 @@
-import { find, findAll, findDirectDescendant } from "@flexilla/utilities";
-import { IndicatorOptions, TabsOptions, TabsParams } from "./types";
+import { $, $$, $d } from "@flexilla/utilities";
+import { IndicatorOptions, TabsOptions } from "./types";
 import { DEFAULT_INDICATOR, DEFAULT_ORIENTATION, TRANSFORM_DURATION, TRANSFORM_EASING } from "./const";
 import { createIndicator } from "./indicator";
-import { activeTab, handleKeyEvent} from "./helpers";
+import { activeTab, handleKeyEvent } from "./helpers";
 
 class Tabs {
   private tabsElement: HTMLElement;
@@ -20,23 +20,29 @@ class Tabs {
   private indicatorTransformDuration: number;
   private panelsContainer: HTMLElement
 
-  constructor({ tabsElement, options = {}, indicatorOptions }: TabsParams) {
+  /**
+   * Tabs Components
+   * @param tabs 
+   * @param options 
+   */
+  constructor(tabs: string | HTMLElement, options: TabsOptions = {}) {
+    const tabsElement = typeof tabs === "string" ? $(tabs) : tabs
     if (!(tabsElement instanceof HTMLElement)) {
       throw new Error("Please Provide a valid HTMLElement for the tabs component");
     }
 
     this.tabsElement = tabsElement;
-    this.panelsContainer = findDirectDescendant({ selector: "[data-panels-container]", parentElement: this.tabsElement }) || this.tabsElement
+    this.panelsContainer = $d("[data-panels-container]", this.tabsElement) || this.tabsElement
     this.options = options;
-    this.indicatorOptions = indicatorOptions || DEFAULT_INDICATOR;
+    this.indicatorOptions = this.options.indicatorOptions || DEFAULT_INDICATOR;
     const { orientation, defaultValue, animationOnShow } = this.options;
     this.defaultTabValue = defaultValue || this.tabsElement.dataset.defaultValue || "";
 
     this.tabsOrientation = orientation || this.tabsElement.dataset.orientation || DEFAULT_ORIENTATION;
     this.showAnimation = animationOnShow || this.tabsElement.dataset.showAnimation || "";
 
-    this.tabList = findDirectDescendant({ selector: "[data-tab-list]", parentElement: this.tabsElement }) as HTMLElement;
-    const panels = findAll({ selector: "[data-tab-panel]", parentElement: this.panelsContainer });
+    this.tabList = $d("[data-tab-list]", this.tabsElement) as HTMLElement;
+    const panels = $$("[data-tab-panel]", this.panelsContainer);
     this.tabPanels = panels.filter((panel) => panel.parentElement === this.panelsContainer)
     if (!(this.tabList instanceof HTMLElement)) {
       throw new Error("TabList Element is required, tabList must have a data-tab-list attribute and be direct descendant of the tabs");
@@ -46,15 +52,15 @@ class Tabs {
       throw new Error("TabPanels Element are required, tabPanels must have a data-tab-panel attribute and be direct descendant of the tabs or the panels container (data-panels-container)");
     }
 
-    this.tabTriggers = findAll({ selector: "[data-tabs-trigger]", parentElement: this.tabList });
+    this.tabTriggers = $$("[data-tabs-trigger]", this.tabList);
 
     if (this.tabTriggers.length <= 0) {
       throw new Error("No trigger found, Tab component must have at least one trigger");
     }
 
-    const defaultActiveTrigger = find({ selector: "[data-tabs-trigger][data-state=active]", parentElement: this.tabList })
+    const defaultActiveTrigger = $("[data-tabs-trigger][data-state=active]", this.tabList)
 
-    this.activeTabTrigger = find({ selector: `[data-tabs-trigger][data-target='${this.defaultTabValue}']`, parentElement: this.tabList }) || defaultActiveTrigger || this.tabTriggers[0];
+    this.activeTabTrigger = $(`[data-tabs-trigger][data-target='${this.defaultTabValue}']`, this.tabList) || defaultActiveTrigger || this.tabTriggers[0];
 
     const { transformEasing, transformDuration, className } = this.indicatorOptions;
 
@@ -145,7 +151,7 @@ class Tabs {
    * @param tabValue {string} the value of the targeted tabpanel
    */
   changeTab = (tabValue: string) => {
-    const triggerElement = find({ selector: `[data-tabs-trigger][data-target='${tabValue}']`, parentElement: this.tabList })
+    const triggerElement = $(`[data-tabs-trigger][data-target='${tabValue}']`, this.tabList)
     if (!(triggerElement instanceof HTMLElement)) return
     this.activeTabTrigger = triggerElement;
     const tabAct = activeTab({
