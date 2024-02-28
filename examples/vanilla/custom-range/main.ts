@@ -1,9 +1,6 @@
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
-import { CustomRange } from "@flexilla/flexilla"
+import { CustomRange } from "@flexilla/custom-range"
 
-const constumRanges = Array.from(document.querySelectorAll("[data-custom-range-wrapper]")) as HTMLElement[]
 
-for (const customRange of constumRanges) {
-    new CustomRange({ containerElement: customRange })
-}
+new CustomRange('[data-custom-range-wrapper]')

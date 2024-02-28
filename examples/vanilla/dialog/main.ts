@@ -1,18 +1,11 @@
-import { Modal, ModalOptions } from "@flexilla/flexilla"
+import { Modal, ModalOptions } from "@flexilla/modal"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 import "@flexilla/flexilla/flexilla.css"
 
-new Modal({
-    modalElement: document.querySelector("[data-modal-test-1]") as HTMLElement,
-    options:{
-        defaultState:"open"
-    }
-})
+new Modal("[data-modal-test-1]")
 
-new Modal({
-    modalElement: document.querySelector("[data-modal-test-1b]") as HTMLElement
-})
+new Modal("[data-modal-test-1b]")
 
 const options: ModalOptions = {
     animateContent: {
@@ -26,13 +19,13 @@ const options: ModalOptions = {
         console.log("Modal Open")
     }
 }
-new Modal({
-    modalElement: document.querySelector("[data-modal-test-3]") as HTMLElement,
-    options: options
-})
-new Modal({
-    modalElement: document.querySelector("[data-modal-test-2]") as HTMLElement,
-    options: {
+new Modal(
+    "[data-modal-test-3]",
+    options
+)
+new Modal(
+    "[data-modal-test-2]",
+    {
         onHide() {
             console.log("Modal closed")
         },
@@ -40,13 +33,12 @@ new Modal({
             console.log("Modal Open")
         }
     }
-})
+)
 
 
-new Modal({
-    modalElement: document.querySelector("[data-modal-prevent]") as HTMLElement,
-    triggerElement: document.querySelector("[data-custom-trigger]") as HTMLElement,
-    options: {
+new Modal(
+    "[data-modal-prevent]",
+    {
         preventCloseModal: true,
         animateContent: {
             enterAnimation: "slideIn .3s linear",
@@ -57,23 +49,22 @@ new Modal({
         onShow: () => {
             console.log("Modal Open")
         }
-    }
-})
+    },
+    "[data-custom-trigger]"
+    )
 
-new Modal({
-    modalElement: document.querySelector("[data-modal-with-stacked]") as HTMLElement,
-    triggerElement: document.querySelector("[data-trigger-with-stacked]") as HTMLElement,
-    options: {
+new Modal(
+    "[data-modal-with-stacked]",
+   {
         animateContent: {
             enterAnimation: "slideIn .3s linear",
         }
-    }
-})
+    },
+   "[data-trigger-with-stacked]")
 
-new Modal({
-    modalElement: document.querySelector("[data-modal-prevent-stack]") as HTMLElement,
-    triggerElement: document.querySelector("[data-custom-trigger-stack]") as HTMLElement,
-    options: {
+new Modal(
+   "[data-modal-prevent-stack]",
+     {
         enableStackedModals: true,
         animateContent: {
             enterAnimation: "slideIn .3s linear",
@@ -84,16 +75,17 @@ new Modal({
         onShow: () => {
             console.log("Modal Open")
         }
-    }
-})
+    },
+   "[data-custom-trigger-stack]"
+)
 
-new Modal({
-    modalElement: document.querySelector("[data-modal-third]") as HTMLElement,
-    triggerElement: document.querySelector("[data-trigger-third]") as HTMLElement,
-    options: {
+new Modal(
+    "[data-modal-third]",
+    {
         enableStackedModals: true,
         animateContent: {
             enterAnimation: "slideIn .3s linear",
         },
-    }
-})
+    },
+    "[data-trigger-third]"
+)
