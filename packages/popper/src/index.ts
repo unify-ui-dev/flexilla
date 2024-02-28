@@ -1,3 +1,3 @@
 import "./index.css"
 export { default as CreatePopper } from "./popper"
-export type { PopperParams, PopperOptions, Placement } from "./types"
+export type { PopperOptions, Placement } from "./types"

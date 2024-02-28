@@ -1,11 +1,8 @@
 import { DEFAULT_OFFSETDISTANCE, DEFAULT_PLACEMENT } from "./const";
 import { getDimensions } from "./helper";
-import { PopperParams, Placement } from "./types";
+import { Placement, PopperOptions } from "./types";
 import { determinePosition } from "./utils";
 
-/**
- * Popper 
- */
 class CreatePopper {
     private reference: HTMLElement
     private popper: HTMLElement
@@ -14,11 +11,12 @@ class CreatePopper {
     private disableOnResize: boolean
     private disableOnScroll: boolean
     /**
-     * CREATE POPPER
+     * Flexilla Popper 
+     * @param reference 
+     * @param popper 
+     * @param options 
      */
-    constructor({
-        reference, popper, options = {}
-    }: PopperParams) {
+    constructor(reference: HTMLElement, popper: HTMLElement, options: PopperOptions = {}) {
         const {
             offsetDistance = DEFAULT_OFFSETDISTANCE,
             placement = DEFAULT_PLACEMENT,
@@ -26,7 +24,7 @@ class CreatePopper {
         } = options
         if (!(reference instanceof HTMLElement)) throw new Error("Invalid HTMLElement for Reference Element");
         if (!(popper instanceof HTMLElement)) throw new Error("Invalid HTMLElement for Popper");
-        if (typeof options.offsetDistance !== "number") throw new Error("OffsetDistance must be a number");
+        if (options.offsetDistance && typeof options.offsetDistance !== "number") throw new Error("OffsetDistance must be a number");
 
         const { disableOnResize, disableOnScroll } = eventEffect
         this.reference = reference

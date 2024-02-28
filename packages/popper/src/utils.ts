@@ -64,14 +64,24 @@ export const determinePosition = (
     let x = 0;
     let y = 0;
 
+    const placeTop = -popperHeight - offsetDistance
+    const placeBottom = refHeight + offsetDistance
+    const placeLeft = -popperWidth - offsetDistance
+    const placeRight = refWidth + offsetDistance
+
+    const canPlaceTop = availableSpaceTop >= popperHeight + offsetDistance
+    const canPlaceBottom = availableSpaceBottom >= popperHeight + offsetDistance
+    const canPlaceLeft = availableSpaceLeft >= popperWidth + offsetDistance
+    const canPlaceRight = availableSpaceRight >= popperWidth + offsetDistance
+
     if (placement.startsWith("top")) {
-        y = availableSpaceTop >= popperHeight + offsetDistance ? -popperHeight - offsetDistance : refHeight + offsetDistance;
+        y = canPlaceTop ? placeTop : canPlaceBottom ? placeBottom : placeTop;
     } else if (placement.startsWith("bottom")) {
-        y = availableSpaceBottom >= popperHeight + offsetDistance ? refHeight + offsetDistance : -popperHeight - offsetDistance;
+        y = canPlaceBottom ? placeBottom : canPlaceTop ? placeTop : placeBottom;
     } else if (placement.startsWith("left")) {
-        x = availableSpaceLeft >= popperWidth + offsetDistance ? -popperWidth - offsetDistance : refWidth + offsetDistance;
+        x = canPlaceLeft ? placeLeft : canPlaceRight ? placeRight : placeLeft;
     } else if (placement.startsWith("right")) {
-        x = availableSpaceRight >= popperWidth + offsetDistance ? refWidth + offsetDistance : -popperWidth - offsetDistance;
+        x = canPlaceRight ? placeRight : canPlaceLeft ? placeLeft : placeRight;
     }
 
     switch (placement) {
