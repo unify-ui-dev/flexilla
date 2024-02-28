@@ -8,10 +8,10 @@ const ref1 = document.querySelector("[data-reference-1]")
 
 if (ref1 instanceof HTMLElement) {
 
-  const hideAllPopper = (currentPopper: HTMLElement) => {
+  const hideAllPopper = (currentHTMLElement) => {
     const poppersDemo = document.querySelectorAll("[data-popper-demo-1]")
     for (const popperDemo of poppersDemo) {
-      if (popperDemo !== currentPopper) {
+      if (popperDemo !== currentHTMLElement) {
         popperDemo.setAttribute("data-state", "close")
         popperDemo.setAttribute("aria-hidden", "true")
         popperDemo.classList.add("invisible")
@@ -27,102 +27,102 @@ if (ref1 instanceof HTMLElement) {
     popperEl.classList.remove("invisible")
   }
 
-  const popBM = new CreatePopper({
-    reference: ref1,
-    popper: document.querySelector("[data-popper-bm]") as HTMLElement,
-    options: {
+  const popBM = new CreatePopper(
+    ref1,
+    document.querySelector("[data-popper-bm]") as HTMLElement,
+    {
       placement: "bottom",
       offsetDistance: 5
     }
-  })
-  const popBS = new CreatePopper({
-    reference: ref1,
-    popper: document.querySelector("[data-popper-bs]") as HTMLElement,
-    options: {
+  )
+  const popBS = new CreatePopper(
+    ref1,
+    document.querySelector("[data-popper-bs]") as HTMLElement,
+    {
       placement: "bottom-start",
       offsetDistance: 5
     }
-  })
-  const popBE = new CreatePopper({
-    reference: ref1,
-    popper: document.querySelector("[data-popper-be]") as HTMLElement,
-    options: {
+  )
+  const popBE = new CreatePopper(
+    ref1,
+    document.querySelector("[data-popper-be]") as HTMLElement,
+    {
       placement: "bottom-end",
       offsetDistance: 5
     }
-  })
-  const popRM = new CreatePopper({
-    reference: ref1,
-    popper: document.querySelector("[data-popper-rm]") as HTMLElement,
-    options: {
+  )
+  const popRM = new CreatePopper(
+    ref1,
+    document.querySelector("[data-popper-rm]") as HTMLElement,
+    {
       placement: "right",
       offsetDistance: 5
     }
-  })
-  const popRS = new CreatePopper({
-    reference: ref1,
-    popper: document.querySelector("[data-popper-rs]") as HTMLElement,
-    options: {
+  )
+  const popRS = new CreatePopper(
+    ref1,
+    document.querySelector("[data-popper-rs]") as HTMLElement,
+    {
       placement: "right-start",
       offsetDistance: 5
     }
-  })
-  const popRE = new CreatePopper({
-    reference: ref1,
-    popper: document.querySelector("[data-popper-re]") as HTMLElement,
-    options: {
+  )
+  const popRE = new CreatePopper(
+    ref1,
+    document.querySelector("[data-popper-re]") as HTMLElement,
+    {
       placement: "right-end",
       offsetDistance: 5
     }
-  })
-  const popTM = new CreatePopper({
-    reference: ref1,
-    popper: document.querySelector("[data-popper-tm]") as HTMLElement,
-    options: {
+  )
+  const popTM = new CreatePopper(
+    ref1,
+    document.querySelector("[data-popper-tm]") as HTMLElement,
+    {
       placement: "top",
       offsetDistance: 5
     }
-  })
-  const popTS = new CreatePopper({
-    reference: ref1,
-    popper: document.querySelector("[data-popper-ts]") as HTMLElement,
-    options: {
+  )
+  const popTS = new CreatePopper(
+    ref1,
+    document.querySelector("[data-popper-ts]") as HTMLElement,
+    {
       placement: "top-start",
       offsetDistance: 5
     }
-  })
-  const popTE = new CreatePopper({
-    reference: ref1,
-    popper: document.querySelector("[data-popper-te]") as HTMLElement,
-    options: {
+  )
+  const popTE = new CreatePopper(
+    ref1,
+    document.querySelector("[data-popper-te]") as HTMLElement,
+    {
       placement: "top-end",
       offsetDistance: 5
     }
-  })
-  const popLM = new CreatePopper({
-    reference: ref1,
-    popper: document.querySelector("[data-popper-lm]") as HTMLElement,
-    options: {
+  )
+  const popLM = new CreatePopper(
+    ref1,
+    document.querySelector("[data-popper-lm]") as HTMLElement,
+    {
       placement: "left",
       offsetDistance: 5
     }
-  })
-  const popLS = new CreatePopper({
-    reference: ref1,
-    popper: document.querySelector("[data-popper-ls]") as HTMLElement,
-    options: {
+  )
+  const popLS = new CreatePopper(
+    ref1,
+    document.querySelector("[data-popper-ls]") as HTMLElement,
+    {
       placement: "left-start",
       offsetDistance: 5
     }
-  })
-  const popLE = new CreatePopper({
-    reference: ref1,
-    popper: document.querySelector("[data-popper-le]") as HTMLElement,
-    options: {
+  )
+  const popLE = new CreatePopper(
+    ref1,
+    document.querySelector("[data-popper-le]") as HTMLElement,
+    {
       placement: "left-end",
       offsetDistance: 5
     }
-  })
+  )
 
   document.querySelector("[data-trigger-rm]")?.addEventListener("click", () => {
     popRM.cleanupEvents()

@@ -1,26 +1,20 @@
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
-import { Collapse } from "@flexilla/flexilla"
+import { Collapse } from "@flexilla/collapse"
 
-new Collapse({
-    collapseElement: document.querySelector("[data-collapsible-1]") as HTMLElement
-})
-new Collapse({
-    collapseElement: document.querySelector("[data-collapsible-2]") as HTMLElement,
-    options: {
+new Collapse("[data-collapsible-1]")
+new Collapse(
+    "[data-collapsible-2]",
+    {
         orientation: "horizontal"
     }
-})
-new Collapse({
-    collapseElement: document.querySelector("[data-collapsible-3]") as HTMLElement,
-})
+)
+new Collapse("[data-collapsible-3]")
 
-new Collapse({
-    collapseElement: document.querySelector("[data-collapsible-4]") as HTMLElement,
-    options: {
+new Collapse(
+    '[data-collapsible-4]',
+    {
         orientation: "horizontal"
     }
-})
-new Collapse({
-    collapseElement: document.querySelector("[data-collapsible-5]") as HTMLElement,
-})
+)
+new Collapse("[data-collapsible-5]")

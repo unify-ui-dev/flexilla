@@ -1,46 +1,39 @@
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
-import { Accordion } from "@flexilla/flexilla"
+import { Accordion } from "@flexilla/accordion"
 
-new Accordion({
-    accordionElement: document.querySelector("[data-accordion-1]") as HTMLElement
-})
+new Accordion('[data-accordion-1]')
 
-new Accordion({
-    accordionElement: document.querySelector("[data-accordion-nested]") as HTMLElement
-})
-new Accordion({
-    accordionElement: document.querySelector("[data-accordion-nested-child]") as HTMLElement
-})
+new Accordion("[data-accordion-nested]")
+new Accordion("[data-accordion-nested-child]")
 
-new Accordion({
-    accordionElement: document.querySelector("[data-accordion-2]") as HTMLElement,
-    options: {
+new Accordion('[data-accordion-2]',
+    {
         defaultValue: "accordion-1",
     }
-})
+)
 
-new Accordion({
-    accordionElement: document.querySelector("[data-accordion-3]") as HTMLElement,
-    options: {
+new Accordion(
+    '[data-accordion-3]',
+    {
         defaultValue: "accordion-2",
         accordionType: "multiple"
     }
-})
+)
 
-new Accordion({
-    accordionElement: document.querySelector("[data-accordion-4]") as HTMLElement,
-    options: {
+new Accordion(
+    '[data-accordion-4]',
+    {
         defaultValue: "accordion-2",
         preventClosingAll: true
     }
-})
+)
 
 
-new Accordion({
-    accordionElement: document.querySelector("[data-accordion-5]") as HTMLElement,
-    options: {
+new Accordion(
+    document.querySelector('[data-accordion-5]') as HTMLElement,
+    {
         defaultValue: "accordion-1",
         allowTriggerOnFocus: true
     }
-})
+)
