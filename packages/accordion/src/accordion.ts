@@ -1,10 +1,8 @@
-import { AccordionOptions, AccordionParams } from "./types";
+import { AccordionOptions } from "./types";
 import { activeAlwaysOpen, activateDefaultAccordionItem, closeOtherAccordionItems, initItems, expandAccordionItem } from "./helpers";
-import { findAll, findDirectDescendant } from "@flexilla/utilities";
+import { find, findAll, findDirectDescendant } from "@flexilla/utilities";
 
-/**
-* Accordion Component
-*/
+
 class Accordion {
     private accordionElement: HTMLElement
     private options: AccordionOptions
@@ -14,18 +12,19 @@ class Accordion {
     private accordionType: string
     private defaultItemValue: string
     private defaultItem: HTMLElement | null | undefined
-    public instance: Accordion
 
     /**
-     * Creates an accordion with the specified parameters.
+     * Flexilla Accordion component
+     * @param accordion 
+     * @param options 
      */
-    constructor({ accordionElement, options = {} }: AccordionParams) {
-        this.instance = this
+    constructor(accordion:string|HTMLElement, options:AccordionOptions = {}) {
+        const accordionElement = typeof accordion === "string"  ? find({ selector: accordion, parentElement: document.body }) : accordion
         if (!(accordionElement instanceof HTMLElement))
-            throw new Error("Container not a valid HTML elemnt")
+            throw new Error("Provided selector is not a valid HTMLElement")
         this.accordionElement = accordionElement
         const items_ = findAll({ selector: "[data-accordion-item]", parentElement: accordionElement })
-        
+
         // Filter out only the direct descendants
         this.items = items_.filter((item) => item.parentElement === this.accordionElement);
 
@@ -43,17 +42,17 @@ class Accordion {
         })
         this.init()
     }
-    showItem = ({ itemSelector }: { itemSelector: string }) => {
+    showItem = (selector: string) => {
         const accordionItem = findDirectDescendant({
-            selector: `${itemSelector}`,
+            selector: `${selector}`,
             parentElement: this.accordionElement
         })
         if (!(accordionItem instanceof HTMLElement)) throw new Error("Providied element is not a valid HTML element")
         expandAccordionItem(accordionItem, "open")
     }
-    hideItem = ({ itemSelector }: { itemSelector: string }) => {
+    hideItem = (selector: string) => {
         const accordionItem = findDirectDescendant({
-            selector: `${itemSelector}`,
+            selector: `${selector}`,
             parentElement: this.accordionElement
         })
         if (!(accordionItem instanceof HTMLElement)) throw new Error("Providied element is not a valid HTML element")

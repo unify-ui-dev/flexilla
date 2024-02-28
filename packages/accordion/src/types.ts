@@ -15,12 +15,6 @@ export type AccordionOptions = {
     onChangeItem?: ({ expandedItem }: { expandedItem?: ExpandedItem }) => void
 }
 
-export type AccordionParams = {
-    accordionElement: HTMLElement,
-    selector?: string,
-    options?: AccordionOptions
-}
-
 export type AccordionItemMetadata = {
     accordionTriggerElement: HTMLButtonElement,
     accordionContentElement: HTMLDivElement,

@@ -20,24 +20,23 @@ import { Accordion } from '@flexilla/accordion';
 
 Create an instance of the Accordion class by passing the required parameters:
 
-```ts
-const accordionElement = document.getElementById('accordion');
+```ts 
 const options = {
   // Specify any desired options here
 };
-const accordion = new Accordion({ accordionElement, options });
+const accordion = new Accordion('#accordion', options);
 ```
 
 Note: The accordionElement should be a valid HTML element that acts as the container for the accordion.
 
-## Params
+## Props/Params
 
 There's only two Params to provide, One is required and the second not
 
-### accordionElement (required) 
+### selector (required) 
 
-A valid HTML Element that acts as the container for the accordion
-  - Items : Every item with `data-accordion-item` and `data-accordion-value=unifyValueInAccordion`, and every accordion item must have a trigger `data-accordion-trigger` and content `data-accordion-content` 
+The selector of a HTML Element that acts as the container for the accordion
+  - Items : Every item with `data-accordion-item` and `data-accordion-value="item-value"`, and every accordion item must have a trigger `data-accordion-trigger` and content `data-accordion-content` 
 
 ### Options
 
@@ -84,16 +83,16 @@ Note: When passing options via data attributes, make sure to format the attribut
 You can show or hide specific accordion items programmatically using the showItem and hideItem methods:
 ```ts
 //Show An item
-accordion.showItem({ itemSelector: '.accordion-item' });
+accordion.showItem('.accordion-item');
 //Hide an item
-accordion.hideItem({ itemSelector: '.accordion-item' });
+accordion.hideItem('.accordion-item');
 ```
 
 ## Examples
 
 Here are a few examples to demonstrate the usage of the @flexilla/accordion package:
 
-1. For Examples I'm using UnoCSS for styling but you can use any CSS Library, Frameworkm or even write you're own CSS.
+1. For this Example I'm using UnoCSS for styling but you can use any CSS Library, Frameworkm or even write you're own CSS.
 
 
 ```html
@@ -140,8 +139,7 @@ Here are a few examples to demonstrate the usage of the @flexilla/accordion pack
 </div>
 <script>
   import { Accordion } from '@flexilla/accordion';
-  const accordionElement = document.querySelector("[data-accordion-example]");
-  const accordion = new Accordion({ accordionElement });
+  const accordion = new Accordion("[data-accordion-example]");
 </script>
 ```
 
@@ -162,12 +160,11 @@ Here are a few examples to demonstrate the usage of the @flexilla/accordion pack
 <script>
   import { Accordion } from '@flexilla/accordion';
 
-  const accordionElement = document.getElementById('accordion');
   const options = {
     preventClosingAll: false,
     allowTriggerOnFocus: true,
   };
-  const accordion = new Accordion({ accordionElement, options });
+  const accordion = new Accordion("#accordion", options);
 </script>
 ```
 
