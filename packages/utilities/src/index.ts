@@ -1,7 +1,7 @@
 export {
-	find,
-	findAll,
-	findDirectDescendant,
+	$,
+	$$,
+	$d,
 	appendBefore,
 	setAttributes,
 	afterTransition,

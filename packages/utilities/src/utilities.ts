@@ -1,25 +1,21 @@
-const find = ({
-	selector,
-	parentElement,
-}: { selector: string; parentElement: HTMLElement }): HTMLElement | null =>
+const $ = (selector: string, parentElement: HTMLElement = document.body): HTMLElement | null =>
 	parentElement.querySelector(selector);
 
-const findAll = ({
-	selector,
-	parentElement,
-}: { selector: string; parentElement: HTMLElement }): HTMLElement[] =>
-	Array.from(parentElement.querySelectorAll(selector));
-
-const findDirectDescendant = ({
-	selector,
-	parentElement,
-}: { selector: string; parentElement: HTMLElement }): HTMLElement | undefined  => {
-	const allItems = findAll({ selector, parentElement });
-
+/**
+ * Find direct descendant Element
+ * @param selector 
+ * @param parentElement 
+ * @returns 
+ */
+const $d = (selector: string, parentElement: HTMLElement = document.body): HTMLElement | undefined => {
+	const allItems = $$(selector, parentElement);
 	// Find the first direct descendant
 	const directDescendant = Array.from(allItems).find((item) => item.parentElement === parentElement);
 	return directDescendant
 };
+
+const $$ = (selector: string, parentElement: HTMLElement = document.body): HTMLElement[] =>
+	Array.from(parentElement.querySelectorAll(selector));
 
 
 const appendBefore = ({
@@ -70,9 +66,9 @@ const afterTransition = ({
 };
 
 export {
-	find,
-	findAll,
-	findDirectDescendant,
+	$,
+	$$,
+	$d,
 	appendBefore,
 	setAttributes,
 	afterTransition,
