@@ -1,6 +1,6 @@
 import { getAccordionItemMetadata, getAllAlwaysOpen, getElementExceptActivedAndAlwaysOpen } from "./util";
 import { AccordionOptions } from "./types";
-import { afterTransition, findAll, findDirectDescendant, setAttributes } from "@flexilla/utilities";
+import { afterTransition, $$, $d, setAttributes } from "@flexilla/utilities";
 
 const expandAccordionItem = (accordionItem: HTMLElement, state: "open" | "close") => {
     if (!(accordionItem instanceof HTMLElement)) throw new Error("accordion item not a valid HTMLELement")
@@ -44,14 +44,14 @@ const closeOtherAccordionItems = (accordion: HTMLElement, currentValue: string) 
 
 const getAdjacentTrigger = (currentTrigger: HTMLElement, goUp: boolean, accordionElement: HTMLElement) => {
 
-    const allAccordionItems = findAll({ selector: "[data-accordion-item]", parentElement: accordionElement })
+    const allAccordionItems = $$("[data-accordion-item]", accordionElement)
     const accordionItems = allAccordionItems.filter((item) => item.parentElement === accordionElement);
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
     const currentTriggerIndex = Array.from(accordionItems).indexOf(currentTrigger.closest('[data-accordion-item]')!);
     const nextIndex = goUp ? currentTriggerIndex - 1 : currentTriggerIndex + 1;
-    const nextTrigger = findDirectDescendant({ selector: "[data-accordion-trigger]", parentElement: accordionItems[nextIndex] }) as HTMLElement
-    
-    return nextTrigger ?? (goUp ? findDirectDescendant({ selector: "[data-accordion-trigger]", parentElement: accordionItems[accordionItems.length - 1] }) : findDirectDescendant({ selector: "[data-accordion-trigger]", parentElement: accordionItems[0] }))
+    const nextTrigger = $d("[data-accordion-trigger]", accordionItems[nextIndex]) as HTMLElement
+
+    return nextTrigger ?? (goUp ? $d("[data-accordion-trigger]", accordionItems[accordionItems.length - 1]) : $d("[data-accordion-trigger]", accordionItems[0]))
 }
 
 const attachKeyEvent = (event: KeyboardEvent, accordionElement: HTMLElement, allowTriggerOnFocus: boolean) => {
@@ -82,7 +82,7 @@ const attachAccordionItemEvents = (accordionElement: HTMLElement, accordionItem:
 }
 
 const initItems = (accordionElement: HTMLElement, accordionType: string, preventClosingAll: boolean, allowTriggerOnFocus: boolean, options: AccordionOptions) => {
-    const allAccordionItems = findAll({ selector: "[data-accordion-item]", parentElement: accordionElement })
+    const allAccordionItems = $$("[data-accordion-item]", accordionElement)
     // Filter out only the direct descendants
     const accordionItems = allAccordionItems.filter((item) => item.parentElement === accordionElement);
 

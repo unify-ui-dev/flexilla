@@ -4,15 +4,17 @@ class CustomRangeIndicator {
     private indicatorElement: HTMLSpanElement
     private indicatorClassname: string[]
 
-    constructor({ containerElement, rangeIndicator }:
-        { containerElement: HTMLElement, rangeIndicator?: string }) {
+    constructor(containerElement_: string|HTMLElement, rangeIndicator?: string) {
+        const containerElement = typeof containerElement_ === "string" ? document.querySelector(`${containerElement_}`) : containerElement_
         if (!(containerElement instanceof HTMLElement)) throw new Error("No valide container element")
 
         this.rangeContainer = containerElement
         this.rangeElement = this.rangeContainer.querySelector("[data-input-range]") as HTMLInputElement
+
+        if (!(this.rangeElement instanceof HTMLInputElement)) throw new Error("The provided element doesn't have a valid HTMLInputElement. Make sure to add data-input-range to the input element")
+
         this.indicatorClassname = rangeIndicator?.split(" ") || (this.rangeContainer.dataset.rangeIndicator)?.split(" ") || []
         this.indicatorElement = this.initIndicator()
-
         this.init()
         this.updateIndicatorSize()
     }

@@ -1,7 +1,7 @@
 
-import { BackdropOptions, OffcanvasParams } from "./types"
+import { BackdropOptions, OffcanvasOptions } from "./types"
 import { closeAllOpenedOffcanvas, toggleOffCanvasState } from "./helpers"
-import { appendBefore, findAll, find } from "@flexilla/utilities"
+import { appendBefore, $$, $ } from "@flexilla/utilities"
 import { createOverlay, destroyOverlay } from "./offCanvasOverlay"
 
 /**
@@ -14,15 +14,16 @@ class Offcanvas {
     private allowBodyScroll: boolean
     private staticBackdrop: boolean
     private backdropClass: string
-    public instance: Offcanvas;
     private backdrop: BackdropOptions | undefined
 
     /**
-   * Create an Offcanvas instance.
-   * @param {OffcanvasParams} options - The options for configuring the Offcanvas.
-   */
-    constructor({ offCanvasElement, options = {} }: OffcanvasParams) {
-        this.instance = this;
+     * Offcanvas Component
+     * @param offcanvas 
+     * @param options 
+     */
+    constructor(offcanvas: string | HTMLElement, options: OffcanvasOptions = {}) {
+
+        const offCanvasElement = typeof offcanvas === "string" ? $(offcanvas) : offcanvas
         if (!(offCanvasElement instanceof HTMLElement)) throw new Error("Invalid Offcanvas, the provided Element is not a valid HTMLElement")
         const { staticBackdrop, allowBodyScroll, backdrop: overlay } = options
         this.offCanvasElement = offCanvasElement
@@ -38,10 +39,7 @@ class Offcanvas {
     }
 
     private findOffCanvasElements(selector: string, offCanvasId: string | null) {
-        return findAll({
-            selector: `${selector}[data-target=${offCanvasId}]`,
-            parentElement: document.body,
-        });
+        return $$(`${selector}[data-target=${offCanvasId}]`);
     }
     private setupAttributes() {
         if (!this.offCanvasElement.hasAttribute("data-fx-offcanvas"))
@@ -59,7 +57,7 @@ class Offcanvas {
 
     private closeOffCanvas() {
         const id = this.offCanvasElement.getAttribute("id")
-        const overlayElement = find({ selector: `[data-fx-offcanvas-overlay][data-offcanvas-el=${id}]`, parentElement: this.offCanvasElement.parentElement as HTMLElement })
+        const overlayElement = $(`[data-fx-offcanvas-overlay][data-offcanvas-el=${id}]`, this.offCanvasElement.parentElement as HTMLElement)
         toggleOffCanvasState(
             this.offCanvasElement,
             this.allowBodyScroll,

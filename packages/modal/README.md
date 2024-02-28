@@ -20,13 +20,11 @@ import { Modal } from '@flexilla/modal';
 2. Create an instance of the Modal class by providing the necessary parameters
 
 ```js
-const modalElement = document.getElementById('modalElement');
-const triggerElement = document.getElementById('triggerElement');
 const options = {
   // Specify any desired options here
 };
 
-const modal = new Modal({ modalElement, triggerElement, options });
+const modal = new Modal('#modalElement', options, '#triggerElement' );
 ```
 
 3. Use the available methods to show or hide the modal:
@@ -42,7 +40,7 @@ modal.hideModal();
 const isHidden = modal.isHidden();
 ```
 
-## Parameters
+## Props/Parameters
 | Name | Description | Data Attributes | Type | | --------------- | ----------------------------------------- | --------------- | ------------- | | modalElement | The HTML element representing the modal. | data-modal-id | HTMLElement | | triggerElement| The HTML element that triggers the modal. | data-modal-target | HTMLElement | | options | Optional configuration options for the modal. | - | ModalOptions|
 
 ## Available Options

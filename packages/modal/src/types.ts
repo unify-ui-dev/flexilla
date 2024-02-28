@@ -20,14 +20,3 @@ export type ModalOptions = {
     onHide?: () => void;
     onToggle?: ({ isHidden }: { isHidden: boolean }) => void
 };
-
-
-/**
- * Defines parameters for modal initialization.
- */
-export type ModalParams = {
-    modalElement: HTMLElement;
-    triggerElement?: HTMLElement,
-    modalShown?: boolean,
-    options?: ModalOptions;
-};

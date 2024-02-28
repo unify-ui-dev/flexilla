@@ -23,13 +23,11 @@ import Dismissible from '@flexilla/dismissible';
 </div>
 
 <script>
-    const dismissibleElement = document.querySelector('.dismissable-element');
-    const dismissible = new Dismissible({
-        dismissibleElement,
+    const dismissible = new Dismissible('.dismissable-element',
         action: "remove-from-dom",
         onDismiss: () => {
             console.log("Element dismissed!");
         }
-    });
+        );
 </script>
 ```

@@ -1,4 +1,4 @@
-import { find, findDirectDescendant } from "@flexilla/utilities";
+import { $, $d } from "@flexilla/utilities";
 import { ACTIVE_STATE, INACTIVE_STATE, STATE_TO_FALSE, STATE_TO_TRUE, VERTICAL_ORIENTATION } from "./const";
 import { moveIndicator } from "./indicator";
 
@@ -51,9 +51,7 @@ const hideAllTabPanels = (activePanel: HTMLElement, tabPanels: HTMLElement[]) =>
  */
 export const activeTab = ({ triggerElement, tabTriggers, tabPanels, tabsPanelContainer, showAnimation, tabsOrientation, indicatorTransformDuration, indicatorTransformEaseing, tabList }: { triggerElement: HTMLElement, tabTriggers: HTMLElement[], tabPanels: HTMLElement[], tabsPanelContainer: HTMLElement, showAnimation: string, tabsOrientation: string, indicatorTransformDuration: number, indicatorTransformEaseing: string, tabList: HTMLElement }) => {
   if (!(triggerElement instanceof HTMLElement)) return;
-  const toSelectTab = findDirectDescendant(
-    { selector: `[data-tab-panel]#${triggerElement.getAttribute("data-target")}`, parentElement: tabsPanelContainer }
-  );
+  const toSelectTab = $d( `[data-tab-panel]#${triggerElement.getAttribute("data-target")}`, tabsPanelContainer);
   if (!(toSelectTab instanceof HTMLElement)) return;
   setAllTriggerToFalse(triggerElement, tabTriggers);
   hideAllTabPanels(toSelectTab, tabPanels);
@@ -65,7 +63,7 @@ export const activeTab = ({ triggerElement, tabTriggers, tabPanels, tabsPanelCon
     toSelectTab.style.setProperty("--un-tab-show-animation", `${showAnimation}`)
   }
 
-  const indicator = find({ selector: "[data-tab-indicator]", parentElement: tabList }) as HTMLSpanElement
+  const indicator = $("[data-tab-indicator]", tabList) as HTMLSpanElement
 
 
   moveIndicator({
@@ -77,9 +75,9 @@ export const activeTab = ({ triggerElement, tabTriggers, tabPanels, tabsPanelCon
     tabList
   });
 
-  const childrenTab = findDirectDescendant({ selector: "[data-fx-tabs]", parentElement: toSelectTab })
+  const childrenTab = $d("[data-fx-tabs]", toSelectTab)
   if (childrenTab instanceof HTMLElement) {
-    const tabList = findDirectDescendant({ selector: "[data-tab-list]", parentElement: childrenTab }) as HTMLElement
+    const tabList = $d("[data-tab-list]", childrenTab) as HTMLElement
     const triggerElement = tabList.querySelector("[data-tabs-trigger][data-state=active]") as HTMLElement
     const indicator = tabList.querySelector("span[data-tab-indicator]") as HTMLSpanElement
     if(indicator instanceof HTMLSpanElement && triggerElement instanceof HTMLElement && !childrenTab.hasAttribute("data-nested-indicator-seteled")){

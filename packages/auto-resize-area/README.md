@@ -21,17 +21,9 @@ import { AutoResizableTextArea } from '@flexilla/auto-resize-area';
 
 Use it With JS
 ```js
-const textArea = document.querySelector('[data-my-autorizable]');
-
-const autoResizableTextarea = new AutoResizableTextArea({ textareaElement:textArea });
+const autoResizableTextarea = new AutoResizableTextArea('[data-my-autorizable]');
 ```
 
-Use it with TS
-```ts
-const textArea = document.querySelector('[data-my-autorizable]') as HTMLTextAreaElement;
-
-const autoResizableTextarea = new AutoResizableTextArea({ textareaElement:textArea });
-```
 Okay Now the Your Text Area will now autonomatically resize based on its content whenever the user types or window is resized
 
 ## Example
@@ -41,8 +33,6 @@ Okay Now the Your Text Area will now autonomatically resize based on its content
 <script>
   import { AutoResizableTextArea } from '@flexilla/auto-resize-area';
 
-  const textareaElement = document.querySelector('textarea');
-
-  const autoResizableTextarea = new AutoResizableTextArea({ textareaElement });
+  const autoResizableTextarea = new AutoResizableTextArea('textarea');
 </script>
 ```

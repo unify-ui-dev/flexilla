@@ -8,8 +8,3 @@ export type DropdownOptions = {
     offsetDistante?: number,
     onToggle?: ({ isHidden }: { isHidden: boolean }) => void
 }
-
-export type DropdownParams = {
-    dropdownElement: HTMLElement,
-    options?: DropdownOptions
-}

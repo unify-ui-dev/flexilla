@@ -1,5 +1,5 @@
-import { TooltipOptions, TooltipParams, Arrow } from "./types"
-import { find } from "@flexilla/utilities"
+import { TooltipOptions } from "./types"
+import {  $ } from "@flexilla/utilities"
 import { CreatePopper, Placement } from '@flexilla/popper'
 import { hidePopover, initPoppoverAttributes, showTooltip } from "./helpers"
 
@@ -10,17 +10,16 @@ class Tooltip {
     private referenceElement: HTMLElement
     private popperElement: HTMLElement
     private placement: Placement
-    private arrow: Arrow | undefined
     private popper: CreatePopper
     private offsetDistance: number
     private triggerStrategy: "hover" | "click"
 
-    constructor({ containerElement, triggerElement, options = {} }: TooltipParams) {
-        if (!(containerElement instanceof HTMLElement)) {
-            throw new Error("Provided Element is not a valid HTMLElement")
-        }
+    constructor(tooltip: string | HTMLElement, options: TooltipOptions = {}) {
+        const containerElement = typeof tooltip === "string" ? $(tooltip) : tooltip
+        if (!(containerElement instanceof HTMLElement)) throw new Error("Provided Element is not a valid HTMLElement")
+
         this.containerElement = containerElement
-        this.referenceElement = triggerElement || this.containerElement
+        this.referenceElement = $("[data-fx-tooltip-trigger]", this.containerElement) || this.containerElement
 
         this.popperElement = this.findPopoverElements("[data-fx-popper]") || this.findPopoverElements("[data-tooltip-content]") as HTMLElement
 
@@ -32,16 +31,15 @@ class Tooltip {
 
         this.offsetDistance = this.options.offsetDistance || parseInt(`${containerElement.dataset.offsetDistance}`) || 10
         this.triggerStrategy = this.options.triggerStrategy || this.containerElement.dataset.triggerStrategy as "hover" | "click" || "hover"
-        this.arrow = this.options.arrow
-        this.popper = new CreatePopper({
-            reference: this.referenceElement,
-            popper: this.popperElement,
-            options: {
+
+        this.popper = new CreatePopper(
+            this.referenceElement,
+            this.popperElement,
+            {
                 placement: this.placement,
                 offsetDistance: this.offsetDistance,
-                arrow: this.arrow
             }
-        })
+        )
         this.init()
     }
 
@@ -54,10 +52,7 @@ class Tooltip {
     }
 
     private findPopoverElements(selector: string) {
-        return find({
-            selector: `${selector}`,
-            parentElement: this.containerElement,
-        });
+        return $(selector, this.containerElement);
     }
 
     private onShow() {

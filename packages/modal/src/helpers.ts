@@ -1,4 +1,4 @@
-import { find, findAll } from "@flexilla/utilities"
+import { $, $$ } from "@flexilla/utilities"
 import { ModalOptions } from "./types";
 import { buildOverlay, destroyOverlay } from "./modalOverlay";
 
@@ -17,7 +17,7 @@ const setBodyScrollable = (enableStackedModals_: boolean, allowBodyScroll_: bool
         if (!allowBodyScroll_) document.body.style.overflowY = "auto";
         return
     }
-    const shownModalElementsWithoutBodyScroll = findAll({ selector: "[data-fx-modal][data-state=open]:not([data-allow-body-scroll=true]", parentElement: document.documentElement })
+    const shownModalElementsWithoutBodyScroll = $$("[data-fx-modal][data-state=open]:not([data-allow-body-scroll=true]")
     const filteredShown = shownModalElementsWithoutBodyScroll.filter((element: HTMLElement) => element !== modalElement)
     if (filteredShown.length === 0 && !allowBodyScroll_) document.body.style.overflowY = "auto"
 }
@@ -38,8 +38,8 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
     modalElement.setAttribute("data-allow-body-scroll", `${allowBodyScroll_}`)
 
 
-    const modalContent = find({ selector: "[data-modal-content]", parentElement: modalElement });
-    const closeButtons = findAll({ selector: "[data-close-modal]", parentElement: modalElement });
+    const modalContent = $("[data-modal-content]", modalElement);
+    const closeButtons = $$("[data-close-modal]", modalElement);
 
     if (!(modalContent instanceof HTMLElement)) throw new Error("Modal content element not found");
 
@@ -59,12 +59,12 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
 
     const closeAll = (currentModal: HTMLElement) => {
         if (enableStackedModals_) return
-        const shownModalElements = findAll({ selector: "[data-fx-modal][data-state=open]", parentElement: document.documentElement })
+        const shownModalElements = $$("[data-fx-modal][data-state=open]")
         for (const shownModal of shownModalElements) {
             if (shownModal !== currentModal) {
-                const modalContent_ = find({ selector: "[data-modal-content]", parentElement: shownModal })
+                const modalContent_ = $("[data-modal-content]", shownModal)
                 toggleModalState(shownModal, modalContent_, "close");
-                const modalOverlay = find({ selector: "[data-modal-overlay]", parentElement: shownModal }) as HTMLElement
+                const modalOverlay = $("[data-modal-overlay]", shownModal) as HTMLElement
                 destroyOverlay(modalOverlay, shownModal)
             }
         }
@@ -122,7 +122,7 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
             isKeyDownEventRegistered = false;
         }
 
-        const modalOverlay = find({ selector: "[data-modal-overlay]", parentElement: modalElement }) as HTMLElement
+        const modalOverlay = $("[data-modal-overlay]", modalElement) as HTMLElement
         destroyOverlay(modalOverlay, modalElement)
 
         onHide?.()

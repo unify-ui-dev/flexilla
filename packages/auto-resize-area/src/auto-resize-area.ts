@@ -1,8 +1,12 @@
 class AutoResizableTextArea {
     private textareaElement: HTMLTextAreaElement;
 
-    constructor({textareaElement}:{textareaElement: HTMLTextAreaElement}) {
-        this.textareaElement = textareaElement;
+    /**
+     * Auto-resize Area
+     * @param textarea 
+     */
+    constructor(textarea: string | HTMLTextAreaElement) {
+        this.textareaElement = (typeof textarea === "string") ? document.querySelector(`${textarea}`) as HTMLTextAreaElement : textarea;
         if (!(this.textareaElement instanceof HTMLTextAreaElement)) throw new Error("Provided Element is not a Valid HTMLTextAreaElement");
         this.autoresizeTextarea();
         this.textareaElement.addEventListener("input", this.autoresizeTextarea.bind(this), false);
