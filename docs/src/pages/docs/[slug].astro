@@ -72,7 +72,7 @@ const { next: nextSlug, prev: prevSlug, current } = getPagger(pageSlugId);
       <Content components={{ ...components }} />
     </div>
     <div class="flex wfull hpx my8 bg-zinc2/80 dark-bg-zinc8/80"></div>
-    <div un-flex justify-between gap-x4>
+    <div un-flex flex-col sm-flex-row w-full justify-between gap-4>
       <div flex-1>
         {
           prevSlug ? (

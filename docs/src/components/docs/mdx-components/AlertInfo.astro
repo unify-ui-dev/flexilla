@@ -1,4 +1,6 @@
 ---
+import { cn } from "@lib/utils";
+
 interface Props {
   type: "update" | "note" | "warning" | "important";
 }
@@ -7,28 +9,32 @@ const { type } = Astro.props;
 
 const getIcon = (type: "update" | "note" | "warning" | "important") => {
   return type === "update"
-    ? "i-fx-update"
+    ? "i-carbon-update-now"
     : type === "note"
-      ? "i-fx-note"
+      ? "i-carbon-catalog-publish"
       : type === "warning"
-        ? "i-fx-warning"
+        ? "i-carbon-warning-alt"
         : type === "important"
-          ? "i-fx-important"
+          ? "i-carbon-cloud-alerting"
           : "";
 };
-
 ---
 
 <div
   data-alert
-  class="wfull bg-zinc1/60 dark-bg-zinc9/60 b b-zinc2/90 dark-b-zinc8/60 rd-xl p2 flex items-center gap-x4 my4 first-mt0 last-mb0"
+  class={`
+  ${cn("wfull b rd-xl p2 flex items-center gap-x4 my4 first-mt0 last-mb0", {
+    "bg-cyan8/10 text-cyan6 dark-text-cyan5 b-cyan6/20": type === "update",
+    "bg-blue9/10 text-blue6 dark-text-blue5 b-blue6/20": type === "note",
+    "bg-orange8/10 text-orange6 dark-text-orange5 b-orange6/20": type === "warning",
+    "bg-red8/10 text-red6 dark-text-red5 b-red6/20": type === "important",
+  })}
+  `}
 >
-  <div
-    class="pl2"
-  >
+  <div class="pl2">
     <span aria-hidden="true" class={`flex ${getIcon(type)} text-lg`}></span>
   </div>
-  <div class={`flex-1 text-zinc7 dark-text-zinc3`}>
+  <div class={`flex-1`}>
     <slot />
   </div>
 </div>

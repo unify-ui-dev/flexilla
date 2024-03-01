@@ -15,11 +15,9 @@ const { heading: h } = Astro.props;
 <li>
     <a
       href={`#${h.slug}`}
-      hover-text-zinc9
+      class="hover-text-zinc9
       dark-hover-text-white
-      ease-linear
-      duration-200
-      un-lg="pl4"
+      ease-linear duration-200 lg-pl4"
     >
       {h.text}
     </a>

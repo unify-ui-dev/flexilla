@@ -1,0 +1,68 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {}
+
+const { ...props } = Astro.props;
+---
+<div
+  data-default-value="accordion-1"
+  data-accordion-type="single"
+  class="bg-zinc2/60 dark-bg-zinc8/60 rd-lg b b-zinc3/70 dark-b-zinc7/40 divide-y divide-zinc3/60 dark-divide-zinc7/40"
+  data-accordion-example
+  {...props}
+>
+  <div data-accordion-item data-accordion-value="accordion-1" class="rd-lg">
+    <button
+      data-accordion-trigger
+      aria-label="toggle button"
+      class="px4 wfull flex justify-between items-center py2 text-zinc8 dark-text-zinc2 font-medium text-lg ease-linear hover-bg-zinc2/50 dark-hover-bg-zinc8/40 rd-lg outline-transparent focus-outline focus-outline-zinc4/60 dark-focus-outline-zinc6/40 aria-expanded-text-blue6 dark-aria-expanded-text-blue5"
+    >
+      Is it accessible?
+    </button>
+    <div
+      aria-hidden="true"
+      data-accordion-content
+      class="text-zinc7 dark-text-zinc3 duration-200 ease-linear overflow-hidden"
+    >
+      <p class="p4">Yes. It adheres to the WAI-ARIA design pattern.</p>
+    </div>
+  </div>
+  <div data-accordion-item data-accordion-value="accordion-2" class="rd-lg">
+    <button
+      data-accordion-trigger
+      aria-label="toggle button"
+      class="px4 wfull flex justify-between items-center py2 text-zinc8 dark-text-zinc2 font-medium text-lg ease-linear hover-bg-zinc2/50 dark-hover-bg-zinc8/40 rd-lg outline-transparent focus-outline focus-outline-zinc4/60 dark-focus-outline-zinc6/40 aria-expanded-text-blue6 dark-aria-expanded-text-blue5"
+    >
+      Is it unstyled?
+    </button>
+    <div
+      aria-hidden="true"
+      data-accordion-content
+      class="text-zinc7 dark-text-zinc3 duration-200 ease-linear overflow-hidden"
+    >
+      <p class="p4">
+        Yes. It's unstyled by default, giving you freedom over the look and
+        feel.
+      </p>
+    </div>
+  </div>
+  <div data-accordion-item data-accordion-value="accordion-3" class="rd-lg">
+    <button
+      data-accordion-trigger
+      aria-label="toggle button"
+      class="px4 wfull flex justify-between items-center py2 text-zinc8 dark-text-zinc2 font-medium text-lg ease-linear hover-bg-zinc2/50 dark-hover-bg-zinc8/40 rd-lg outline-transparent focus-outline focus-outline-zinc4/60 dark-focus-outline-zinc6/40 aria-expanded-text-blue6 dark-aria-expanded-text-blue5"
+    >
+      Can it be animated?
+    </button>
+    <div
+      aria-hidden="true"
+      data-accordion-content
+      class="text-zinc7 dark-text-zinc3 duration-200 ease-linear h0 overflow-hidden"
+    >
+      <p class="p4">
+        Yes! You can use the transition prop to configure the animation.
+      </p>
+    </div>
+  </div>
+</div>
