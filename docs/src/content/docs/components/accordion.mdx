@@ -2,3 +2,304 @@
 title: Accordion Component
 description: Display togglable accordion panels.
 ---
+
+## Installation
+
+To get started, install Accordion package, else you can skip this step if you've already installed `@flexilla/flexilla`.
+
+  <BoxCodeLang text={"Terminal"} icon={"shell"}>
+```bash 
+npm i @flexilla/flexilla
+```
+</BoxCodeLang>
+
+## Strucure
+
+- `accordionElement` a `<div>` element (you can use any other tag that is a valid `HTMLElement`)
+- `data-accordion-item` : Container of each item  (recommanded to use a `div` Element)
+- `data-accordion-value` : required value for each item and should be unique.
+- `data-accordion-trigger` : trigger Element (Recommanded to use `button` Element)
+- `data-accordion-content` : collapsible Element (recommanded to use `div` Element)
+
+```html
+<!-- accordionElement -->
+<div id="accordion-example">
+  <!-- accordion item -->
+  <div data-accordion-item data-accordion-value="item-1"">
+    <!-- accordion trigger -->
+    <button data-accordion-trigger aria-label="toggle button">
+      <!-- trigger -->
+    </button>
+    <!-- accordion content -->
+    <div aria-hidden="true" data-accordion-content>
+      <!-- content here : Recommanded to wrap it in an other element -->
+    </div>
+  </div>
+  <!-- other items -->
+</div>
+```
+
+Then import the component and init it
+
+```js
+import { Accordion } from '@flexilla/accordion';
+const accordion = new Accordion(
+  "#accordion-example",
+  {
+    // options here
+  }
+)
+```
+
+## Example
+<Tabs values={["Preview", "Code"]}>
+  <TabPanel value="Preview" active={true}>
+  <DemoCompBoxInTab>
+    <DefaultAccordion/>
+  </DemoCompBoxInTab>
+  </TabPanel>
+  <TabPanel value="Code">
+```html
+<div
+  data-default-value="accordion-1"
+  data-accordion-type="single"
+  class="space-y-2 bg-zinc2/60 dark-bg-zinc8/60 rd-lg b b-zinc3/70 dark-b-zinc7/40"
+  data-accordion-example
+>
+  <div data-accordion-item data-accordion-value="accordion-1" class="rd-lg">
+    <button
+      data-accordion-trigger
+      aria-label="toggle button"
+      class="px4 wfull flex justify-between items-center py2 text-zinc8 dark-text-zinc2 font-medium text-lg ease-linear hover-bg-zinc2/50 dark-hover-bg-zinc8/40 rd-lg focus:outline-blue6 aria-expanded-text-blue6"
+    >
+      Is it accessible?
+    </button>
+    <div
+      aria-hidden="true"
+      data-accordion-content
+      class="text-zinc7 dark-text-zinc3 duration-200 ease-linear overflow-hidden"
+    >
+      <p class="p4">Yes. It adheres to the WAI-ARIA design pattern.</p>
+    </div>
+  </div>
+  <div data-accordion-item data-accordion-value="accordion-2" class="rd-lg">
+    <button
+      data-accordion-trigger
+      aria-label="toggle button"
+      class="px4 wfull flex justify-between items-center py2 text-zinc8 dark-text-zinc2 font-medium text-lg ease-linear hover-bg-zinc2/50 dark-hover-bg-zinc8/40 rd-lg focus:outline-blue6 aria-expanded-text-blue6"
+    >
+      Is it unstyled?
+    </button>
+    <div
+      aria-hidden="true"
+      data-accordion-content
+      class="text-zinc7 dark-text-zinc3 duration-200 ease-linear overflow-hidden"
+    >
+      <p class="p4">
+        Yes. It's unstyled by default, giving you freedom over the look and
+        feel.
+      </p>
+    </div>
+  </div>
+  <div data-accordion-item data-accordion-value="accordion-3" class="rd-lg">
+    <button
+      data-accordion-trigger
+      aria-label="toggle button"
+      class="px4 wfull flex justify-between items-center py2 text-zinc8 dark-text-zinc2 font-medium text-lg ease-linear hover-bg-zinc2/50 dark-hover-bg-zinc8/40 rd-lg focus:outline-blue6 aria-expanded-text-blue6"
+    >
+      Can it be animated?
+    </button>
+    <div
+      aria-hidden="true"
+      data-accordion-content
+      class="text-zinc7 dark-text-zinc3 duration-200 ease-linear h0 overflow-hidden"
+    >
+      <p class="p4">
+        Yes! You can use the transition prop to configure the animation.
+      </p>
+    </div>
+  </div>
+</div>
+````
+  </TabPanel>
+</Tabs>
+
+<Callout type="note">
+  We've used UnoCSS for Examples, however you can use TailwindCSS, or your any
+  other CSS library/Framework for styling
+</Callout>
+
+## States
+
+Flexilla Uses data-attribute to store states, each time an action is triggered, the targeted Element will have an update on data-attribute
+
+### Data State : `data-state`
+
+`data-state` attribute is used to store the state of each item. This state is applied to the item and the collapsible Element
+This attribute can be used to target the state of an item using CSS selectors in case needed to apply some styles.
+  - `open` : indicate that the content is set to normal height
+  - `close` : indicate that the content height is to 0
+
+- Play With State in CSS
+```css
+.accordion .item-element[data-state=open]{
+  /* css here  */
+}
+
+.accordion .item-element[data-state=open]  .content{
+  /* css here if needed */
+}
+```
+
+- Play With State using UnoCSs or TailwindCSS
+```html
+<div data-accordion-item data-accordion-value="accordion-3" class="data-[state=open]:bg-red-600">
+  <!-- content here  -->
+</div>
+```
+
+### Aria Expanded `aria-expanded`
+
+This attribute is applied to the trigger element. The value can be `true` or `false`
+
+- Use it in CSS
+
+```css
+.accordion .myButtonTrigger[aria-expanded=true]{
+
+}
+```
+
+- With TailwindCSS/UnoCSS
+
+```html
+<button
+  data-accordion-trigger
+  aria-label="toggle button"
+  class="aria-expanded:text-blue-600 aria-expanded:bg-zinc-900"
+>
+  My Trigger text
+</button>
+```
+
+## Examples
+
+We're using UnoCSS Here for styling but you can use any CSS Lybrary/Framework if you want or even plain CSS.
+
+### With UnoCSS
+
+UnoCSS is similar to TailwindCSS so you can follow the same thing for styling
+
+- [View Accordion Examples With UnoCSS](https://github.com/unify-ui-dev/flexilla/tree/main/examples/vanilla/accordion)
+
+## Accordion mode
+
+- `"single"` : Only one item will be opened at once, when another item is clicked it will automatically close
+- `"multiple"` : allow having multiple item opened at the same time
+
+You can use `data-type` attribute or `options.accordionType` property
+
+### Using `data-type` attribute
+```html
+<!-- accordionElement -->
+<div id="accordion-example" data-accordion-type="single">
+  <!-- items -->
+</div>
+```
+
+### Using `accordionType` property
+
+```js
+const accordion = new Accordion("#accordion-example",
+  {
+    accordionType:"multiple" // [!code ++]
+  }
+)
+```
+
+## Allways open
+
+This mode doesn't have collapsing behavior and always show its content.
+This mode will keep the item always opened and won't close even in single mode.
+To be applied to a  specific item just add `data-always-open` attribute
+
+```html
+<!-- accordion item -->
+<div data-accordion-item data-always-open data-accordion-value="item-3"">
+  <!-- accordion item content and trigger here -->
+</div>
+```
+
+## Prevent from closing all items
+
+This option allow to set if you need to allow closing all item or note
+
+- With `data-prevent-closing-all` attribute
+
+- with `preventClosingAll` option property
+
+## Props
+
+### Params
+
+<BoxTable>
+  <BoxTableRow title="accordion" type="HTMLElement|string">
+    Accordion Selector or Element(must be a valid HTMLElement)
+  </BoxTableRow>
+  <BoxTableRow title="options" type="AccordionOptions">
+    Options object
+  </BoxTableRow>
+</BoxTable>
+
+With JS
+```js
+const accordion = new Accordion("#accordion-example",
+  {
+    // options here
+  }
+)
+```
+
+With TS
+
+```ts
+import type { AccordionOptions} from "@flexilla/accordion"
+
+const options:AccordionOptions = {
+  // options
+}
+new Accordion("#accordion-example", options)
+```
+
+### Options
+
+Options can also be directly passed via data-attribute
+
+<BoxTable>
+  <BoxTableRow
+    title="defaultValue"
+    attribute="data-default-value"
+    type="string"
+  >
+    This will be used to trigger an active item you can also add
+    `data-default-value` to the accordion element to achieve the same thing
+  </BoxTableRow>
+  <BoxTableRow title="accordionType" attribute="data-accordion-type" type="single | multiple">
+    Default is `single`
+  </BoxTableRow>
+  <BoxTableRow title="allowTriggerOnFocus" attribute="data-trigger-on-focus" type="boolean | undefined">
+    Default is `false` 
+  </BoxTableRow>
+  <BoxTableRow title="preventClosingAll" attribute="data-prevent-closing-all" type="boolean | undefined">
+    Default is `false`
+  </BoxTableRow>
+  <BoxTableRow
+    title="onChangeItem"
+    type="method"
+  >
+    This method return the last triggered Item with it `trigger`, `content` and states
+  </BoxTableRow>
+</BoxTable>
+
+## Accessibility
+
