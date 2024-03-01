@@ -1,0 +1,24 @@
+---
+import { ResponsiveShow } from "@components/preact/ResponsiveShow";
+import MegaDropdown from "./MegaDropdown.astro";
+interface Props {
+  device: "desktop" | "mobile";
+}
+const { device } = Astro.props;
+---
+
+{
+  device === "desktop" ? (
+    <ResponsiveShow deviceShow="desktop-to-large" client:only="pract">
+      <div class="absolute left-1/2 -translate-x-1/2 before-absolute before-inset-0 before-content-empty before-b before-b-zinc2/90 dark-before-b-zinc8/60  w180 before-rd-xl top-full before-bg-zinc1/60 dark-before-bg-zinc9/60 before-backdrop-blur-xl z80 invisible translate-y-6 op0 scale-75 group-hover-visible group-hover-translate-y-0 origin-tc group-hover-op100 group-hover-scale-100 transition-none duration-100 group-hover-duration-300 ease-linear group-hover-transition-all">
+        <MegaDropdown />
+      </div>
+    </ResponsiveShow>
+  ) : (
+    <ResponsiveShow deviceShow="tablet-mobile" client:only="pract">
+      <div class="relative b b-zinc2/90 dark-b-zinc8/60  rd-xl bg-zinc1/60 dark-bg-zinc9/60 backdrop-blur-xl">
+        <MegaDropdown />
+      </div>
+    </ResponsiveShow>
+  )
+}

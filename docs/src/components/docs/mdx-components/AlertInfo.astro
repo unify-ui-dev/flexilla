@@ -1,0 +1,34 @@
+---
+interface Props {
+  type: "update" | "note" | "warning" | "important";
+}
+
+const { type } = Astro.props;
+
+const getIcon = (type: "update" | "note" | "warning" | "important") => {
+  return type === "update"
+    ? "i-fx-update"
+    : type === "note"
+      ? "i-fx-note"
+      : type === "warning"
+        ? "i-fx-warning"
+        : type === "important"
+          ? "i-fx-important"
+          : "";
+};
+
+---
+
+<div
+  data-alert
+  class="wfull bg-zinc1/60 dark-bg-zinc9/60 b b-zinc2/90 dark-b-zinc8/60 rd-xl p2 flex items-center gap-x4 my4 first-mt0 last-mb0"
+>
+  <div
+    class="pl2"
+  >
+    <span aria-hidden="true" class={`flex ${getIcon(type)} text-lg`}></span>
+  </div>
+  <div class={`flex-1 text-zinc7 dark-text-zinc3`}>
+    <slot />
+  </div>
+</div>

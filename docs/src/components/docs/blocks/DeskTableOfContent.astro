@@ -1,0 +1,19 @@
+---
+import type { MarkdownHeading } from "astro";
+import TableContent from "./TableContent.astro";
+import { ResponsiveShow } from "@components/preact/ResponsiveShow";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+const { headings } = Astro.props;
+---
+
+<ResponsiveShow deviceShow="desktopXl" client:only="preact">
+  <div data-hidden-scrollbar class="lg-hfull lg-overflow-hidden lg-overflow-y-auto ">
+  <h2 class="text-sm font-semibold hidden lg-flex text-zinc8 dark-text-zinc2">
+    On this page
+  </h2>
+  <TableContent headings={headings} />
+</div>
+</ResponsiveShow>

@@ -1,0 +1,52 @@
+---
+import type { MarkdownHeading } from "astro";
+
+type HeadingWithSubheadings = MarkdownHeading & {
+  subheadings: MarkdownHeading[];
+};
+
+interface Props {
+  heading: HeadingWithSubheadings;
+}
+
+const { heading: h } = Astro.props;
+---
+
+<li>
+    <a
+      href={`#${h.slug}`}
+      hover-text-zinc9
+      dark-hover-text-white
+      ease-linear
+      duration-200
+      un-lg="pl4"
+    >
+      {h.text}
+    </a>
+    {h.subheadings.length > 0 && (
+      <ol pl-2 space-y-2 pt-2>
+        {h.subheadings.map((sub) => (
+          <li>
+            <a
+              href={`#${sub.slug}`}
+              un-flex
+              items-center
+              gap-x1
+              hover-text-zinc9
+              dark-hover-text-white
+              ease-linear
+              duration-200
+            >
+              <span
+                aria-hidden="true"
+                un-flex
+                i-carbon-chevron-right
+                text-sm
+              />
+              {sub.text}
+            </a>
+          </li>
+        ))}
+      </ol>
+    )}
+  </li>

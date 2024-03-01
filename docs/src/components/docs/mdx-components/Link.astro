@@ -1,0 +1,28 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {}
+const { href, "aria-label": label } = Astro.props;
+const href_ = href as string;
+---
+
+{
+  (href_ && href_.startsWith("/")) || (href_ && href_.startsWith("#")) ? (
+    <a href={href} aria-label={!label || label === "" ? "Link to" : label}>
+      <slot />
+    </a>
+  ) : (
+    <a
+      href={href_}
+      aria-label={!label || label === "" ? "Link to" : label}
+      target="_blank"
+      rel="noopener noreferrer"
+      un-flex
+      items-center
+      gap-x2
+    >
+      <slot />
+      <span aria-hidden="true" class="flex i-carbon-arrow-up-right text-10px" />
+    </a>
+  )
+}

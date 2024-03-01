@@ -1,0 +1,13 @@
+---
+import { CopyInBlockBtn } from "@components/preact/CopyInBlockBtn";
+---
+
+<div
+  data-code-component
+  class="relative group overflow-hidden hfull wfull bg-zinc1/60 dark-bg-zinc9/60 rd-xl my4 first-mt0 last-mb0"
+>
+  <CopyInBlockBtn client:only="preact" />
+  <div data-hidden-scrollbar class="py3 wfull flex hfull overflow-auto">
+    <pre class="wfull children-grid children-px5"><slot /></pre>
+  </div>
+</div>

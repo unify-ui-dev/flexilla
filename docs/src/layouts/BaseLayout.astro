@@ -1,0 +1,55 @@
+---
+import "@flexilla/flexilla/flexilla.css";
+import "@assets/css/global.css";
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script is:inline>
+      const docEl = document.documentElement;
+      const getThemePreference = () => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      };
+      const isDark = getThemePreference() === "dark";
+      docEl.classList[isDark ? "add" : "remove"]("dark");
+
+      if (typeof localStorage !== "undefined") {
+        const observer = new MutationObserver(() => {
+          const isDark = docEl.classList.contains("dark");
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+        observer.observe(docEl, {
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+      }
+    </script>
+  </head>
+  <body class="overflow-hidden overflow-y-auto bg-white dark-bg-zinc950">
+    <slot />
+  </body>
+</html>
+<style is:global></style>
+<script>
+  import "@assets/js/theme";
+</script>

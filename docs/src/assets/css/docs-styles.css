@@ -1,0 +1,116 @@
+:root {
+    --astro-code-color-text: #24292f;
+    --astro-code-color-background: #ffffff;
+    --astro-code-token-constant: #0550ae;
+    --astro-code-token-string: #24292f;
+    --astro-code-token-comment: #6e7781;
+    --astro-code-token-keyword: #cf222e;
+    --astro-code-token-parameter: #24292f;
+    --astro-code-token-function: #8250df;
+    --astro-code-token-string-expression: #0a3069;
+    --astro-code-token-punctuation: #24292f;
+    --astro-code-token-link: #000012;
+  }
+
+  html.dark {
+    --astro-code-color-text: #c9d1d9;
+    --astro-code-color-background: #0d1117;
+    --astro-code-token-constant: #79c0ff;
+    --astro-code-token-string: #a5d6ff;
+    --astro-code-token-comment: #8b949e;
+    --astro-code-token-keyword: #ff7b72;
+    --astro-code-token-parameter: #c9d1d9;
+    --astro-code-token-function: #d2a8ff;
+    --astro-code-token-string-expression: #a5d6ff;
+    --astro-code-token-punctuation: #c9d1d9;
+    --astro-code-token-link: #000012;
+  }
+  .line.diff {
+    transition: background-color 0.5s;
+    position: relative;
+    z-index: 1;
+    margin: 0 -20px;
+    padding: 0 20px;
+    width: calc(100% + 40px);
+    display: inline-block;
+  }
+
+  .line.diff.add {
+    background-color: rgba(6, 78, 24, 0.06);
+  }
+  .line.diff.add::before,
+  .line.diff.remove::before {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 16px;
+    padding-left: 4px;
+    border-left-width: 3px;
+  }
+
+  .line.diff.add::before {
+    content: "+";
+    color: green;
+    border-left-color: green;
+  }
+
+  .line.diff.remove {
+    background-color: rgba(219, 17, 17, 0.06);
+  }
+  .line.diff.remove::before {
+    content: "-";
+    color: red;
+    border-left-color: red;
+  }
+
+  [data-tab-fx-site] [data-tab-panel]:has([data-code-block]) {
+    border: 0px !important;
+    background-color: white !important;
+    border-radius: 0px !important;
+  }
+  [data-tab-fx-site] [data-tab-panel] [data-code-block] {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  html.dark [data-tab-fx-site] [data-tab-panel]:has([data-code-block]) {
+    background-color: rgb(9 9 11) !important;
+  }
+
+  [data-hidden-scrollbar] {
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+  [data-hidden-scrollbar]::-webkit-scrollbar {
+    display: none;
+  }
+
+  div > code,
+  li > code,
+  h3 > code {
+    background-color: rgb(244 244 245 / 0.6);
+    border-width: 1px;
+    border-color: rgb(228 228 231 / 0.9);
+    border-radius: 0.5rem;
+    padding: 0.125rem 0.5rem;
+    color: rgb(24 24 27);
+  }
+  html.dark div > code,
+  html.dark li > code,
+  html.dark h3 > code {
+    background-color: rgb(24 24 27 / 0.6);
+    border-color: rgb(39 39 42 / 0.6);
+    color: rgb(244 244 245);
+  }
+
+  [data-tab-panel][data-no-border] {
+    border: 0 !important;
+  }
+
+  [data-tab-panel][data-no-bg],
+  .dark [data-tab-panel][data-no-bg] {
+    background: transparent !important;
+  }

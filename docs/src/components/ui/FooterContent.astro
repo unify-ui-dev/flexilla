@@ -1,0 +1,155 @@
+---
+const footerItems = [
+  {
+    label: "UnifyUI",
+    items: [
+      {
+        text: "UnifyUI",
+        href: "https://uno.unify-ui.dev/",
+        isExternal: true,
+      },
+      {
+        text: "UnifyUI VueJS",
+        href: "#link",
+        isExternal: true,
+      },
+      {
+        text: "Flexiwind",
+        href: "/",
+        isExternal: true,
+      },
+      {
+        text: "Flexiwind Laravel",
+        href: "#link",
+        isExternal: true,
+      },
+      {
+        text: "Flexiwind React",
+        href: "#link",
+        isExternal: true,
+      },
+      {
+        text: "Flexilla",
+        href: "/",
+        isExternal: false,
+      },
+    ],
+  },
+  {
+    label: "Resources",
+    items: [
+      {
+        text: "Licence",
+        href: "#link",
+        isExternal: true,
+      },
+      {
+        text: "Contributing",
+        href: "#link",
+        isExternal: true,
+      },
+      {
+        text: "Contact",
+        href: "#link",
+        isExternal: true,
+      },
+    ],
+  },
+  {
+    label: "Community",
+    items: [
+      {
+        text: "Github",
+        href: "#link",
+        isExternal: true,
+      },
+      {
+        text: "Twitter",
+        href: "#link",
+        isExternal: true,
+      },
+      {
+        text: "Discord",
+        href: "#link",
+        isExternal: true,
+      },
+    ],
+  },
+];
+---
+
+<div
+  class="p5 sm-p6 md-p8 lg-p10 rd-xl b b-zinc2/90 dark-b-zinc8/60 bg-zinc1/60 dark-bg-zinc9/60 backdrop-blur-xl"
+>
+  <div class="grid grid-cols-2 md-grid-cols-4 gap-x6 gap-y10 md-gap-x10">
+    <div class="space-y-6">
+      <a href="/">Flexilla</a>
+      <div class="space-y-3">
+        <p class="text-sm text-zinc6 dark-text-zinc4">
+          Subsribe to our news-letter
+        </p>
+        <form class="w-full max-w-2xl flex flex-col gap-y2">
+          <input
+            type="email"
+            placeholder="johndoe@gmail.com"
+            class="px5 py2.5 rd-xl bg-zinc2/70 dark-bg-zinc8/30 text-zinc7 dark-text-zinc3 outline-transparent focus-outline focus-outline-zinc2 dark-focus-outline-zinc8 flex-1 text-sm"
+          />
+          <button
+            class="w-full rd-xl h9 flex items-center justify-center outline-offset-2 bg-gradient-to-t from-zinc2 to-zinc1 dark-from-zinc9 dark-to-zinc8 b b-zinc2/80 dark-b-zinc8/90 text-sm"
+            aria-label="subscribe to news letter"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+    {
+      footerItems.map((footerItem) => (
+        <div class="space-y-6">
+          <h2 class="text-zinc9 dark-text-white font-semibold">
+            {footerItem.label}
+          </h2>
+          <ul class="text-zinc6 dark-text-zinc4 text-sm space-y-3">
+            {footerItem.items.map((item) => (
+              <li>
+                {item.isExternal ? (
+                  <a
+                    href={item.href}
+                    aria-label={`Link to ${item.text}`}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    class="ease-linear transition-color hover-text-zinc9 dark-hover-text-zinc1"
+                  >
+                    {item.text}
+                  </a>
+                ) : (
+                  <a
+                    href={item.href}
+                    aria-label={`Link to ${item.text}`}
+                    class="ease-linear transition-color hover-text-zinc9 dark-hover-text-zinc1"
+                  >
+                    {item.text}
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+  <div
+    class="text-center b-t b-t-zinc2/90 dark-b-t-zinc8/60 pt6 mt6 text-zinc6 dark-text-zinc4 text-sm"
+  >
+    <p>
+      &copy; 2023-{new Date().getFullYear()}
+      <a
+        href="#dl"
+        aria-label="Link to UnifyUIDev Website"
+        target="_blank"
+        class="text-zinc9 dark-text-white font-medium underline underline-offset-4"
+        >UnifyUI Dev</a
+      >. All rights reserved.
+    </p>
+  </div>
+</div>

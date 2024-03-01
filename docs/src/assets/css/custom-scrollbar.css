@@ -1,0 +1,61 @@
+[data-hidden-scrollbar] .simplebar-track {
+    visibility: invisible;
+    opacity: 0;
+    transition: ease .3s;
+    -webkit-transition: ease .3s;
+    -moz-transition: ease .3s;
+    -ms-transition: ease .3s;
+    -o-transition: ease .3s;
+}
+
+@media (min-width:1024px) {
+    [data-hidden-scrollbar][data-sidebar-content] .simplebar-track {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+
+[data-hidden-scrollbar]:hover .simplebar-track,
+[data-hidden-scrollbar]:active .simplebar-track {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all !important;
+
+}
+
+.simplebar-track {
+    z-index: 30;
+    border-radius: 0.75rem;
+    background-color: rgb(244 244 245 / 0.4);
+}
+
+html.dark .simplebar-track {
+    background-color: rgb(24 24 27 / 0.4);
+}
+
+.simplebar-track .simplebar-scrollbar {
+    background-color: rgb(228 228 231);
+    border-radius: 0.75rem;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    cursor: grab;
+}
+
+.simplebar-track .simplebar-scrollbar:active {
+    cursor: grabbing;
+}
+
+html.dark .simplebar-track .simplebar-scrollbar {
+    background-color: rgb(39 39 42);
+}
+
+.simplebar-track.simplebar-vertical {
+    width: 8px;
+}
+
+.simplebar-track.simplebar-horizontal {
+    height: 8px;
+}

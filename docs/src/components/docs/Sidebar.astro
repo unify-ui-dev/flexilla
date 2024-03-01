@@ -1,0 +1,157 @@
+---
+import SidebarGroup from "./blocks/SidebarGroup.astro";
+
+interface Props {
+  activeItem: string;
+}
+export const sidebarItems = [
+  {
+    label: "Getting Started",
+    items: [
+      {
+        icon: "i-carbon-cube",
+        text: "Introduction",
+        href: "/docs/getting-started",
+        draft: false,
+      },
+      {
+        icon: "i-fx-guide",
+        text: "Installation",
+        href: "/docs/installation",
+        draft: false,
+      },
+      {
+        icon: "i-fx-install",
+        text: "Framework Guide",
+        href: "/docs/framework-guide",
+        draft: false,
+      },
+    ],
+  },
+  {
+    label: "Disclosure",
+    items: [
+      {
+        icon: "i-fx-expand",
+        text: "Accordion",
+        href: "/docs/accordion",
+        draft: false,
+      },
+      {
+        icon: "i-fx-expand-two-way",
+        text: "Collapse",
+        href: "/docs/collapse",
+        draft: false,
+      },
+    ],
+  },
+  {
+    label: "Helper",
+    items: [
+      {
+        icon: "i-fx-dismissible",
+        text: "Dismissible",
+        href: "/docs/dismissible",
+        draft: false,
+      },
+      {
+        icon: "i-fx-theme",
+        text: "Dark mode",
+        href: "/docs/dark-mode",
+        draft: false,
+      },
+    ],
+  },
+  {
+    label: "Navigations",
+    items: [
+      {
+        icon: "i-fx-tabs",
+        text: "Tabs",
+        href: "/docs/tabs",
+        draft: false,
+      },
+    ],
+  },
+  {
+    label: "Overlays",
+    items: [
+      {
+        icon: "i-fx-dropdown",
+        text: "Dropdown",
+        href: "/docs/dropdown",
+        draft: false,
+      },
+      {
+        icon: "i-fx-overlay-modal",
+        text: "Modal",
+        href: "/docs/modal",
+        draft: false,
+      },
+      {
+        icon: "i-fx-offcanvas",
+        text: "Offcanvas",
+        href: "/docs/offcanvas",
+        draft: false,
+      },
+      {
+        icon: "i-fx-popper",
+        text: "Popper",
+        href: "/docs/popper",
+        draft: false,
+      },
+      {
+        icon: "i-fx-tooltip",
+        text: "Tooltip/Popover",
+        href: "/docs/tooltip-popover",
+        draft: false,
+      },
+    ],
+  },
+  {
+    label: "Forms",
+    items: [
+      {
+        icon: "i-fx-auto-resize",
+        text: "Auto Resize Area",
+        href: "/docs/auto-resize-area",
+        draft: false,
+      },
+      {
+        icon: "i-fx-range-slide",
+        text: "Custom Range",
+        href: "/docs/custom-range",
+        draft: false,
+      },
+    ],
+  },
+];
+
+const { activeItem } = Astro.props;
+---
+
+<aside
+  data-sidebar-offcanvas
+  id="doc_sidebar"
+  data-offcanvas-backdrop="bg-zinc8/20 backdrop-blur-md z60"
+  class="flex invisible md-visible -translate-x-full transition md-transition-none data-[state=open]-visible data-[state=open]-translate-x-0 md-translate-x-0 h100dvh md-h-[calc(100vh-4rem)] fixed md-sticky top-0 md-top-16 w11/12 max-w64 sm-w60 md-min-wnone md-max-wnone md-wfull md-pl10 lg-pl0 z60 bg-white/60 dark-bg-zinc950/60 backdrop-blur-xl md-backdrop-filter-none md-bg-transparent md-dark-bg-transparent md-b-r md-b-r-zinc2/80 dark-md-b-r-zinc8/40"
+>
+  <div
+    data-hidden-scrollbar
+    data-sidebar-content
+    class="overflow-hidden overflow-y-auto hfull wfull py6 md-py1"
+  >
+    <nav class="flex flex-col space-y-8 wfull md-py4 px5 sm-px8 md-px0">
+      {
+        sidebarItems.map((sidebarItem) => (
+          <SidebarGroup activeItem={activeItem} {...sidebarItem} />
+        ))
+      }
+    </nav>
+  </div>
+</aside>
+<script>
+  import { OffCanvas } from "@flexilla/flexilla";
+
+  new OffCanvas("[data-sidebar-offcanvas]");
+</script>

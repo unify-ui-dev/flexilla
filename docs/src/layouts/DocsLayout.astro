@@ -1,0 +1,39 @@
+---
+import "@assets/css/docs-styles.css"
+import "@assets/css/scrollbar.css";
+import "@assets/css/custom-scrollbar.css";
+import BaseLayout from "./BaseLayout.astro";
+import Sidebar from "@components/docs/Sidebar.astro";
+import TopDocNav from "@components/docs/blocks/TopDocNav.astro";
+import DocFooter from "./FooterDoc.astro";
+import type { MarkdownHeading } from "astro";
+import DocsNavBar from "./DocsNavBar.astro";
+
+interface Props {
+  title: string;
+  activeItem: string;
+  description?: string;
+  headings: MarkdownHeading[];
+}
+
+const { title, headings, activeItem } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <DocsNavBar/>
+  <div
+    class="mx-auto wfull max-w83rem lg-px8 md-grid md-grid-cols-[200px_minmax(0,1fr)] lg-grid-cols-[220px_minmax(0,1fr)]"
+  >
+    <Sidebar activeItem={activeItem} />
+    <div class="flex flex-col text-zinc7 dark-text-zinc3 relative">
+      <TopDocNav headings={headings} />
+      <main class="grid xl-grid-cols-[1fr_220px] mb20">
+        <slot />
+      </main>
+      <DocFooter />
+    </div>
+  </div>
+</BaseLayout>
+<script>
+  import "@assets/js/sample-scrollbar";
+</script>

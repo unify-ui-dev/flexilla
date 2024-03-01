@@ -1,0 +1,23 @@
+---
+import SwitchThemeBtn from "./../atoms/SwitchThemeBtn.astro";
+---
+
+<div
+  class="flex-1 flex justify-end items-center gap-2 text-zinc7 dark-text-zinc3"
+>
+  <button
+    aria-label="Open Search Modal"
+    class="rd-lg transition ease-linear hover-bg-zinc1/90 dark-hover-bg-zinc9/90 p2.5"
+  >
+    <span aria-hidden="true" class="i-carbon-search flex text-xl"></span>
+  </button>
+  <a
+    href="https://github.com/unify-ui-dev/flexilla"
+    target="_blank"
+    aria-label="Link to Flexilla Repository"
+    class="rd-lg transition ease-linear hover-bg-zinc1/90 dark-hover-bg-zinc9/90 p2.5"
+  >
+    <span aria-hidden="true" class="i-carbon-logo-github flex text-xl"></span>
+  </a>
+  <SwitchThemeBtn />
+</div>

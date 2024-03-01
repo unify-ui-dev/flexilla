@@ -1,0 +1,34 @@
+---
+interface Props {
+  text: string;
+  href: string;
+  type: "prev" | "next";
+}
+
+const { text, href, type } = Astro.props;
+---
+
+<a
+  href={href}
+  aria-label={`Link to : ${text}`}
+  class={`flex flex-col rd-xl gap-2.5 md-items-center md-px3  p2.5 b b-zinc3/80 dark-b-zinc8/80 ease-linear duration-100 hover-b-zinc2/90 dark-hover-b-zinc8/60 hover-bg-zinc1/60 dark-hover-bg-zinc9/60
+  text-zinc7 dark-text-zinc3 hover-text-zinc9 dark-hover-text-white bg-white dark-bg-zinc950
+  ${type === "prev" ? "sm-flex-row" : "sm-flex-row-reverse"}`}
+>
+  <div class="flex items-center">
+    <span aria-hidden="true" class="min-wmax flex p2 rd-full b b-zinc2 dark-b-zinc8">
+      <span
+        class={`${
+          type === "prev" ? "i-carbon-arrow-left" : "i-carbon-arrow-right"
+        }`}></span>
+    </span>
+  </div>
+  <div flex-1 un-flex flex-col space-y-2>
+    <span text-sm text-zinc-5>
+      {type === "prev" ? "Previous" : "Next"} Page
+    </span>
+    <span font-semibold>
+      {text}
+    </span>
+  </div>
+</a>

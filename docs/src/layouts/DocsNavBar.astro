@@ -1,0 +1,37 @@
+---
+import NavLeftGroup from "@components/ui/NavLeftGroup.astro";
+---
+
+<header
+  class="sticky top-0 h16 z50 flex items-center b-b b-b-zinc2/60 dark-b-b-zinc8/60"
+>
+  <nav
+    class="flex justify-between items-center py4 gap8 max-w83rem px5 sm-px10 lg-px8 w-full mxauto relative before-absolute before-content-empty before-inset-0 before-z0 before-bg-white/60 dark-before-bg-zinc950/60 before-backdrop-blur-xl"
+  >
+    <div
+      class="flex items-center gap-x3 flex-1 text-zinc7 dark-text-zinc3 relative"
+    >
+      <div
+        class="flex md-hidden pr0.5 py1 b-r b-zinc2/80 dark-b-zinc8/80 relative z90 -ml2.5"
+      >
+        <button
+        data-offcanvas-trigger
+        data-target="doc_sidebar"
+        aria-label="Show sidebar navigation"
+          class="px2.5 relative space-y-2 [&[data-expanded=true]>#line-1]-rotate-45 [&[data-expanded=true]>#line-2]-rotate-45"
+        >
+          <span
+            class="h0.5 flex w6 rd bg-zinc6 dark-bg-zinc4 transition duration-300"
+            id="line-1"
+            aria-hidden="true"></span>
+          <span
+            class="h0.5 flex w6 rd bg-zinc6 dark-bg-zinc4 transition duration-300"
+            id="line-2"
+            aria-hidden="true"></span>
+        </button>
+      </div>
+      <a href="/" aria-label="Flexilla Home Page" class="">Flexilla</a>
+    </div>
+    <NavLeftGroup/>
+  </nav>
+</header>

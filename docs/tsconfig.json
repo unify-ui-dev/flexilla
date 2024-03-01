@@ -1,0 +1,32 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@helper/*": [
+        "src/helper/*"
+      ],
+      "@data/*": [
+        "src/data/*"
+      ],
+      "@/types/*": [
+        "src/types/*"
+      ]
+    },
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  }
+}

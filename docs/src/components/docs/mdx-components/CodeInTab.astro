@@ -1,0 +1,10 @@
+---
+interface Props {
+  lineHeight?: string;
+}
+const { lineHeight } = Astro.props;
+---
+
+<div class={`wfull flex items-center overflow-hidden ${lineHeight === "10" ? '' : 'h12'}`}>
+  <slot />
+</div>

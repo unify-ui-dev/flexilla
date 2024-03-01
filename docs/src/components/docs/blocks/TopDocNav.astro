@@ -1,0 +1,34 @@
+---
+import type { MarkdownHeading } from "astro";
+import TableContent from "./TableContent.astro";
+import { ResponsiveShow } from "@components/preact/ResponsiveShow";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+---
+
+<div class="flex h14 top-16 sticky xl-hidden z40">
+  <div
+    class="relative hfull wfull flex px5 sm-px10 justify-between items-center before-absolute before-content-empty before-inset-0 before-z0
+before-b-b before-b-b-zinc2/60 dark-before-b-zinc8/60 before-bg-white/60 dark-before-bg-zinc950/60 before-backdrop-blur-xl">
+    <div class="relative z10">
+      <button
+        aria-label="show table of content"
+        class="px3 py1.5 rd-lg ease-linear hover-bg-zinc1/90 dark-hover-bg-zinc9/90"
+      >
+        On this page
+      </button>
+      <ResponsiveShow deviceShow="desktopXl" client:only="preact">
+        <div
+          data-table-of-content-mobile
+          class="absolute -bottom-2 -right-2 flex flex-col lg-hidden"
+        >
+          <TableContent headings={headings} />
+        </div>
+      </ResponsiveShow>
+    </div>
+  </div>
+</div>

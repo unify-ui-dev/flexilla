@@ -1,0 +1,23 @@
+---
+interface Props {
+  value: string;
+  active?: boolean;
+  noBorder?: boolean;
+  noBg?: string;
+}
+
+const { value, active, noBorder, noBg } = Astro.props;
+---
+
+<div
+  data-tab-panel
+  role="tabpanel"
+  id={value}
+  aria-hidden={`${active ? "false" : "true"}`}
+  data-state={`${active ? "visible" : "hidden"}`}
+  data-no-bg={noBg}
+  data-no-border={noBorder}
+  class="hidden data-[state=visible]-block"
+>
+  <slot />
+</div>

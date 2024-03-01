@@ -1,0 +1,81 @@
+---
+import MegaMenuGroup from "./MegaMenuGroup.astro"
+const items: {
+  label: string;
+  items: {
+    text: string;
+    href: string;
+    icon: string;
+    description: string;
+    draft: boolean;
+    external: boolean;
+  }[];
+}[] = [
+  {
+    label: "Use With UnoCSS",
+    items: [
+      {
+        text: "Components",
+        href: "https://uno.unify-ui.dev/blocks/hero-sections",
+        icon: "i-fx-unocss-ico",
+        description: "UnifyUI use Flexilla for interactive Components",
+        draft: true,
+        external: true,
+      },
+      {
+        text: "Astro UI KIt",
+        href: "https://github.com/orgs/unify-ui-dev/repositories",
+        icon: "i-fx-astro-ico",
+        description: "UnifyUI AstroJS UI Kit",
+        draft: true,
+        external: true,
+      },
+      {
+        text: "UnoCSS Examples",
+        href: "https://github.com/orgs/unify-ui-dev/repositories",
+        icon: "i-fx-unocss-ico",
+        description: "Amazing Interactive UI: UnoCSS + Flexilla",
+        draft: false,
+        external: true,
+      },
+    ],
+  },
+  {
+    label: "Use With TailwindCSS",
+    items: [
+      {
+        text: "Components",
+        href: "https://github.com/orgs/unify-ui-dev/repositories",
+        icon: "i-fx-tailwind-ico",
+        description: "Flexiwind use Flexilla for interactive Components",
+        draft: true,
+        external: true,
+      },
+      {
+        text: "Laravel UI KIt",
+        href: "https://github.com/orgs/unify-ui-dev/repositories",
+        icon: "i-fx-laravel-ico",
+        description: "Laravel UI Kit based on Flexiwind",
+        draft: true,
+        external: true,
+      },
+      {
+        text: "Tailwind Examples",
+        href: "https://github.com/orgs/unify-ui-dev/repositories",
+        icon: "i-fx-tailwind-ico",
+        description: "Amazing Interactive UI: TailwindCSS + Flexilla",
+        draft: true,
+        external: true,
+      },
+    ],
+  },
+];
+---
+
+<div class="p5 lg-p8 grid lg-grid-cols-2 gap-y16 lg-gap-x14 relative">
+  {
+    items.map((item) => (
+      <MegaMenuGroup {...item}/>
+    ))
+  }
+</div>

@@ -1,0 +1,40 @@
+---
+interface Props {
+  values: string[];
+  autoHeight?: boolean;
+}
+
+const { values, autoHeight } = Astro.props;
+---
+
+<div
+  data-tab-fx-site
+  data-fx-tabs
+  role="tab"
+  data-indicator-class-name="before-absolute before-bottom-0 before-content-empty before-h0.5 before-rd-full before-inset-x-0 before-bg-zinc8 dark-before-bg-white"
+  my-2
+>
+  <div role="tablist" data-tab-list class="flex b-b b-b-zinc6/30 dark-b-b-zinc5/20 relative">
+    <div un-flex items-center gap-x3 un-relative>
+      {
+        values.map((value) => (
+          <button
+            data-tabs-trigger
+            data-target={value}
+            aria-label={`Go to tab ${value}`}
+            class="flex disabled-cursor-not-allowed disabled-op80 px4 pt1.5 pb2.5 data-[state=active]-text-zinc9 dark-data-[state=active]-text-white focus-outline-none"
+          >
+            {value}
+          </button>
+        ))
+      }
+    </div>
+  </div>
+  <div
+    data-panels-container
+    class={`pt6 children-bg-zinc1/60 children-dark-bg-zinc9/60 children-b children-b-zinc2/90 children-dark-b-zinc8/60 children-rd-xl ${autoHeight ? "children-hmax" : "children-h96"}`}
+  >
+    <slot />
+  </div>
+</div>
+
