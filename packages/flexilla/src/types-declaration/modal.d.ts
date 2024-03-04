@@ -13,6 +13,11 @@ export declare class Modal {
      * @param triggerElement
      */
     constructor(modal: string | HTMLElement, options?: ModalOptions, triggerElement?: string | HTMLElement);
+    /**
+     * auto init Modals based on the selector provided
+     * @param selector {string} default is [data-fx-modal] attribute
+     */
+    static autoInit: (selector?: string) => void;
 }
 
 /**

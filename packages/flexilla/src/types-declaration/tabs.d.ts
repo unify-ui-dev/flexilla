@@ -26,6 +26,7 @@ export declare class Tabs {
      * @param options
      */
     constructor(tabs: string | HTMLElement, options?: TabsOptions);
+    private getDefActivePanelValue;
     private init;
     private attachTriggerEvents;
     private initializeTab;
@@ -33,6 +34,11 @@ export declare class Tabs {
      * @param tabValue {string} the value of the targeted tabpanel
      */
     changeTab: (tabValue: string) => void;
+    /**
+     * auto init Tabs Elements based on the selector provided
+     * @param selector {string} default is [data-fx-tabs] attribute
+     */
+    static autoInit: (selector?: string) => void;
 }
 
 export declare type TabsOptions = {

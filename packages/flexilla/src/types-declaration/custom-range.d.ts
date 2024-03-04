@@ -8,4 +8,9 @@ export declare class CustomRange {
     private initIndicator;
     private updateIndicatorSize;
     private init;
+    /**
+     * auto init the Custom Input Range based on the selector provided
+     * @param selector {string} default is [data-fx-custom-range]
+     */
+    static autoInit: (selector?: string) => void;
 }

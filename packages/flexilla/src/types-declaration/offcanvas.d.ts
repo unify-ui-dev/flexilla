@@ -45,6 +45,11 @@ export declare class OffCanvas {
     private init;
     open(): void;
     close(): void;
+    /**
+     * auto init Offcanvas based on the selector provided
+     * @param selector {string} default is [data-fx-offcanvas] attribute
+     */
+    static autoInit: (selector?: string) => void;
 }
 
 export declare type OffcanvasOptions = {

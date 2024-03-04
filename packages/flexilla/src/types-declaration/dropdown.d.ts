@@ -22,6 +22,11 @@ export declare class Dropdown {
     show(): void;
     hide(): void;
     private init;
+    /**
+     * auto init dropdown Components based on the selector provided
+     * @param selector {string} default is [data-fx-dropdown] attribute
+     */
+    static autoInit: (selector?: string) => void;
 }
 
 export declare type DropdownOptions = {

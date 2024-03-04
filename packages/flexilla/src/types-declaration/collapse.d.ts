@@ -18,6 +18,11 @@ export declare class Collapse {
     hide: () => void;
     toggle: () => void;
     private init;
+    /**
+     * auto init collapse components based on the selector provided
+     * @param selector {string} default is [data-fx-collapse]
+     */
+    static autoInit: (selector?: string) => void;
 }
 
 export declare type CollapseOptions = {

@@ -21,10 +21,14 @@ export declare class Tooltip {
     show(): void;
     hide(): void;
     private init;
+    /**
+     * auto init Tooltips based on the selector provided
+     * @param selector {string} default is [data-fx-tooltip]
+     */
+    static autoInit: (selector?: string) => void;
 }
 
 export declare type TooltipOptions = {
-    defineRequiredStyles?: "inject" | "custom";
     placement?: Placement;
     offsetDistance?: number;
     triggerStrategy?: "click" | "hover";

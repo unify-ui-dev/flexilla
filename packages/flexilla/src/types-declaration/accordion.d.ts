@@ -17,6 +17,11 @@ export declare class Accordion {
     showItem: (selector: string) => void;
     hideItem: (selector: string) => void;
     private init;
+    /**
+     * auto init accordion components based on the selector provided
+     * @param selector {string} default is [data-fx-accordion]
+     */
+    static autoInit: (selector?: string) => void;
 }
 
 export declare type AccordionOptions = {
