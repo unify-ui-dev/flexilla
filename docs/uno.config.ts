@@ -6,6 +6,8 @@ import {
   presetUno,
 } from "unocss";
 
+import unifyUI from "@flexilla/uno-preset"
+
 export default defineConfig({
 
   presets: [
@@ -14,6 +16,7 @@ export default defineConfig({
     presetMini({
       dark: "class",
     }),
+    unifyUI({}),
     presetIcons({
       collections: {
         fx: {
