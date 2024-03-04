@@ -1,17 +1,14 @@
-import SimpleBar from 'simplebar';
+import {
+    OverlayScrollbars
+} from 'overlayscrollbars';
 
 
-import ResizeObserver from 'resize-observer-polyfill';
-window.ResizeObserver = ResizeObserver;
+// document.querySelectorAll('[data-hidden-scrollbar]')
+const elements = Array.from(document.querySelectorAll('[data-hidden-scrollbar-s]')) as HTMLElement[]
 
+for (const element of elements) {
 
-const customScrollbarBuild = () => {
-    const costumScrollBars = document.querySelectorAll('[data-hidden-scrollbar]')
-    if (costumScrollBars) costumScrollBars.forEach(costumScrollBar => {
-        if (costumScrollBar instanceof HTMLElement) {
-            new SimpleBar(costumScrollBar)
-        }
-    })
+    const osInstance = OverlayScrollbars(element, {
+        
+    });
 }
-
-customScrollbarBuild()
