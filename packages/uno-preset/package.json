@@ -1,0 +1,64 @@
+{
+  "name": "@flexilla/uno-preset",
+  "private": false,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "!vite.config.ts",
+    "!.gitignore",
+    "!tsconfig.json",
+    "!biome.js"
+  ],
+  "scripts": {
+    "build": "rimraf dist && unbuild",
+    "preview": "vite preview",
+    "format": "biome format --write ./src"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.5.1",
+    "@types/node": "^20.11.24",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.2.2",
+    "unbuild": "^2.0.0",
+    "unocss": "^0.58.5"
+  },
+  "peerDependencies": {
+    "unocss": ">=0.58.5  <1.0.0"
+  },
+  "keywords": [
+    "uno preset",
+    "unocss",
+    "unocss component",
+    "unocss ui",
+    "unocss",
+    "flexilla"
+  ],
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unify-ui-dev/flexilla"
+  },
+  "bugs": {
+    "url": "https://github.com/unify-ui-dev/flexilla/issues"
+  },
+  "license": "MIT",
+  "author": "johnkat-mj"
+}
