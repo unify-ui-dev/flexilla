@@ -1,7 +1,7 @@
 {
   "name": "@flexilla/popper",
   "private": false,
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "description": "A JavaScript library for positioning dropdown, popovers and tooltips",
   "publishConfig": {
