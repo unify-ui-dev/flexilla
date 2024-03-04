@@ -11,13 +11,15 @@ const { value, active, noBorder, noBg } = Astro.props;
 
 <div
   data-tab-panel
+  aria-labelledby={value}
   role="tabpanel"
   id={value}
+  tabindex="0"
   aria-hidden={`${active ? "false" : "true"}`}
-  data-state={`${active ? "visible" : "hidden"}`}
+  data-state={`${active ? "active" : "inactive"}`}
   data-no-bg={noBg}
   data-no-border={noBorder}
-  class="hidden data-[state=visible]-block"
+  class="hidden data-[state=active]-flex active-outline-zinc8/50 focus-outline-zinc8/50"
 >
   <slot />
 </div>

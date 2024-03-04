@@ -3,15 +3,15 @@ import { Tabs, Accordion } from "@flexilla/flexilla";
 
 const allTabs = Array.from(document.querySelectorAll("[data-tab-fx-site]"))
 
-allTabs.forEach((tabs) => {
+for(const tabs of allTabs){
     new Tabs(tabs as HTMLElement);
-})
+}
 
 const allAccordionWithAttribute = Array.from(document.querySelectorAll("[data-accordion-example]"))
 if (allAccordionWithAttribute.length > 0) {
-    allAccordionWithAttribute.forEach((accordion) => {
+    for(const accordion of allAccordionWithAttribute){
         new Accordion(accordion as HTMLElement)
-    })
+    }
 }
 
 const acExampleWithOp1 = document.querySelector("[data-accordion-with-options]")

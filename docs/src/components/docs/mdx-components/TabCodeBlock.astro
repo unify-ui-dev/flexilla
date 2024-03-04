@@ -44,7 +44,9 @@ export const getIcon = (iconName: string) => {
           <button
             data-tabs-trigger
             data-target={triggerValue.value}
-            aria-label={`Go to tab ${triggerValue.value}`}
+            aria-label={`${triggerValue.value}`}
+            aria-control={triggerValue.value}
+            role="presentation"
             class="flex items-center gap-x2 disabled-cursor-not-allowed disabled-op80 px3.5 py2 data-[state=active]-text-zinc9 dark-data-[state=active]-text-white focus-outline-none"
           >
             {triggerValue.icon && triggerValue.icon !== "" ? (
