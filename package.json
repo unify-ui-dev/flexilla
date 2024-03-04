@@ -6,7 +6,7 @@
   ],
   "scripts": {
     "format": "biome format --write ./",
-    "build-utilities": "npx lerna run build --scope=@flexilla/utilities && npx lerna run build --scope=@flexilla/popper",
+    "build-utilities": "npx lerna run build --scope=@flexilla/uno-preset && npx lerna run build --scope=@flexilla/utilities && npx lerna run build --scope=@flexilla/popper",
     "build-packages": "npx lerna run build --scope=@flexilla/accordion && npx lerna run build --scope=@flexilla/auto-resize-area && npx lerna run build --scope=@flexilla/collapse && npx lerna run build --scope=@flexilla/custom-range && npx lerna run build --scope=@flexilla/dismissible && npx lerna run build --scope=@flexilla/dropdown && npx lerna run build --scope=@flexilla/modal && npx lerna run build --scope=@flexilla/offcanvas && npx lerna run build --scope=@flexilla/tabs && npx lerna run build --scope=@flexilla/tooltip",
     "build": "npm run build-utilities && npm run build-packages && npx lerna run build --scope=@flexilla/flexilla"
   },
