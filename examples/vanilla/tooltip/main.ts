@@ -1,7 +1,6 @@
 import { Tooltip } from "@flexilla/tooltip"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
-import "@flexilla/tooltip/tooltip.css"
 
 new Tooltip("[data-tooltip]#tooltip-test")
 

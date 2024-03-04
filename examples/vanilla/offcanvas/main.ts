@@ -1,12 +1,11 @@
 import { OffCanvas } from "@flexilla/offcanvas"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
-import "@flexilla/offcanvas/offcanvas.css"
 new OffCanvas("[data-slideover-from-left]",
     {
         backdrop: {
             visibility: "visible",
-            backdropClass: "bg-gray/50"
+            backdropClass: "ui-overlay bg-gray/50"
         }
     }
 )
@@ -16,7 +15,7 @@ new OffCanvas(
     {
         backdrop: {
             visibility: "visible",
-            backdropClass: "bg-gray/50"
+            backdropClass: "ui-overlay bg-gray/50"
         }
     }
 )
@@ -24,7 +23,7 @@ new OffCanvas("[data-slideover-from-bottom]",
     {
         backdrop: {
             visibility: "visible",
-            backdropClass: "bg-gray/50"
+            backdropClass: "ui-overlay bg-gray/50"
         }
     }
 )
@@ -33,7 +32,7 @@ new OffCanvas("[data-slideover-from-right]",
     {
         backdrop: {
             visibility: "visible",
-            backdropClass: "bg-gray/50"
+            backdropClass: "ui-overlay bg-gray/50"
         }
     }
 )

@@ -1,7 +1,6 @@
 import { Dropdown } from "@flexilla/dropdown"
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
-import "@flexilla/dropdown/dropdown.css"
 
 new Dropdown("[data-drop-down-1]")
 new Dropdown("[data-drop-down-2]")

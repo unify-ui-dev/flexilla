@@ -17,7 +17,7 @@ import unifyUI from "@flexilla/uno-preset"
     presets: [
       presetUno(),
       presetAttributify(),
-      unifyUI({ prefix: "fx" }),
+      unifyUI({}),
       presetIcons({
         collections: {
           carbon: () =>
