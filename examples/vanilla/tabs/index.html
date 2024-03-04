@@ -27,71 +27,40 @@
                 Default Tabs
             </h1>
             <div class="p10 rd-lg bg-gradient-to-bl from-blue6 via-indigo4 to-sky6">
-                <div data-fx-tabs data-tabs role="tab" class="bg-white wfull rd-lg">
-                    <div data-tab-list role="tablist"
-                        class="flex items-center relative h12 px1 bg-gray1 dark-bg-gray9 wfull rd-t-md">
-                        <button data-tabs-trigger data-target="tab1" aria-controls="tab1"
+                <div data-fx-tabs data-tabs data-default-value="tab2" class="bg-white wfull rd-lg">
+                    <ul data-tab-list role="tablist" 
+                        class="flex items-center relative h12 px1 bg-gray1 dark-bg-gray9 wfull rd-t-md children-cursor-pointer">
+                        <li data-tabs-trigger data-target="tab1" aria-controls="tab1" tabindex="0"
                             class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
                             Tab 1
-                        </button>
-                        <button data-tabs-trigger data-state="active" data-target="tab2" aria-controls="tab2"
+                        </li>
+                        <li data-tabs-trigger data-target="tab2" aria-controls="tab2" tabindex="-1"
                             class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
                             Tab2
-                        </button>
-                        <button data-tabs-trigger data-target="tab3" aria-controls="tab3"
+                        </li>
+                        <li data-tabs-trigger data-target="tab3" aria-controls="tab3" tabindex="-1"
                             class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
                             Tab3
-                        </button>
-                    </div>
+                        </li>
+                    </ul>
                     <div data-panels-container>
                         <div role="tabpanel"
+                            tabindex="0"
                             class="ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
-                            data-tab-panel data-initial-active id="tab1" aria-labelledby="tab1">
+                            data-tab-panel data-state="active" id="tab1" aria-labelledby="tab1">
                             Tab 1 Content
                         </div>
                         <div role="tabpanel"
+                            tabindex="0"
                             class="ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
                             data-tab-panel id="tab2" aria-labelledby="tab2">
                             Tab 2 Content
                         </div>
                         <div role="tabpanel"
+                            tabindex="0"
                             class="ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
                             data-tab-panel id="tab3" aria-labelledby="tab3">
-                            <div data-fx-tabs data-tabs-nested role="tab" class="bg-white wfull rd-lg">
-                                <div data-tab-list role="tablist"
-                                    class="flex items-center relative h12 px1 bg-gray1 dark-bg-gray9 wfull rd-t-md">
-                                    <button data-tabs-trigger data-target="tab1" aria-controls="tab1"
-                                        class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
-                                        Tab 1
-                                    </button>
-                                    <button data-tabs-trigger data-state="active" data-target="tab2"
-                                        aria-controls="tab2"
-                                        class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
-                                        Tab2
-                                    </button>
-                                    <button data-tabs-trigger data-target="tab3" aria-controls="tab3"
-                                        class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
-                                        Tab3
-                                    </button>
-                                </div>
-                                <div data-panels-container>
-                                    <div role="tabpanel"
-                                        class="ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
-                                        data-tab-panel data-initial-active id="tab1" aria-labelledby="tab1">
-                                        Tab 1 Content
-                                    </div>
-                                    <div role="tabpanel"
-                                        class="ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
-                                        data-tab-panel id="tab2" aria-labelledby="tab2">
-                                        Tab 2 Content
-                                    </div>
-                                    <div role="tabpanel"
-                                        class="ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
-                                        data-tab-panel id="tab3" aria-labelledby="tab3">
-                                        Tab 3 Content
-                                    </div>
-                                </div>
-                            </div>
+                            Tab 3 Content
                         </div>
                     </div>
                 </div>
@@ -109,31 +78,31 @@
             </div>
             <div class="p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6">
                 <div data-with-indicator data-fx-tabs
-                    data-indicator-class-name="bg-gray3 flex rd absolute ease-linear duration-200" role="tab" wfull>
-                    <div data-tab-list role="tablist"
-                        class="flex items-center relative p0.5 bg-gray1 dark-bg-gray9 wfull rd-md">
-                        <button data-tabs-trigger data-target="tab1" aria-controls="tab1" data-state="active"
+                    data-indicator-class-name="bg-gray3 flex rd absolute ease-linear duration-200" wfull>
+                    <ul data-tab-list role="tablist"
+                        class="flex items-center relative p0.5 bg-gray1 dark-bg-gray9 wfull rd-md children-cursor-pointer">
+                        <li data-tabs-trigger role="presentation" data-target="tab1" aria-controls="tab1" data-state="active" tabindex="0"
                             class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
                             Tab 1
-                        </button>
-                        <button data-tabs-trigger data-target="tab2" aria-controls="tab2"
+                        </li>
+                        <li data-tabs-trigger role="presentation" data-target="tab2" aria-controls="tab2" tabindex="-1"
                             class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
                             Tab2
-                        </button>
-                        <button data-tabs-trigger data-target="tab3" aria-controls="tab3"
+                        </li>
+                        <li data-tabs-trigger role="presentation" data-target="tab3" aria-controls="tab3" tabindex="-1"
                             class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
                             Tab3
-                        </button>
-                    </div>
+                        </li>
+                    </ul>
                     <div data-panels-container hmax bg-white rd-lg>
                         <div role="tabpanel"
                             class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
-                            data-tab-panel id="tab1" aria-labelledby="tab1">
+                            data-tab-panel id="tab1" data-state="active" aria-labelledby="tab1">
                             Tab1 Content
                         </div>
                         <div role="tabpanel"
                             class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
-                            data-tab-panel id="tab2" aria-labelledby="tab2">
+                            data-tab-panel  id="tab2" aria-labelledby="tab2">
                             Tab 2
                         </div>
                         <div role="tabpanel"
@@ -141,23 +110,22 @@
                             data-tab-panel id="tab3" aria-labelledby="tab3">
                             <div data-tabs-nested2 data-fx-tabs
                                 data-indicator-class-name="bg-gray3 flex rd absolute ease-linear duration-200"
-                                role="tab" wfull>
-                                <div data-tab-list role="tablist"
-                                    class="flex items-center relative p0.5 bg-gray1 dark-bg-gray9 wfull rd-md">
-                                    <button data-tabs-trigger data-target="tab1" aria-controls="tab1"
-                                        data-state="active"
+                                wfull>
+                                <ul data-tab-list role="tablist"
+                                    class="flex items-center relative p0.5 bg-gray1 dark-bg-gray9 wfull rd-md children-cursor-pointer">
+                                    <li data-tabs-trigger data-target="tab1" aria-controls="tab1"
                                         class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
                                         Tab 1
-                                    </button>
-                                    <button data-tabs-trigger data-target="tab2" aria-controls="tab2"
+                                    </li>
+                                    <li data-tabs-trigger data-target="tab2" aria-controls="tab2"
                                         class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
                                         Tab2
-                                    </button>
-                                    <button data-tabs-trigger data-target="tab3" aria-controls="tab3"
+                                    </li>
+                                    <li data-tabs-trigger data-target="tab3" aria-controls="tab3"
                                         class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
                                         Tab3
-                                    </button>
-                                </div>
+                                    </li>
+                                </ul>
                                 <div data-panels-container hmax bg-white rd-lg>
                                     <div role="tabpanel"
                                         class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
@@ -171,7 +139,7 @@
                                     </div>
                                     <div role="tabpanel"
                                         class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
-                                        data-tab-panel id="tab3" aria-labelledby="tab3">
+                                        data-tab-panel id="tab3" data-state="active" aria-labelledby="tab3">
                                         Tab 3 Content
                                     </div>
                                 </div>
@@ -187,23 +155,23 @@
                 Orientation : Vertical
             </h1>
             <div class="text-gray7 dark-text-gray3 p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6">
-                <div data-vertical-tab data-fx-tabs data-orientation="vertical" role="tab"
+                <div data-vertical-tab data-fx-tabs data-orientation="vertical"
                     class="flex items-start wfull">
-                    <div data-tab-list role="tablist"
+                    <ul data-tab-list role="tablist"
                         class="flex flex-col p0.5 wmax relative bg-gray1 dark-bg-gray9 rd-md">
-                        <button data-tabs-trigger data-target="tab1" aria-controls="tab1"
+                        <li data-tabs-trigger data-target="tab1" aria-controls="tab1"
                             class="px4 py2 rd data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
                             Tab 1
-                        </button>
-                        <button data-tabs-trigger data-target="tab2" aria-controls="tab2"
+                        </li>
+                        <li data-tabs-trigger data-target="tab2" aria-controls="tab2"
                             class="px4 py2 rd data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
                             Tab2
-                        </button>
-                        <button data-tabs-trigger data-target="tab3" aria-controls="tab3"
+                        </li>
+                        <li data-tabs-trigger data-target="tab3" aria-controls="tab3"
                             class="px4 py2 rd data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
                             Tab3
-                        </button>
-                    </div>
+                        </li>
+                    </ul>
                     <div data-panels-container class="flex-1">
                         <div role="tabpanel"
                             class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md ml2"
@@ -211,8 +179,9 @@
                             Tab 1 Content
                         </div>
                         <div role="tabpanel"
+                            data-state="active"
                             class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md ml2"
-                            data-tab-panel id="tab2" aria-labelledby="tab2">
+                            data-tab-panel id="tab2" data-state="active" aria-labelledby="tab2">
                             Tab 2 Content
                         </div>
                         <div role="tabpanel"
@@ -229,25 +198,25 @@
                 Orientation : Vertical With Indicator
             </h1>
             <div class="text-gray7 dark-text-gray3 p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6">
-                <div data-vertical-tab-2 data-fx-tabs data-orientation="vertical" role="tab"
+                <div data-vertical-tab-2 data-fx-tabs data-orientation="vertical"
                     class="flex items-start wfull">
-                    <div data-tab-list role="tablist"
-                        class="flex flex-col p0.5 wmax relative bg-gray1 dark-bg-gray9 rd-md">
-                        <button data-tabs-trigger data-target="tab1" aria-controls="tab1"
+                    <ul data-tab-list role="tablist"
+                        class="flex flex-col p0.5 wmax relative bg-gray1 dark-bg-gray9 rd-md children-cursor-pointer">
+                        <li data-tabs-trigger data-target="tab1" aria-controls="tab1"
                             class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
                             Tab 1
-                        </button>
-                        <button data-tabs-trigger data-target="tab2" aria-controls="tab2"
+                        </li>
+                        <li data-tabs-trigger data-target="tab2" aria-controls="tab2"
                             class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
                             Tab2
-                        </button>
-                        <button data-tabs-trigger data-target="tab3" aria-controls="tab3"
+                        </li>
+                        <li data-tabs-trigger data-target="tab3" aria-controls="tab3"
                             class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
                             Tab3
-                        </button>
-                    </div>
+                        </li>
+                    </ul>
                     <div data-panels-container class="flex-1">
-                        <div role="tabpanel"
+                        <div role="tabpanel" data-state="active"
                             class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md ml2"
                             data-tab-panel id="tab1" aria-labelledby="tab1">
                             Tab 1 Content
@@ -271,22 +240,22 @@
                 With Default Index
             </h1>
             <div class="p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6 text-gray7 dark-text-gray3">
-                <div data-tab-default-indicator data-fx-tabs data-default-value="tab2" role="tab">
-                    <div data-tab-list role="tablist"
-                        class="flex items-center relative h12 px1 bg-gray1 dark-bg-gray9 wfull rd-md">
-                        <button data-tabs-trigger data-target="tab1" aria-controls="tab1"
-                            class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2/3 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
+                <div data-tab-default-indicator data-fx-tabs data-default-value="tab2">
+                    <ul data-tab-list role="tablist"
+                        class="flex items-center relative h12 px1 bg-gray1 dark-bg-gray9 wfull rd-md children-cursor-pointer">
+                        <li data-tabs-trigger data-target="tab1" aria-controls="tab1"
+                            class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2/3 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4 relative">
                             Tab 1
-                        </button>
-                        <button data-tabs-trigger data-target="tab2" aria-controls="tab2"
-                            class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
+                        </li>
+                        <li data-tabs-trigger data-target="tab2" aria-controls="tab2"
+                            class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4 relative">
                             Tab2
-                        </button>
-                        <button data-tabs-trigger data-target="tab3" aria-controls="tab3"
-                            class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
+                        </li>
+                        <li data-tabs-trigger data-target="tab3" aria-controls="tab3"
+                            class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4 relative">
                             Tab3
-                        </button>
-                    </div>
+                        </li>
+                    </ul>
                     <div data-panels-container>
                         <div role="tabpanel"
                             class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
@@ -295,7 +264,7 @@
                         </div>
                         <div role="tabpanel"
                             class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
-                            data-tab-panel id="tab2" aria-labelledby="tab2">
+                            data-tab-panel id="tab2" data-state="active" aria-labelledby="tab2">
                             Tab 2 Content
                         </div>
                         <div role="tabpanel"
@@ -312,38 +281,38 @@
                 Show Panel With Animation : keyframes animation
             </h1>
             <div class="p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6 text-gray7 dark-text-gray3">
-                <div data-tab-animated-key data-fx-tabs data-show-animation="fadeIn .8s cubic-bezier(.48,1.55,.28,1)"
-                    data-indicator-class-name="bg-gray2 dark-bg-gray8 rd" role="tab">
-                    <div data-tab-list role="tablist"
-                        class="flex items-center relative p0.5 bg-gray1 dark-bg-gray9 wfull rd-md">
-                        <button data-tabs-trigger data-target="settingTab" aria-controls="settingTab"
+                <div data-tab-animated-key data-fx-tabs data-animated-panels data-show-animation="fadeIn .8s cubic-bezier(.48,1.55,.28,1)"
+                    data-indicator-class-name="bg-gray2 dark-bg-gray8 rd">
+                    <ul data-tab-list role="tablist"
+                        class="flex items-center relative p0.5 bg-gray1 dark-bg-gray9 wfull rd-md children-cursor-pointer">
+                        <li data-tabs-trigger data-target="settingTab" aria-controls="settingTab"
                             class="px4 py2 flex items-center gap-x2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative z20">
                             <span aria-hidden="true" class="flex i-carbon-settings"></span>
                             Setting
-                        </button>
-                        <button data-tabs-trigger data-target="billingTab" aria-controls="billingTab"
+                        </li>
+                        <li data-tabs-trigger data-target="billingTab" aria-controls="billingTab"
                             class="px4 py2 flex items-center gap-x2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative z20">
                             <span aria-hidden="true" class="flex i-carbon-flash"></span>
                             Billing
-                        </button>
-                        <button data-tabs-trigger data-target="accountTab" aria-controls="accountTab"
+                        </li>
+                        <li data-tabs-trigger data-target="accountTab" aria-controls="accountTab"
                             class="px4 py2 flex items-center gap-x2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative z20">
                             <span aria-hidden="true" class="flex i-carbon-user"></span>
                             Account
-                        </button>
-                    </div>
+                        </li>
+                    </ul>
                     <div data-panels-container>
-                        <div role="tabpanel" hmax bg-white rd-lg
+                        <div role="tabpanel" tabindex="0" hmax bg-white rd-lg
                             class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
                             data-tab-panel id="settingTab" aria-label="settingTab">
                             Setting tab Content
                         </div>
-                        <div role="tabpanel" hmax bg-white rd-lg
+                        <div role="tabpanel" tabindex="0" hmax bg-white rd-lg
                             class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
                             data-tab-panel id="billingTab" aria-labelledby="billingTab">
                             Billing Tab Content
                         </div>
-                        <div role="tabpanel" hmax bg-white rd-lg
+                        <div role="tabpanel" tabindex="0" hmax bg-white rd-lg
                             class="ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
                             data-tab-panel id="accountTab" aria-labelledby="accountTab">
                             Account Tab Content

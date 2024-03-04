@@ -5,19 +5,19 @@ import {
     presetUno,
     presetAttributify
   } from "unocss";
+
+import unifyUI from "@flexilla/uno-preset"
   
   export default defineConfig({
     content: {
       pipeline: {
-        include: [
-          /\.(js|ts)($|\?)/,
-        ],
-        exclude: ["node_modules"]
+
       },
     },
     presets: [
       presetUno(),
       presetAttributify(),
+      unifyUI({ prefix: "fx" }),
       presetIcons({
         collections: {
           carbon: () =>

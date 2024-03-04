@@ -5,7 +5,7 @@ import "@flexilla/tabs/tabs.css"
 
 
 new Tabs("[data-tabs]")
-new Tabs("[data-tabs-nested]")
+
 new Tabs("[data-tabs-nested2]")
 
 new Tabs("[data-with-indicator]")
