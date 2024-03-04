@@ -1,13 +1,13 @@
 ---
-import ButtonCopyInTabCode from '@components/preact/ButtonCopyInTabCode';
-
+import ButtonCopyInTabCode from "@components/preact/ButtonCopyInTabCode";
 
 interface Props {
   values: { text: string; value: string; icon?: string }[];
   showCopyBlock?: boolean;
+  autoHeight?: boolean;
 }
 
-const { values, showCopyBlock } = Astro.props;
+const { values, showCopyBlock, autoHeight } = Astro.props;
 
 export const getIcon = (iconName: string) => {
   if (iconName === "unocss") return "i-fx-unocss-ico";
@@ -19,7 +19,7 @@ export const getIcon = (iconName: string) => {
   else if (iconName === "tailwind") return "i-fx-tailwind-ico";
   else if (iconName === "laravel") return "i-fx-laravel-ico";
   else if (iconName === "symfony") return "i-fx-symphony-ico";
-  else if(iconName==="shell") return "i-fx-shell";
+  else if (iconName === "shell") return "i-fx-shell";
 };
 ---
 
@@ -27,13 +27,14 @@ export const getIcon = (iconName: string) => {
   data-tab-fx-site
   data-fx-tabs
   data-code-block
-  data-indicator-class-name="rd-lg bg-zinc1/50 dark-bg-zinc-9/50 b b-zinc6/30 dark-b-zinc5/20 before-absolute before-content-empty before-hpx before-inset-x-4 before-bg-gradient-to-l before-from-transparent before-via-zinc-4 dark-before-via-zinc7 before-to-transparent after-absolute after-bottom-0 after-content-empty after-hpx after-inset-x-4 after-bg-gradient-to-l after-from-transparent after-via-zinc-4 dark-after-via-zinc7"
-  class="my4 first-mt0 last-mb0 h96 flex flex-col w-full !b-0 !b-transparent"
+  data-indicator-class-name="ui-tabs-indicator rd-lg bg-zinc1/50 dark-bg-zinc-9/50 b b-zinc6/30 dark-b-zinc5/20 before-absolute before-content-empty before-hpx before-inset-x-4 before-bg-gradient-to-l before-from-transparent before-via-zinc-4 dark-before-via-zinc7 before-to-transparent after-absolute after-bottom-0 after-content-empty after-hpx after-inset-x-4 after-bg-gradient-to-l after-from-transparent after-via-zinc-4 dark-after-via-zinc7"
+  class={`my4 first-mt0 last-mb0 flex flex-col w-full !b-0 !b-transparent
+    ${autoHeight ? "" : "h96"}`}
 >
   <div
     data-tab-list
     class="rd-t-xl bg-white dark-bg-zinc950 flex items-center justify-between relative b b-zinc2/90 dark-b-zinc8/60
-    text-sm text-zinc7 dark-text-zinc3 h12 flex justify-between items-center"
+    text-sm text-zinc7 dark-text-zinc3 h12"
   >
     <div
       data-scrollbar-hidden
@@ -65,7 +66,10 @@ export const getIcon = (iconName: string) => {
   <div
     data-panels-container
     data-tab-code-content
-    class="children-b-t-0 children-b children-b-zinc2/90 children-dark-b-zinc8/60 children-rd-b-xl overflow-hidden flex-1 hfull children-hfull"
+    class={`
+      children-b-t-0 children-b children-b-zinc2/90 children-dark-b-zinc8/60 children-rd-b-xl overflow-hidden flex-1 
+      ${autoHeight ? "" : "hfull children-hfull"}
+      `}
   >
     <slot />
   </div>

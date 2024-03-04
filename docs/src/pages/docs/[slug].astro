@@ -1,5 +1,5 @@
 ---
-export const prerender = true
+export const prerender = true;
 import { getCollection } from "astro:content";
 
 import DocsLayout from "@layouts/DocsLayout.astro";
@@ -102,10 +102,14 @@ const { next: nextSlug, prev: prevSlug, current } = getPagger(pageSlugId);
   <div
     class="hidden xl-sticky xl-top-16 xl-h-[calc(100vh-4rem)] invisible xl-visible xl-flex xl-flex-col lg-gap-y8"
   >
-    <div
-      class="lg-hfull lg-overflow-hidden overflow-hidden"
-    >
-      <DeskTableOfContent headings={headings} />
+    <div class="lg-hfull lg-overflow-hidden overflow-hidden">
+      <div
+        data-hidden-scrollbar-s
+        data-overlayscrollbars-initialize
+        class="lg-hfull lg-overflow-hidden lg-overflow-y-auto"
+      >
+        <DeskTableOfContent headings={headings} />
+      </div>
     </div>
     <div>
       <BoxContribution

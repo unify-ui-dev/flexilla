@@ -7,13 +7,57 @@ description: Display togglable accordion panels.
 
 To get started, install Accordion package, else you can skip this step if you've already installed `@flexilla/flexilla`.
 
+<TabCodeGroup
+  values={[
+    {
+      text: "npm",
+      value: "npm-tab",
+      icon: "npm",
+    },
+    {
+      text: "yarn",
+      value: "yarn-tab",
+      icon: "yarn",
+    },
+  ]}
+  autoHeight
+  showCopyBlock
+>
+  <TabPanel value="npm-tab" active={true}>
+```bash 
+npm i @flexilla/flexilla
+```
+  </TabPanel>
+  <TabPanel value="yarn-tab">
+```bash 
+yarn add @flexilla/flexilla
+```
+  </TabPanel>
+</TabCodeGroup>
   <BoxCodeLang text={"Terminal"} icon={"shell"}>
 ```bash 
 npm i @flexilla/flexilla
 ```
 </BoxCodeLang>
 
+{/* <Tabs values={["Preview", "Code"]} autoHeight>
+  <TabPanel value="Preview" active={true}>
+  <BoxCodeLang text={"Terminal"} icon={"shell"}>
+```bash 
+npm i @flexilla/flexilla
+```
+</BoxCodeLang>
+  </TabPanel>
+  <TabPanel value="Code">
+
+  </TabPanel>
+</Tabs> */}
+
+
+
 ## Strucure
+
+### Accordion structure
 
 - `accordionElement` a `<div>` element (you can use any other tag that is a valid `HTMLElement`)
 - `data-accordion-item` : Container of each item  (recommanded to use a `div` Element)
@@ -21,11 +65,13 @@ npm i @flexilla/flexilla
 - `data-accordion-trigger` : trigger Element (Recommanded to use `button` Element)
 - `data-accordion-content` : collapsible Element (recommanded to use `div` Element)
 
+The accordion HTML markup looks like:
+
 ```html
 <!-- accordionElement -->
-<div id="accordion-example">
+<div id="accordion-example" class="my-accordion-class">
   <!-- accordion item -->
-  <div data-accordion-item data-accordion-value="item-1"">
+  <div data-accordion-item data-accordion-value="item-1" class="accordion-item-class">
     <!-- accordion trigger -->
     <button data-accordion-trigger aria-label="toggle button">
       <!-- trigger -->
@@ -39,6 +85,7 @@ npm i @flexilla/flexilla
 </div>
 ```
 
+### Consumming the component
 Then import the component and init it
 
 ```js
