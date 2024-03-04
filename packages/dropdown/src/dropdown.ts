@@ -147,6 +147,15 @@ class Dropdown {
             this.dropdownElement.addEventListener("mouseleave", this.hideOnMouseLeave)
         }
     }
+
+    /**
+     * auto init dropdown Components based on the selector provided
+     * @param selector {string} default is [data-fx-dropdown] attribute
+     */
+    public static autoInit = (selector="[data-fx-dropdown]")=>{
+        const dropdowns = $$(selector)
+        for(const dropdown of dropdowns) new Dropdown(dropdown)
+    }
 }
 
 export default Dropdown

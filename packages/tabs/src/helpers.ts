@@ -1,4 +1,4 @@
-import { $, $d } from "@flexilla/utilities";
+import { $, $d, setAttributes } from "@flexilla/utilities";
 import { ACTIVE_STATE, INACTIVE_STATE, STATE_TO_FALSE, STATE_TO_TRUE, VERTICAL_ORIENTATION } from "./const";
 import { moveIndicator } from "./indicator";
 
@@ -8,7 +8,7 @@ import { moveIndicator } from "./indicator";
 const setAllTriggerToFalse = (activeTrigger: HTMLElement, tabTriggers: HTMLElement[]) => {
   for (const tabTrigger of tabTriggers) {
     if (tabTrigger !== activeTrigger) {
-      tabTrigger.setAttribute("data-state", INACTIVE_STATE);
+      setAttributes(tabTrigger, { "data-state": INACTIVE_STATE, tabindex: "-1" })
     }
   }
 };
@@ -16,8 +16,7 @@ const setAllTriggerToFalse = (activeTrigger: HTMLElement, tabTriggers: HTMLEleme
 /**
  * Setup the nested tabs if it has a custom indicator
  */
-const setNestedTabsIndicatorCorrectly = ({ tabsOrientation, indicatorTransformDuration, indicatorTransformEaseing, indicator, triggerElement, tabList }: { tabsOrientation: string, indicatorTransformDuration: number, indicatorTransformEaseing: string, indicator:HTMLSpanElement, triggerElement:HTMLElement, tabList:HTMLElement }) => {
-
+const setNestedTabsIndicatorCorrectly = ({ tabsOrientation, indicatorTransformDuration, indicatorTransformEaseing, indicator, triggerElement, tabList }: { tabsOrientation: string, indicatorTransformDuration: number, indicatorTransformEaseing: string, indicator: HTMLSpanElement, triggerElement: HTMLElement, tabList: HTMLElement }) => {
   if (!(indicator instanceof HTMLSpanElement) || !(triggerElement instanceof HTMLElement)) return
   moveIndicator({
     triggerElement,
@@ -33,15 +32,11 @@ const setNestedTabsIndicatorCorrectly = ({ tabsOrientation, indicatorTransformDu
 /**
 * Hides all tab panels except the active panel.
 */
-const hideAllTabPanels = (activePanel: HTMLElement, tabPanels: HTMLElement[]) => {
+export const hideAllTabPanels = (activePanel: HTMLElement | undefined, tabPanels: HTMLElement[]) => {
   for (const tabPanel of tabPanels) {
     if (tabPanel !== activePanel) {
-      tabPanel.setAttribute("data-state", INACTIVE_STATE);
-      tabPanel.setAttribute("aria-hidden", STATE_TO_TRUE);
+      setAttributes(tabPanel, { "data-state": INACTIVE_STATE, "aria-hidden": STATE_TO_TRUE })
       tabPanel.hidden = true
-      if (tabPanel.hasAttribute("data-initial-active")) {
-        tabPanel.setAttribute("data-initial-active", "false")
-      }
     }
   }
 };
@@ -49,16 +44,20 @@ const hideAllTabPanels = (activePanel: HTMLElement, tabPanels: HTMLElement[]) =>
 /**
  * Activates the selected tab and updates the indicator position.
  */
-export const activeTab = ({ triggerElement, tabTriggers, tabPanels, tabsPanelContainer, showAnimation, tabsOrientation, indicatorTransformDuration, indicatorTransformEaseing, tabList }: { triggerElement: HTMLElement, tabTriggers: HTMLElement[], tabPanels: HTMLElement[], tabsPanelContainer: HTMLElement, showAnimation: string, tabsOrientation: string, indicatorTransformDuration: number, indicatorTransformEaseing: string, tabList: HTMLElement }) => {
+export const activeTab = ({ triggerElement, tabTriggers, tabsPanelContainer, showAnimation, tabsOrientation, indicatorTransformDuration, indicatorTransformEaseing, tabList }: { triggerElement: HTMLElement, tabTriggers: HTMLElement[], tabsPanelContainer: HTMLElement, showAnimation: string, tabsOrientation: string, indicatorTransformDuration: number, indicatorTransformEaseing: string, tabList: HTMLElement }) => {
+  const currentTab = $d("[data-tab-panel][data-state=active]", tabsPanelContainer)
+  if (currentTab) {
+    setAttributes(currentTab, { "data-state": "hidden" })
+    currentTab.hidden = true
+  }
   if (!(triggerElement instanceof HTMLElement)) return;
-  const toSelectTab = $d( `[data-tab-panel]#${triggerElement.getAttribute("data-target")}`, tabsPanelContainer);
+  const toSelectTab = $d(`[data-tab-panel]#${triggerElement.getAttribute("data-target")}`, tabsPanelContainer);
   if (!(toSelectTab instanceof HTMLElement)) return;
   setAllTriggerToFalse(triggerElement, tabTriggers);
-  hideAllTabPanels(toSelectTab, tabPanels);
-  toSelectTab.setAttribute("data-state", ACTIVE_STATE);
   toSelectTab.hidden = false
-  triggerElement.setAttribute("data-state", ACTIVE_STATE);
-  toSelectTab.setAttribute("aria-hidden", STATE_TO_FALSE);
+  setAttributes(toSelectTab, { "data-state": ACTIVE_STATE, "aria-hidden": STATE_TO_FALSE })
+  setAttributes(triggerElement, { "data-state": ACTIVE_STATE, tabindex: "0" })
+
   if (showAnimation && showAnimation !== "") {
     toSelectTab.style.setProperty("--un-tab-show-animation", `${showAnimation}`)
   }
@@ -80,15 +79,15 @@ export const activeTab = ({ triggerElement, tabTriggers, tabPanels, tabsPanelCon
     const tabList = $d("[data-tab-list]", childrenTab) as HTMLElement
     const triggerElement = tabList.querySelector("[data-tabs-trigger][data-state=active]") as HTMLElement
     const indicator = tabList.querySelector("span[data-tab-indicator]") as HTMLSpanElement
-    if(indicator instanceof HTMLSpanElement && triggerElement instanceof HTMLElement && !childrenTab.hasAttribute("data-nested-indicator-seteled")){
-      childrenTab.setAttribute("data-nested-indicator-seteled",'')
+    if (indicator instanceof HTMLSpanElement && triggerElement instanceof HTMLElement && !childrenTab.hasAttribute("data-nested-indicator-seteled")) {
+      childrenTab.setAttribute("data-nested-indicator-seteled", '')
       setNestedTabsIndicatorCorrectly({
         tabsOrientation: tabsOrientation,
         indicatorTransformDuration: indicatorTransformDuration,
         indicatorTransformEaseing: indicatorTransformEaseing,
         indicator: indicator,
-        triggerElement:triggerElement,
-        tabList:tabList
+        triggerElement: triggerElement,
+        tabList: tabList
       })
     }
   }

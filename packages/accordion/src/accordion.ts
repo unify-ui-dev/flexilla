@@ -56,6 +56,15 @@ class Accordion {
         closeOtherAccordionItems(this.accordionElement, this.defaultItemValue)
         initItems(this.accordionElement, this.accordionType, this.preventFromClosingAll, this.allowTriggerOnFocus, this.options)
     }
+
+    /**
+     * auto init accordion components based on the selector provided
+     * @param selector {string} default is [data-fx-accordion]
+     */
+    public static autoInit = (selector = "[data-fx-accordion]")=>{
+        const accordions = $$(selector, document.documentElement)
+        for (const accordion of accordions) new Accordion(accordion)
+    }
 }
 
 export default Accordion

@@ -1,21 +1,11 @@
-[data-fx-tabs] [data-tab-panel] {
+[data-fx-tabs] [data-tab-panel]:not([data-state="active"]){
     display: none;
-    animation: none;
-    -webkit-animation: none;
 }
 
-[data-fx-tabs] [data-tab-panel][data-state="active"], [data-fx-tabs] [data-tab-panel][data-initial-active]:not([data-initial-active="false"]) {
-    display: flex;
-}
-
-[data-fx-tabs] [data-tab-panel][data-state="active"] {
+[data-fx-tabs][data-animated-panels] [data-tab-panel][data-state="active"] {
     animation: var(--un-tab-show-animation);
     -webkit-animation: var(--un-tab-show-animation);
     animation-fill-mode: both;
-}
-
-[data-fx-tabs] [data-tabs-trigger] {
-    position: relative;
 }
 
 [data-tab-indicator] {

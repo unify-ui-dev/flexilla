@@ -51,6 +51,15 @@ class CustomRangeIndicator {
     private init() {
         this.rangeElement.addEventListener("input", this.updateIndicatorSize)
     }
+
+    /**
+     * auto init the Custom Input Range based on the selector provided
+     * @param selector {string} default is [data-fx-custom-range]
+     */
+    public static autoInit = (selector="[data-fx-custom-range]") => {
+        const inputRanges = Array.from(document.querySelectorAll(selector)) as HTMLInputElement[]
+        for(const inputRange of inputRanges) new CustomRangeIndicator(inputRange)
+    }
 }
 
 export default CustomRangeIndicator

@@ -52,6 +52,15 @@ class Collapse {
         if (this.collapseTrigger instanceof HTMLElement) this.collapseTrigger.addEventListener("click", this.toggle)
         this.defaultState === "close" && this.hide()
     }
+
+    /**
+     * auto init collapse components based on the selector provided
+     * @param selector {string} default is [data-fx-collapse]
+     */
+    public static autoInit = (selector = "[data-fx-collapse]") => {
+        const collapses = Array.from(document.querySelectorAll(selector)) as HTMLElement[]
+        for (const collapse in collapses) new Collapse(collapse)
+    }
 }
 
 export default Collapse

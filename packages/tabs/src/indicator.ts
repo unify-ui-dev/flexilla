@@ -1,4 +1,4 @@
-import { $, appendBefore } from "@flexilla/utilities";
+import { $, appendBefore, setAttributes } from "@flexilla/utilities";
 import { VERTICAL_ORIENTATION } from "./const";
 
 
@@ -12,8 +12,10 @@ export const createIndicator = ({ activeTabTrigger, indicatorClassName, tabsOrie
     const indicatorClasses = indicatorClassName
 
     const indicator_ = document.createElement("span");
-    indicator_.setAttribute("data-tab-indicator", '')
-    indicator_.setAttribute("aria-hidden", "true")
+    setAttributes(indicator_,{
+        "data-tab-indicator":"",
+        "aria-hidden":"true"
+    })
     const transformFunction = tabsOrientation === VERTICAL_ORIENTATION ? getTransformY : getTransformX;
 
     indicator_.style.setProperty(

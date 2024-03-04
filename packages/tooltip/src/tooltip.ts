@@ -1,5 +1,5 @@
 import { TooltipOptions } from "./types"
-import {  $ } from "@flexilla/utilities"
+import {  $, $$ } from "@flexilla/utilities"
 import { CreatePopper, Placement } from '@flexilla/popper'
 import { hidePopover, initPoppoverAttributes, showTooltip } from "./helpers"
 
@@ -126,6 +126,15 @@ class Tooltip {
             reference.addEventListener("mouseenter", this.showOnHover)
             containerElement.addEventListener("mouseleave", this.hideOnHover)
         }
+    }
+
+    /**
+     * auto init Tooltips based on the selector provided
+     * @param selector {string} default is [data-fx-tooltip]
+     */
+    public static autoInit = (selector = "[data-fx-tooltip]")=>{
+        const tooltips = $$(selector)
+        for(const tooltip of tooltips) new Tooltip(tooltip)
     }
 }
 

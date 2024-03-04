@@ -125,6 +125,15 @@ class Offcanvas {
     public close() {
         this.closeOffCanvas()
     }
+
+    /**
+     * auto init Offcanvas based on the selector provided
+     * @param selector {string} default is [data-fx-offcanvas] attribute
+     */
+    public static autoInit = (selector = "[data-fx-offcanvas]") =>{
+        const offCanvasElements = $$(selector)
+        for (const offCanvasElement of offCanvasElements)  new Offcanvas(offCanvasElement)
+    }
 }
 
 export default Offcanvas

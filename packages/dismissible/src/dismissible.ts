@@ -58,6 +58,15 @@ class Dismissible {
             dismissButton.addEventListener("click", this.dismiss)
         }
     }
+
+    /**
+     * auto init Dismissible Element based on the selector provided
+     * @param selector {string} default is [data-fx-dismissible]
+     */
+    public static autoInit = (selector="[data-fx-dismissible]") =>{
+        const dismissibleEls = $$(selector)
+        for(const dismissible of dismissibleEls) new Dismissible(dismissible)
+    }
 }
 
 export default Dismissible

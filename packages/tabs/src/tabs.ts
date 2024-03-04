@@ -2,7 +2,7 @@ import { $, $$, $d } from "@flexilla/utilities";
 import { IndicatorOptions, TabsOptions } from "./types";
 import { DEFAULT_INDICATOR, DEFAULT_ORIENTATION, TRANSFORM_DURATION, TRANSFORM_EASING } from "./const";
 import { createIndicator } from "./indicator";
-import { activeTab, handleKeyEvent } from "./helpers";
+import { activeTab, handleKeyEvent, hideAllTabPanels } from "./helpers";
 
 class Tabs {
   private tabsElement: HTMLElement;
@@ -36,7 +36,7 @@ class Tabs {
     this.options = options;
     this.indicatorOptions = this.options.indicatorOptions || DEFAULT_INDICATOR;
     const { orientation, defaultValue, animationOnShow } = this.options;
-    this.defaultTabValue = defaultValue || this.tabsElement.dataset.defaultValue || "";
+    this.defaultTabValue = defaultValue || this.tabsElement.dataset.defaultValue || this.getDefActivePanelValue(this.panelsContainer) || "";
 
     this.tabsOrientation = orientation || this.tabsElement.dataset.orientation || DEFAULT_ORIENTATION;
     this.showAnimation = animationOnShow || this.tabsElement.dataset.showAnimation || "";
@@ -70,6 +70,11 @@ class Tabs {
     this.init();
   }
 
+  private getDefActivePanelValue = (panelsContainer: HTMLElement) => {
+    const panel = $d("[data-tab-panel][data-state=active]", panelsContainer)
+    return panel?.getAttribute("id")
+  }
+
   private init() {
     if (!this.tabsElement.hasAttribute("data-fx-tabs")) {
       this.tabsElement.setAttribute("data-fx-tabs", "");
@@ -98,7 +103,6 @@ class Tabs {
       const tabAct = activeTab({
         triggerElement,
         tabTriggers: this.tabTriggers,
-        tabPanels: this.tabPanels,
         tabsPanelContainer: this.panelsContainer,
         showAnimation: this.showAnimation,
         tabsOrientation: this.tabsOrientation,
@@ -128,11 +132,12 @@ class Tabs {
       tabsOrientation,
       tabList
     });
+    const activePanel = $d(`[data-tab-panel]#${activeTabTrigger.getAttribute("data-target")}`, tabsPanelContainer)
+    hideAllTabPanels(activePanel, tabPanels)
 
     const tabAct = activeTab({
       triggerElement: activeTabTrigger,
       tabTriggers,
-      tabPanels,
       tabsPanelContainer: tabsPanelContainer,
       showAnimation,
       tabsOrientation,
@@ -157,7 +162,6 @@ class Tabs {
     const tabAct = activeTab({
       triggerElement,
       tabTriggers: this.tabTriggers,
-      tabPanels: this.tabPanels,
       tabsPanelContainer: this.panelsContainer,
       showAnimation: this.showAnimation,
       tabsOrientation: this.tabsOrientation,
@@ -169,6 +173,15 @@ class Tabs {
       currentTrigger: triggerElement,
       currentPanel: tabAct?.currentTabPanel
     }));
+  }
+
+  /**
+     * auto init Tabs Elements based on the selector provided
+     * @param selector {string} default is [data-fx-tabs] attribute
+     */
+  public static autoInit = (selector="[data-fx-tabs]") =>{
+    const tabsEls = $$(selector)
+    for(const tabs of tabsEls) new Tabs(tabs)
   }
 }
 

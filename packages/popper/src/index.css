@@ -2,9 +2,9 @@
     position: absolute;
     left: 0px;
     top: 0px;
-    transform: translateX(var(--fx-popper-placement-x)) translateY(var(--fx-popper-placement-y));
-    -webkit-transform: translateX(var(--fx-popper-placement-x)) translateY(var(--fx-popper-placement-y));
-    -moz-transform: translateX(var(--fx-popper-placement-x)) translateY(var(--fx-popper-placement-y));
-    -ms-transform: translateX(var(--fx-popper-placement-x)) translateY(var(--fx-popper-placement-y));
-    -o-transform: translateX(var(--fx-popper-placement-x)) translateY(var(--fx-popper-placement-y));
+    transform: translate(var(--fx-popper-placement-x), var(--fx-popper-placement-y));
+    -webkit-transform: translate(var(--fx-popper-placement-x), var(--fx-popper-placement-y));
+    -moz-transform: translate(var(--fx-popper-placement-x), var(--fx-popper-placement-y));
+    -ms-transform: translate(var(--fx-popper-placement-x), var(--fx-popper-placement-y));
+    -o-transform: translate(var(--fx-popper-placement-x), var(--fx-popper-placement-y));
 }

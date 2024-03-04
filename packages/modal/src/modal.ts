@@ -1,7 +1,7 @@
 
 import { ModalOptions } from "./types";
 import { initModal } from "./helpers";
-import { $ } from "@flexilla/utilities";
+import { $, $$ } from "@flexilla/utilities";
 
 class Modal {
     private modalElement: HTMLElement
@@ -42,6 +42,15 @@ class Modal {
         this.showModal = showModal
         this.hideModal = hideModal
         this.isHidden = isHidden
+    }
+
+    /**
+     * auto init Modals based on the selector provided
+     * @param selector {string} default is [data-fx-modal] attribute
+     */
+    public static autoInit = (selector="[data-fx-modal]")=>{
+        const modals = $$(selector)
+        for(const modal of modals) new Modal(modal)
     }
 }
 
