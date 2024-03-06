@@ -1,4 +1,4 @@
-import { $, appendBefore, setAttributes } from "@flexilla/utilities";
+import { appendBefore, setAttributes } from "@flexilla/utilities";
 import { VERTICAL_ORIENTATION } from "./const";
 
 
@@ -24,21 +24,12 @@ export const createIndicator = ({ activeTabTrigger, indicatorClassName, tabsOrie
 
     const classesArray = indicatorClasses ? indicatorClasses.split(" ") : [];
     indicator_.classList.add(...classesArray);
-
-    const firstTriggerElement = $(":first-child [data-tabs-trigger]", tabList) as HTMLElement
-    const parentEl = firstTriggerElement.parentElement as HTMLElement
-
-    try {
-        if (parentEl === tabList) {
-            appendBefore({ newElement: indicator_, existingElement: firstTriggerElement })
-        } else if (parentEl.parentElement === tabList) {
-            appendBefore({ newElement: indicator_, existingElement: parentEl })
-        }
-    } catch (error) {
-        throw new Error(`Make sure the tab triggers are directly tablist children or their parent are. ${error}`)
-    }
-
-    firstTriggerElement && appendBefore({ newElement: indicator_, existingElement: firstTriggerElement })
+    const indicatoBeforeEl = activeTabTrigger.parentElement === tabList 
+    ? activeTabTrigger : activeTabTrigger.parentElement as HTMLElement
+    appendBefore({
+        newElement: indicator_,
+        existingElement: indicatoBeforeEl
+    })
 
     return indicator_
 };

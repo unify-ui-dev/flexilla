@@ -9,6 +9,7 @@ const setAllTriggerToFalse = (activeTrigger: HTMLElement, tabTriggers: HTMLEleme
   for (const tabTrigger of tabTriggers) {
     if (tabTrigger !== activeTrigger) {
       setAttributes(tabTrigger, { "data-state": INACTIVE_STATE, tabindex: "-1" })
+      if(tabTrigger instanceof HTMLAnchorElement) tabTrigger.setAttribute("aria-selected","false")
     }
   }
 };
@@ -57,6 +58,7 @@ export const activeTab = ({ triggerElement, tabTriggers, tabsPanelContainer, sho
   toSelectTab.hidden = false
   setAttributes(toSelectTab, { "data-state": ACTIVE_STATE, "aria-hidden": STATE_TO_FALSE })
   setAttributes(triggerElement, { "data-state": ACTIVE_STATE, tabindex: "0" })
+  if(triggerElement instanceof HTMLAnchorElement) triggerElement.setAttribute("aria-selected","true")
 
   if (showAnimation && showAnimation !== "") {
     toSelectTab.style.setProperty("--un-tab-show-animation", `${showAnimation}`)
@@ -74,20 +76,21 @@ export const activeTab = ({ triggerElement, tabTriggers, tabsPanelContainer, sho
     tabList
   });
 
-  const childrenTab = $d("[data-fx-tabs]", toSelectTab)
-  if (childrenTab instanceof HTMLElement) {
-    const tabList = $d("[data-tab-list]", childrenTab) as HTMLElement
-    const triggerElement = tabList.querySelector("[data-tabs-trigger][data-state=active]") as HTMLElement
-    const indicator = tabList.querySelector("span[data-tab-indicator]") as HTMLSpanElement
-    if (indicator instanceof HTMLSpanElement && triggerElement instanceof HTMLElement && !childrenTab.hasAttribute("data-nested-indicator-seteled")) {
-      childrenTab.setAttribute("data-nested-indicator-seteled", '')
+  const childTab = $d("[data-fx-tabs]", toSelectTab)
+  if (childTab instanceof HTMLElement) {
+    const childTabListWrapper = $d("[data-tab-list-wrapper]", childTab) || childTab
+    const childTabList = $d("[data-tab-list]", childTabListWrapper) as HTMLElement
+    const triggerElement = childTabList.querySelector("[data-tabs-trigger][data-state=active]") as HTMLElement
+    const childIndicator = childTabList.querySelector("span[data-tab-indicator]") as HTMLSpanElement
+    if (childIndicator instanceof HTMLSpanElement && triggerElement instanceof HTMLElement && !childTab.hasAttribute("data-nested-indicator-seteled")) {
+      childTab.setAttribute("data-nested-indicator-seteled", '')
       setNestedTabsIndicatorCorrectly({
         tabsOrientation: tabsOrientation,
         indicatorTransformDuration: indicatorTransformDuration,
         indicatorTransformEaseing: indicatorTransformEaseing,
-        indicator: indicator,
+        indicator: childIndicator,
         triggerElement: triggerElement,
-        tabList: tabList
+        tabList: childTabList
       })
     }
   }
