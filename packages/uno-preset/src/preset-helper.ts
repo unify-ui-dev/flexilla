@@ -45,11 +45,11 @@ export const presetVariants = (options: PrimitivesOptions = {}): Variant => {
                         `.peer${attrGen} ~` : beforePrefixSelector === "group-" ? `.group${attrGen} ` : ""
                     return (match[2] === '-not')
                         ? (
-                            beforePrefixSelector === "where-" ? `:where([${selector}]:not(${attrGen})) ${s}:not(${selector})` :
+                            beforePrefixSelector === "where-" ? `:where([${selector}]:not(${attrGen})) ${s}` :
                                 (beforePrefixSelector === "peer-" ?
                                     `.peer:not(${attrGen}) ~ ${s}` : 
                                     beforePrefixSelector === "group-" ? 
-                                    `.group:not(${attrGen}) ${s}` : `${s}:not(${attrGen})`)
+                                    `.group:not(${attrGen}) ${s}` : `${s}`)
                         )
                         : (
                             beforePrefixSelector === "where-" ? `:where(${attrGen}) ${s}` :
