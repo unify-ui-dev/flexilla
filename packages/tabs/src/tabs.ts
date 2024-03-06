@@ -41,7 +41,7 @@ class Tabs {
     this.tabsOrientation = orientation || this.tabsElement.dataset.orientation || DEFAULT_ORIENTATION;
     this.showAnimation = animationOnShow || this.tabsElement.dataset.showAnimation || "";
 
-    this.tabList = $d("[data-tab-list]", this.tabsElement) as HTMLElement;
+    this.tabList = $d("[data-list-wrapper] [data-tab-list]", this.tabsElement) || $d("[data-tab-list]", this.tabsElement) as HTMLElement;
     const panels = $$("[data-tab-panel]", this.panelsContainer);
     this.tabPanels = panels.filter((panel) => panel.parentElement === this.panelsContainer)
     if (!(this.tabList instanceof HTMLElement)) {
