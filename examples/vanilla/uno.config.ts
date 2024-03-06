@@ -1,4 +1,3 @@
-// uno.config.ts
 import {
     defineConfig,
     presetIcons,
@@ -17,7 +16,7 @@ import unifyUI from "@flexilla/uno-preset"
     presets: [
       presetUno(),
       presetAttributify(),
-      unifyUI({}),
+      unifyUI(),
       presetIcons({
         collections: {
           carbon: () =>

@@ -12,9 +12,9 @@ export const createIndicator = ({ activeTabTrigger, indicatorClassName, tabsOrie
     const indicatorClasses = indicatorClassName
 
     const indicator_ = document.createElement("span");
-    setAttributes(indicator_,{
-        "data-tab-indicator":"",
-        "aria-hidden":"true"
+    setAttributes(indicator_, {
+        "data-tab-indicator": "",
+        "aria-hidden": "true"
     })
     const transformFunction = tabsOrientation === VERTICAL_ORIENTATION ? getTransformY : getTransformX;
 
@@ -25,7 +25,19 @@ export const createIndicator = ({ activeTabTrigger, indicatorClassName, tabsOrie
     const classesArray = indicatorClasses ? indicatorClasses.split(" ") : [];
     indicator_.classList.add(...classesArray);
 
-    const firstTriggerElement = $("[data-tabs-trigger]:first-child", tabList)
+    const firstTriggerElement = $(":first-child [data-tabs-trigger]", tabList) as HTMLElement
+    const parentEl = firstTriggerElement.parentElement as HTMLElement
+
+    try {
+        if (parentEl === tabList) {
+            appendBefore({ newElement: indicator_, existingElement: firstTriggerElement })
+        } else if (parentEl.parentElement === tabList) {
+            appendBefore({ newElement: indicator_, existingElement: parentEl })
+        }
+    } catch (error) {
+        throw new Error(`Make sure the tab triggers are directly tablist children or their parent are. ${error}`)
+    }
+
     firstTriggerElement && appendBefore({ newElement: indicator_, existingElement: firstTriggerElement })
 
     return indicator_
