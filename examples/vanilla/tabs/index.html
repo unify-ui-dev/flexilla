@@ -28,27 +28,29 @@
             </h1>
             <div class="p10 rd-lg bg-gradient-to-bl from-blue6 via-indigo4 to-sky6">
                 <div data-fx-tabs data-tabs data-default-value="tab2" class="bg-white wfull rd-lg">
-                    <ul data-tab-list role="tablist"
-                        class="flex items-center relative h12 px1 bg-gray1 dark-bg-gray9 wfull rd-t-md children-cursor-pointer">
-                        <li role="presentation">
-                            <a href="#link" data-tabs-trigger data-target="tab1" tabindex="0"
-                                class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
-                                Tabs1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#link" data-tabs-trigger data-target="tab2" tabindex="-1"
-                                class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
-                                Tabs2
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#link" data-tabs-trigger data-target="tab3" tabindex="-1"
-                                class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
-                                Tabs3
-                            </a>
-                        </li>
-                    </ul>
+                    <div data-tab-list-wrapper class="flex wfull">
+                        <ul data-tab-list role="tablist"
+                            class="flex items-center relative h12 px1 bg-gray1 dark-bg-gray9 wfull rd-t-md children-cursor-pointer">
+                            <li role="presentation" class="flex">
+                                <a href="#link" data-tabs-trigger data-target="tab1" tabindex="0"
+                                    class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 fx-active-bg-gray2 dark-fx-active-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
+                                    Tabs1
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#link" data-tabs-trigger data-target="tab2" tabindex="-1"
+                                    class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 fx-active-bg-gray2 dark-fx-active-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
+                                    Tabs2
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#link" data-tabs-trigger data-target="tab3" tabindex="-1"
+                                    class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 fx-active-bg-gray2 dark-fx-active-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4">
+                                    Tabs3
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <div data-panels-container>
                         <section role="tabpanel" tabindex="0"
                             class="hidden fx-active-flex ring-offset-gray950 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
@@ -83,29 +85,32 @@
                 <div data-with-indicator data-fx-tabs
                     data-indicator-class-name="ui-tabs-indicator bg-gray3 flex rd absolute ease-linear duration-200"
                     wfull>
-                    <ul data-tab-list role="tablist"
-                        class="flex items-center relative p0.5 bg-gray1 dark-bg-gray9 wfull rd-md children-cursor-pointer">
-                        <li role="presentation" class="flex">
-                            <a href="#" role="tab" data-tabs-trigger data-target="tab1" data-state="active" tabindex="0"
-                                class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
-                                Tab 1
-                            </a>
-                        </li>
-                        <li role="presentation" class="flex">
-                            <a href="#" role="tab" data-tabs-trigger data-target="tab2" data-state="active"
-                                tabindex="-1"
-                                class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
-                                Tab 2
-                            </a>
-                        </li>
-                        <li role="presentation" class="flex">
-                            <a href="#" role="tab" data-tabs-trigger data-target="tab3" data-state="active"
-                                tabindex="-1"
-                                class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
-                                Tab 3
-                            </a>
-                        </li>
-                    </ul>
+                    <div data-tab-list-wrapper class="flex wfull">
+                        <ul data-tab-list role="tablist"
+                            class="flex items-center relative p0.5 bg-gray1 dark-bg-gray9 wfull rd-md children-cursor-pointer">
+                            <li role="presentation" class="flex">
+                                <a href="#" role="tab" data-tabs-trigger data-target="tab1" data-state="active"
+                                    tabindex="0"
+                                    class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
+                                    Tab 1
+                                </a>
+                            </li>
+                            <li role="presentation" class="flex">
+                                <a href="#" role="tab" data-tabs-trigger data-target="tab2" data-state="active"
+                                    tabindex="-1"
+                                    class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
+                                    Tab 2
+                                </a>
+                            </li>
+                            <li role="presentation" class="flex">
+                                <a href="#" role="tab" data-tabs-trigger data-target="tab3" data-state="active"
+                                    tabindex="-1"
+                                    class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
+                                    Tab 3
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <div data-panels-container hmax bg-white rd-lg>
                         <section role="tabpanel"
                             class="hidden fx-active-flex ring-offset-gray950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-gray2 dark-b-gray8 rd-md mt2"
@@ -125,19 +130,19 @@
                                 wfull>
                                 <ul data-tab-list role="tablist"
                                     class="flex items-center relative p0.5 bg-gray1 dark-bg-gray9 wfull rd-md children-cursor-pointer">
-                                    <li role="presentation">
+                                    <li role="presentation" class="flex">
                                         <a href="#" role="tab" data-tabs-trigger data-target="tab1"
                                             class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
                                             Tab 1
                                         </a>
                                     </li>
-                                    <li role="presentation">
+                                    <li role="presentation" class="flex">
                                         <a href="#" role="tab" data-tabs-trigger data-target="tab2"
                                             class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
                                             Tab2
                                         </a>
                                     </li>
-                                    <li role="presentation">
+                                    <li role="presentation" class="flex">
                                         <a href="#" role="tab" data-tabs-trigger data-target="tab3"
                                             class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 relative z20">
                                             Tab3
@@ -176,21 +181,21 @@
                 <div data-vertical-tab data-fx-tabs data-orientation="vertical" class="flex items-start wfull">
                     <ul data-tab-list role="tablist"
                         class="flex flex-col p0.5 wmax relative bg-gray1 dark-bg-gray9 rd-md">
-                        <li role="presentation">
+                        <li role="presentation" class="flex">
                             <a data-tabs-trigger data-target="tab1"
-                                class="px4 py2 rd data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
+                                class="px4 py2 rd fx-active-bg-gray2 dark-fx-active-bg-gray8 text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
                                 Tab 1
                             </a>
                         </li>
-                        <li role="presentation">
+                        <li role="presentation" class="flex">
                             <a data-tabs-trigger data-target="tab2"
-                                class="px4 py2 rd data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
+                                class="px4 py2 rd fx-active-bg-gray2 dark-fx-active-bg-gray8 text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
                                 Tab2
                             </a>
                         </li>
-                        <li role="presentation">
+                        <li role="presentation" class="flex">
                             <a data-tabs-trigger data-target="tab3"
-                                class="px4 py2 rd data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
+                                class="px4 py2 rd fx-active-bg-gray2 dark-fx-active-bg-gray8 text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
                                 Tab3
                             </a>
                         </li>
@@ -223,19 +228,19 @@
                 <div data-vertical-tab-2 data-fx-tabs data-orientation="vertical" class="flex items-start wfull">
                     <ul data-tab-list role="tablist"
                         class="flex flex-col p0.5 wmax relative bg-gray1 dark-bg-gray9 rd-md children-cursor-pointer">
-                        <li role="presentation">
+                        <li role="presentation" class="flex">
                             <a data-tabs-trigger data-target="tab1"
                                 class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
                                 Tab 1
                             </a>
                         </li>
-                        <li role="presentation">
+                        <li role="presentation" class="flex">
                             <a data-tabs-trigger data-target="tab2"
                                 class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
                                 Tab2
                             </a>
                         </li>
-                        <li role="presentation">
+                        <li role="presentation" class="flex">
                             <a data-tabs-trigger data-target="tab3"
                                 class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative wfull">
                                 Tab3
@@ -270,21 +275,21 @@
                 <div data-tab-default-indicator data-fx-tabs data-default-value="tab2">
                     <ul data-tab-list role="tablist"
                         class="flex items-center relative h12 px1 bg-gray1 dark-bg-gray9 wfull rd-md children-cursor-pointer">
-                        <li role="presentation">
+                        <li role="presentation" class="flex">
                             <a data-tabs-trigger data-target="tab1"
-                                class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2/3 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4 relative">
+                                class="px4 py2 rd text-gray7 disabled-cursor-not-allowed disabled-op80 fx-active-bg-gray2/3 dark-fx-active-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4 relative z10">
                                 Tab 1
                             </a>
                         </li>
-                        <li role="presentation">
+                        <li role="presentation" class="flex">
                             <a data-tabs-trigger data-target="tab2"
-                                class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4 relative">
+                                class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 fx-active-bg-gray2 dark-fx-active-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4 relative">
                                 Tab2
                             </a>
                         </li>
-                        <li role="presentation">
+                        <li role="presentation" class="flex">
                             <a data-tabs-trigger data-target="tab3"
-                                class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 data-[state=active]-bg-gray2 dark-data-[state=active]-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4 relative">
+                                class="px4 py2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 fx-active-bg-gray2 dark-fx-active-bg-gray8 outline outline-1 outline-transparent focus-outline-blue5 dark-focus-outline-blue4 relative">
                                 Tab3
                             </a>
                         </li>
@@ -319,21 +324,21 @@
                     data-indicator-class-name="ui-tabs-indicator bg-gray2 dark-bg-gray8 rd">
                     <ul data-tab-list role="tablist"
                         class="flex items-center relative p0.5 bg-gray1 dark-bg-gray9 wfull rd-md children-cursor-pointer">
-                        <li role="presentation">
+                        <li role="presentation" class="flex">
                             <a data-tabs-trigger data-target="settingTab"
                                 class="px4 py2 flex items-center gap-x2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative z20">
                                 <span aria-hidden="true" class="flex i-carbon-settings"></span>
                                 Setting
                             </a>
                         </li>
-                        <li role="presentation">
+                        <li role="presentation" class="flex">
                             <a data-tabs-trigger data-target="billingTab"
                                 class="px4 py2 flex items-center gap-x2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative z20">
                                 <span aria-hidden="true" class="flex i-carbon-flash"></span>
                                 Billing
                             </a>
                         </li>
-                        <li role="presentation">
+                        <li role="presentation" class="flex">
                             <a data-tabs-trigger data-target="accountTab"
                                 class="px4 py2 flex items-center gap-x2 rd text-gray7 dark-text-gray3 disabled-cursor-not-allowed disabled-op80 relative z20">
                                 <span aria-hidden="true" class="flex i-carbon-user"></span>

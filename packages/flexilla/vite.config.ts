@@ -9,7 +9,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: '@flexilla/flexilla',
-      fileName: 'lib',
+      fileName: 'flexilla',
     },
     rollupOptions: {
       external: [],

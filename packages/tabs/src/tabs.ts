@@ -41,11 +41,12 @@ class Tabs {
     this.tabsOrientation = orientation || this.tabsElement.dataset.orientation || DEFAULT_ORIENTATION;
     this.showAnimation = animationOnShow || this.tabsElement.dataset.showAnimation || "";
 
-    this.tabList = $d("[data-list-wrapper] [data-tab-list]", this.tabsElement) || $d("[data-tab-list]", this.tabsElement) as HTMLElement;
+    const tabListWrapper =$d("[data-tab-list-wrapper]", this.tabsElement) || this.tabsElement
+    this.tabList = $d("[data-tab-list]", tabListWrapper) as HTMLElement;
     const panels = $$("[data-tab-panel]", this.panelsContainer);
     this.tabPanels = panels.filter((panel) => panel.parentElement === this.panelsContainer)
     if (!(this.tabList instanceof HTMLElement)) {
-      throw new Error("TabList Element is required, tabList must have a data-tab-list attribute and be direct descendant of the tabs");
+      throw new Error("TabList Element is required, tabList must have a data-tab-list attribute and be direct descendant of the tabs or must be wrapped inside another element with data-tab-list-wrapper");
     }
     const isValidTabPanels = this.tabPanels.every(element => element instanceof HTMLElement)
     if (!isValidTabPanels) {
