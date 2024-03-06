@@ -16,9 +16,11 @@ module.exports = plugin(({ addVariant, e, addUtilities }) => {
     "not-inactive",
   ];
   const prefix = "fx";
+
   const selector = "data-state";
   for (const stateValue of validStateValues) {
     const startWithNot = stateValue.startsWith("not-");
+    
     const value = startWithNot
       ? stateValue.substring(stateValue.indexOf("-") + 1)
       : stateValue;
@@ -34,15 +36,26 @@ module.exports = plugin(({ addVariant, e, addUtilities }) => {
             : `.${e(`${variantName}${separator}${className}`)}${attrGen}`;
         });
       },
+    ]);
+    addVariant(`peer-${variantName}`, [
       ({ modifySelectors, separator }) => {
         modifySelectors(({ className }) => {
           return startWithNot
-            ? `:where([${selector}]:not(${attrGen})) .${e(
+            ? `.peer:not(${attrGen}) ~ .peer-${e(
                 `${variantName}${separator}${className}`
-              )}:not(${selector})`
-            : `:where(${attrGen}) .${e(
+              )}`
+            : `.peer${attrGen} ~ .${e(`${variantName}${separator}${className}`)}`;
+        });
+      },
+    ]);
+    addVariant(`group-${variantName}`, [
+      ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return startWithNot
+            ? `.group:not(${attrGen}) .${e(
                 `${variantName}${separator}${className}`
-              )}`;
+              )}`
+            : `.group${attrGen} .${e(`${variantName}${separator}${className}`)}`;
         });
       },
     ]);
