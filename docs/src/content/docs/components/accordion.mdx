@@ -9,50 +9,23 @@ To get started, install Accordion package, else you can skip this step if you've
 
 <TabCodeGroup
   values={[
-    {
-      text: "npm",
-      value: "npm-tab",
-      icon: "npm",
-    },
-    {
-      text: "yarn",
-      value: "yarn-tab",
-      icon: "yarn",
-    },
+    { text: "npm", value: "npm-tab", icon: "npm"},
+    { text: "yarn", value: "yarn-tab", icon: "yarn"},
   ]}
   autoHeight
   showCopyBlock
 >
   <TabPanel value="npm-tab" active={true}>
 ```bash 
-npm i @flexilla/flexilla
+npm i @flexilla/accordion
 ```
   </TabPanel>
   <TabPanel value="yarn-tab">
 ```bash 
-yarn add @flexilla/flexilla
+yarn add @flexilla/accordion
 ```
   </TabPanel>
 </TabCodeGroup>
-  <BoxCodeLang text={"Terminal"} icon={"shell"}>
-```bash 
-npm i @flexilla/flexilla
-```
-</BoxCodeLang>
-
-{/* <Tabs values={["Preview", "Code"]} autoHeight>
-  <TabPanel value="Preview" active={true}>
-  <BoxCodeLang text={"Terminal"} icon={"shell"}>
-```bash 
-npm i @flexilla/flexilla
-```
-</BoxCodeLang>
-  </TabPanel>
-  <TabPanel value="Code">
-
-  </TabPanel>
-</Tabs> */}
-
 
 
 ## Strucure
@@ -77,7 +50,7 @@ The accordion HTML markup looks like:
       <!-- trigger -->
     </button>
     <!-- accordion content -->
-    <div aria-hidden="true" data-accordion-content>
+    <div data-accordion-content>
       <!-- content here : Recommanded to wrap it in an other element -->
     </div>
   </div>
@@ -198,9 +171,9 @@ This attribute can be used to target the state of an item using CSS selectors in
 }
 ```
 
-- Play With State using UnoCSs or TailwindCSS
+- Play With State using UnoCSs or TailwindCSS, make sure to have [uno-preset](/docs/uno-preset) if using UnoCSS or [tailwind-plugin](/docs/tailwind-plugin) if using tailwindCSS
 ```html
-<div data-accordion-item data-accordion-value="accordion-3" class="data-[state=open]:bg-red-600">
+<div data-accordion-item data-accordion-value="accordion-3" class="fx-open:bg-red-600">
   <!-- content here  -->
 </div>
 ```
@@ -320,8 +293,19 @@ new Accordion("#accordion-example", options)
 
 ### Options
 
-Options can also be directly passed via data-attribute
+Options can also be directly passed via data-attribute. [View examples here to see how](https://github.com/unify-ui-dev/flexilla)
 
+```js
+const options = {
+  accordionType: "multiple",//default is "single"
+  defaultValue: "item-3",
+  allowTriggerOnFocus: false,//default is false
+  preventClosingAll: true,//default is false
+  onChangeItem: ({ expandedItem }) => {
+    // do something with the ExpandedItem
+  }
+}
+```
 <BoxTable>
   <BoxTableRow
     title="defaultValue"
@@ -348,5 +332,33 @@ Options can also be directly passed via data-attribute
   </BoxTableRow>
 </BoxTable>
 
+## Methods
+
+### Show Item
+To show a specific item within the accordion, you can use the `showItem` method
+
+```js
+import {Accordion} from "@flexilla/accordion"
+
+const myAcc = new Accordion("[data-accordion-example]")
+
+myAcc.showItem("value-of-the-conserned-item")
+```
+
+### Hide Item
+To hide a specific item within the accordion, you can use the `hideItem` method
+
+```js
+myAcc.hideItem("value-of-the-conserned-item")
+```
+
+### Auto Init
+This method allow to initialize all accordion elements. This method receive a string value which help to identify concerned elements(can use class name or data attribute), by default `[data-fx-accordion]` is used.
+
+```js
+import {Accordion} from "@flexilla/accordion"
+
+Accordion.autoInit()  //init accordion components based on the selector `data-fx-accordion`
+```
 ## Accessibility
 

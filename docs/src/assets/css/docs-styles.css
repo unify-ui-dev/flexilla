@@ -36,9 +36,6 @@ html.dark {
   display: inline-block;
 }
 
-.line.diff.add {
-  background-color: rgba(6, 78, 24, 0.06);
-}
 
 .line.diff.add::before,
 .line.diff.remove::before {
@@ -46,25 +43,43 @@ html.dark {
   left: 0px;
   top: 0px;
   bottom: 0px;
-  width: 16px;
+  width: 24px;
   padding-left: 4px;
   border-left-width: 3px;
 }
 
+.line.diff.add {
+  --fx-gradient-from-position: 0%;
+  --fx-gradient-from: rgb(34 211 238 / 0.02) var(--fx-gradient-from-position);
+  --fx-gradient-to-position: 100%;
+  --fx-gradient-to: rgb(8 145 178 / 0.09) var(--fx-gradient-to-position);
+  --fx-gradient-stops: var(--fx-gradient-from), var(--fx-gradient-to);
+  --fx-gradient-shape: to left;
+  --fx-gradient: var(--fx-gradient-shape), var(--fx-gradient-stops);
+  background-image: linear-gradient(var(--fx-gradient));
+}
+
 .line.diff.add::before {
   content: "+";
-  color: green;
-  border-left-color: green;
+  color: rgb(14, 147, 180);
+  border-left-color: rgb(14, 147, 180);
 }
 
 .line.diff.remove {
-  background-color: rgba(219, 17, 17, 0.06);
+  --fx-gradient-from-position: 0%;
+  --fx-gradient-from: rgb(220 38 38 / 0.05) var(--fx-gradient-from-position);
+  --fx-gradient-to-position: 100%;
+  --fx-gradient-to: rgb(248 113 113 / 0.04) var(--fx-gradient-to-position);
+  --fx-gradient-stops: var(--fx-gradient-from), var(--fx-gradient-to);
+  --fx-gradient-shape: to left;
+  --fx-gradient: var(--fx-gradient-shape), var(--fx-gradient-stops);
+  background-image: linear-gradient(var(--fx-gradient));
 }
 
 .line.diff.remove::before {
   content: "-";
-  color: red;
-  border-left-color: red;
+  color: rgb(255, 0, 0);
+  border-left-color: rgb(255, 0, 0);
 }
 
 [data-tab-fx-site] [data-tab-panel]:has([data-code-block]) {

@@ -11,20 +11,27 @@ const { values, autoHeight } = Astro.props;
   data-tab-fx-site
   data-fx-tabs
   data-indicator-class-name="ui-tabs-indicator before-absolute before-bottom-0 before-content-empty before-h0.5 before-rd-full before-inset-x-0 before-bg-zinc8 dark-before-bg-white"
-  my-2
+  class="my4 first-mt0 last-mb0"
 >
-  <ul role="tablist" data-tab-list class="flex items-center gap-x3 b-b b-b-zinc6/30 dark-b-b-zinc5/20 relative">
+  <ul
+    role="tablist"
+    data-tab-list
+    class="flex items-center gap-x3 b-b b-b-zinc6/30 dark-b-b-zinc5/20 relative"
+  >
     {
       values.map((value) => (
-        <li
-          role="tab"
-          data-tabs-trigger
-          data-target={value}
-          aria-controls={value}
-          aria-label={`Go to tab ${value}`}
-          class="flex cursor-pointer disabled-cursor-not-allowed disabled-op80 px4 pt1.5 pb2.5 data-[state=active]-text-zinc9 dark-data-[state=active]-text-white outline-none focus-outline focus-outline-zinc5/50"
-        >
-          {value}
+        <li class="flex">
+          <a
+            data-tabs-trigger
+            data-target={value}
+            href={`#${value}`}
+            role="tab"
+            aria-controls={value}
+            aria-label={`${value}`}
+            class="flex cursor-pointer disabled-cursor-not-allowed disabled-op80 px4 pt1.5 pb2.5 data-[state=active]-text-zinc9 dark-data-[state=active]-text-white outline-none focus-outline focus-outline-zinc5/50"
+          >
+            {value}
+          </a>
         </li>
       ))
     }
@@ -36,4 +43,3 @@ const { values, autoHeight } = Astro.props;
     <slot />
   </div>
 </div>
-
