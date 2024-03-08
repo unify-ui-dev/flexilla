@@ -1,4 +1,6 @@
 ---
+import AppLogoLink from "./AppLogoLink.astro";
+
 const footerItems = [
   {
     label: "UnifyUI",
@@ -60,7 +62,7 @@ const footerItems = [
     items: [
       {
         text: "Github",
-        href: "#link",
+        href: "https://github.com/unify-ui-dev/flexilla",
         isExternal: true,
       },
       {
@@ -70,32 +72,40 @@ const footerItems = [
       },
       {
         text: "Discord",
-        href: "#link",
+        href: "https://discord.gg/6VN6zTPZAy",
         isExternal: true,
       },
     ],
   },
 ];
+
+const getSocialIcon = (social:string)=>{
+  return (
+    social === "Github" ? 'i-carbon-logo-github' :
+    social === "Discord" ? 'i-carbon-logo-discord' :
+    social === "Twitter" ? 'i-carbon-logo-x' : ""
+  )
+}
 ---
 
 <div
   class="p5 sm-p6 md-p8 lg-p10 rd-xl b b-zinc2/90 dark-b-zinc8/60 bg-zinc1/60 dark-bg-zinc9/60 backdrop-blur-xl"
 >
   <div class="grid grid-cols-2 md-grid-cols-4 gap-x6 gap-y10 md-gap-x10">
-    <div class="space-y-6">
-      <a href="/">Flexilla</a>
+    <div class="space-y-6 col-span-2 lg-col-span-1">
+      <AppLogoLink showText/>
       <div class="space-y-3">
         <p class="text-sm text-zinc6 dark-text-zinc4">
           Subsribe to our news-letter
         </p>
-        <form class="w-full max-w-2xl flex flex-col gap-y2">
+        <form class="w-full max-w-2xl flex flex-col gap-y2 relative">
           <input
             type="email"
             placeholder="johndoe@gmail.com"
-            class="px5 py2.5 rd-xl bg-zinc2/70 dark-bg-zinc8/30 text-zinc7 dark-text-zinc3 outline-transparent focus-outline focus-outline-zinc2 dark-focus-outline-zinc8 flex-1 text-sm"
+            class="px5 py3 md-py2.5 rd-xl bg-zinc2/70 dark-bg-zinc8/30 text-zinc7 dark-text-zinc3 outline-transparent focus-outline focus-outline-zinc2 dark-focus-outline-zinc8 flex-1 text-sm"
           />
           <button
-            class="w-full rd-xl h9 flex items-center justify-center outline-offset-2 bg-gradient-to-t from-zinc2 to-zinc1 dark-from-zinc9 dark-to-zinc8 b b-zinc2/80 dark-b-zinc8/90 text-sm"
+            class="absolute top-1 right-1 md-top-0 md-right-0 md-relative px4 md-w-full rd-lg md-rd-xl h9 flex items-center justify-center outline-offset-2 bg-gradient-to-t from-zinc2 to-zinc1 dark-from-zinc9 dark-to-zinc8 b b-zinc2/80 dark-b-zinc8/90 text-sm"
             aria-label="subscribe to news letter"
           >
             Subscribe
@@ -104,38 +114,71 @@ const footerItems = [
       </div>
     </div>
     {
-      footerItems.map((footerItem) => (
-        <div class="space-y-6">
-          <h2 class="text-zinc9 dark-text-white font-semibold">
-            {footerItem.label}
-          </h2>
-          <ul class="text-zinc6 dark-text-zinc4 text-sm space-y-3">
-            {footerItem.items.map((item) => (
-              <li>
-                {item.isExternal ? (
+      footerItems.map((footerItem) =>
+        footerItem.label === "Community" ? (
+          <div class="space-y-6">
+            <h2 class="text-zinc9 dark-text-white font-semibold">
+              {footerItem.label}
+            </h2>
+            <ul class="text-zinc6 dark-text-zinc4 text-sm gap2 lg-gap3 flex flex-wrap lg-flex-col -mx2.5 lg-mx0">
+              {footerItem.items.map((item) => (
+                <li>
                   <a
-                    href={item.href}
-                    aria-label={`Link to ${item.text}`}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    class="ease-linear transition-color hover-text-zinc9 dark-hover-text-zinc1"
-                  >
-                    {item.text}
-                  </a>
-                ) : (
-                  <a
-                    href={item.href}
-                    aria-label={`Link to ${item.text}`}
-                    class="ease-linear transition-color hover-text-zinc9 dark-hover-text-zinc1"
-                  >
-                    {item.text}
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))
+                      href={item.href}
+                      aria-label={`Link to ${item.text}`}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      class={
+                        `
+                        ease-linear duration-200 lg-transition-color hover-text-zinc9 dark-hover-text-zinc1
+                        rd-lg lg-rd-0 transition flex hover-bg-zinc2/90 dark-hover-bg-zinc9/90 p2.5 lg-p0 lg-hover-bg-transparent lg-dark-hover-bg-transparent
+                        `
+                      }
+                    >
+                      <span class="hidden lg-flex">
+                        {item.text}
+                        </span>
+                        <span aria-hidden="true" class="flex lg-hidden">
+                        <span class={`${getSocialIcon(item.text)} flex text-xl`}></span>
+                        </span>
+                    </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <div class="space-y-6">
+            <h2 class="text-zinc9 dark-text-white font-semibold">
+              {footerItem.label}
+            </h2>
+            <ul class="text-zinc6 dark-text-zinc4 text-sm space-y-3">
+              {footerItem.items.map((item) => (
+                <li>
+                  {item.isExternal ? (
+                    <a
+                      href={item.href}
+                      aria-label={`Link to ${item.text}`}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      class="ease-linear transition-color hover-text-zinc9 dark-hover-text-zinc1"
+                    >
+                      {item.text}
+                    </a>
+                  ) : (
+                    <a
+                      href={item.href}
+                      aria-label={`Link to ${item.text}`}
+                      class="ease-linear transition-color hover-text-zinc9 dark-hover-text-zinc1"
+                    >
+                      {item.text}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      )
     }
   </div>
   <div

@@ -1,6 +1,6 @@
 ---
 interface Props {
-  icon: string;
+  icon?: string;
   text: string;
   href: string;
   draft?: boolean;
@@ -10,20 +10,22 @@ interface Props {
 const { icon, text, href, draft, activeItem } = Astro.props;
 ---
 
-<li class="wfull">
+<li  class="wfull pr2.5">
   <a
     href={href}
     class={
         `flex items-center gap-x3 py1 wfull
-        ${href === `/docs/${activeItem}` ? "text-zinc9 dark-text-white font-500" : "hover-text-zinc9 dark-hover-text-white"}`
+        ${href === `/docs/${activeItem}` ? "text-zinc9 dark-text-white font-500" : "hover-text-zinc9 dark-hover-text-white"}
+        ${draft? "pointer-events-none op80 select-none":""}
+        `
     }
   >
     <span aria-hidden="true" class={` ${icon} flex text-lg`}></span>
-    {text}
+    <span class="flex-1">{text}</span>
     {
       draft ? (
-        <span class="flex self-end px1 pypx b b-zinc2/70 dark-b-zinc8/7 bg-zinc1/80 dark-bg-zinc/80 text-zinc8 dark-text-zinc2">
-          Draft
+        <span class="flex self-end px1 pypx b b-zinc2/70 dark-b-zinc8/7 bg-zinc1/80 dark-bg-zinc9/80 text-zinc8 dark-text-zinc2 rd-full">
+          draft
         </span>
       ) : null
     }

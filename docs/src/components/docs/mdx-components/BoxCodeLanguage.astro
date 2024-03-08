@@ -1,5 +1,5 @@
 ---
-import { getIcon } from './TabCodeBlock.astro';
+import { getIcon } from "./TabCodeBlock.astro";
 
 interface Props {
   text: string;
@@ -13,12 +13,16 @@ const { text, icon } = Astro.props;
   <div
     class="flex bg-white dark-bg-zinc950 b b-zinc2/90 dark-b-zinc8/60 rd-t-xl py1.5 px4"
   >
-    <span
-      class="flex items-center gap-x2"
-    >
-      <span aria-hidden="true" class="flex min-wmax">
-        <span class={`flex text-sm ${getIcon(icon)}`}></span>
-      </span>
+    <span class="flex items-center gap-x2">
+      {
+        icon.includes(".svg") ? (
+          <img src={icon} alt={`icon ${icon.substring(0, icon.lastIndexOf(".svg"))}`} class="h6 wauto" width="40"/>
+        ) : (
+          <span aria-hidden="true" class="flex min-wmax">
+            <span class={`flex text-sm ${getIcon(icon)}`} />
+          </span>
+        )
+      }
       {text}
     </span>
   </div>

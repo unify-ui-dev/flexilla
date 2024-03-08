@@ -5,10 +5,11 @@ interface Props {
   activeItem:string,
   label: string;
   items: {
-    icon: string;
+    icon?: string;
     text: string;
     href: string;
     draft?: boolean;
+    hideFromSidebar?:boolean
   }[];
 }
 
@@ -20,6 +21,6 @@ const { label, items, activeItem } = Astro.props;
     {label}
   </h2>
   <ul class="flex flex-col space-y-1 text-zinc7 dark-text-zinc3 wfull">
-    {items.map((item) => <SidebarItem activeItem={activeItem} {...item} />)}
+    {items.map((item) => !item.hideFromSidebar ? <SidebarItem activeItem={activeItem} {...item} />:null)}
   </ul>
 </div>

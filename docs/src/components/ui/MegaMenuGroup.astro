@@ -31,12 +31,22 @@ const { label, items } = Astro.props;
             href={item.href}
             class="hover-text-zinc9 dark-hover-text-white flex items-start gap-x3"
           >
-            <span
-              aria-hidden="true"
-              class="flex items-center justify-center size-10 max-hmax min-w10 rd-lg bg-zinc2/70 dark-bg-zinc8/70"
-            >
-              <span class={`flex ${item.icon}`} />
-            </span>
+            {item.icon.includes(".svg") ? (
+              <img
+                src={item.icon}
+                alt={`Icon ${item.icon.substring(0, item.icon.lastIndexOf(".svg"))}`}
+                width="40"
+                height="40"
+                class="w4 md-w5 lg-w6 hauto"
+              />
+            ) : (
+              <span
+                aria-hidden="true"
+                class="flex items-center justify-center size-10 max-hmax min-w10 rd-lg bg-zinc2/70 dark-bg-zinc8/70"
+              >
+                <span class={`flex ${item.icon}`} />
+              </span>
+            )}
             <div space-y-1>
               <span class="flex-1 flex items-center gap-x1 text-zinc8 dark-text-zinc2">
                 {item.text}
