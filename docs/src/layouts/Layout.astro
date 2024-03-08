@@ -1,15 +1,30 @@
 ---
+import { type SeoType } from "@/types/index";
 import BaseLayout from "./BaseLayout.astro";
 import NavBar from "./NavBar.astro";
 import Footer from "./Footer.astro";
+import { defaultOgAlt, defaultOgImage, keywordsDef } from "../const";
 interface Props {
   title: string;
+  keywords?: string;
+  ogImage?: {
+    src: string;
+    alt: string;
+  };
 }
-
-const { title } = Astro.props;
+const { title, keywords, ogImage } = Astro.props;
+const seo: SeoType = {
+  ogImage: {
+    src: ogImage?.src || defaultOgImage,
+    alt: ogImage?.alt || defaultOgAlt,
+  },
+  keywords: `${keywordsDef} ${keywords ? `, ${keywords}` : ""}`,
+  title: title,
+  description: "Flexilla is an interace component Library",
+};
 ---
 
-<BaseLayout title={title}>
+<BaseLayout seo={seo}>
   <NavBar />
   <slot />
   <Footer />

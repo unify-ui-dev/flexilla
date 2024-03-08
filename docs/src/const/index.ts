@@ -1,0 +1,5 @@
+export const side_domain = "flexilla-docs.vercel.app"
+export const siteUrl = "https://flexilla-docs.vercel.app"
+export const keywordsDef = "Flexilla, Interactive Components, Component Library, "
+export const defaultOgImage = ""
+export const defaultOgAlt = ""

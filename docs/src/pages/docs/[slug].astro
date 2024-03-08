@@ -1,5 +1,7 @@
 ---
 export const prerender = true;
+
+import { removeBeforeLastSlash } from "@helper/string-helper";
 import { getCollection } from "astro:content";
 
 import DocsLayout from "@layouts/DocsLayout.astro";
@@ -12,7 +14,7 @@ import DeskTableOfContent from "@components/docs/blocks/DeskTableOfContent.astro
 export async function getStaticPaths() {
   const docs = await getCollection("docs");
   return docs.map((doc) => ({
-    params: { slug: doc.slug.substring(doc.slug.indexOf("/") + 1) },
+    params: { slug: removeBeforeLastSlash(doc.slug) },
     props: { doc_content: doc },
   }));
 }
@@ -21,23 +23,31 @@ const { doc_content } = Astro.props;
 
 const {
   slug,
-  data: { title, description },
+  id,
+  data: { title, description, hidePagination, hideTableOfContent },
 } = doc_content;
 
 const { Content, headings } = await doc_content.render();
 
-const pageSlugId = slug.substring(slug.indexOf("/") + 1);
+const pageSlugId = removeBeforeLastSlash(slug);
+
+const activeItem = slug.includes("framework-guide") ? "framework-guide" : removeBeforeLastSlash(slug)
 
 const { next: nextSlug, prev: prevSlug, current } = getPagger(pageSlugId);
 ---
 
 <DocsLayout
-  title={`Flexilla - ${current.title}`}
-  activeItem={pageSlugId}
+  title={`${current.title}`}
+  activeItem={activeItem}
   headings={headings}
+  description={description}
+  keywords={`${pageSlugId}, flexilla docs`}
 >
   <article
-    class="px5 sm-px10 lg-px10 xl-pr16 lg-px14 xl-px16 min-w0 wfull mx-auto"
+    class={`
+      px5 sm-px10 lg-px14 min-w0 wfull mx-auto
+      ${hideTableOfContent ? "xl-pl16 xl-pr0" : "xl-px16"}
+    `}
   >
     <div class="pt8 pb5 b-b b-b-zinc6/30 dark-b-b-zinc5/20 space-y-2">
       <ol
@@ -72,52 +82,56 @@ const { next: nextSlug, prev: prevSlug, current } = getPagger(pageSlugId);
     <div data-doc-content class="py10 wfull max-wfull">
       <Content components={{ ...components }} />
     </div>
-    <div class="flex wfull hpx my8 bg-zinc2/80 dark-bg-zinc8/80"></div>
-    <div un-flex flex-col sm-flex-row w-full justify-between gap-4>
-      <div flex-1>
-        {
-          prevSlug ? (
-            <LinkNavControl
-              text={prevSlug.title}
-              href={prevSlug.slug}
-              type="prev"
-            />
-          ) : null
-        }
-      </div>
+    {
+      !hidePagination ? (
+        <>
+          <div class="flex wfull hpx my8 bg-zinc2/80 dark-bg-zinc8/80" />
+          <div un-flex flex-col sm-flex-row w-full justify-between gap-4>
+            <div flex-1>
+              {prevSlug ? (
+                <LinkNavControl
+                  text={prevSlug.title}
+                  href={prevSlug.slug}
+                  type="prev"
+                />
+              ) : null}
+            </div>
 
-      <div flex-1>
-        {
-          nextSlug ? (
-            <LinkNavControl
-              text={nextSlug.title}
-              href={nextSlug.slug}
-              type="next"
-            />
-          ) : null
-        }
-      </div>
-    </div>
+            <div flex-1>
+              {nextSlug && !nextSlug.draft ? (
+                <LinkNavControl
+                  text={nextSlug.title}
+                  href={nextSlug.slug}
+                  type="next"
+                />
+              ) : null}
+            </div>
+          </div>
+        </>
+      ) : null
+    }
   </article>
-  <div
-    class="hidden xl-sticky xl-top-16 xl-h-[calc(100vh-4rem)] invisible xl-visible xl-flex xl-flex-col lg-gap-y8"
-  >
-    <div class="lg-hfull lg-overflow-hidden overflow-hidden">
-      <div
-        data-hidden-scrollbar-s
-        data-overlayscrollbars-initialize
-        class="lg-hfull lg-overflow-hidden lg-overflow-y-auto"
-      >
-        <DeskTableOfContent headings={headings} />
+  {
+    !hideTableOfContent ? (
+      <div class="hidden xl-sticky xl-top-16 xl-h-[calc(100vh-4rem)] invisible xl-visible xl-flex xl-flex-col lg-gap-y8">
+        <div class="lg-hfull lg-overflow-hidden overflow-hidden">
+          <div
+            data-hidden-scrollbar-s
+            data-overlayscrollbars-initialize
+            class="lg-hfull lg-overflow-hidden lg-overflow-y-auto"
+          >
+            <DeskTableOfContent headings={headings} />
+          </div>
+        </div>
+        <div>
+          <BoxContribution
+            fileName={id}
+            contribLink="https://github.com/unify-ui-dev/flexilla/blob/main/CONTRIBUTING.MD"
+          />
+        </div>
       </div>
-    </div>
-    <div>
-      <BoxContribution
-        fileName={slug}
-        contribLink="https://github.com/unify-ui-dev/flexilla/blob/main/CONTRIBUTING.MD"
-      />
-    </div>
-  </div>
+    ) : null
+  }
 </DocsLayout>
 <script>
   import "@assets/js/doc-script";

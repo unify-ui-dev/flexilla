@@ -1,5 +1,5 @@
 ---
-import NavLeftGroup from "@components/ui/NavLeftGroup.astro";
+import NavRightGroup from "@components/ui/NavRightGroup.astro";
 import AppLogoLink from "@components/ui/AppLogoLink.astro"
 import MegaMenuBreakPoint from "@components/ui/MegaMenuBreackpoint.astro"
 const navItems = [
@@ -85,6 +85,7 @@ const navItems = [
               <li class="ease-linear transition-opacity">
                 <a
                   href={item.href}
+                  aria-label={`Link to - ${item.text}`}
                   class="flex py2 px3.5 rd-md ease-linear hover-bg-zinc1/90 dark-hover-bg-zinc9 hover-text-zinc9 dark-hover-text-white"
                 >
                   {item.text}
@@ -95,6 +96,6 @@ const navItems = [
         }
       </ul>
     </div>
-    <NavLeftGroup/>
+    <NavRightGroup/>
   </nav>
 </header>

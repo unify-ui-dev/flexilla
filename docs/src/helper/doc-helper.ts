@@ -12,6 +12,7 @@ const getActiveIndex = (array_: Slug[], slug: string) => {
     return array_.findIndex((item) => item.slug === slug)
 }
 
+
 export const getPagger = (href: string) => {
     const flatenedItems = [...flatMap]
     const activeIndex = getActiveIndex(flatenedItems, `/docs/${href}`)

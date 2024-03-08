@@ -5,6 +5,8 @@ const docsCollection = defineCollection({
     schema: z.object({
         title: z.string(),
         description: z.string(),
+        hideTableOfContent:z.boolean().optional(),
+        hidePagination:z.boolean().optional()
     })
 })
 export const collections = {
