@@ -1,6 +1,5 @@
 import { Tooltip } from "@flexilla/tooltip"
-import '@unocss/reset/tailwind.css'
-import 'virtual:uno.css'
+import "./../main"
 
 new Tooltip(
   "[data-popover-1]",

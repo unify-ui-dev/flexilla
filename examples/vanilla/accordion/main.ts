@@ -1,5 +1,4 @@
-import '@unocss/reset/tailwind.css'
-import 'virtual:uno.css'
+import "./../main"
 import { Accordion } from "@flexilla/accordion"
 
 new Accordion('[data-accordion-1]')

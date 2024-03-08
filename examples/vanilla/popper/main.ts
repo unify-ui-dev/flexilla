@@ -1,6 +1,5 @@
 import { CreatePopper } from '@flexilla/popper'
-import '@unocss/reset/tailwind.css'
-import 'virtual:uno.css'
+import "./../main"
 
 
 const ref1 = document.querySelector("[data-reference-1]")
