@@ -49,6 +49,10 @@ export default defineConfig({
         carbon: () =>
           import("@iconify-json/carbon/icons.json").then((i) => i.default),
       },
+      extraProperties: {
+        display: 'inline-block',
+        'vertical-align': 'middle',
+      },
     }),
   ],
 });

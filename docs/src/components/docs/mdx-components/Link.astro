@@ -8,8 +8,8 @@ const href_ = href as string;
 
 {
   (href_ && href_.startsWith("/")) || (href_ && href_.startsWith("#")) ? (
-    <a href={href} aria-label={!label || label === "" ? `Link to ${href}` : label} class="underline wmax underline-offset-4 underline-dashed inline-flex
-      gap-x2 b b-zinc2/90 dark-b-zinc8/60 bg-zinc1/60 dark-bg-zinc9/60 px1 py0.5 rd-lg text-emerald6 dark-text-emerald5 hover-text-zinc9 dark-hover-text-white">
+    <a href={href} aria-label={!label || label === "" ? `Link to ${href}` : label} class="underline wmax underline-offset-3 underline-dashed inline-flex
+      gap-x2 b b-zinc2/90 dark-b-zinc8/60 bg-zinc1/60 dark-bg-zinc9/60 px1 py0.5 rd-lg text-emerald7 dark-text-emerald5 hover-text-zinc9 dark-hover-text-white">
       <slot />
     </a>
   ) : (
@@ -18,11 +18,11 @@ const href_ = href as string;
       aria-label={!label || label === "" ? `Link to ${href}` : label}
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-flex items-center text-emerald6 dark-text-emerald5
-      gap-x2 underline underline-offset-4 underline-dashed wmax hover-text-zinc9 dark-hover-text-white"
+      class="inline-flex items-center text-emerald7 dark-text-emerald5
+      gap-x1px underline underline-offset-3 underline-dashed wmax hover-text-zinc9 dark-hover-text-white"
     >
       <slot />
-      <span aria-hidden="true" class="flex i-carbon-arrow-up-right text-10px" />
+      <span aria-hidden="true" class="flex i-carbon-arrow-up-right text-12px" />
     </a>
   )
 }

@@ -20,7 +20,7 @@ const { values, autoHeight } = Astro.props;
   >
     {
       values.map((value) => (
-        <li class="flex">
+        <li role="presentation"  class="flex">
           <a
             data-tabs-trigger
             data-target={value}
