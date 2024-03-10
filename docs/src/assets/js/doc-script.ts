@@ -1,4 +1,4 @@
-import { Tabs, Accordion, Collapse } from "@flexilla/flexilla";
+import { Tabs, Accordion, Collapse, Dismissible } from "@flexilla/flexilla";
 import { $$ } from "./selector";
 
 
@@ -16,5 +16,10 @@ for(const accordion of allAccordionWithAttribute){
 const allCollapses = $$("[data-collapsible-example]")
 for(const collapse of allCollapses){
     new Collapse(collapse)
+}
+
+const dismissibleEls = $$("[data-dismissible]")
+for(const dismissEl of dismissibleEls){
+    new Dismissible(dismissEl)
 }
 

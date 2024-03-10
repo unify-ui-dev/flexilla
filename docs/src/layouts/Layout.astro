@@ -7,12 +7,13 @@ import { defaultOgAlt, defaultOgImage, keywordsDef } from "../const";
 interface Props {
   title: string;
   keywords?: string;
+  description?:string;
   ogImage?: {
     src: string;
     alt: string;
   };
 }
-const { title, keywords, ogImage } = Astro.props;
+const { title, keywords, ogImage, description } = Astro.props;
 const seo: SeoType = {
   ogImage: {
     src: ogImage?.src || defaultOgImage,
@@ -20,7 +21,7 @@ const seo: SeoType = {
   },
   keywords: `${keywordsDef} ${keywords ? `, ${keywords}` : ""}`,
   title: title,
-  description: "Flexilla is an interace component Library",
+  description: `${description ? description : "Flexilla Docs, Interactive Components Library"}`,
 };
 ---
 
