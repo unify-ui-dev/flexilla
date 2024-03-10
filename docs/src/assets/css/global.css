@@ -6,7 +6,9 @@ html {
 
 body {
     width: 100%;
+    font-family: 'Geist Sans', sans-serif;
 }
+
 
 @media (prefers-color-scheme: dark) {
     .dark:root {
