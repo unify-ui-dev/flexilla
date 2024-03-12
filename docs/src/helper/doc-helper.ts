@@ -1,4 +1,4 @@
-import { sidebarItems } from "@components/docs/Sidebar.astro";
+import { sidebarItems } from "@components/docs/SidebarItems.astro";
 
 interface Slug {
     title: string;

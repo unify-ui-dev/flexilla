@@ -24,10 +24,10 @@ const getIcon = (type: "update" | "note" | "warning" | "important") => {
   data-alert
   class={`
   ${cn("wfull b rd-xl p2 flex items-center gap-x4 my4 first-mt0 last-mb0", {
-    "bg-cyan8/10 text-cyan8 dark-text-cyan5 b-cyan6/20": type === "update",
-    "bg-blue9/10 text-blue8 dark-text-blue5 b-blue6/20": type === "note",
-    "bg-orange8/10 text-orange8 dark-text-orange5 b-orange6/20": type === "warning",
-    "bg-red8/10 text-red8 dark-text-red5 b-red6/20": type === "important",
+    "bg-cyan1/10 dark-bg-cyan9/10 text-cyan8 dark-text-cyan5 b-cyan6/20": type === "update",
+    "bg-blue1/10 dark-bg-blue9/10 text-blue8 dark-text-blue5 b-blue6/20": type === "note",
+    "bg-orange1/10 dark-bg-orange9/10 dark-text-orange5 b-orange6/20": type === "warning",
+    "bg-red1/10 dark-bg-red9/10 text-red8 dark-text-red5 b-red6/20": type === "important",
   })}
   `}
 >
