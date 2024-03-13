@@ -6,7 +6,9 @@ html {
 
 body {
     width: 100%;
+    font-family:"Inter Variable" , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
+
 
 @media (prefers-color-scheme: dark) {
     .dark:root {

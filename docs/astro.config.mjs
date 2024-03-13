@@ -2,11 +2,11 @@ import { defineConfig } from 'astro/config';
 import UnoCSS from "unocss/astro";
 import preact from "@astrojs/preact";
 import mdx from "@astrojs/mdx";
-import {
-  transformerNotationDiff
-} from 'shikiji-transformers'
-
+import { transformerNotationDiff } from 'shikiji-transformers';
 import vercel from "@astrojs/vercel/serverless";
+import sitemap from "@astrojs/sitemap";
+
+import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,17 +16,24 @@ export default defineConfig({
       destination: '/docs/getting-started'
     }
   },
+  site: 'https://flexilla-docs.vercel.app',
   markdown: {
-    shikiConfig:{
-      theme:"css-variables",
-      transformers:[
-        transformerNotationDiff(),
-      ]
+    shikiConfig: {
+      theme: "css-variables",
+      transformers: [transformerNotationDiff()]
     }
   },
   integrations: [UnoCSS({
     injectReset: true
-  }), preact(), mdx()],
+  }), preact(), mdx(), sitemap(), 
+  partytown(
+    {
+      config: {
+			  forward: ["dataLayer.push"],
+			},
+    }
+  )
+],
   output: "server",
   adapter: vercel()
 });

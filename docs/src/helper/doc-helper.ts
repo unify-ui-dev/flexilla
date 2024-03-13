@@ -1,4 +1,4 @@
-import { sidebarItems } from "@components/docs/Sidebar.astro";
+import { sidebarItems } from "@components/docs/SidebarItems.astro";
 
 interface Slug {
     title: string;
@@ -11,6 +11,7 @@ const flatMap: Slug[] = sidebarItems.flatMap((section) => section.items.map(({ t
 const getActiveIndex = (array_: Slug[], slug: string) => {
     return array_.findIndex((item) => item.slug === slug)
 }
+
 
 export const getPagger = (href: string) => {
     const flatenedItems = [...flatMap]

@@ -1,6 +1,5 @@
 import { Modal, ModalOptions } from "@flexilla/modal"
-import '@unocss/reset/tailwind.css'
-import 'virtual:uno.css'
+import "./../main"
 
 new Modal("[data-modal-test-1]")
 

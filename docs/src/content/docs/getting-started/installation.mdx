@@ -1,27 +1,136 @@
 ---
 title: Installation
-description: This guide will show How to install Flexilla In you New or Existing Project
+description: This guide will show How to install Flexilla In your New or Existing Project
 ---
 
 ## Quick setup
 
 This guide will help you get started with Flexilla
 
-### Install via npm
+## Install via npm
+
+<Stepper>
+<Step>
+### Install the full Libary
+<BoxCodeLang text={"Shell"} icon={"/icons/shell.svg"}>
+```bash
+npm i @flexilla/flexilla
+```
+</BoxCodeLang>
+</Step>
+<Step>
+### Usage
+<BoxCodeLang text={"script"} icon={"/icons/js.svg"}>
+```js
+import {Accordion, Tabs} from "@flexilla/flexilla"
+
+const accordion = new Accordion("#my-accordion")
+
+const tabs = new  Tabs("#my-tabs",{ 
+    // options
+})
+```
+</BoxCodeLang>
+</Step>
+</Stepper>
+
+## Install Single Component
+
+<Stepper>
+<Step>
+### Install the full Libary
+<BoxCodeLang text={"Shell"} icon={"shell"}>
+```bash
+npm i @flexilla/collapse
+```
+</BoxCodeLang>
+</Step>
+<Step>
+### Usage
+<BoxCodeLang text={"script"} icon={"js"}>
+```js
+import {Collapse} from "@flexilla/collapse"
+
+new Accordion("#my-collapse",{
+    // options
+})
+```
+</BoxCodeLang>
+</Step>
+</Stepper>
+
+## Using CDN
+
+<Stepper>
+<Step>
+### Include the library via CDN
+All components
+<BoxCodeLang text={"index.html"} icon={"/icons/html.svg"}>
+```html
+<head>
+    <script src="https://unpkg.com/@flexilla/flexilla/dist/flexilla.min.js"></script>
+</head>
+```
+</BoxCodeLang>
+
+Or a Single Components
+<BoxCodeLang text={"index.html"} icon={"/icons/html.svg"}>
+```html
+<head>
+    <script src="https://unpkg.com/@flexilla/accordion/dist/accordion.min.js"></script>
+</head>
+```
+</BoxCodeLang>
 
 
-### Install Single Component
+</Step>
+<Step>
+### Initialize the library in your script
+Add in body : When Including all components
+<BoxCodeLang text={"index.html"} icon={"/icons/html.svg"}>
+```html
+<body>
+    <!-- content here  -->
+    <script>
+        new Flexilla.Accordion("#my-collapse",{
+            // options
+        })
+    </script>
+</body>
+```
+</BoxCodeLang>
+
+With One Single Component
+
+<BoxCodeLang text={"index.html"} icon={"/icons/html.svg"}>
+```html
+<body>
+    <!-- content here  -->
+    <script>
+        new Accordion("#my-collapse",{
+            // options
+        })
+    </script>
+</body>
+```
+</BoxCodeLang>
+</Step>
+</Stepper>
 
 
-### Using CDN
+## With Module (require)
 
 
-## Usage
-
-### Use with Module (require)
-
+<BoxCodeLang text={"script"} icon={"/icons/js.svg"}>
+```js
+const Accordion = require('@flexilla/accordion');
+new Accordion("#myAccordion")
+```
+</BoxCodeLang>
 
 ## Styling
 
 
 ## Quick Start Examples
+
+Checkout these quick start examples to get a feel of Flexilla [here](https://github.com/unify-ui-dev/flexilla/tree/main/examples)

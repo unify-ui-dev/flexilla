@@ -1,6 +1,5 @@
 import { Tabs } from "@flexilla/tabs"
-import '@unocss/reset/tailwind.css'
-import 'virtual:uno.css'
+import "./../main"
 
 
 new Tabs("[data-tabs]")

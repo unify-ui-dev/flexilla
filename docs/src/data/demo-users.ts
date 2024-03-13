@@ -43,7 +43,7 @@ export const users: {
     {
       id: "us3",
       avatar: "/demo-images/tresorIlunga.webp",
-      user_name: "Tresor Ilung",
+      user_name: "Tresor Ilunga",
       profile_link: "https://github.com/Tresor-ilunga",
       description:"Web Developer at Devscast Community : @devscast",
       team:{

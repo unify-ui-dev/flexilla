@@ -1,14 +1,10 @@
 import {
     OverlayScrollbars
 } from 'overlayscrollbars';
+import { $$ } from './selector';
 
-
-// document.querySelectorAll('[data-hidden-scrollbar]')
-const elements = Array.from(document.querySelectorAll('[data-hidden-scrollbar-s]')) as HTMLElement[]
+const elements = $$('[data-hidden-scrollbar-s]')
 
 for (const element of elements) {
-
-    const osInstance = OverlayScrollbars(element, {
-        
-    });
+    OverlayScrollbars(element, {});
 }

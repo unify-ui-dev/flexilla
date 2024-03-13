@@ -1,0 +1,52 @@
+---
+interface Props {
+  href: string;
+  icon: string;
+}
+const { href, icon } = Astro.props;
+
+const getIcon = (icon: string) => {
+  return icon === "laravel"
+    ? "i-fx-laravel-ico"
+    : icon === "astro"
+      ? "i-fx-astro-ico"
+      : icon === "symfony"
+        ? "i-fx-symphony-ico"
+        : icon === "rails"
+          ? "i-fontisto:rails"
+          : icon === "vite"
+            ? "i-fx-vite-ico"
+            : icon === "vue"
+              ? "i-fx-vue-ico"
+              : "";
+};
+---
+
+<a
+  href={href}
+  class="flex flex-col gap4 lg-flex-row items-start gap-x4 ease-linear duration-200
+ bg-white dark-bg-zinc950 hover-bg-zinc1/60 dark-hover-bg-zinc9/60
+ text-zinc7 dark-text-zinc3 hover-text-zinc9 dark-hover-text-white p4 rd-xl b b b-zinc3/80 dark-b-zinc8/80 hover-b-zinc2/90 dark-hover-b-zinc8/60"
+>
+  <div
+    class="min-w-max w9 h9 md-w11 md-h11 rd-full
+    flex items-center justify-center"
+  >
+    {
+      icon.includes(".svg") ? (
+        <img
+          src={icon}
+          alt={`Icon ${icon.substring(0, icon.lastIndexOf(".svg"))}`}
+          width="40"
+          height="40"
+          class="w4 md-w5 lg-w6 hauto"
+        />
+      ) : (
+        <span aria-hidden="true" class={`flex text-3xl ${getIcon(icon)}`} />
+      )
+    }
+  </div>
+  <div class="flex-1">
+    <slot />
+  </div>
+</a>

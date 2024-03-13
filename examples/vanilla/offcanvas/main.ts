@@ -1,6 +1,6 @@
 import { OffCanvas } from "@flexilla/offcanvas"
-import '@unocss/reset/tailwind.css'
-import 'virtual:uno.css'
+import "./../main"
+
 new OffCanvas("[data-slideover-from-left]",
     {
         backdrop: {

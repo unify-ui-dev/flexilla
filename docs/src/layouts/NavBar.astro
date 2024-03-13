@@ -1,5 +1,6 @@
 ---
-import NavLeftGroup from "@components/ui/NavLeftGroup.astro";
+import NavRightGroup from "@components/ui/NavRightGroup.astro";
+import AppLogoLink from "@components/ui/AppLogoLink.astro"
 import MegaMenuBreakPoint from "@components/ui/MegaMenuBreackpoint.astro"
 const navItems = [
   {
@@ -12,8 +13,8 @@ const navItems = [
     hasDropdown: true,
   },
   {
-    href: "/showcases",
-    text: "Showcases",
+    href: "/showcase",
+    text: "Showcase",
   },
   {
     href: "/change-log",
@@ -23,10 +24,10 @@ const navItems = [
 ---
 
 <header
-  class="sticky top-0 h16 lg-h20 z50 flex items-center b-b b-b-zinc2/60 dark-b-b-zinc8/60 lg-b-b-0"
+  class="sticky top-0 h16 lg-h20 z50 flex items-center b-b b-b-zinc2/60 dark-b-b-zinc8/60"
 >
   <nav
-    class="flex justify-between items-center py4 gap8 max-w83rem px5 sm-px10 lg-px8 w-full mxauto relative before-absolute before-content-empty before-inset-0 before-z0 before-bg-white/60 dark-before-bg-zinc950/60 before-backdrop-blur-xl"
+    class="flex justify-between items-center py4 gap8 max-w83rem px5 sm-px10 lg-px8 w-full mxauto relative before-absolute before-content-empty before-inset-0 before-z0 before-bg-white/60 dark-before-bg-zinc950/60 before-backdrop-blur-xl  before-b-b before-b-b-zinc2/60 dark-before-b-b-zinc8/60"
   >
     <div
       class="flex items-center gap-x3 flex-1 text-zinc7 dark-text-zinc3 relative"
@@ -50,7 +51,7 @@ const navItems = [
             aria-hidden="true"></span>
         </button>
       </div>
-      <a href="/" aria-label="Flexilla Home Page" class="">Flexilla</a>
+      <AppLogoLink/>
     </div>
     <div
       data-navbar
@@ -84,6 +85,7 @@ const navItems = [
               <li class="ease-linear transition-opacity">
                 <a
                   href={item.href}
+                  aria-label={`Link to - ${item.text}`}
                   class="flex py2 px3.5 rd-md ease-linear hover-bg-zinc1/90 dark-hover-bg-zinc9 hover-text-zinc9 dark-hover-text-white"
                 >
                   {item.text}
@@ -94,6 +96,6 @@ const navItems = [
         }
       </ul>
     </div>
-    <NavLeftGroup/>
+    <NavRightGroup/>
   </nav>
 </header>

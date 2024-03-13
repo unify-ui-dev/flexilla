@@ -13,7 +13,7 @@ const contribLinks = [
     icon: "i-fx-story-map",
   },
   {
-    href: `linkto-file${fileName}.mdx`,
+    href: `https://github.com/unify-ui-dev/flexilla/blob/main/docs/src/content/docs/${fileName}`,
     text: "Edit this page",
     icon: "i-carbon-edit",
   },
@@ -35,7 +35,7 @@ const contribLinks = [
     <ol un-flex flex-col space-y-2 text-zinc6 dark-text-zinc4 text-sm>
       {
         contribLinks.map((link) => (
-          <li>
+          <li class="flex">
             <a
               href={`${link.href}`}
               target="_blank"

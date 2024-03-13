@@ -1,12 +1,13 @@
 ---
-import NavLeftGroup from "@components/ui/NavLeftGroup.astro";
+import NavLeftGroup from "@components/ui/NavRightGroup.astro";
+import AppLogoLink from "@components/ui/AppLogoLink.astro"
 ---
 
 <header
-  class="sticky top-0 h16 z50 flex items-center b-b b-b-zinc2/60 dark-b-b-zinc8/60"
+  class="sticky top-0 h17.5 z50 flex items-center b-b b-b-zinc2/60 dark-b-b-zinc8/60"
 >
   <nav
-    class="flex justify-between items-center py4 gap8 max-w83rem px5 sm-px10 lg-px8 w-full mxauto relative before-absolute before-content-empty before-inset-0 before-z0 before-bg-white/60 dark-before-bg-zinc950/60 before-backdrop-blur-xl"
+    class="flex justify-between items-center py4 gap8 max-w83rem px5 sm-px10 lg-px8 w-full mxauto relative before-absolute before-content-empty before-inset-0 before-z0 before-bg-white/60 dark-before-bg-zinc950/60 before-backdrop-blur-xl before-b-b before-b-b-zinc2/60 dark-before-b-b-zinc8/60"
   >
     <div
       class="flex items-center gap-x3 flex-1 text-zinc7 dark-text-zinc3 relative"
@@ -30,7 +31,7 @@ import NavLeftGroup from "@components/ui/NavLeftGroup.astro";
             aria-hidden="true"></span>
         </button>
       </div>
-      <a href="/" aria-label="Flexilla Home Page" class="">Flexilla</a>
+      <AppLogoLink/>
     </div>
     <NavLeftGroup/>
   </nav>

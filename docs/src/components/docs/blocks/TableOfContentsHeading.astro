@@ -22,7 +22,7 @@ const { heading: h } = Astro.props;
       {h.text}
     </a>
     {h.subheadings.length > 0 && (
-      <ol pl-2 space-y-2 pt-2>
+      <ol class="pl8 space-y-2 pt2">
         {h.subheadings.map((sub) => (
           <li>
             <a
@@ -35,12 +35,6 @@ const { heading: h } = Astro.props;
               ease-linear
               duration-200
             >
-              <span
-                aria-hidden="true"
-                un-flex
-                i-carbon-chevron-right
-                text-sm
-              />
               {sub.text}
             </a>
           </li>

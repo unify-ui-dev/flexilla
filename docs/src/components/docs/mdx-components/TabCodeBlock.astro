@@ -20,6 +20,8 @@ export const getIcon = (iconName: string) => {
   else if (iconName === "laravel") return "i-fx-laravel-ico";
   else if (iconName === "symfony") return "i-fx-symphony-ico";
   else if (iconName === "shell") return "i-fx-shell";
+  else if (iconName === "yarn") return "i-fx-yarn";
+  else if (iconName === "npm") return "i-fx-npm";
 };
 ---
 
@@ -32,35 +34,55 @@ export const getIcon = (iconName: string) => {
     ${autoHeight ? "" : "h96"}`}
 >
   <div
-    data-tab-list
+    data-tab-list-wrapper
     class="rd-t-xl bg-white dark-bg-zinc950 flex items-center justify-between relative b b-zinc2/90 dark-b-zinc8/60
     text-sm text-zinc7 dark-text-zinc3 h12"
   >
-    <div
+    <ul
+      data-tab-list
+      role="tablist"
       data-scrollbar-hidden
       class="flex-1 hfull pl-1.5 flex items-center gap-x3 relative z20 text-zinc7 dark-text-zinc3"
     >
       {
-        values.map((triggerValue) => (
-          <button
-            data-tabs-trigger
-            data-target={triggerValue.value}
-            aria-label={`${triggerValue.value}`}
-            aria-control={triggerValue.value}
-            role="presentation"
-            class="flex items-center gap-x2 disabled-cursor-not-allowed disabled-op80 px3.5 py2 data-[state=active]-text-zinc9 dark-data-[state=active]-text-white focus-outline-none"
-          >
-            {triggerValue.icon && triggerValue.icon !== "" ? (
-              <span
-                aria-hidden="true"
-                class={`flex text-sm ${getIcon(triggerValue.icon)}`}
-              />
-            ) : null}
-            {triggerValue.text}
-          </button>
+        values.map((trigger) => (
+          <li role="presentation" class="z5">
+            <a
+              data-tabs-trigger
+              data-target={trigger.value}
+              href={`#${trigger.value}`}
+              role="tab"
+              aria-controls={trigger.value}
+              aria-label={`${trigger.value}`}
+              class="relative flex items-center gap-x1 disabled-cursor-not-allowed disabled-op80 px3.5 py2 fx-active-text-zinc9 dark-fx-active-text-white outline-none focus-outline focus-outline-zinc2 dark-focus-outline-zinc8"
+            >
+              {trigger.icon && trigger.icon !== "" ? (
+                trigger.icon.includes(".svg") ? (
+                  <img
+                    src={trigger.icon}
+                    alt={`icon ${trigger.icon.substring(0, trigger.icon.lastIndexOf(".svg"))}`}
+                    class="h4 wauto"
+                    width="40"
+                  />
+                ) : (
+                  <span
+                    aria-hidden="true"
+                    class={`flex text-sm ${getIcon(trigger.icon)}`}
+                  />
+                )
+              ) : null}
+              {trigger.icon && trigger.icon !== "" ? (
+                <span
+                  aria-hidden="true"
+                  class={`flex text-sm ${getIcon(trigger.icon)}`}
+                />
+              ) : null}
+              {trigger.text}
+            </a>
+          </li>
         ))
       }
-    </div>
+    </ul>
     {showCopyBlock ? <ButtonCopyInTabCode client:load /> : null}
   </div>
   <div

@@ -1,5 +1,4 @@
-import '@unocss/reset/tailwind.css'
-import 'virtual:uno.css'
+import "./../main"
 import { Collapse } from "@flexilla/collapse"
 
 new Collapse("[data-collapsible-1]")
@@ -17,4 +16,10 @@ new Collapse(
         orientation: "horizontal"
     }
 )
-new Collapse("[data-collapsible-5]")
+const collapse = new Collapse("[data-collapsible-5]",{
+    onToggle({ isExpanded }) {
+        
+    },
+})
+
+

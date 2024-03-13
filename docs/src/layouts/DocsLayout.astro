@@ -1,5 +1,7 @@
 ---
-import "@assets/css/docs-styles.css"
+import { type SeoType } from "@/types/index";
+import { defaultOgAlt, defaultOgImage, keywordsDef } from "../const";
+import "@assets/css/docs-styles.css";
 import "@assets/css/scrollbar.css";
 import BaseLayout from "./BaseLayout.astro";
 import Sidebar from "@components/docs/Sidebar.astro";
@@ -13,13 +15,31 @@ interface Props {
   activeItem: string;
   description?: string;
   headings: MarkdownHeading[];
+  keywords?: string;
+  ogImage?: {
+    src: string;
+    alt: string;
+  };
 }
 
-const { title, headings, activeItem } = Astro.props;
+const { headings, activeItem, title, keywords, ogImage, description } =
+  Astro.props;
+
+const seo: SeoType = {
+  ogImage: {
+    src: ogImage?.src || defaultOgImage,
+    alt: ogImage?.alt || defaultOgAlt,
+  },
+  keywords: `${keywordsDef} ${keywords ? `, ${keywords}` : ""}`,
+  title: title,
+  description: description
+    ? description
+    : "Easily add interactive Components to your App.",
+};
 ---
 
-<BaseLayout title={title}>
-  <DocsNavBar/>
+<BaseLayout seo={seo}>
+  <DocsNavBar />
   <div
     class="mx-auto wfull max-w83rem lg-px8 md-grid md-grid-cols-[200px_minmax(0,1fr)] lg-grid-cols-[220px_minmax(0,1fr)]"
   >
