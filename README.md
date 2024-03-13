@@ -80,12 +80,31 @@ See examples [Here](./examples/vanilla/)
 
 To contribute to this project, please make sure you read our [contributing guide](CONTRIBUTING.MD) before submitting a pull request.
 
+## ✨ Maintainers 
+
+
+<table>
+<tr>
+<td align="center" width="200"><pre><a href="https://github.com/Johnkat-Mj"><img src="https://avatars.githubusercontent.com/u/59884686?v=4" width="200" alt="Johnkat MJ Github Avatar" /><br><sub>Johnkat MJ</sub></a><br>@johnkat-mj</pre></td>
+<td align="center" width="200"><pre><a href="https://github.com/Tresor-Kasenda"><img src="https://avatars.githubusercontent.com/u/34010260?v=4" width="200" alt="Tresor Kasenda Github Avatar" /><br><sub>Johnkat MJ</sub></a><br>@johnkat-mj</pre></td>
+</tr>
+</table>
+
+
 ## 🙌 Acknowledgement
 
 Flexilla is made possible thanks to the inspirations from the following projects:
 
 - <a href="https://github.com/htmlstreamofficial/preline" target="_blank">Preline Plugins</a>
 - <a href="https://github.com/themesberg/flowbite" target="_blank">Flowbite Plugin</a>
+
+
+## Community
+
+Connect with us for future updates
+
+- [Discord](https://discord.gg/6VN6zTPZAy).
+
 
 ## 📄 License
 
