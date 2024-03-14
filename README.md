@@ -86,7 +86,7 @@ To contribute to this project, please make sure you read our [contributing guide
 <table>
 <tr>
 <td align="center" width="200"><pre><a href="https://github.com/Johnkat-Mj"><img src="https://avatars.githubusercontent.com/u/59884686?v=4" width="200" alt="Johnkat MJ Github Avatar" /><br><sub>Johnkat MJ</sub></a><br>@johnkat-mj</pre></td>
-<td align="center" width="200"><pre><a href="https://github.com/Tresor-Kasenda"><img src="https://avatars.githubusercontent.com/u/34010260?v=4" width="200" alt="Tresor Kasenda Github Avatar" /><br><sub>Johnkat MJ</sub></a><br>@johnkat-mj</pre></td>
+<td align="center" width="200"><pre><a href="https://github.com/Tresor-Kasenda"><img src="https://avatars.githubusercontent.com/u/34010260?v=4" width="200" alt="Tresor Kasenda Github Avatar" /><br><sub>Tresor Kasenda</sub></a><br>@tresor-ka</pre></td>
 </tr>
 </table>
 
