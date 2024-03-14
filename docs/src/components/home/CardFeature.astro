@@ -18,13 +18,15 @@ const { icon, title, description } = Astro.props;
     <div class="flex items-start gap-x4">
       <div
         aria-hidden="true"
-        class="rd-lg bg-zinc2/40 dark-bg-zinc8/40 size-10 flex items-center justify-center"
+        class="rd-lg bg-zinc2/40 dark-bg-zinc8/40 size-10 min-w10 flex items-center justify-center"
       >
         <span class=`flex text-lg ${icon}`></span>
       </div>
-      <h2 font-semibold text-lg text-zinc9 dark-text-white>
-        {title}
-      </h2>
+      <div class="flex-1">
+        <h2 font-semibold text-lg text-zinc9 dark-text-white>
+          {title}
+        </h2>
+      </div>
     </div>
     <p text-zinc7 dark-text-zinc3>
       {description}

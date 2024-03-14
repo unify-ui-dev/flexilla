@@ -73,8 +73,12 @@ module.exports = plugin(({ addVariant, e, addComponents }) => {
       transform:
         "translate(var(--fx-popper-placement-x), var(--fx-popper-placement-y))",
     },
-    ".ui-animated": {
+    ".ui-animated-modal-content": {
       animation: "var(--un-modal-animation)",
+      animationFillMode: "both",
+    },
+    ".ui-animated-tab-panel": {
+      animation: "var(--un-tab-show-animation)",
       animationFillMode: "both",
     },
     ".ui-tabs-indicator": {
