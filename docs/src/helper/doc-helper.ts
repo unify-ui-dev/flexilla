@@ -1,4 +1,5 @@
-import { sidebarItems } from "@components/docs/SidebarItems.astro";
+import { sidebarItems } from "@components/docs/DataItems.astro";
+import { removeBeforeLastSlash } from "./string-helper";
 
 interface Slug {
     title: string;
@@ -6,7 +7,15 @@ interface Slug {
     draft?: boolean
 }
 
+interface MetaData {
+    description: string,
+    keywords: string,
+    name: string
+}
+
 const flatMap: Slug[] = sidebarItems.flatMap((section) => section.items.map(({ text, href, draft }) => ({ title: text, slug: href, draft })))
+
+export const sidebarItemFlaterned: MetaData[] = sidebarItems.flatMap((section) => section.items.map(({ description, keywords, href }) => ({ name: removeBeforeLastSlash(href), description, keywords })))
 
 const getActiveIndex = (array_: Slug[], slug: string) => {
     return array_.findIndex((item) => item.slug === slug)

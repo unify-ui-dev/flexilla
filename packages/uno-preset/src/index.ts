@@ -15,7 +15,8 @@ export default function unifyUI(options: MyPresetOptions = { prefix: "fx" }): Pr
         ],
         shortcuts: {
             'ui-tabs-indicator': 'absolute transform-origin-[0_0] w-[var(--un-tab-indicator-width)] h-[var(--un-tab-indicator-height)] top-[var(--un-tab-indicator-top)] left-[var(--un-tab-indicator-left)]',
-            'ui-animated': 'animate-[var(--un-modal-animation)] animate-fill-both',
+            'ui-animated-modal-content': 'animate-[var(--un-modal-animation)] animate-fill-both',
+            'ui-animated-tab-panel':'animate-[var(--un-tab-show-animation)] animate-fill-both',
             'ui-overlay': 'fixed inset-0'
         },
         rules: [

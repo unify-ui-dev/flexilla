@@ -20,11 +20,12 @@ export function BtnQuickCopy() {
     })
   };
   return (
+    // biome-ignore lint/a11y/useButtonType: <explanation>
     <button className={`${cn(
       'bg-gradient-to-t from-zinc50 to-zinc1 dark-from-zinc950/80 dark-to-zinc9 b b-zinc2/80 dark-b-zinc8/90',
       'flex items-center gap-x3 relative text-sm',
       'h11 px6 rd-xl'
-      )}`}
+    )}`}
       aria-label='copy code'
       onClick={() => {
         copyToClipboard_();
@@ -33,9 +34,9 @@ export function BtnQuickCopy() {
       npm i @flexilla/flexilla
       <span aria-hidden="true" class="flex pl2 b-l b-l-zinc3 dark-b-l-zinc7">
         {isCopiedValue ? (
-          <span class="flex i-fx-copied"></span>
+          <span class="flex i-fx-copied" />
         ) : (
-          <span class="flex i-carbon-copy"></span>
+          <span class="flex i-carbon-copy" />
         )}
       </span>
     </button>

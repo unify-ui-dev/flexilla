@@ -1,4 +1,206 @@
 ---
-title: Accordion Component
-description: djkfjdf
+title: Dismissible Component
+description: Easily remove an Element from DOM or hide it from Screen
 ---
+
+## Installation
+
+To get started, install `@flexilla/collapse` package, else you can skip this step if you've already installed `@flexilla/flexilla`.
+
+<TabCodeGroup
+  values={[
+    { text: "npm", value: "npm-tab", icon: "npm"},
+    { text: "yarn", value: "yarn-tab", icon: "yarn"},
+  ]}
+  autoHeight
+  showCopyBlock
+>
+  <TabPanel value="npm-tab" active={true}>
+```bash 
+npm i @flexilla/dismissible
+```
+  </TabPanel>
+  <TabPanel value="yarn-tab">
+```bash 
+yarn add @flexilla/dismissible
+```
+  </TabPanel>
+</TabCodeGroup>
+
+
+## Strucure
+
+### Collapse structure
+
+- `dismissible` : Container of the Element to make dismissible.
+
+- `dissmiss-buttons` : Buttons Element to use as trigger to dismiss Element. Must have `data-dismiss-btn` attribute
+
+
+The dismissible HTML markup looks like:
+
+```html
+<div id="dismiss-me">
+    <!-- content here -->
+    <button data-dismiss-btn aria-label="remove from screen">
+     Dismiss
+    </button>
+</div>
+```
+
+### Consumming the component
+Then import the component and init it
+
+```js
+import { Dismissible } from '@flexilla/dismissible;
+new Dismissible("#dismiss-me")
+```
+
+## Example
+
+<PreviewTopCodeBottom>
+<PreviewComponent>
+<DismissFromScreen/>
+</PreviewComponent>
+<BoxCodeBottomPreview>
+```html
+<div data-dismiss-from-screen class="wfull p5 rd-lg bg-white dark-bg-zinc950">
+    <div class="bg-zinc1/90 bg-zinc9/90 rd-md px3 py1.5 flex items-center justify-between">
+        <h2 text-gray8 text-lg font-semibold>Remove Element From Dom</h2>
+        <button data-dismiss-btn aria-label="remove from screen" class="p2 text-gray7 p3 hover-bg-zinc2/80 dark-hover-bg-zinc8/80 rd-full">
+            <span class="flex i-carbon-close"></span>
+        </button>
+    </div>
+    <div class="pt5 space-y-4">
+        <div class="wmax p3 rd-full bg-red2 text-red6">
+            <span class="flex i-carbon-accessibility text-lg"></span>
+        </div>
+        <h2 class="font-semibold text-xl text-zinc9 dark-text-white">
+            You neen to add new user
+        </h2>
+        <p class="text-zinc7 dark-text-zinc3">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+    </div>
+</div>
+```
+</BoxCodeBottomPreview>
+</PreviewTopCodeBottom>
+
+
+## Remove from dom
+
+The collapse package supports horizontal collapsing. 
+Here's how to do 
+
+### Via data-attribute
+
+```js
+<div id="dismiss-me" data-action="remove-from-dom" ... >
+ 
+</div>
+```
+
+### With param
+
+```js
+new Dismissible(
+    '#dismiss-me',
+    "remove-from-dom"
+)
+```
+
+### Example
+
+Here's an example
+
+<PreviewTopCodeBottom>
+<PreviewComponent>
+<DismissFromDom/>
+</PreviewComponent>
+<BoxCodeBottomPreview>
+```html
+<div data-dismissible-el data-operation="remove-from-dom" class="wfull p5 rd-lg bg-white dark-bg-zinc950">
+    <div class="bg-zinc1/90 bg-zinc9/90 rd-md px3 py1.5 flex items-center justify-between">
+        <h2 text-gray8 text-lg font-semibold>Remove Element From Dom</h2>
+        <button data-dismiss-btn aria-label="remove from screen" class="p2 text-gray7 p3 hover-bg-zinc2/80 dark-hover-bg-zinc8/80 rd-full">
+            <span class="flex i-carbon-close"></span>
+        </button>
+    </div>
+    <div class="pt5 space-y-4">
+        <div class="wmax p3 rd-full bg-red2 text-red6">
+            <span class="flex i-carbon-accessibility text-lg"></span>
+        </div>
+        <h2 class="font-semibold text-xl text-zinc9 dark-text-white">
+            You neen to add new user
+        </h2>
+        <p class="text-zinc7 dark-text-zinc3">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+    </div>
+</div>
+```
+</BoxCodeBottomPreview>
+</PreviewTopCodeBottom>
+
+
+## Examples
+
+We're using UnoCSS Here for styling but you can use any CSS Lybrary/Framework if you want or even plain CSS.
+
+- [View Dismissible Examples With UnoCSS](https://github.com/unify-ui-dev/flexilla/tree/main/examples/vanilla/dismissible)
+
+
+## Props/Params & Options
+
+### Params
+
+<BoxTable>
+  <BoxTableRow title="dismissible" type="HTMLElement|string">
+    Dismissible Container, must be a valid Selector or HTMLElement.
+  </BoxTableRow>
+  <BoxTableRow title="action" type="remove-from-dom | hide-from-screen | undefined">
+    The action to perform when dismissing. Default is `hide-from-screen`
+  </BoxTableRow>
+  <BoxTableRow title="onDissmiss" type="void">
+    Use this method if you want to perform some action on dismissing an Element
+  </BoxTableRow>
+</BoxTable>
+
+With JS
+```js
+new Dismissible(
+    "#collapse1",
+    "hide-from-screen",
+    (() => {
+        console.log("Dismissed")
+    })
+)
+```
+
+
+## Methods
+
+### dismiss
+You can manually dismiss
+
+```js
+import {Dismissible} from "@flexilla/dismissible"
+
+const dismissEl = new Dismissible("#dismiss-me")
+
+dismissEl.dismiss()
+```
+
+
+### Auto Init
+This method allow to initialize all dismissible elements. This method receive a string value which help to identify concerned elements(can use class name or data attribute), by default `[data-fx-dismissible]` is used.
+
+```js
+import {Dismissible} from "@flexilla/dismissible"
+
+Dismissible.autoInit()  //init dismissible components based on the selector `data-fx-dismissible`
+//or
+Dismissible.autoInit(".collaspe-item")
+```
+

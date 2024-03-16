@@ -1,40 +1,264 @@
 ---
-title: Collapse
-description: djkfjdf
+title: Accordion Component
+description: Display togglable accordion panels.
 ---
 
 ## Installation
 
-To get started, install Collapsible package, else you can skip this step if you've already installed `@flexilla/flexilla`.
+To get started, install `@flexilla/collapse` package, else you can skip this step if you've already installed `@flexilla/flexilla`.
 
-<Tabs values={["npm", "yarn"]} autoHeight>
-  <TabPanel value="npm" active>
-  {/* <CodeInTab>
+<TabCodeGroup
+  values={[
+    { text: "npm", value: "npm-tab", icon: "npm"},
+    { text: "yarn", value: "yarn-tab", icon: "yarn"},
+  ]}
+  autoHeight
+  showCopyBlock
+>
+  <TabPanel value="npm-tab" active={true}>
 ```bash 
-npm i @flexilla/collapsible
+npm i @flexilla/collapse
 ```
-  </CodeInTab> */}
   </TabPanel>
-  <TabPanel value="yarn">
-    {/* <CodeInTab>
+  <TabPanel value="yarn-tab">
 ```bash 
-yarn add @flexilla/collapsible 
+yarn add @flexilla/collapse
 ```
-  </CodeInTab> */}
   </TabPanel>
-</Tabs>
+</TabCodeGroup>
+
 
 ## Strucure
 
-- `collapsibleElement` a `<div>` element (you can use any other tag that is a valid `HTMLElement`)
-- `` a trigger
+### Collapse structure
+
+- `collapse` : Collapse Container.
+
+- `trigger` (optional) : Trigger Element.
+
+
+The collapse HTML markup looks like:
 
 ```html
-
+<!-- trigger Button Element -->
+<button data-collapse-trigger data-target="collapse1" class="triggerBtn">
+  Toggle Collapse
+</button>
+<!-- accordionElement -->
+<div id="collapse1" style="overflow: hidden; transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);" class="">
+  <!-- content here -->
+</div>
 ```
 
+### Consumming the component
 Then import the component and init it
 
 ```js
+import { Collapse } from '@flexilla/collapse';
+const collapse = new Collapse(
+  "#collapse1",
+  {
+    // options here
+  }
+)
+```
 
+## Example
+
+<PreviewTopCodeBottom>
+<PreviewComponent>
+<DefaultCollpase/>
+</PreviewComponent>
+<BoxCodeBottomPreview>
+```html
+  <button data-collapse-trigger data-target="collapse1" class="wmax bg-gradient-to-bl from-zinc2 to-zinc50 b b-zinc2/80 dark-from-zinc8 dark-to-zinc9 dark-b-zinc8/80 px-4 py-2 rounded-lg text-sm">
+    Toggle Content
+  </button>
+  <div id="collapse1" class="transition-all duration-300 ease-linear overflow-hidden">
+    <div class="rd-md w-full bg-zinc1/5 dark-bg-zinc9/5 b b-zinc2/80 dark-b-zinc8/80 p4 overflow-hidden">
+      <p class="inline-flex">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam
+        illo expedita adipisci labore, debitis ipsam cupiditate autem sed
+      </p>
+    </div>
+  </div>
+```
+</BoxCodeBottomPreview>
+</PreviewTopCodeBottom>
+
+
+## Horizontal Orientation
+
+The collapse package supports horizontal collapsing. 
+Here's how to do 
+
+### Via data-attribute
+
+```js
+<div id="collapse1" data-orientation="horizontal" ... >
+ 
+</div>
+```
+
+### Via options
+
+```js
+const collapse = new Collapse(
+    '#collapse1',
+    {
+        orientation: "horizontal" [!code ++]
+    }
+)
+```
+
+### Example
+
+Here's an example
+
+<PreviewTopCodeBottom>
+<PreviewComponent>
+<HorizontalCollapse/>
+</PreviewComponent>
+<BoxCodeBottomPreview>
+```html
+  <button data-collapse-trigger data-target="collapseH" class="wmax bg-gradient-to-bl from-zinc2 to-zinc50 b b-zinc2/80 dark-from-zinc8 dark-to-zinc9 dark-b-zinc8/80 px-4 py-2 rounded-lg text-sm">
+    Toggle Content
+  </button>
+  <div id="collapseH" data-orientation="horizontal" class="transition-all duration-300 ease-linear overflow-hidden">
+    <div style="max-height: 200px" class="rd-md w-full bg-zinc1/5 dark-bg-zinc9/5 b b-zinc2/80 dark-b-zinc8/80 p4 overflow-hidden">
+      <p class="inline-flex">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam
+        illo expedita adipisci labore, debitis ipsam cupiditate autem sed
+      </p>
+    </div>
+  </div>
+```
+</BoxCodeBottomPreview>
+</PreviewTopCodeBottom>
+
+## Attributes
+
+Flexilla Uses data-attribute to store states, each time an action is triggered, the targeted Element will have an update on data-attribute
+
+### Data State : `data-state`
+
+`data-state` attribute is used to store the state of each item. This state is applied to collapsible Element
+This attribute can be used to target the state of an item as CSS selectors in case needed to apply some styles.
+  - `open` : indicate that the content is set to normal height/width
+  - `close` : indicate that the content height/width is set to 0
+
+### Aria Expanded `aria-expanded`
+
+This attribute is applied to the provided trigger element. The value can be `true` or `false`
+
+
+## Examples
+
+We're using UnoCSS Here for styling but you can use any CSS Lybrary/Framework if you want or even plain CSS.
+
+- [View Collapse Examples With UnoCSS](https://github.com/unify-ui-dev/flexilla/tree/main/examples/vanilla/collapse)
+
+
+
+## Props/Params & Options
+
+### Params
+
+<BoxTable>
+  <BoxTableRow title="collapse" type="HTMLElement|string">
+    Collapse Container, must be a valid Selector or HTMLElement.
+  </BoxTableRow>
+  <BoxTableRow title="options" type="CollapseOptions">
+    Options object
+  </BoxTableRow>
+  <BoxTableRow title="trigger (optional)" type="HTMLElement|string">
+    Trigger Element which will open/close the collapse container. Must be a valid Selector or HTMLElement.
+  </BoxTableRow>
+</BoxTable>
+
+With JS
+```js
+const collapse = new Collapse("#collapse1",
+  {
+    // options here
+  }
+)
+```
+
+With TS
+
+```ts
+import type { CollapseOptions} from "@flexilla/collapse"
+
+const options:CollapseOptions = {
+  // options
+}
+new Collapse("#collapse1", options)
+```
+
+In case you want to pass manually a trigger just add it's selector like this:
+```ts
+new Collapse("#collapse1", options, "#collapseTriggerSelector")
+```
+
+### Options
+
+Options can also be directly passed via data-attribute. [View examples here to see how](https://github.com/unify-ui-dev/flexilla/tree/main/examples/vanilla/collapse)
+
+```js
+const options = {
+  orientation:"horizontal", // can be "vertical" or "horizontal", default is "vertical"
+  onToggle({ isExpanded }) {
+        // do something with isExpanded state
+  },
+}
+```
+<BoxTable>
+  <BoxTableRow title="orientation" attribute="data-orientation" type="vertical | horizontal">
+    Indicate the orientation of the Collapse Element. Default is `vertical`
+  </BoxTableRow>
+  <BoxTableRow
+    title="onToggle"
+    type="method"
+  >
+    This method return a object with the state of the Collapse Element. `isExpanded` to indicate if the Element is collapsed or not.
+  </BoxTableRow>
+</BoxTable>
+
+## Methods
+
+### Show/Expand
+You can manuel Show The collpase Content
+
+```js
+import {Collapse} from "@flexilla/collapse"
+
+const myCollapse = new Collapse("#collapse1")
+
+myCollapse.show()
+```
+
+### Hide
+You can manuel Hide The collpase Content
+
+```js
+myCollapse.hide()
+```
+
+### Toggle
+Toggle the collapse Element : show or hide
+
+```js
+myCollapse.toggle()
+```
+
+### Auto Init
+This method allow to initialize all collapse elements. This method receive a string value which help to identify concerned elements(can use class name or data attribute), by default `[data-fx-collapse]` is used.
+
+```js
+import {Collapse} from "@flexilla/accordion"
+
+Collapse.autoInit()  //init collapse components based on the selector `data-fx-collapse`
+//or
+Collapse.autoInit(".collaspe-item")
 ```

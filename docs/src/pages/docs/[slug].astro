@@ -1,7 +1,8 @@
 ---
 export const prerender = true;
 
-import { metaTags } from "@data/meta-tags";
+import {sidebarItemFlaterned} from "@helper/doc-helper"
+
 import { removeBeforeLastSlash } from "@helper/string-helper";
 import { getCollection } from "astro:content";
 
@@ -38,22 +39,20 @@ const activeItem = slug.includes("framework-guide")
 
 const { next: nextSlug, prev: prevSlug, current } = getPagger(pageSlugId);
 type metaTag = {
-  title: string;
   description: string;
   keywords: string;
 };
 
-const metaData: metaTag = metaTags.find(
+const metaData: metaTag = sidebarItemFlaterned.find(
   (metaTag) => metaTag.name === pageSlugId
 ) || {
-  title: `Flexilla - Docs | ${pageSlugId}`,
   description: "Flexilla Docs, Interactive Components Library",
   keywords: "flexilla docs",
 };
 ---
 
 <DocsLayout
-  title={`${metaData.title}`}
+  title={`Flexilla | ${title}`}
   activeItem={activeItem}
   headings={headings}
   description={metaData.description}

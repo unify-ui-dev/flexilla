@@ -32,26 +32,22 @@ yarn add @flexilla/accordion
 
 ### Accordion structure
 
-- `accordionElement` a `<div>` element (you can use any other tag that is a valid `HTMLElement`)
-- `data-accordion-item` : Container of each item  (recommanded to use a `div` Element)
-- `data-accordion-value` : required value for each item and should be unique.
-- `data-accordion-trigger` : trigger Element (Recommanded to use `button` Element)
-- `data-accordion-content` : collapsible Element (recommanded to use `div` Element)
+- `accordion` a `<div>` element (you can use any other tag that is a valid `HTMLElement`)
+- Accordion Item : add `data-accordion-item` attribute to container of each item  (recommanded to use a `div` Element)
+  - `data-accordion-value` : required value for each item and should be unique.
+  - trigger : add `data-accordion-trigger` attribute to the element to use as trigger (Recommanded to use `button` Element)
+  - content : add `data-accordion-content` attribute to collapsible Container (recommanded to use `div` Element)
 
 The accordion HTML markup looks like:
 
 ```html
-<!-- accordionElement -->
 <div id="accordion-example" class="my-accordion-class">
-  <!-- accordion item -->
   <div data-accordion-item data-accordion-value="item-1" class="accordion-item-class">
-    <!-- accordion trigger -->
     <button data-accordion-trigger aria-label="toggle button">
-      <!-- trigger -->
+      Trigger Content
     </button>
-    <!-- accordion content -->
     <div data-accordion-content>
-      <!-- content here : Recommanded to wrap it in an other element -->
+      Content Here
     </div>
   </div>
   <!-- other items -->
@@ -80,41 +76,20 @@ const accordion = new Accordion(
   </TabPanel>
   <TabPanel value="Code">
 ```html
-<div
-  data-default-value="accordion-1"
-  data-accordion-type="single"
-  class="space-y-2 bg-zinc2/60 dark-bg-zinc8/60 rd-lg b b-zinc3/70 dark-b-zinc7/40"
-  data-accordion-example
->
+<div data-default-value="accordion-1" data-accordion-type="single" class="space-y-2 bg-zinc2/60 dark-bg-zinc8/60 rd-lg b b-zinc3/70 dark-b-zinc7/40" data-accordion-example>
   <div data-accordion-item data-accordion-value="accordion-1" class="rd-lg">
-    <button
-      data-accordion-trigger
-      aria-label="toggle button"
-      class="px4 wfull flex justify-between items-center py2 text-zinc8 dark-text-zinc2 font-medium text-lg ease-linear hover-bg-zinc2/50 dark-hover-bg-zinc8/40 rd-lg focus:outline-blue6 aria-expanded-text-blue6"
-    >
+    <button data-accordion-trigger aria-label="toggle button" class="px4 wfull flex justify-between items-center py2 text-zinc8 dark-text-zinc2 font-medium text-lg ease-linear hover-bg-zinc2/50 dark-hover-bg-zinc8/40 rd-lg focus:outline-blue6 aria-expanded-text-blue6">
       Is it accessible?
     </button>
-    <div
-      aria-hidden="true"
-      data-accordion-content
-      class="text-zinc7 dark-text-zinc3 duration-200 ease-linear overflow-hidden"
-    >
+    <div aria-hidden="true" data-accordion-content class="text-zinc7 dark-text-zinc3 duration-200 ease-linear overflow-hidden">
       <p class="p4">Yes. It adheres to the WAI-ARIA design pattern.</p>
     </div>
   </div>
   <div data-accordion-item data-accordion-value="accordion-2" class="rd-lg">
-    <button
-      data-accordion-trigger
-      aria-label="toggle button"
-      class="px4 wfull flex justify-between items-center py2 text-zinc8 dark-text-zinc2 font-medium text-lg ease-linear hover-bg-zinc2/50 dark-hover-bg-zinc8/40 rd-lg focus:outline-blue6 aria-expanded-text-blue6"
-    >
+    <button data-accordion-trigger aria-label="toggle button" class="px4 wfull flex justify-between items-center py2 text-zinc8 dark-text-zinc2 font-medium text-lg ease-linear hover-bg-zinc2/50 dark-hover-bg-zinc8/40 rd-lg focus:outline-blue6 aria-expanded-text-blue6">
       Is it unstyled?
     </button>
-    <div
-      aria-hidden="true"
-      data-accordion-content
-      class="text-zinc7 dark-text-zinc3 duration-200 ease-linear overflow-hidden"
-    >
+    <div aria-hidden="true" data-accordion-content class="text-zinc7 dark-text-zinc3 duration-200 ease-linear overflow-hidden">
       <p class="p4">
         Yes. It's unstyled by default, giving you freedom over the look and
         feel.
@@ -122,18 +97,10 @@ const accordion = new Accordion(
     </div>
   </div>
   <div data-accordion-item data-accordion-value="accordion-3" class="rd-lg">
-    <button
-      data-accordion-trigger
-      aria-label="toggle button"
-      class="px4 wfull flex justify-between items-center py2 text-zinc8 dark-text-zinc2 font-medium text-lg ease-linear hover-bg-zinc2/50 dark-hover-bg-zinc8/40 rd-lg focus:outline-blue6 aria-expanded-text-blue6"
-    >
+    <button data-accordion-trigger aria-label="toggle button" class="px4 wfull flex justify-between items-center py2 text-zinc8 dark-text-zinc2 font-medium text-lg ease-linear hover-bg-zinc2/50 dark-hover-bg-zinc8/40 rd-lg focus:outline-blue6 aria-expanded-text-blue6">
       Can it be animated?
     </button>
-    <div
-      aria-hidden="true"
-      data-accordion-content
-      class="text-zinc7 dark-text-zinc3 duration-200 ease-linear h0 overflow-hidden"
-    >
+    <div aria-hidden="true" data-accordion-content class="text-zinc7 dark-text-zinc3 duration-200 ease-linear overflow-hidden">
       <p class="p4">
         Yes! You can use the transition prop to configure the animation.
       </p>
@@ -193,11 +160,8 @@ This attribute is applied to the trigger element. The value can be `true` or `fa
 - With TailwindCSS/UnoCSS
 
 ```html
-<button
-  data-accordion-trigger
-  aria-label="toggle button"
-  class="aria-expanded:text-blue-600 aria-expanded:bg-zinc-900"
->
+<button data-accordion-trigger aria-label="toggle button"
+  class="aria-expanded:text-blue-600 aria-expanded:bg-zinc-900">
   My Trigger text
 </button>
 ```
@@ -250,21 +214,13 @@ To be applied to a  specific item just add `data-always-open` attribute
 </div>
 ```
 
-## Prevent from closing all items
-
-This option allow to set if you need to allow closing all item or note
-
-- With `data-prevent-closing-all` attribute
-
-- with `preventClosingAll` option property
-
 ## Props
 
 ### Params
 
 <BoxTable>
   <BoxTableRow title="accordion" type="HTMLElement|string">
-    Accordion Selector or Element(must be a valid HTMLElement)
+    Accordion Container, must be a valid Selector or HTMLElement.
   </BoxTableRow>
   <BoxTableRow title="options" type="AccordionOptions">
     Options object
@@ -319,15 +275,14 @@ const options = {
     Default is `single`
   </BoxTableRow>
   <BoxTableRow title="allowTriggerOnFocus" attribute="data-trigger-on-focus" type="boolean | undefined">
+    If set to true the item will trigger automaticaly when it's trigger element has focus.
     Default is `false` 
   </BoxTableRow>
   <BoxTableRow title="preventClosingAll" attribute="data-prevent-closing-all" type="boolean | undefined">
+    This option allow to set if you need to allow closing all item or not. If set to true then one item must at least stay opened
     Default is `false`
   </BoxTableRow>
-  <BoxTableRow
-    title="onChangeItem"
-    type="method"
-  >
+  <BoxTableRow title="onChangeItem"  type="method" >
     This method return the last triggered Item with it `trigger`, `content` and states
   </BoxTableRow>
 </BoxTable>
@@ -359,6 +314,8 @@ This method allow to initialize all accordion elements. This method receive a st
 import {Accordion} from "@flexilla/accordion"
 
 Accordion.autoInit()  //init accordion components based on the selector `data-fx-accordion`
+//or
+Accordion.autoInit(".accordion-item")
 ```
 ## Accessibility
 

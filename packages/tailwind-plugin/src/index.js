@@ -1,6 +1,6 @@
 const plugin = require("tailwindcss/plugin");
 
-module.exports = plugin(({ addVariant, e, addUtilities }) => {
+module.exports = plugin(({ addVariant, e, addComponents }) => {
   const validStateValues = [
     "open",
     "not-open",
@@ -20,7 +20,7 @@ module.exports = plugin(({ addVariant, e, addUtilities }) => {
   const selector = "data-state";
   for (const stateValue of validStateValues) {
     const startWithNot = stateValue.startsWith("not-");
-    
+
     const value = startWithNot
       ? stateValue.substring(stateValue.indexOf("-") + 1)
       : stateValue;
@@ -44,7 +44,9 @@ module.exports = plugin(({ addVariant, e, addUtilities }) => {
             ? `.peer:not(${attrGen}) ~ .peer-${e(
                 `${variantName}${separator}${className}`
               )}`
-            : `.peer${attrGen} ~ .${e(`${variantName}${separator}${className}`)}`;
+            : `.peer${attrGen} ~ .${e(
+                `${variantName}${separator}${className}`
+              )}`;
         });
       },
     ]);
@@ -55,13 +57,15 @@ module.exports = plugin(({ addVariant, e, addUtilities }) => {
             ? `.group:not(${attrGen}) .${e(
                 `${variantName}${separator}${className}`
               )}`
-            : `.group${attrGen} .${e(`${variantName}${separator}${className}`)}`;
+            : `.group${attrGen} .${e(
+                `${variantName}${separator}${className}`
+              )}`;
         });
       },
     ]);
   }
   //
-  addUtilities({
+  addComponents({
     ".ui-popper": {
       position: "absolute",
       top: "0",
@@ -69,16 +73,21 @@ module.exports = plugin(({ addVariant, e, addUtilities }) => {
       transform:
         "translate(var(--fx-popper-placement-x), var(--fx-popper-placement-y))",
     },
+    ".ui-animated-modal-content": {
+      animation: "var(--un-modal-animation)",
+      animationFillMode: "both",
+    },
+    ".ui-animated-tab-panel": {
+      animation: "var(--un-tab-show-animation)",
+      animationFillMode: "both",
+    },
     ".ui-tabs-indicator": {
       position: "absolute",
       transformOrigin: "0 0",
       width: "var(--un-tab-indicator-width)",
+      height: "var(--un-tab-indicator-height)",
       top: "var(--un-tab-indicator-top)",
       left: "var(--un-tab-indicator-left)",
-    },
-    ".ui-animated": {
-      animattion: "var(--un-modal-animation)",
-      animationFillMode: "both",
     },
     ".ui-overlay": {
       position: "fixed",

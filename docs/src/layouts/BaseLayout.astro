@@ -64,3 +64,27 @@ const { seo } = Astro.props;
 <script>
   import "@assets/js/theme";
 </script>
+<style is:global>
+  body:before {
+    content: "small";
+    display: none;
+}
+
+@media (min-width: 768px) {
+    body:before {
+        content: "md";
+    }
+}
+
+@media (min-width: 1024px) and (max-width:1247px) {
+    body:before {
+        content: "lg";
+    }
+}
+
+@media (min-width: 1248px) {
+    body:before {
+        content: "xl";
+    }
+}
+</style>
