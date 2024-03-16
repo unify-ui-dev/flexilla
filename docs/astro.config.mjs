@@ -1,39 +1,41 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 import UnoCSS from "unocss/astro";
 import preact from "@astrojs/preact";
 import mdx from "@astrojs/mdx";
-import { transformerNotationDiff } from 'shikiji-transformers';
+import { transformerNotationDiff } from "shikiji-transformers";
 import vercel from "@astrojs/vercel/serverless";
-import sitemap from "@astrojs/sitemap";
-
 import partytown from "@astrojs/partytown";
+
+import db from "@astrojs/db";
 
 // https://astro.build/config
 export default defineConfig({
   redirects: {
-    '/docs': {
+    "/docs": {
       status: 302,
-      destination: '/docs/getting-started'
-    }
+      destination: "/docs/getting-started",
+    },
   },
-  site: 'https://flexilla-docs.vercel.app',
+  site: "https://flexilla-docs.vercel.app",
   markdown: {
     shikiConfig: {
       theme: "css-variables",
-      transformers: [transformerNotationDiff()]
-    }
+      transformers: [transformerNotationDiff()],
+    },
   },
-  integrations: [UnoCSS({
-    injectReset: true
-  }), preact(), mdx(), sitemap(), 
-  partytown(
-    {
+  integrations: [
+    UnoCSS({
+      injectReset: true,
+    }),
+    preact(),
+    mdx(),
+    partytown({
       config: {
-			  forward: ["dataLayer.push"],
-			},
-    }
-  )
-],
+        forward: ["dataLayer.push"],
+      },
+    }),
+    db(),
+  ],
   output: "server",
-  adapter: vercel()
+  adapter: vercel(),
 });

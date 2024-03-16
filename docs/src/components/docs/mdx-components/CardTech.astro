@@ -1,25 +1,13 @@
 ---
+import { getIcon } from './TabCodeBlock.astro';
+
 interface Props {
   href: string;
   icon: string;
 }
 const { href, icon } = Astro.props;
 
-const getIcon = (icon: string) => {
-  return icon === "laravel"
-    ? "i-fx-laravel-ico"
-    : icon === "astro"
-      ? "i-fx-astro-ico"
-      : icon === "symfony"
-        ? "i-fx-symphony-ico"
-        : icon === "rails"
-          ? "i-fontisto:rails"
-          : icon === "vite"
-            ? "i-fx-vite-ico"
-            : icon === "vue"
-              ? "i-fx-vue-ico"
-              : "";
-};
+
 ---
 
 <a
@@ -33,10 +21,10 @@ const getIcon = (icon: string) => {
     flex items-center justify-center"
   >
     {
-      icon.includes(".svg") ? (
+      getIcon(icon)?.startsWith("/icons/") ? (
         <img
-          src={icon}
-          alt={`Icon ${icon.substring(0, icon.lastIndexOf(".svg"))}`}
+          src={getIcon(icon)}
+          alt={`Icon ${icon}`}
           width="40"
           height="40"
           class="w4 md-w5 lg-w6 hauto"

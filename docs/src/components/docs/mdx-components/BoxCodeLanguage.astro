@@ -15,13 +15,18 @@ const { text, icon } = Astro.props;
   >
     <span class="flex items-center gap-x2">
       {
-        icon.includes(".svg") ? (
-          <img src={icon} alt={`icon ${icon.substring(0, icon.lastIndexOf(".svg"))}`} class="h6 wauto" width="40"/>
-        ) : (
+                getIcon(icon)?.startsWith("/icons/") ? (
+                <img
+                    src={getIcon(icon)}
+                    alt={`icon ${icon}`}
+                    class="h4 wauto"
+                    width="40"
+                  />
+                ):
           <span aria-hidden="true" class="flex min-wmax">
             <span class={`flex text-sm ${getIcon(icon)}`} />
           </span>
-        )
+       
       }
       {text}
     </span>

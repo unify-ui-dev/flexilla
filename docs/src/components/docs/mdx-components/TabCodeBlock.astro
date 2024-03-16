@@ -11,17 +11,19 @@ const { values, showCopyBlock, autoHeight } = Astro.props;
 
 export const getIcon = (iconName: string) => {
   if (iconName === "unocss") return "i-fx-unocss-ico";
-  else if (iconName === "ts") return "i-fx-ts-ico";
-  else if (iconName === "js") return "i-fx-js-ico";
-  else if (iconName === "html") return "i-fx-html-ico";
-  else if (iconName === "css") return "i-fx-css-ico";
+  else if (iconName === "ts") return "/icons/ts.svg";
+  else if (iconName === "js") return "/icons/js.svg";
+  else if (iconName === "html") return "/icons/html.svg";
+  else if (iconName === "css") return "/icons/css.svg";
   else if (iconName === "astro") return "i-fx-astro-ico";
-  else if (iconName === "tailwind") return "i-fx-tailwind-ico";
-  else if (iconName === "laravel") return "i-fx-laravel-ico";
+  else if (iconName === "tailwind") return "/icons/tailwind.svg";
+  else if (iconName === "laravel") return "/icons/laravel.svg";
   else if (iconName === "symfony") return "i-fx-symphony-ico";
-  else if (iconName === "shell") return "i-fx-shell";
-  else if (iconName === "yarn") return "i-fx-yarn";
-  else if (iconName === "npm") return "i-fx-npm";
+  else if (iconName === "shell") return "/icons/shell.svg";
+  else if (iconName === "yarn") return "/icons/yarn.svg";
+  else if (iconName === "npm") return "/icons/npm.svg";
+  else if (iconName === "vite") return "/icons/vite.svg";
+  else if (iconName === "vue") return "/icons/vue.svg";
 };
 ---
 
@@ -57,10 +59,10 @@ export const getIcon = (iconName: string) => {
               class="relative flex items-center gap-x1 disabled-cursor-not-allowed disabled-op80 px3.5 py2 fx-active-text-zinc9 dark-fx-active-text-white outline-none focus-outline focus-outline-zinc2 dark-focus-outline-zinc8"
             >
               {trigger.icon && trigger.icon !== "" ? (
-                trigger.icon.includes(".svg") ? (
+                getIcon(trigger.icon)?.startsWith("/icons/") ? (
                   <img
-                    src={trigger.icon}
-                    alt={`icon ${trigger.icon.substring(0, trigger.icon.lastIndexOf(".svg"))}`}
+                    src={getIcon(trigger.icon)}
+                    alt={`icon - ${trigger.icon}`}
                     class="h4 wauto"
                     width="40"
                   />
@@ -70,12 +72,6 @@ export const getIcon = (iconName: string) => {
                     class={`flex text-sm ${getIcon(trigger.icon)}`}
                   />
                 )
-              ) : null}
-              {trigger.icon && trigger.icon !== "" ? (
-                <span
-                  aria-hidden="true"
-                  class={`flex text-sm ${getIcon(trigger.icon)}`}
-                />
               ) : null}
               {trigger.text}
             </a>

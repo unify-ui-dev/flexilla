@@ -11,7 +11,7 @@ export const faqs = [
     },
     {
         value:"faq-3",
-        title:"Where Can I use it?",
-        description:"When dealing with a project where you don't want to use a JS Framework but you need interactive component with accessibility in mind (Recommanded : AstroJS, PHP and PHP frameworks, Static Websites)"
+        title:"When Can I use it?",
+        description:"When dealing with a project where you don't want to use a JS Framework but you need interactive component with accessibility in mind (Recommanded : AstroJS, PHP and PHP frameworks, Flask, Django, Ruby on Rails, Blazor, Static Websites)"
     }
 ]
