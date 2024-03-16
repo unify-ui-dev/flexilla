@@ -12,7 +12,7 @@ This guide will help you get started with Flexilla
 <Stepper>
 <Step>
 ### Install the full Libary
-<BoxCodeLang text={"Shell"} icon={"/icons/shell.svg"}>
+<BoxCodeLang text={"Shell"} icon={"shell"}>
 ```bash
 npm i @flexilla/flexilla
 ```
@@ -20,7 +20,7 @@ npm i @flexilla/flexilla
 </Step>
 <Step>
 ### Usage
-<BoxCodeLang text={"script"} icon={"/icons/js.svg"}>
+<BoxCodeLang text={"script"} icon={"js"}>
 ```js
 import {Accordion, Tabs} from "@flexilla/flexilla"
 
@@ -63,55 +63,29 @@ new Accordion("#my-collapse",{
 
 <Stepper>
 <Step>
-### Include the library via CDN
+### Import from CDN
 All components
-<BoxCodeLang text={"index.html"} icon={"/icons/html.svg"}>
+<BoxCodeLang text={"index.html"} icon={"html"}>
 ```html
-<head>
-    <script src="https://unpkg.com/@flexilla/flexilla/dist/flexilla.min.js"></script>
-</head>
+<script type="module">
+import {
+  Tabs,
+  Accordion
+} from 'https://cdn.jsdelivr.net/npm/@flexilla/flexilla@latest/+esm';
+
+new Tabs("#hego")
+new Accordion("#myAccordion")
+</script>
 ```
 </BoxCodeLang>
 
-Or a Single Components
-<BoxCodeLang text={"index.html"} icon={"/icons/html.svg"}>
+### Import a single Package
+<BoxCodeLang text={"index.html"} icon={"html"}>
 ```html
-<head>
-    <script src="https://unpkg.com/@flexilla/accordion/dist/accordion.min.js"></script>
-</head>
-```
-</BoxCodeLang>
-
-
-</Step>
-<Step>
-### Initialize the library in your script
-Add in body : When Including all components
-<BoxCodeLang text={"index.html"} icon={"/icons/html.svg"}>
-```html
-<body>
-    <!-- content here  -->
-    <script>
-        new Flexilla.Accordion("#my-collapse",{
-            // options
-        })
-    </script>
-</body>
-```
-</BoxCodeLang>
-
-With One Single Component
-
-<BoxCodeLang text={"index.html"} icon={"/icons/html.svg"}>
-```html
-<body>
-    <!-- content here  -->
-    <script>
-        new Accordion("#my-collapse",{
-            // options
-        })
-    </script>
-</body>
+<script type="module">
+import * as flexillatabs from 'https://cdn.jsdelivr.net/npm/@flexilla/tabs@latest/+esm';
+new flexillatabs.Tabs("#tabs")
+</script>
 ```
 </BoxCodeLang>
 </Step>
@@ -121,7 +95,7 @@ With One Single Component
 ## With Module (require)
 
 
-<BoxCodeLang text={"script"} icon={"/icons/js.svg"}>
+<BoxCodeLang text={"script"} icon={"js"}>
 ```js
 const Accordion = require('@flexilla/accordion');
 new Accordion("#myAccordion")

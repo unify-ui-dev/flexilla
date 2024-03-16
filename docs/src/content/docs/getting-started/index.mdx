@@ -7,17 +7,19 @@ description: The headless interactive component library.
 
 After completing the beta version of [UnifyUI Blocks](https://uno.unify-ui.dev/) and [Flexiwind Blocks](https://flexiwind.vercel.app/), We encountered a challenge when tasked with adding interactive components such as dropdowns, collapses, and tabs. 
 
-Given that Blocks has two UI kits (one for UnoCSS and the other for TailwindCSS), our initial approach involved writing scripts for each block, resulting in a less-than-ideal solution.
+Since UnifyUI and Flexiwind are different (one work with UnoCSS and the other with TailwindCSS), our initial approach involved writing scripts for each block, resulting in a less-than-ideal solution.
 
 Upon exploring how [Preline](https://preline.co/plugins/overview.html) handles interactions with its dedicated JS plugins, tailored exclusively for TailwindCSS, We realized the need for a solution that is CSS framework-agnostic.
 
 ## Solution
 
-Inspired by the Preline Plugin, Flowbite Plugin, and Bootstrap, [Scott Kasenda](https://github.com/Tresor-Kasenda) and [I (Johnkat MJ)](https://github.com/Johnkat-Mj) decided to create Flexilla. 
+Inspired by the Preline Plugin and Flowbite Plugin, [Scott Kasenda](https://github.com/Tresor-Kasenda) and [I (Johnkat MJ)](https://github.com/Johnkat-Mj) decided to create Flexilla. 
 
 It is a standalone library designed to manage interactions independently, breaking away from dependency on any specific CSS framework or library. 
 
-Flexilla provides the flexibility to seamlessly integrate with TailwindCSS, UnoCSS, or any other CSS technology. This not only simplifies interaction implementation but also allows the freedom to use Flexilla with different frameworks or even custom CSS. It stands as a versatile solution crafted to enhance components without being bound to a particular CSS environment.
+Flexilla provides the flexibility to seamlessly integrate with TailwindCSS, UnoCSS, or any other CSS technology.
+
+It stands as a versatile solution crafted to enhance components without being bound to a particular CSS environment.
 
 ## FAQ
 
@@ -33,9 +35,9 @@ Yes, all components are accessible.
 Absolutely, Flexilla is production-ready and is currently being used on this website.
     </FaqItem>
     <FaqItem>
-**Where Can I use it?**
+**When Can I use it?**
 
-When dealing with a project where you don't want to use a JS Framework but you need interactive component with accessibility in mind (Recommanded : AstroJS, PHP and PHP frameworks, Static Websites)
+When dealing with a project where you don't want to use a JS Framework but you need interactive component with accessibility in mind (Recommanded : AstroJS, PHP and PHP frameworks, Flask, Django, Ruby on Rails, Blazor, Static Websites)
     </FaqItem>
     <FaqItem>
 **Can I use it with ReactJS?**
