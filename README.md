@@ -14,11 +14,11 @@ Flexilla is a set of unstyled components  that help you quickly add interactivit
 
 ## Installation
 
-1. Install all components
+### Install all components
 
 To install the library :
 
-- Install It From Npm
+1. Install It From Npm
    
 You need to add it as a dependency in your project using npm or any other package manager
 
@@ -30,45 +30,37 @@ Or
 yarn add @flexilla/flexilla
 ```
 
-- Use CDN
-
-You need to include the following script in your project 
-
-```html
-<head>
-    <!-- other meta tags -->
-    <script src="https://unpkg.com/@flexilla/flexilla@latest/dist/flexilla.min.js"></script>
-</head>
-<body>
-
-    <script>
-        const accordion = new Flexilla.Accordion("#myAccordion");
-        const tabs = new Flexilla.Tabs("#my-tabs");
-    </script>
-</body>
-```
+2. Use CDN
 
 Import Module from CDN
 
 ```html
 <script type="module">
-  import { Accordion, Tabs } from 'https://cdn.jsdelivr.net/npm/@flexilla/flexilla@latest/dist/flexilla.esm.min.js';
-
-  const accordion = new Accordion("#selector");
+  import * as flexilla from 'https://cdn.jsdelivr.net/npm/@flexilla/flexilla@latest/+esm';
+  new flexilla.Accordion("#ac-el")
 </script>
 ```
 
 > **Note** : You can use any available CDN Deliver
 
-1. Install a single package
+### Install a single package
 
 If you want to use only one package or two then we recommand you to install only those packages
 
-- let's say you need an Accordion component only
+1. let's say you need an Accordion component only
 
 ```shell
 npm install @flexilla/accordion
 ```
+
+2. From CDN
+```html
+<script type="module"> 
+import * as flexillatabs from 'https://cdn.jsdelivr.net/npm/@flexilla/tabs@latest/+esm'
+new  flexillatabs.Tabs("#myTabs")
+</script>
+```
+
 
 [Check all packages](./packages/)
 
@@ -86,7 +78,7 @@ To contribute to this project, please make sure you read our [contributing guide
 <table>
 <tr>
 <td align="center" width="200"><pre><a href="https://github.com/Johnkat-Mj"><img src="https://avatars.githubusercontent.com/u/59884686?v=4" width="200" alt="Johnkat MJ Github Avatar" /><br><sub>Johnkat MJ</sub></a><br>@johnkat-mj</pre></td>
-<td align="center" width="200"><pre><a href="https://github.com/Tresor-Kasenda"><img src="https://avatars.githubusercontent.com/u/34010260?v=4" width="200" alt="Tresor Kasenda Github Avatar" /><br><sub>Tresor Kasenda</sub></a><br>@tresor-ka</pre></td>
+<td align="center" width="200"><pre><a href="https://github.com/Tresor-Kasenda"><img src="https://avatars.githubusercontent.com/u/34010260?v=4" width="200" alt="Tresor Kasenda Github Avatar" /><br><sub>Tresor Kasenda</sub></a><br>@tresor-kasenda</pre></td>
 </tr>
 </table>
 

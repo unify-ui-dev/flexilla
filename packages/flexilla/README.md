@@ -40,13 +40,13 @@ Flexilla doesn't use any CSS Framework, it's just update states via data attribu
 
 ## Using with UnoCSS
 
-Flexilla has a UnoCSS preset allowing you to have nice prefix like `data-opened` instead of writting `data-[state=open]`. [Check the list off all prefixes]()
+Flexilla has a UnoCSS preset allowing you to have nice prefix like `data-opened` instead of writting `data-[state=open]`. [Check the list off all prefixes](https://flexilla-docs.vercel.app/docs/uno-preset)
 
 - Install flexilla preset 
 
 
 ### Using with TailwindCSS
 
-Flexilla has a TailwindCSS Plugin allowing you to have nice prefix like `data-opened` instead of writting `data-[state=open]`. [Check the list off all prefixes]()
+Flexilla has a TailwindCSS Plugin allowing you to have nice prefix like `data-opened` instead of writting `data-[state=open]`. [Check the list off all prefixes](https://flexilla-docs.vercel.app/docs/tailwind-plugin)
 
 - Install flexilla tailwind Plugin
