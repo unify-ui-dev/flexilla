@@ -10,6 +10,7 @@ new OffCanvas("[data-slideover-from-left]",
     }
 )
 
+
 new OffCanvas(
     "[data-slideover-from-top]",
     {

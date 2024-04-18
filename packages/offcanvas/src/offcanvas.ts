@@ -31,15 +31,15 @@ class Offcanvas {
         this.staticBackdrop = staticBackdrop || (offCanvasElement.hasAttribute("data-static-backdrop") && offCanvasElement.dataset.staticBackdrop !== "false") || false
         this.allowBodyScroll = allowBodyScroll || (offCanvasElement.hasAttribute("data-allow-body-scroll") && offCanvasElement.dataset.allowBodyScroll !== "false") || false
         const offCanvasId = this.offCanvasElement.getAttribute("id")
-        this.offCanvasTriggers = this.findOffCanvasElements("[data-offcanvas-trigger]", offCanvasId);
-        this.offCanvasCloseBtns = this.findOffCanvasElements("[data-offcanvas-close]", offCanvasId);
+        this.offCanvasTriggers = this.findOffCanvasElements("[data-offcanvas-trigger]", false, offCanvasId);
+        this.offCanvasCloseBtns = this.findOffCanvasElements("[data-offcanvas-close]", true, offCanvasId, this.offCanvasElement);
         this.backdrop = overlay
         this.backdropClass = this.offCanvasElement.dataset.offcanvasBackdrop || ""
         this.init()
     }
 
-    private findOffCanvasElements(selector: string, offCanvasId: string | null) {
-        return $$(`${selector}[data-target=${offCanvasId}]`);
+    private findOffCanvasElements(selector: string, hasChildren: boolean, offCanvasId: string | null, parent?: HTMLElement) {
+        return hasChildren ? $$(`${selector}`, parent) : $$(`${selector}[data-target=${offCanvasId}]`);
     }
     private setupAttributes() {
         if (!this.offCanvasElement.hasAttribute("data-fx-offcanvas"))
@@ -56,13 +56,13 @@ class Offcanvas {
     }
 
     private closeOffCanvas() {
-        const id = this.offCanvasElement.getAttribute("id")
-        const overlayElement = $(`[data-fx-offcanvas-overlay][data-offcanvas-el=${id}]`, this.offCanvasElement.parentElement as HTMLElement)
         toggleOffCanvasState(
             this.offCanvasElement,
             this.allowBodyScroll,
             "close"
         )
+        const id = this.offCanvasElement.getAttribute("id") as string
+        const overlayElement = $(`[data-fx-offcanvas-overlay][data-offcanvas-el=${id}]`, this.offCanvasElement.parentElement as HTMLElement)
         if (overlayElement instanceof HTMLElement)
             destroyOverlay(overlayElement, this.offCanvasElement.parentElement as HTMLElement)
         document.removeEventListener("keydown", this.closeWithEsc)
@@ -100,9 +100,8 @@ class Offcanvas {
 
 
     private initCloseBtns() {
-        for (const closeOffCanvas of this.offCanvasCloseBtns) {
-            closeOffCanvas.addEventListener("click", this.closeOffCanvas)
-        }
+        for (const closeOffCanvas of this.offCanvasCloseBtns) closeOffCanvas.addEventListener("click", () => this.closeOffCanvas())
+
     }
 
     private changeState() {
@@ -130,9 +129,9 @@ class Offcanvas {
      * auto init Offcanvas based on the selector provided
      * @param selector {string} default is [data-fx-offcanvas] attribute
      */
-    public static autoInit = (selector = "[data-fx-offcanvas]") =>{
+    public static autoInit = (selector = "[data-fx-offcanvas]") => {
         const offCanvasElements = $$(selector)
-        for (const offCanvasElement of offCanvasElements)  new Offcanvas(offCanvasElement)
+        for (const offCanvasElement of offCanvasElements) new Offcanvas(offCanvasElement)
     }
 }
 
