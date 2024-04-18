@@ -1,4 +1,4 @@
-import { Tabs, Accordion, Collapse, Dismissible } from "@flexilla/flexilla";
+import { Tabs, Accordion, Collapse, Dismissible, OffCanvas} from "@flexilla/flexilla";
 import { $$ } from "./selector";
 
 
