@@ -2,6 +2,9 @@
 import { CollapseOptions } from "./types";
 import { expandCollapse } from "./helpers";
 
+const $$ = (selector: string, parentElement: HTMLElement = document.body): HTMLElement[] =>
+	Array.from(parentElement.querySelectorAll(selector));
+
 
 class Collapse {
     private collapseElement: HTMLElement
@@ -54,12 +57,14 @@ class Collapse {
     }
 
     /**
-     * auto init collapse components based on the selector provided
+     * auto init collapse components based on a provided selector
      * @param selector {string} default is [data-fx-collapse]
      */
     public static autoInit = (selector = "[data-fx-collapse]") => {
-        const collapses = Array.from(document.querySelectorAll(selector)) as HTMLElement[]
-        for (const collapse in collapses) new Collapse(collapse)
+        const collapses = $$(selector)
+        for(const collapseEl of collapses){
+            new Collapse(collapseEl)
+        }
     }
 }
 
