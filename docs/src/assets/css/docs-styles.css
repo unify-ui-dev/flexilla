@@ -112,7 +112,7 @@ h3>code {
 html.dark div>code,
 html.dark li>code,
 html.dark h3>code {
-  background-color: rgb(24 24 27 / 0.6);
+  background-color: rgba(24 ,24,27 , 0.6);
   border-color: rgb(39 39 42 / 0.6);
   color: rgb(244 244 245);
 }
