@@ -15,6 +15,50 @@
       "import": {
         "types": "./dist/index.d.ts",
         "default": "./dist/utilities.js"
+      },
+      "require": {
+        "types": "./dist/utilities.d.ts",
+        "default": "./dist/utilities.cjs"
+      }
+    },
+    "./accessibility": {
+      "import": {
+        "types": "./dist/accessibility.js",
+        "default": "./dist/accessibility.d.ts"
+      },
+      "require": {
+        "types": "./dist/accessibility.d.ts",
+        "default": "./dist/accessibility.cjs"
+      }
+    },
+    "./toggler": {
+      "import": {
+        "types": "./dist/toggler.d.ts",
+        "default": "./dist/toggler.js"
+      },
+      "require": {
+        "types": "./dist/toggler.d.ts",
+        "default": "./dist/toggler.cjs"
+      }
+    },
+    "./selector": {
+      "import": {
+        "types": "./dist/selector.d.ts",
+        "default": "./dist/selector.js"
+      },
+      "require": {
+        "types": "./dist/selector.d.ts",
+        "default": "./dist/selector.cjs"
+      }
+    },
+    "./dom-utilities": {
+      "import": {
+        "types": "./dist/dom-utilities.d.ts",
+        "default": "./dist/dom-utilities.js"
+      },
+      "require": {
+        "types": "./dist/dom-utilities.d.ts",
+        "default": "./dist/dom-utilities.cjs"
       }
     }
   },

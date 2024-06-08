@@ -62,4 +62,6 @@ class CustomRangeIndicator {
     }
 }
 
+export const fCustomRangeIndicator = (containerElement_: string|HTMLElement, rangeIndicator?: string)=> new CustomRangeIndicator(containerElement_, rangeIndicator)
+
 export default CustomRangeIndicator

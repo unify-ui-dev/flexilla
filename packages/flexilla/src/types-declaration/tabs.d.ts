@@ -1,4 +1,6 @@
 
+export declare const fTabs: (tabs: string | HTMLElement, options?: TabsOptions) => Tabs;
+
 declare type IndicatorOptions = {
     className?: string;
     transformDuration?: number;

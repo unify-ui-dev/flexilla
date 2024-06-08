@@ -14,3 +14,5 @@ export declare class CustomRange {
      */
     static autoInit: (selector?: string) => void;
 }
+
+export declare const fCustomRange: (containerElement_: string | HTMLElement, rangeIndicator?: string) => CustomRange;

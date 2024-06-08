@@ -1,4 +1,6 @@
 
+export declare const fModal: (modal: string | HTMLElement, options?: ModalOptions, triggerElement?: string | HTMLElement) => Modal;
+
 export declare class Modal {
     private modalElement;
     showModal: () => void;
@@ -44,3 +46,4 @@ export declare type ModalOptions = {
         isHidden: boolean;
     }) => void;
 };
+

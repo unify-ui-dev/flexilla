@@ -1,4 +1,8 @@
 
+import { Placement } from '@flexilla/popper';
+
+export declare const fTooltip: (tooltip: string | HTMLElement, options?: TooltipOptions) => Tooltip;
+
 export declare class Tooltip {
     private containerElement;
     private options;

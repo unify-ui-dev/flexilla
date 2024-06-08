@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + TS</title>
+  <style>
+    body {
+      overflow: hidden;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+
+<body class="pt14">
+  <section class="max-w3xl mxauto space-y-16 relative z20 pb20">
+    <div class="space-y-6">
+      <div space-y-1>
+        <h1 class="text-xl font-semibold text-gray9 dark-text-white">
+          Helper
+        </h1>
+        <p text-gray7>
+          JS Helper functions
+        </p>
+      </div>
+      <div
+        class="p10 rd-lg bg-gradient-to-bl from-blue6 via-indigo4 to-sky6 h96 flex gap-4 items-center justify-center">
+        <div data-fx-dropdown data-drop-down-1 class="relative">
+          <button data-dropdown-trigger class="b b-zinc8 hover-bg-zinc950 bg-zinc9 text-white px4 py2 rd-lg text-sm">
+            Open Dropdown
+          </button>
+          <div role="list" data-fx-popper
+            class="ui-popper [--fx-popper-placement-x:12px] [--fx-popper-placement-y:100%] z20 w56 b b-zinc8 bg-zinc9/80 text-zinc50 backdrop-filter backdrop-blur-xl rd-lg flex flex-col overflow-hidden op0 invisible fx-open-op100 fx-open-visible">
+            <a href="#"
+              class="focus-outline focus-bg-zinc9/90 outline-none focus-outline-blue5 ease-linear flex hover-bg-zinc8/80 p2 rd-md">
+              Item 1
+            </a>
+            <a href="/"
+              class="focus-outline focus-bg-zinc9/90 outline-none focus-outline-blue5 ease-linear flex hover-bg-zinc8/80 p2 rd-md">
+              Item 2
+            </a>
+            <a href="#"
+              class="focus-outline focus-bg-zinc9/90 outline-none focus-outline-blue5 ease-linear flex hover-bg-zinc8/80 p2 rd-md">
+              Item 3
+            </a>
+            <a href=""
+              class="focus-outline focus-bg-zinc9/90 outline-none focus-outline-blue5 ease-linear flex hover-bg-zinc8/80 p2 rd-md">
+              Item 4
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="module" src="./main.ts"></script>
+</body>
+
+</html>

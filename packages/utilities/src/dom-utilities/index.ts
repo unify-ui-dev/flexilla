@@ -1,24 +1,5 @@
-const $ = (selector: string, parentElement: HTMLElement = document.body): HTMLElement | null =>
-	parentElement.querySelector(selector);
 
-/**
- * Find direct descendant Element
- * @param selector 
- * @param parentElement 
- * @returns 
- */
-const $d = (selector: string, parentElement: HTMLElement = document.body): HTMLElement | undefined => {
-	const allItems = $$(selector, parentElement);
-	// Find the first direct descendant
-	const directDescendant = Array.from(allItems).find((item) => item.parentElement === parentElement);
-	return directDescendant
-};
-
-const $$ = (selector: string, parentElement: HTMLElement = document.body): HTMLElement[] =>
-	Array.from(parentElement.querySelectorAll(selector));
-
-
-const appendBefore = ({
+export const appendBefore = ({
 	newElement,
 	existingElement,
 }: { newElement: HTMLElement; existingElement: HTMLElement }) => {
@@ -33,7 +14,7 @@ const appendBefore = ({
 };
 
 
-const setAttributes = (
+export const setAttributes = (
 	element: HTMLElement,
 	attributes: Record<string, string>,
 ) => {
@@ -41,7 +22,7 @@ const setAttributes = (
 		element.setAttribute(key, value);
 };
 
-const afterTransition = ({
+export const afterTransition = ({
 	element,
 	callback,
 }: {
@@ -53,6 +34,7 @@ const afterTransition = ({
 		elementTransition !== "none" &&
 		elementTransition !== "" &&
 		elementTransition !== "all 0s ease 0s"
+		&& elementTransition !== "all"
 	) {
 		element.addEventListener(
 			"transitionend",
@@ -63,13 +45,4 @@ const afterTransition = ({
 			{ once: true },
 		);
 	} else callback();
-};
-
-export {
-	$,
-	$$,
-	$d,
-	appendBefore,
-	setAttributes,
-	afterTransition,
 };

@@ -13,3 +13,5 @@ export declare class AutoResizeTextArea {
      */
     static autoInit: (selector?: string) => void;
 }
+
+export declare const fAutoResizableTextArea: (textarea: string | HTMLTextAreaElement) => AutoResizeTextArea;

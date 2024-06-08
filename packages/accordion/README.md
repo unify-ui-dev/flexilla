@@ -3,10 +3,14 @@
 
 ## Installation
 
-You can install the `@flexilla/accordion` package using npm:
+You can install the `@flexilla/accordion` package :
 
 ```shell
 npm install @flexilla/accordion
+```
+Or
+```shell
+bun add @flexilla/accordion
 ```
 
 ## Usage
@@ -28,6 +32,14 @@ const accordion = new Accordion('#accordion', options);
 ```
 
 Note: The accordionElement should be a valid HTML element that acts as the container for the accordion.
+
+
+You can Also Use the shortcup `fAccordion` : it will create for you an instance of Accordion
+```ts
+import { fAccordion } from '@flexilla/accordion';
+
+fAccordion("#selector", options)
+```
 
 ## Props/Params
 

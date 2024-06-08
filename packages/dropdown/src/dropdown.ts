@@ -36,7 +36,7 @@ class Dropdown {
         this.preventFromCloseOutside = this.options.preventCloseFromOutside || this.dropdownElement.hasAttribute("data-prevent-close-outside") && this.dropdownElement.dataset.preventCloseOutside !== "false" || false
         this.preventFromCloseInside = this.options.preventCloseFromInside || this.dropdownElement.hasAttribute("data-prevent-close-inside") && this.dropdownElement.dataset.preventCloseInside !== "false" || false
 
-        this.dropdownItems = $$("a:not([disabled]), button:not([disabled])", this.contentElement).filter((el) => !el.classList.contains("disabled"));
+        this.dropdownItems = $$("a:not([disabled]), button:not([disabled])", this.contentElement).filter((el) => !(el.classList.contains("disabled")));
 
         this.popper = new CreatePopper(
             this.triggerElement,

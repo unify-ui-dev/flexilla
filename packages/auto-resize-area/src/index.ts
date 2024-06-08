@@ -1,1 +1,1 @@
-export { default as AutoResizeTextArea} from "./auto-resize-area"
+export { default as AutoResizeTextArea, fAutoResizableTextArea} from "./auto-resize-area"

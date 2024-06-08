@@ -21,3 +21,12 @@ export declare class Dismissible {
      */
     static autoInit: (selector?: string) => void;
 }
+
+/**
+ *
+ * @param dismissible
+ * @param action
+ * @param onDissmiss
+ * @returns
+ */
+export declare const fDismissible: (dismissible: string | HTMLElement, action?: "remove-from-dom" | "hide-from-screen", onDissmiss?: () => void) => Dismissible;

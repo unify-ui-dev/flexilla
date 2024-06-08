@@ -1,1 +1,1 @@
-export { default as Dismissible } from "./dismissible"
+export { default as Dismissible, fDismissible } from "./dismissible"

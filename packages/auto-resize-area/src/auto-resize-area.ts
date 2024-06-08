@@ -26,14 +26,16 @@ class AutoResizableTextArea {
      * auto init the auto-resize based on the selector provided
      * @param selector {string} default is [data-fx-autoresize]
      */
-    public static autoInit = (selector = "[data-fx-autoresize]")=>{
+    public static autoInit = (selector = "[data-fx-autoresize]") => {
         const textAreas = Array.from(document.querySelectorAll(selector)) as HTMLTextAreaElement[]
-        if(textAreas){
-            for(const textarea of textAreas){
+        if (textAreas) {
+            for (const textarea of textAreas) {
                 new AutoResizableTextArea(textarea)
             }
         }
     }
 }
 
+
+export const fAutoResizableTextArea = (textarea: string | HTMLTextAreaElement) => new AutoResizableTextArea(textarea)
 export default AutoResizableTextArea

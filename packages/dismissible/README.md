@@ -27,7 +27,13 @@ import Dismissible from '@flexilla/dismissible';
         action: "remove-from-dom",
         onDismiss: () => {
             console.log("Element dismissed!");
-        }
-        );
+        });
+
+        // or 
+        fDismissible('.dismissable-element',
+        action: "remove-from-dom",
+        onDismiss: () => {
+            console.log("Element dismissed!");
+        })
 </script>
 ```

@@ -19,7 +19,7 @@ export declare class Collapse {
     toggle: () => void;
     private init;
     /**
-     * auto init collapse components based on the selector provided
+     * auto init collapse components based on a provided selector
      * @param selector {string} default is [data-fx-collapse]
      */
     static autoInit: (selector?: string) => void;
@@ -32,3 +32,5 @@ export declare type CollapseOptions = {
         isExpanded: boolean;
     }) => void;
 };
+
+export declare const fCollapse: (selector: string | HTMLElement, options?: CollapseOptions, triggerSelector?: string) => Collapse;
