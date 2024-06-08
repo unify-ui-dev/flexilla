@@ -60,6 +60,16 @@
         transform: translateY(-60px);
       }
     }
+
+    [data-modal-test-1css] [data-modal-content],[data-modal-test-2css] [data-modal-content]{
+      animation-fill-mode:both;
+    }
+    [data-modal-test-1css] [data-modal-content], [data-modal-test-2css] [data-modal-content]{
+      animation: slideIn 0.5s ease-in-out;
+    }
+    [data-modal-test-2css][data-state=close] [data-modal-content]{
+      animation: slidOut 0.5s ease-in-out;
+    }
   </style>
 </head>
 

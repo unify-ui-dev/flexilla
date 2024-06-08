@@ -21,6 +21,7 @@ new Modal(
     "[data-modal-test-3]",
     options
 )
+
 new Modal(
     "[data-modal-test-2]",
     {
@@ -32,7 +33,6 @@ new Modal(
         }
     }
 )
-
 
 new Modal(
     "[data-modal-prevent]",
@@ -49,20 +49,20 @@ new Modal(
         }
     },
     "[data-custom-trigger]"
-    )
+)
 
 new Modal(
     "[data-modal-with-stacked]",
-   {
+    {
         animateContent: {
             enterAnimation: "slideIn .3s linear",
         }
     },
-   "[data-trigger-with-stacked]")
+    "[data-trigger-with-stacked]")
 
 new Modal(
-   "[data-modal-prevent-stack]",
-     {
+    "[data-modal-prevent-stack]",
+    {
         enableStackedModals: true,
         animateContent: {
             enterAnimation: "slideIn .3s linear",
@@ -74,7 +74,7 @@ new Modal(
             console.log("Modal Open")
         }
     },
-   "[data-custom-trigger-stack]"
+    "[data-custom-trigger-stack]"
 )
 
 new Modal(

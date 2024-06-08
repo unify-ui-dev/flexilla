@@ -9,17 +9,19 @@ const getOptionClassNameFromOptions = (options: BackdropOptions | undefined) => 
     return backdropClass || ""
 }
 
-const destroyAfter = (overlayElement: HTMLElement, parentElement_:HTMLElement) => {
-    parentElement_.removeChild(overlayElement)
-}
+const destroyAfter = (overlayElement: HTMLElement) => overlayElement.parentElement?.removeChild(overlayElement)
 
-export const destroyOverlay = (overlayElement: HTMLElement, parentElement_:HTMLElement) => {
+
+export const destroyOverlay = (overlayElement: HTMLElement) => {
+    overlayElement.setAttribute("data-state", "invisible")
     afterTransition({
         element: overlayElement,
         callback() {
-            destroyAfter(overlayElement, parentElement_)
+            destroyAfter(overlayElement)
         },
     })
+
+
 }
 
 export const createOverlay = (options: BackdropOptions | undefined, overlayClassName: string, offcanvasId: string): HTMLDivElement | undefined => {
