@@ -1,14 +1,15 @@
 import { afterTransition, appendBefore } from "@flexilla/utilities"
 
-const destroyAfter = (overlayElement: HTMLElement, modalElement: HTMLElement) => {
-    modalElement.removeChild(overlayElement)
+const destroyAfter = (overlayElement: HTMLElement) => {
+    overlayElement.parentElement?.removeChild(overlayElement)
 }
 
-export const destroyOverlay = (overlayElement: HTMLElement, modalElement: HTMLElement) => {
+export const destroyOverlay = (overlayElement: HTMLElement) => {
+    overlayElement.setAttribute("data-state", "close")
     afterTransition({
         element: overlayElement,
         callback() {
-            destroyAfter(overlayElement, modalElement)
+            destroyAfter(overlayElement)
         },
     })
 }

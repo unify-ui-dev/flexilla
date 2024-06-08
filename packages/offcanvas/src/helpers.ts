@@ -29,7 +29,7 @@ const closeOpenedOffCanvas = (offcanvas: HTMLElement, currentOffcanvas: HTMLElem
     offcanvas.setAttribute("aria-hidden", "true")
     offcanvas.setAttribute("data-state", "close")
     const overlayEl = $(`[data-fx-offcanvas-overlay][data-offcanvas-el=${offcanvas.getAttribute("id")}]`, offcanvas.parentElement as HTMLElement)
-    if (overlayEl instanceof HTMLElement) destroyOverlay(overlayEl, offcanvas.parentElement as HTMLElement)
+    if (overlayEl instanceof HTMLElement) destroyOverlay(overlayEl)
 
 }
 /**

@@ -55,16 +55,17 @@ class Offcanvas {
         if (isOpen && clickOutOutside) this.closeOffCanvas()
     }
 
-    private closeOffCanvas() {
+    private closeOffCanvas = () => {
+        const id = this.offCanvasElement.getAttribute("id")
+        const overlayElement = $(`[data-fx-offcanvas-overlay][data-offcanvas-el=${id}]`)
+        if (overlayElement instanceof HTMLElement)
+            destroyOverlay(overlayElement)
+
         toggleOffCanvasState(
             this.offCanvasElement,
             this.allowBodyScroll,
             "close"
         )
-        const id = this.offCanvasElement.getAttribute("id") as string
-        const overlayElement = $(`[data-fx-offcanvas-overlay][data-offcanvas-el=${id}]`, this.offCanvasElement.parentElement as HTMLElement)
-        if (overlayElement instanceof HTMLElement)
-            destroyOverlay(overlayElement, this.offCanvasElement.parentElement as HTMLElement)
         document.removeEventListener("keydown", this.closeWithEsc)
         !this.allowBodyScroll && !overlayElement && document.removeEventListener("click", (event) => this.closeWhenClickOutSide(event))
     }
@@ -84,9 +85,7 @@ class Offcanvas {
         if (overlayElement instanceof HTMLElement) {
             appendBefore({ newElement: overlayElement, existingElement: this.offCanvasElement })
             if (!this.staticBackdrop)
-                overlayElement.addEventListener("click", () => {
-                    this.closeOffCanvas()
-                })
+                overlayElement.addEventListener("click", this.closeOffCanvas)
         }
         document.addEventListener("keydown", (event) => this.closeWithEsc(event))
     }
