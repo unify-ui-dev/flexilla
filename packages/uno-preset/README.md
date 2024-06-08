@@ -1,2 +1,1 @@
-_< This package is set as depracate, considere using this : []()
-
+**Deprecated:** This package is no longer maintained. Please use [Unify Variant](https://www.npmjs.com/package/@unifydev/unify-variant) instead.

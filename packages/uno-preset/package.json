@@ -3,7 +3,8 @@
   "private": false,
   "version": "0.0.2",
   "type": "module",
-  "description": "",
+  "description": "Deprecated: This package is no longer maintained. Please use Replacement Package (https://www.npmjs.com/package/@unifydev/unify-variant) instead.",
+  "deprecated": "This package is no longer maintained. Please use Replacement Package (https://www.npmjs.com/package/@unifydev/unify-variant) instead.",
   "publishConfig": {
     "access": "public"
   },
