@@ -68,10 +68,8 @@ module.exports = plugin(({ addVariant, e, addComponents }) => {
   addComponents({
     ".ui-popper": {
       position: "absolute",
-      top: "0",
-      left: "0",
-      transform:
-        "translate(var(--fx-popper-placement-x), var(--fx-popper-placement-y))",
+      top: "var(--fx-popper-placement-y)",
+      left: "var(--fx-popper-placement-x)",
     },
     ".ui-animated-modal-content": {
       animation: "var(--un-modal-animation)",

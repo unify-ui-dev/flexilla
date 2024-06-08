@@ -23,9 +23,8 @@ export default function unifyUI(options: MyPresetOptions = { prefix: "fx" }): Pr
             [
                 'ui-popper', {
                     position: "absolute",
-                    transform: "translate(var(--fx-popper-placement-x), var(--fx-popper-placement-y))",
-                    left: "0",
-                    top: "0"
+                    left: "var(--fx-popper-placement-x)",
+                    top: "var(--fx-popper-placement-y)"
                 }
             ]
         ]
