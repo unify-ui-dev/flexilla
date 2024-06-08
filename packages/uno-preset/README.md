@@ -1,3 +1,2 @@
-# @flexilla/uno-preset
+_< This package is set as depracate, considere using this : []()
 
-Variant, rules and shortcuts adding required classes to flexilla components  
