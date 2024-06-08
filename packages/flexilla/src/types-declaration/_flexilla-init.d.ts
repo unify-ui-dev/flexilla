@@ -1,3 +1,4 @@
+
 type FlexillaOptions = {
     accordion?: string;
     autoresize?: string;
@@ -9,6 +10,6 @@ type FlexillaOptions = {
     offcanvas?: string;
     tabs?: string;
     tooltip?: string;
-  };
-  
-  export declare const initFlexilla: (options: FlexillaOptions) => void;
+};
+
+export declare const initFlexilla: (options: FlexillaOptions) => void;

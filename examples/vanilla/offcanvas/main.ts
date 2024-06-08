@@ -1,7 +1,7 @@
-import { OffCanvas } from "@flexilla/offcanvas"
+import { OffCanvas,fOffcanvas } from "@flexilla/offcanvas"
 import "./../main"
 
-new OffCanvas("[data-slideover-from-left]",
+fOffcanvas("[data-slideover-from-left]",
     {
         backdrop: {
             visibility: "visible",

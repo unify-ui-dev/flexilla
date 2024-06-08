@@ -7,10 +7,15 @@ export default defineConfig({
   build: {
     ...sharedConfig.build,
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: {
+        utilities: resolve(__dirname, 'src/index.ts'),
+        accessibility: resolve(__dirname, 'src/accessibility/index.ts'),
+        toggler: resolve(__dirname, 'src/toggler/index.ts'),
+        selector: resolve(__dirname, 'src/selector/index.ts'),
+        'dom-utilities': resolve(__dirname, 'src/dom-utilities/index.ts')
+      },
       name: '@flexilla/utilities',
-      fileName: 'utilities',
-      formats: ["es"]
+      formats: ["es","cjs"]
     },
   },
 });

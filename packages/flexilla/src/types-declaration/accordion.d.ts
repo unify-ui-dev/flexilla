@@ -1,4 +1,3 @@
-
 export declare class Accordion {
     private accordionElement;
     private options;
@@ -42,3 +41,11 @@ declare type ExpandedItem = {
     isAlwaysOpen: boolean;
     isExpanded: boolean;
 };
+
+/**
+ * Shortcut of : new Accordion(...)
+ * @param accordion
+ * @param options
+ * @returns
+ */
+export declare const fAccordion: (accordion: string | HTMLElement, options?: AccordionOptions) => Accordion;

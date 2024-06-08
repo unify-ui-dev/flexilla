@@ -10,6 +10,8 @@ declare type BackdropVisible = {
     backdropClass: string;
 };
 
+export declare const fOffcanvas: (offcanvas: string | HTMLElement, options?: OffcanvasOptions) => OffCanvas;
+
 /**
  * Class representing an Offcanvas element.
  */

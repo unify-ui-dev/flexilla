@@ -118,4 +118,13 @@ class CreatePopper {
     };
 
 }
+
+/**
+ * Shortcut of : new CreatePopper(...)
+ * @param reference 
+ * @param popper 
+ * @param options 
+ * @returns 
+ */
+export const fCreatePopper = (reference: HTMLElement, popper: HTMLElement, options: PopperOptions = {}) => new CreatePopper(reference, popper, options)
 export default CreatePopper

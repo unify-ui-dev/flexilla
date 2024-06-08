@@ -19,10 +19,10 @@ const updateDropDownState = (
     })
 }
 
-export const removeFocusOnItem = (items:HTMLElement[]) => {
+export const removeFocusOnItem = (items: HTMLElement[]) => {
     const focusedElement = document.activeElement
-    if(!(focusedElement instanceof HTMLElement)) return
-    if(items.includes(focusedElement)){
+    if (!(focusedElement instanceof HTMLElement)) return
+    if (items.includes(focusedElement)) {
         focusedElement.blur()
     }
 }
@@ -67,13 +67,13 @@ export const hideDropdown = ({ container, trigger, popper }: {
 /**
  * Focuses on the first item in the dropdown content.
  */
-const focusFirstItem = (items: HTMLElement[]) => items.length > 0 && items[0].focus();
+const focusFirstItem = (items: HTMLElement[]) => items[0].focus();
 
 /**
  * Focuses on the last item in the dropdown content.
  */
 const focusLastItem = (items: HTMLElement[]) =>
-    items.length > 0 && items[items.length - 1].focus();
+    items[items.length - 1].focus();
 
 
 /**
@@ -81,8 +81,9 @@ const focusLastItem = (items: HTMLElement[]) =>
  * @param {KeyboardEvent} event - The keydown event.
  */
 const onKeyUpDown = (event: KeyboardEvent, items: HTMLElement[]) => {
-    if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+    if (event.key === "ArrowUp" || event.key === "ArrowDown" || event.key === 'Home' || event.key === "End") {
         event.preventDefault();
+        if (items.length === 0) return
         const current = document.activeElement;
         let currentInd = items.findIndex((el) => el === current);
         if (currentInd === -1) {
@@ -92,6 +93,8 @@ const onKeyUpDown = (event: KeyboardEvent, items: HTMLElement[]) => {
             if (event.key === "ArrowUp" && currentInd > 0) currentInd--;
             else if (event.key === "ArrowDown" && currentInd + 1 < items.length)
                 currentInd++;
+            else if (event.key === "Home") currentInd = 0;
+            else if (event.key === "End") currentInd = items.length - 1
             items[currentInd].focus();
         }
     }

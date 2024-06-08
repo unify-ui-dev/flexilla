@@ -1,4 +1,6 @@
 
+import type { Placement } from '@flexilla/popper';
+
 export declare class Dropdown {
     private dropdownElement;
     private triggerElement;
@@ -39,3 +41,5 @@ export declare type DropdownOptions = {
         isHidden: boolean;
     }) => void;
 };
+
+export declare const fDropdown: (dropdown: string | HTMLElement, options?: DropdownOptions) => Dropdown;

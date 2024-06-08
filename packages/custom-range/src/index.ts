@@ -1,2 +1,2 @@
 import "./custom-range.css"
-export { default as CustomRange } from "./custom-range"
+export { default as CustomRange, fCustomRangeIndicator as fCustomRange } from "./custom-range"

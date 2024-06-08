@@ -30,13 +30,14 @@ class Dismissible {
 
     private removeFromDom = () => {
         this.onDismiss?.()
-        this.dismissibleElement.parentNode?.removeChild(this.dismissibleElement)
+        this.dismissibleElement.parentElement?.removeChild(this.dismissibleElement)
     }
 
     dismiss = () => {
         switch (this.action) {
             case "hide-from-screen":
                 this.dismissibleElement.setAttribute("aria-hidden", "true")
+                this.dismissibleElement.setAttribute("data-state","hidden")
                 afterTransition({
                     element: this.dismissibleElement,
                     callback: this.hideFromScreen
@@ -45,6 +46,7 @@ class Dismissible {
             default:
                 this.dismissibleElement.setAttribute("data-hidden", "")
                 this.dismissibleElement.setAttribute("aria-hidden", "true")
+                this.dismissibleElement.setAttribute("data-state","removed")
                 afterTransition({
                     element: this.dismissibleElement,
                     callback: this.removeFromDom
@@ -63,10 +65,18 @@ class Dismissible {
      * auto init Dismissible Element based on the selector provided
      * @param selector {string} default is [data-fx-dismissible]
      */
-    public static autoInit = (selector="[data-fx-dismissible]") =>{
+    public static autoInit = (selector = "[data-fx-dismissible]") => {
         const dismissibleEls = $$(selector)
-        for(const dismissible of dismissibleEls) new Dismissible(dismissible)
+        for (const dismissible of dismissibleEls) new Dismissible(dismissible)
     }
 }
 
+/**
+ * 
+ * @param dismissible 
+ * @param action 
+ * @param onDissmiss 
+ * @returns 
+ */
+export const fDismissible = (dismissible: string | HTMLElement, action?: "remove-from-dom" | "hide-from-screen", onDissmiss?: () => void) => new Dismissible(dismissible, action, onDissmiss)
 export default Dismissible
