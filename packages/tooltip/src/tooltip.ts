@@ -1,5 +1,5 @@
 import { TooltipOptions } from "./types"
-import {  $, $$ } from "@flexilla/utilities"
+import { $, $$ } from "@flexilla/utilities"
 import { CreatePopper, Placement } from '@flexilla/popper'
 import { hidePopover, initPoppoverAttributes, showTooltip } from "./helpers"
 
@@ -13,6 +13,7 @@ class Tooltip {
     private popper: CreatePopper
     private offsetDistance: number
     private triggerStrategy: "hover" | "click"
+    private closeOnClickInside: boolean
 
     constructor(tooltip: string | HTMLElement, options: TooltipOptions = {}) {
         const containerElement = typeof tooltip === "string" ? $(tooltip) : tooltip
@@ -29,6 +30,7 @@ class Tooltip {
         this.options = options
         this.placement = this.options.placement || this.containerElement.dataset.placement as Placement || "bottom-middle"
 
+        this.closeOnClickInside = this.options.closeOnClickInside || this.containerElement.hasAttribute("data-close-onclick-inside") || false
         this.offsetDistance = this.options.offsetDistance || parseInt(`${containerElement.dataset.offsetDistance}`) || 10
         this.triggerStrategy = this.options.triggerStrategy || this.containerElement.dataset.triggerStrategy as "hover" | "click" || "hover"
 
@@ -92,6 +94,8 @@ class Tooltip {
     }
 
     show() {
+        const closeOnClickInside = this.closeOnClickInside
+        const popperEl = this.popperElement
         this.popper.updatePosition()
         showTooltip({
             container: this.containerElement,
@@ -100,8 +104,13 @@ class Tooltip {
         })
         this.onShow()
         this.onToggle(false)
+        if (closeOnClickInside) {
+            popperEl.addEventListener("click", this.hide)
+        }
     }
-    hide() {
+    hide = () => {
+        const popperEl = this.popperElement
+        const closeOnClickInside = this.closeOnClickInside
         hidePopover({
             container: this.containerElement,
             trigger: this.referenceElement,
@@ -110,11 +119,15 @@ class Tooltip {
         this.popper.cleanupEvents()
         this.onHide()
         this.onToggle(true)
+        if (closeOnClickInside) {
+            popperEl.removeEventListener("click", this.hide)
+        }
     }
     private init() {
         const reference = this.referenceElement
         const containerElement = this.containerElement
         const triggerStrategy = this.triggerStrategy
+
         initPoppoverAttributes({
             container: this.containerElement,
             trigger: this.referenceElement,
@@ -126,15 +139,17 @@ class Tooltip {
             reference.addEventListener("mouseenter", this.showOnHover)
             containerElement.addEventListener("mouseleave", this.hideOnHover)
         }
+
+
     }
 
     /**
      * auto init Tooltips based on the selector provided
      * @param selector {string} default is [data-fx-tooltip]
      */
-    public static autoInit = (selector = "[data-fx-tooltip]")=>{
+    public static autoInit = (selector = "[data-fx-tooltip]") => {
         const tooltips = $$(selector)
-        for(const tooltip of tooltips) new Tooltip(tooltip)
+        for (const tooltip of tooltips) new Tooltip(tooltip)
     }
 }
 
