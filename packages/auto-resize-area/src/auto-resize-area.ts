@@ -14,12 +14,8 @@ class AutoResizableTextArea {
     }
 
     private autoresizeTextarea(): void {
-        const { paddingTop, paddingBottom } = getComputedStyle(this.textareaElement);
         this.textareaElement.style.height = "auto";
-        this.textareaElement.style.height = `${this.textareaElement.scrollHeight +
-            parseFloat(paddingTop) +
-            parseFloat(paddingBottom)
-            }px`;
+        this.textareaElement.style.height = `${this.textareaElement.scrollHeight}px`;
     }
 
     /**
