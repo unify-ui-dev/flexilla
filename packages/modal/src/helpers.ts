@@ -29,7 +29,7 @@ const setBodyScrollable = (enableStackedModals_: boolean, allowBodyScroll_: bool
 const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null, options: ModalOptions) => {
     if (!(modalElement instanceof HTMLElement)) throw new Error("Modal Element must be a valid element");
 
-    const { animateContent, allowBodyScroll, preventCloseModal, overlayClass, onShow, onHide, onToggle, enableStackedModals } = options;
+    const { animateContent, allowBodyScroll, preventCloseModal, overlayClass, onShow, onHide, onToggle, beforeHide, enableStackedModals } = options;
 
     const allowBodyScroll_ = allowBodyScroll || modalElement.hasAttribute("data-allow-body-scroll") && modalElement.getAttribute("data-allow-body-scroll") !== "false"
     const preventCloseModal_ = preventCloseModal || modalElement.hasAttribute("data-prevent-close-modal") && modalElement.getAttribute("data-prevent-close-modal") !== "false"
@@ -111,6 +111,7 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
 
 
     const hideModal = () => {
+        beforeHide?.()
         const hideModal_ = () => {
             toggleModalState(modalElement, modalContent, "close");
             setBodyScrollable(enableStackedModals_, allowBodyScroll_, modalElement)
@@ -125,7 +126,7 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
                 { once: true }
             );
         }
-        if ((animateContent?.exitAnimation && animateContent.exitAnimation !== "")|| animationExit !== "") {
+        if ((animateContent?.exitAnimation && animateContent.exitAnimation !== "") || animationExit !== "") {
             const exitAnimation_ = animateContent ? animateContent.exitAnimation || "" : animationExit;
             modalContent.setAttribute("data-state", "close");
             modalContent.style.setProperty("--un-modal-animation", exitAnimation_);
@@ -151,7 +152,10 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
         if (triggerButton instanceof HTMLElement) triggerButton.addEventListener("click", showModal);
         if (closeButtons.length > 0) {
             for (const closeButton of closeButtons) {
-                closeButton.addEventListener("click", hideModal);
+                closeButton.addEventListener("click", e => {
+                    e.preventDefault()
+                    hideModal()
+                });
             }
         }
     }
