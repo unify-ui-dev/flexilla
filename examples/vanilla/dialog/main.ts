@@ -1,4 +1,4 @@
-import { Modal, ModalOptions } from "@flexilla/modal"
+import { Modal, ModalOptions } from "@flexilla/flexilla"
 import "./../main"
 
 new Modal("[data-modal-test-1]")

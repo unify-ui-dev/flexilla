@@ -16,6 +16,7 @@ export type ModalOptions = {
     preventCloseModal?: boolean;
     allowBodyScroll?: boolean;
     enableStackedModals?: boolean
+    beforeHide?:()=>void;
     onShow?: () => void;
     onHide?: () => void;
     onToggle?: ({ isHidden }: { isHidden: boolean }) => void
