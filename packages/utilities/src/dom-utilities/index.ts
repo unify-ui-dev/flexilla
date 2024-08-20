@@ -46,3 +46,13 @@ export const afterTransition = ({
 		);
 	} else callback();
 };
+
+
+export const dispatchCustomEvent = <T extends object>(
+	element: HTMLElement,
+	eventName: string,
+	detail: T
+): void => {
+	const customEvent = new CustomEvent<T>(eventName, { detail });
+	element.dispatchEvent(customEvent);
+}

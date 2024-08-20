@@ -37,9 +37,12 @@
     "preview": "vite preview",
     "format": "biome format --write ./src"
   },
+  "dependencies": {
+    "@flexilla/utilities": "latest",
+    "@flexilla/collapse": "latest"
+  },
   "devDependencies": {
     "@biomejs/biome": "1.5.1",
-    "@flexilla/utilities": "latest",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
     "vite-plugin-dts": "^3.7.0"

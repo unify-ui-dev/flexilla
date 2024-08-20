@@ -7,14 +7,14 @@ export const keyboardNavigation = (
 ) => {
 
     const targetEl = $getEl(element)
-    const children = $$(targetChildren, targetEl)
+    const children = typeof targetChildren === "string" ? $$(targetChildren, targetEl) : targetChildren
 
 
     const makeAccessible = (event: KeyboardEvent) => {
         if (children.length === 0) return
         const key = event.key;
         const current = document.activeElement;
-        let currentInd = children.findIndex((el:HTMLElement) => el === current);
+        let currentInd = children.findIndex((el: HTMLElement) => el === current);
         if (currentInd === -1) {
             if (key === "ArrowUp") children[children.length - 1].focus();
             else children[0].focus();

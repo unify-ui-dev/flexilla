@@ -1,19 +1,17 @@
 
-import { CollapseOptions } from "./types";
-import { expandCollapse } from "./helpers";
+import type { CollapseOptions } from "./types";
+import { expandCollapseElement } from "./collapsible";
 
-const $$ = (selector: string, parentElement: HTMLElement = document.body): HTMLElement[] =>
-	Array.from(parentElement.querySelectorAll(selector));
+import { $$, $, dispatchCustomEvent } from "@flexilla/utilities"
 
 
 class Collapse {
     private collapseElement: HTMLElement
-    private collapseOrientation: "vertical" | "horizontal"
     private defaultState: "open" | "close"
     private collapseId: string
     private collapseTrigger: HTMLElement | null
     private options: CollapseOptions
-    private collapseElementWidth: number
+    private closeHeight: number
 
     /**
      * Collapse Component
@@ -28,33 +26,72 @@ class Collapse {
         this.collapseElement = collapseElement
         this.collapseId = this.collapseElement.getAttribute("id") as string
 
-        this.collapseTrigger = document.querySelector(`${triggerSelector}`) || document.querySelector(`[data-collapse-trigger][data-target*='${this.collapseId}']`)
+        this.collapseTrigger = $(`${triggerSelector}`) || $(`[data-collapse-trigger][data-target*='${this.collapseId}']`)
 
         this.options = options
-        this.collapseOrientation = this.options.orientation || this.collapseElement.dataset.orientation as "vertical" | "horizontal" || "vertical"
         this.defaultState = this.options.defaultState || this.collapseElement.dataset.defaultState as "open" | "close" || "close"
-        this.collapseElement.setAttribute("data-state", this.defaultState)
-        this.collapseElementWidth = this.collapseElement.clientWidth
-        this.init()
+
+        this.closeHeight = this.options.closeHeight || parseInt(this.collapseElement.dataset.closeHeight || "0") || 0
+        this.initCollapse()
     }
     show = () => {
-        expandCollapse(this.collapseElement, this.collapseTrigger, "open", this.collapseOrientation, this.collapseElementWidth)
+        dispatchCustomEvent(this.collapseElement, "beforeshow", {
+            isExpanded: false
+        })
+        expandCollapseElement({
+            collapseElement: this.collapseElement,
+            triggerElement: this.collapseTrigger, state: "open",
+            closeHeight: this.closeHeight
+        })
         this.options.onToggle?.({ isExpanded: true })
+        dispatchCustomEvent(this.collapseElement, "aftershow", {
+            isExpanded: false
+        })
     }
     hide = () => {
-        expandCollapse(this.collapseElement, this.collapseTrigger, "close", this.collapseOrientation)
+        dispatchCustomEvent(this.collapseElement, "beforehide", {
+            isExpanded: false
+        })
+        expandCollapseElement({
+            collapseElement: this.collapseElement,
+            triggerElement: this.collapseTrigger, state: "close",
+            closeHeight: this.closeHeight
+        })
         this.options.onToggle?.({ isExpanded: false })
+        dispatchCustomEvent(this.collapseElement, "afterhide", {
+            isExpanded: false
+        })
     }
     toggle = () => {
         const state = this.collapseElement.dataset.state as "close" | "open" === "close" ? "open" : "close"
-        expandCollapse(this.collapseElement, this.collapseTrigger, state, this.collapseOrientation, this.collapseElementWidth)
+        dispatchCustomEvent(this.collapseElement, "beforetoggle", {
+            isExpanded: state === "open"
+        })
+        expandCollapseElement({
+            collapseElement: this.collapseElement,
+            triggerElement: this.collapseTrigger, state: state,
+            closeHeight: this.closeHeight
+        })
         this.options.onToggle?.({ isExpanded: state === "open" })
+        dispatchCustomEvent(this.collapseElement, "aftertoggle", {
+            isExpanded: state === "open"
+        })
     }
 
-    private init() {
+    private initCollapse() {
         if (this.collapseTrigger instanceof HTMLElement) this.collapseTrigger.addEventListener("click", this.toggle)
-        this.defaultState === "close" && this.hide()
+
+        this.defaultState === "close" ? this.hide() : null
+        this.defaultState === "open" ? this.show() : null
     }
+
+    /**
+     * Collapse Component
+     * @param selector 
+     * @param triggerSelector 
+     * @param options 
+     */
+    public static init = (selector: string | HTMLElement, options: CollapseOptions = {}, triggerSelector?: string) => new Collapse(selector, options, triggerSelector)
 
     /**
      * auto init collapse components based on a provided selector
@@ -62,7 +99,7 @@ class Collapse {
      */
     public static autoInit = (selector = "[data-fx-collapse]") => {
         const collapses = $$(selector)
-        for(const collapseEl of collapses){
+        for (const collapseEl of collapses) {
             new Collapse(collapseEl)
         }
     }

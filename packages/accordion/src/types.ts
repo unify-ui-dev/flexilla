@@ -2,13 +2,13 @@ type ExpandedItem = {
     accordionItem: HTMLElement
     trigger: HTMLElement,
     content: HTMLElement,
-    value:string,
-    isAlwaysOpen: boolean,
-    isExpanded:boolean
+    value: string,
+    isExpanded: boolean
 }
 
+export type AccordionType = "single" |"multiple"
 export type AccordionOptions = {
-    accordionType?: "single" | "multiple",
+    accordionType?: AccordionType,
     defaultValue?: string,
     allowTriggerOnFocus?: boolean,
     preventClosingAll?: boolean,
@@ -16,9 +16,9 @@ export type AccordionOptions = {
 }
 
 export type AccordionItemMetadata = {
+    defaultOpened:boolean,
     accordionTriggerElement: HTMLButtonElement,
     accordionContentElement: HTMLDivElement,
     accordionItemValue: string,
     isItemExpanded: boolean,
-    isAlwaysOpen: boolean
 }

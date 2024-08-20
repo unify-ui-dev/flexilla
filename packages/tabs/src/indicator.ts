@@ -42,7 +42,7 @@ const getTransformX = (triggerElement: HTMLElement) => {
         x: triggerElement.offsetLeft,
         scaleX: triggerElement.offsetWidth / 100,
     };
-    return `translateX(${transform.x}px) scaleX(${transform.scaleX})`;
+    return `translateX(${transform.x}px) scaleX(${transform.scaleX}px)`;
 };
 
 /**
