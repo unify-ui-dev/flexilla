@@ -13,7 +13,7 @@ new Tabs("[data-tab-animated-key]",
         orientation: "horizontal",
         indicatorOptions: {
             className: "ui-tabs-indicator rd bg-gray3 absolute top-0 left-0",
-        }
+        },
     }
 )
 
