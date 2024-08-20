@@ -43,6 +43,9 @@
     "vite": "^5.0.8",
     "vite-plugin-dts": "^3.7.0"
   },
+  "dependencies": {
+    "@flexilla/utilities": "latest"
+  },
   "keywords": [
     "collapse",
     "collapsible",
