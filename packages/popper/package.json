@@ -3,7 +3,8 @@
   "private": false,
   "version": "2.0.2",
   "type": "module",
-  "description": "A JavaScript library for positioning dropdown, popovers and tooltips",
+  "description": "Deprecated: This package is no longer maintained. Please use Replacement Package (https://github.com/unify-ui-dev/flexipop) instead.",
+  "deprecated": "This package is no longer maintained. Please use Replacement Package (https://github.com/unify-ui-dev/flexipop) instead.",
   "publishConfig": {
     "access": "public"
   },
