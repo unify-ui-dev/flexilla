@@ -27,11 +27,11 @@
       </div>
       <div
         class="p10 rd-lg bg-gradient-to-bl from-blue6 via-indigo4 to-sky6 h96 flex gap-4 items-center justify-center">
-        <div data-fx-dropdown data-drop-down-1 class="relative">
-          <button data-dropdown-trigger class="b b-zinc8 hover-bg-zinc950 bg-zinc9 text-white px4 py2 rd-lg text-sm">
+        <div data-fx-dropdown  class="relative">
+          <button data-dropdown-trigger data-dropdown-id="dropdown-1" class="b b-zinc8 hover-bg-zinc950 bg-zinc9 text-white px4 py2 rd-lg text-sm">
             Open Dropdown
           </button>
-          <div role="list" data-fx-popper
+          <div role="list" id="dropdown-1" data-drop-down-1 data-fx-popper
             class="ui-popper z20 w56 b b-zinc8 bg-zinc9/80 text-zinc50 backdrop-filter backdrop-blur-xl rd-lg flex flex-col overflow-hidden op0 invisible fx-open-op100 fx-open-visible ease-linear transition-transform translate-y-4 fx-open-translate-y-0">
             <a href="#"
               class="focus-outline focus-bg-zinc9/90 outline-none focus-outline-blue5 ease-linear flex hover-bg-zinc8/80 p2 rd-md">
@@ -51,13 +51,13 @@
             </a>
           </div>
         </div>
-        <div data-fx-dropdown data-drop-down-2 class="relative">
-          <button data-dropdown-trigger
+        <div class="relative">
+          <button data-dropdown-trigger data-dropdown-id="dropdown-2"
             class="b b-zinc8 hover-bg-zinc950 bg-zinc9 text-white px4 py2 rd-lg text-sm flex items-center gap-x2 [&[aria-expanded=true]>span]-rotate-180">
             Open Dropdown
             <span aria-hidden="true" class="flex ease-linear i-carbon-chevron-down duration-200"></span>
           </button>
-          <div role="list" data-fx-popper class="ui-popper z20 w56 b b-zinc8 bg-zinc9/80 text-zinc50 backdrop-filter 
+          <div role="list" data-drop-down-2 id="dropdown-2" data-fx-popper class="ui-popper z20 w56 b b-zinc8 bg-zinc9/80 text-zinc50 backdrop-filter 
             backdrop-blur-xl rd-lg flex flex-col overflow-hidden op0 invisible fx-open-op100 fx-open-visible">
             <div role="listitem">
               <a href="#"
@@ -99,11 +99,11 @@
       <div
         class="p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6 h96 min-hmax flex items-center justify-center">
         <div flex flex-wrap justify-center gap-4>
-          <div data-fx-dropdown data-drop-down-3 class="relative">
-            <button data-dropdown-trigger class="b b-zinc8 hover-bg-zinc950 bg-zinc9 text-white px4 py2 rd-lg text-sm">
+          <div data-fx-dropdown class="relative">
+            <button data-dropdown-trigger data-dropdown-id="dropdown-3" class="b b-zinc8 hover-bg-zinc950 bg-zinc9 text-white px4 py2 rd-lg text-sm">
               Hover me
             </button>
-            <div role="list" data-fx-popper
+            <div role="list" data-drop-down-3 id="dropdown-3" data-trigger-strategy="hover" data-fx-popper
               class="ui-popper z20 w56 b b-zinc8 bg-zinc9/80 text-zinc50 backdrop-filter backdrop-blur-xl rd-lg flex flex-col overflow-hidden op0 invisible fx-open-op100 fx-open-visible ease-linear transition-transform translate-y-4 fx-open-translate-y-0">
               <div role="listitem">
                 <a href="#"
@@ -131,13 +131,13 @@
               </div>
             </div>
           </div>
-          <div data-fx-dropdown data-drop-down-4 data-trigger-strategy="hover" class="relative">
-            <button data-dropdown-trigger
+          <div data-fx-dropdown class="relative">
+            <button data-dropdown-trigger data-dropdown-id="dropdown-4"
               class="b b-zinc8 hover-bg-zinc950 bg-zinc9 text-white px4 py2 rd-lg text-sm flex items-center gap-x2 [&[aria-expanded=true]>span]-rotate-180">
               Default DropDown
               <span aria-hidden="true" class="flex ease-linear i-carbon-chevron-down duration-200"></span>
             </button>
-            <div role="list" data-fx-popper
+            <div role="list" id="dropdown-4" data-drop-down-4 data-trigger-strategy="hover" data-fx-popper
               class="ui-popper z20 w56 b b-zinc8 bg-zinc9/80 text-zinc50 backdrop-filter backdrop-blur-xl rd-lg flex flex-col overflow-hidden op0 invisible fx-open-op100 fx-open-visible">
               <a href="#"
                 class="focus-outline focus-bg-zinc9/90 outline-none focus-outline-blue5 ease-linear flex hover-bg-zinc8/80 p2 rd-md">
@@ -173,13 +173,13 @@
       <div
         class="p10 rd-lg bg-gradient-to-bl from-gray6 via-neutral4 to-zinc6 h96 min-hmax flex items-center justify-center">
         <div flex flex-wrap justify-center gap-4>
-          <div data-fx-dropdown data-drop-down-5 class="relative">
-            <button data-dropdown-trigger
+          <div data-fx-dropdown class="relative">
+            <button data-dropdown-trigger data-dropdown-id="dropdown-5"
               class="b b-zinc8 hover-bg-zinc950 bg-zinc9 text-white px4 py2 rd-lg text-sm flex items-center gap-x2 [&[aria-expanded=true]>span]-rotate-180">
               Never close from inside
               <span aria-hidden="true" class="flex ease-linear i-carbon-chevron-down duration-200"></span>
             </button>
-            <div role="list" data-fx-popper
+            <div role="list" data-drop-down-5 data-fx-popper id="dropdown-5" data-prevent-close-inside
               class="ui-popper z20 w56 p2 b b-zinc8 bg-zinc9/80 text-zinc50 backdrop-filter backdrop-blur-xl rd-lg flex flex-col overflow-hidden op0 invisible fx-open-op100 fx-open-visible">
               <div class="pb-2 b-b mb2 b-b-zinc6 flex items-center gap-x3">
                 <span w9 h9 bg-zinc950 rd-full flex items-center justify-center text-zinc1>
@@ -229,13 +229,13 @@
               </div>
             </div>
           </div>
-          <div data-fx-dropdown data-drop-down-6 class="relative">
-            <button data-dropdown-trigger
+          <div data-fx-dropdown class="relative">
+            <button data-dropdown-trigger data-dropdown-id="dropdown-6"
               class="b b-zinc8 hover-bg-zinc950 bg-zinc9 text-white px4 py2 rd-lg text-sm flex items-center gap-x2 [&[aria-expanded=true]>span]-rotate-180">
               Never close from outside
               <span aria-hidden="true" class="flex ease-linear i-carbon-chevron-down duration-200"></span>
             </button>
-            <div role="list" data-fx-popper
+            <div role="list" id="dropdown-6" data-drop-down-6 data-fx-popper data-prevent-close-outside 
               class="ui-popper z20 w56 p2 b b-zinc8 bg-zinc9/80 text-zinc50 backdrop-filter backdrop-blur-xl rd-lg flex flex-col overflow-hidden op0 invisible fx-open-op100 fx-open-visible">
               <div class="pb-2 b-b mb2 b-b-zinc6 flex items-center gap-x3">
                 <span w9 h9 bg-zinc950 rd-full flex items-center justify-center text-zinc1>
@@ -269,6 +269,7 @@
       </div>
     </div>
   </section>
+     
   <script type="module" src="./main.ts"></script>
 </body>
 

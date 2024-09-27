@@ -1,10 +1,20 @@
-import type { Placement } from "@flexilla/popper"
+import type { Placement } from "@flexilla/popover"
 
+type EventEffect = {
+    disableOnScroll?: boolean,
+    disableOnResize?: boolean
+}
 export type DropdownOptions = {
     triggerStrategy?: "click" | "hover",
     placement?: Placement,
     preventCloseFromInside?: boolean,
-    preventCloseFromOutside?: boolean,
-    offsetDistante?: number,
-    onToggle?: ({ isHidden }: { isHidden: boolean }) => void
+    preventFromCloseOutside?: boolean,
+    defaultState?: "open" | "close"
+    offsetDistance?: number,
+    popper?: {
+        eventEffect: EventEffect
+    }
+    onShow?: () => void,
+    onHide?: () => void,
+    onToggle?: ({ isHidden }: { isHidden?: boolean }) => void
 }

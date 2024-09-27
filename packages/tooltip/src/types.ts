@@ -1,12 +1,4 @@
-import { Placement } from "@flexilla/popper"
+import type { PopoverOptions } from "@flexilla/popover";
 
 
-export type TooltipOptions = {
-    closeOnClickInside?:boolean
-    placement?: Placement,
-    offsetDistance?: number,
-    triggerStrategy?: "click" | "hover",
-    onShow?: () => void,
-    onHide?: () => void,
-    onToggle?: ({ isHidden }: { isHidden?: boolean }) => void
-}
+export type TooltipOptions = PopoverOptions

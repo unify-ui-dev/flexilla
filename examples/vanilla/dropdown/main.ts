@@ -17,6 +17,6 @@ new Dropdown("[data-drop-down-5]",
 )
 new Dropdown("[data-drop-down-6]",
     {
-        preventCloseFromOutside: true
+        preventFromCloseOutside: true
     }
 )
