@@ -1,155 +1,76 @@
-import { TooltipOptions } from "./types"
-import { $, $$ } from "@flexilla/utilities"
-import { CreatePopper, Placement } from '@flexilla/popper'
-import { hidePopover, initPoppoverAttributes, showTooltip } from "./helpers"
+import { CreatePopover, type Placement } from "@flexilla/popover"
+import { $ } from "@flexilla/utilities"
+import type { TooltipOptions } from "./types"
+
 
 
 class Tooltip {
-    private containerElement: HTMLElement
+    private triggerElement: HTMLElement
+    private contentElement: HTMLElement
+
     private options: TooltipOptions
-    private referenceElement: HTMLElement
-    private popperElement: HTMLElement
+    private PopoverInstance: CreatePopover
+
+    private triggerStrategy: "click" | "hover"
     private placement: Placement
-    private popper: CreatePopper
     private offsetDistance: number
-    private triggerStrategy: "hover" | "click"
-    private closeOnClickInside: boolean
+    private preventFromCloseOutside: boolean
+    private preventFromCloseInside: boolean
+    private defaultState: "open" | "close"
 
-    constructor(tooltip: string | HTMLElement, options: TooltipOptions = {}) {
-        const containerElement = typeof tooltip === "string" ? $(tooltip) : tooltip
-        if (!(containerElement instanceof HTMLElement)) throw new Error("Provided Element is not a valid HTMLElement")
-
-        this.containerElement = containerElement
-        this.referenceElement = $("[data-fx-tooltip-trigger]", this.containerElement) || this.containerElement
-
-        this.popperElement = this.findPopoverElements("[data-fx-popper]") || this.findPopoverElements("[data-tooltip-content]") as HTMLElement
-
-        if (!(this.referenceElement instanceof HTMLElement)) throw new Error("No trigger Element in the provided Element!!!")
-        if (!(this.popperElement instanceof HTMLElement)) throw new Error("No trigger Element in the provided Element!!! Trigger must have a data-tooltip-content attribute")
-
+    /**
+     * 
+     * @param tooltipEl 
+     * @param options 
+     */
+    constructor(tooltipEl: string | HTMLElement, options: TooltipOptions = {}) {
+        const content = typeof tooltipEl === "string" ? $(tooltipEl) as HTMLElement : tooltipEl
+        this.contentElement = content
+        this.triggerElement = $(`[data-tooltip-trigger][data-tooltip-id=${content.getAttribute("id")}]`) as HTMLElement
         this.options = options
-        this.placement = this.options.placement || this.containerElement.dataset.placement as Placement || "bottom-middle"
+        this.triggerStrategy = this.options.triggerStrategy || content.dataset.triggerStrategy as "click" | "hover" || "hover"
+        this.placement = this.options.placement || content.dataset.placement as Placement || "bottom-middle"
+        this.offsetDistance = this.options.offsetDistance || parseInt(`${content.dataset.offsetDistance}`) | 6
+        this.preventFromCloseOutside = this.options.preventFromCloseOutside || content.hasAttribute("data-prevent-close-outside") || false
+        this.preventFromCloseInside = this.options.preventCloseFromInside || content.hasAttribute("data-prevent-close-inside") || false
+        this.defaultState = this.options.defaultState || content.dataset.defaultState as "close" | "open" || "close";
 
-        this.closeOnClickInside = this.options.closeOnClickInside || this.containerElement.hasAttribute("data-close-onclick-inside") || false
-        this.offsetDistance = this.options.offsetDistance || parseInt(`${containerElement.dataset.offsetDistance}`) || 10
-        this.triggerStrategy = this.options.triggerStrategy || this.containerElement.dataset.triggerStrategy as "hover" | "click" || "hover"
-
-        this.popper = new CreatePopper(
-            this.referenceElement,
-            this.popperElement,
-            {
+        this.PopoverInstance = new CreatePopover({
+            trigger: this.triggerElement,
+            content: this.contentElement,
+            options: {
                 placement: this.placement,
                 offsetDistance: this.offsetDistance,
+                triggerStrategy: this.triggerStrategy,
+                preventFromCloseOutside: this.preventFromCloseOutside,
+                preventCloseFromInside: this.preventFromCloseInside,
+                defaultState: this.defaultState,
+                onShow: this.options.onShow,
+                onHide: this.options.onHide,
+                onToggle: ({ isHidden }) => {
+                    this.options.onToggle?.({ isHidden })
+                },
+                popper: {
+                    eventEffect: {
+                        disableOnResize: this.options.popper?.eventEffect.disableOnResize,
+                        disableOnScroll: this.options.popper?.eventEffect.disableOnScroll
+                    }
+                }
             }
-        )
-        this.init()
-    }
-
-    private hideOnEscPressed = (event: KeyboardEvent) => {
-        if (this.triggerStrategy === "hover") return
-        if (event.key === "Escape") {
-            const isOpened = this.containerElement.hasAttribute("data-state") && this.containerElement.dataset.state === "open"
-            if (isOpened) this.hide()
-        }
-    }
-
-    private findPopoverElements(selector: string) {
-        return $(selector, this.containerElement);
-    }
-
-    private onShow() {
-        this.options.onShow?.()
-    }
-    private onHide() {
-        this.options.onHide?.()
-    }
-    private onToggle(isHidden: boolean) {
-        this.options.onToggle?.({ isHidden: isHidden })
-    }
-
-    private toggleOnClickMode(containerElement: HTMLElement) {
-        if (!(containerElement instanceof HTMLElement)) return
-        const state = containerElement.dataset.state || "close"
-        if (state === "close") {
-            this.show()
-            document.addEventListener("click", (event) => this.closeWhenClickOutside(event, containerElement))
-            document.addEventListener("keydown", this.hideOnEscPressed)
-        } else {
-            this.hide()
-            document.removeEventListener("click", (event) => this.closeWhenClickOutside(event, containerElement))
-            document.removeEventListener("keydown", this.hideOnEscPressed)
-        }
-    }
-
-    private showOnHover = () => {
-        this.show()
-    }
-    private hideOnHover = () => {
-        this.hide()
-    }
-
-    private closeWhenClickOutside(event: MouseEvent, containerElement: HTMLElement) {
-        const isOpened = containerElement.hasAttribute("data-state") && containerElement.dataset.state === "open"
-        if (isOpened && !containerElement.contains(event.target as Node)) this.hide()
-    }
-
-    show() {
-        const closeOnClickInside = this.closeOnClickInside
-        const popperEl = this.popperElement
-        this.popper.updatePosition()
-        showTooltip({
-            container: this.containerElement,
-            trigger: this.referenceElement,
-            popper: this.popperElement
         })
-        this.onShow()
-        this.onToggle(false)
-        if (closeOnClickInside) {
-            popperEl.addEventListener("click", this.hide)
-        }
+
     }
-    hide = () => {
-        const popperEl = this.popperElement
-        const closeOnClickInside = this.closeOnClickInside
-        hidePopover({
-            container: this.containerElement,
-            trigger: this.referenceElement,
-            popper: this.popperElement
-        })
-        this.popper.cleanupEvents()
-        this.onHide()
-        this.onToggle(true)
-        if (closeOnClickInside) {
-            popperEl.removeEventListener("click", this.hide)
-        }
-    }
-    private init() {
-        const reference = this.referenceElement
-        const containerElement = this.containerElement
-        const triggerStrategy = this.triggerStrategy
-
-        initPoppoverAttributes({
-            container: this.containerElement,
-            trigger: this.referenceElement,
-            popper: this.popperElement
-        })
-        if (triggerStrategy === "click") {
-            reference.addEventListener("click", () => this.toggleOnClickMode(containerElement))
-        } else if (triggerStrategy === "hover") {
-            reference.addEventListener("mouseenter", this.showOnHover)
-            containerElement.addEventListener("mouseleave", this.hideOnHover)
-        }
-
-
+    setShowOptions = ({ placement, offsetDistance }: { placement: Placement, offsetDistance?: number }) => {
+        this.PopoverInstance.setShowOptions({ placement, offsetDistance })
     }
 
     /**
-     * auto init Tooltips based on the selector provided
-     * @param selector {string} default is [data-fx-tooltip]
+     * 
+     * @param tooltipEl 
+     * @param options 
      */
-    public static autoInit = (selector = "[data-fx-tooltip]") => {
-        const tooltips = $$(selector)
-        for (const tooltip of tooltips) new Tooltip(tooltip)
+    static init(tooltipEl: string | HTMLElement, options?: TooltipOptions) {
+        return new Tooltip(tooltipEl, options)
     }
 }
 

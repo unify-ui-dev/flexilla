@@ -47,7 +47,7 @@
     "vite-plugin-dts": "^3.7.0"
   },
   "dependencies": {
-    "@flexilla/popper": "latest"
+    "@flexilla/popover": "latest"
   },
   "keywords": [
     "popper",
