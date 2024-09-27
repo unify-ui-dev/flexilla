@@ -1,28 +1,27 @@
 {
-  "name": "@flexilla/popper",
+  "name": "@flexilla/popover",
   "private": false,
-  "version": "2.0.2",
+  "version": "0.0.0",
   "type": "module",
-  "description": "Deprecated: This package is no longer maintained. Please use Replacement Package (https://github.com/unify-ui-dev/flexipop) instead.",
-  "deprecated": "This package is no longer maintained. Please use Replacement Package (https://github.com/unify-ui-dev/flexipop) instead.",
+  "description": "A lightweight and customizable Popover component for displaying additional information on hover over elements in web applications.",
   "publishConfig": {
     "access": "public"
   },
-  "main": "./dist/popper.umd.js",
-  "module": "./dist/popper.js",
+  "main": "./dist/popover.js",
+  "module": "./dist/popover.umd.cjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": {
         "types": "./dist/index.d.ts",
-        "default": "./dist/popper.js"
+        "default": "./dist/popover.js"
       },
       "require": {
         "types": "./dist/index.d.ts",
-        "default": "./dist/popper.umd.js"
+        "default": "./dist/popover.umd.cjs"
       }
     },
-    "./popper.css": "./dist/popper.css"
+    "./tooltip.css": "./dist/popover.css"
   },
   "files": [
     "dist",
@@ -31,7 +30,8 @@
     "!vite.config.ts",
     "!.gitignore",
     "!tsconfig.json",
-    "!biome.js"
+    "!biome.js",
+    "flexilla"
   ],
   "scripts": {
     "dev": "vite",
@@ -41,20 +41,25 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.1",
+    "@flexilla/utilities": "latest",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
     "vite-plugin-dts": "^3.7.0"
   },
+  "dependencies": {
+    "@flexilla/popper": "latest",
+    "flexipop": "^0.0.0"
+  },
   "keywords": [
     "popper",
-    "dropdown",
-    "positioning engine",
     "popover",
     "tooltip",
     "js",
     "ts",
-    "flexilla",
-    "positioning"
+    "component",
+    "interactive",
+    "intercative component",
+    "flexilla"
   ],
   "homepage": "",
   "repository": {
