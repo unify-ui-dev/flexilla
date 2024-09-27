@@ -1,4 +1,4 @@
-import { $, $$ } from "@flexilla/utilities"
+import { $, $$, afterAnimation } from "@flexilla/utilities"
 import { ModalOptions } from "./types";
 import { buildOverlay, destroyOverlay } from "./modalOverlay";
 
@@ -42,25 +42,24 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
 
     const modalContent = $("[data-modal-content]", modalElement);
     const closeButtons = $$("[data-close-modal]", modalElement);
+    let overlayElement: HTMLElement | null = null
+    let hasDefaultOverlay = false
+    if ($("[data-modal-overlay]", modalElement) instanceof HTMLElement) {
+        overlayElement = $("[data-modal-overlay]", modalElement) as HTMLElement
+        overlayElement.setAttribute("data-overlay-nature", "default")
+        hasDefaultOverlay = true
+    }
 
     if (!(modalContent instanceof HTMLElement)) throw new Error("Modal content element not found");
 
     const animationEnter = modalContent.dataset.enterAnimation || "";
     const animationExit = modalContent.dataset.exitAnimation || "";
 
-
     modalContent.setAttribute("data-state", 'close');
 
-
-    const handleModalOverlayElement = () => {
-        const modalOverlay = $("[data-modal-overlay]", modalElement) as HTMLElement
-        destroyOverlay(modalOverlay)
-    }
     const closeModalEsc = (e: KeyboardEvent) => {
-        document.removeEventListener("keydown", closeModalEsc);
         if (e.key === "Escape" && !preventCloseModal_) {
             hideModal();
-            handleModalOverlayElement()
         }
     };
 
@@ -72,8 +71,9 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
                 const modalOverlay = $("[data-modal-overlay]", shownModal) as HTMLElement
                 modalOverlay.setAttribute("data-state", "close")
                 const modalContent_ = $("[data-modal-content]", shownModal)
+                const overloayIsDefault = modalOverlay.getAttribute("data-overlay-nature") === "default"
                 toggleModalState(shownModal, modalContent_, "close");
-                destroyOverlay(modalOverlay)
+                !overloayIsDefault ? destroyOverlay(modalOverlay) : null
             }
         }
     }
@@ -83,15 +83,22 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
         if (isOpened) return
 
         closeAll(modalElement)
-        const overlayElement = buildOverlay({
+        overlayElement = !hasDefaultOverlay ? buildOverlay({
             modalContent: modalContent,
             overlayClassName: overlayClassName,
-        })
+        }) : (overlayElement as HTMLElement)
 
+        overlayElement?.setAttribute("data-state", "open")
         if (animateContent || animationEnter !== "") {
             const contentAnimation = animateContent ? animateContent.enterAnimation : animationEnter;
             contentAnimation !== "" && modalContent.style.setProperty("--un-modal-animation", contentAnimation);
             toggleModalState(modalElement, modalContent, "open");
+            afterAnimation({
+                element: modalContent,
+                callback: () => {
+                    modalContent.style.removeProperty("--un-modal-animation")
+                }
+            })
         } else {
             toggleModalState(modalElement, modalContent, "open");
         }
@@ -104,47 +111,47 @@ const initModal = (modalElement: HTMLElement, triggerButton: HTMLElement | null,
 
         modalElement.focus();
 
-        !preventCloseModal_ && overlayElement.addEventListener("click", hideModal);
+        if (!preventCloseModal) overlayElement.addEventListener("click", hideModal)
         onShow?.()
         onToggle?.({ isHidden: false })
     };
 
 
     const hideModal = () => {
-        beforeHide?.()
-        const hideModal_ = () => {
+        const exitAction = beforeHide?.()?.cancelAction
+
+        if (exitAction) return
+
+        const closeModal = () => {
             toggleModalState(modalElement, modalContent, "close");
             setBodyScrollable(enableStackedModals_, allowBodyScroll_, modalElement)
-            handleModalOverlayElement();
+            if (!hasDefaultOverlay) destroyOverlay(overlayElement)
         }
-        const modalEndAnimation = (callBack: () => void) => {
-            modalContent.addEventListener(
-                "animationend",
-                function handleAnimationEnd() {
-                    callBack()
-                },
-                { once: true }
-            );
+        const closeLastAction = () => {
+            if (isKeyDownEventRegistered) {
+                document.removeEventListener("keydown", closeModalEsc);
+                isKeyDownEventRegistered = false;
+            }
+            modalElement.blur();
+            onHide?.()
+            onToggle?.({ isHidden: true })
         }
-        if ((animateContent?.exitAnimation && animateContent.exitAnimation !== "") || animationExit !== "") {
+        const hasExitAnimation = (animateContent?.exitAnimation && animateContent.exitAnimation !== "") || animationExit !== ""
+        overlayElement?.setAttribute("data-state", "close")
+        modalContent.setAttribute("data-state", "close");
+        if (hasExitAnimation) {
             const exitAnimation_ = animateContent ? animateContent.exitAnimation || "" : animationExit;
-            modalContent.setAttribute("data-state", "close");
             modalContent.style.setProperty("--un-modal-animation", exitAnimation_);
-            modalEndAnimation(() => {
-                modalContent.style.removeProperty("--un-modal-animation");
-                hideModal_()
-            })
-        } else {
-            hideModal_()
         }
 
-        if (isKeyDownEventRegistered) {
-            document.removeEventListener("keydown", closeModalEsc);
-            isKeyDownEventRegistered = false;
-        }
-        modalElement.blur();
-        onHide?.()
-        onToggle?.({ isHidden: true })
+        afterAnimation({
+            element: modalContent,
+            callback: () => {
+                if (hasExitAnimation) modalContent.style.removeProperty("--un-modal-animation");
+                closeModal()
+                closeLastAction()
+            }
+        })
     };
 
 

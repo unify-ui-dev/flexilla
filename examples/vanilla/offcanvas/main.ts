@@ -4,8 +4,7 @@ import "./../main"
 fOffcanvas("[data-slideover-from-left]",
     {
         backdrop: {
-            visibility: "visible",
-            backdropClass: "ui-overlay bg-gray/50"
+            visibility: "hidden",
         }
     }
 )
@@ -13,18 +12,12 @@ fOffcanvas("[data-slideover-from-left]",
 
 new OffCanvas(
     "[data-slideover-from-top]",
-    {
-        backdrop: {
-            visibility: "visible",
-            backdropClass: "ui-overlay bg-gray/50"
-        }
-    }
 )
 new OffCanvas("[data-slideover-from-bottom]",
     {
         backdrop: {
             visibility: "visible",
-            backdropClass: "ui-overlay bg-gray/50"
+            backdropClass: "ui-overlay bg-gray8/50"
         }
     }
 )
@@ -33,7 +26,7 @@ new OffCanvas("[data-slideover-from-right]",
     {
         backdrop: {
             visibility: "visible",
-            backdropClass: "ui-overlay bg-gray/50"
+            backdropClass: "ui-overlay bg-gray8/50"
         }
     }
 )
