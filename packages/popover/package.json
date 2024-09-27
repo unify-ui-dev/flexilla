@@ -1,0 +1,74 @@
+{
+  "name": "@flexilla/popover",
+  "private": false,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "A lightweight and customizable Popover component for displaying additional information on hover over elements in web applications.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/popover.js",
+  "module": "./dist/popover.umd.cjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/popover.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/popover.umd.cjs"
+      }
+    },
+    "./tooltip.css": "./dist/popover.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "!vite.config.ts",
+    "!.gitignore",
+    "!tsconfig.json",
+    "!biome.js",
+    "flexilla"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "format": "biome format --write ./src"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.5.1",
+    "@flexilla/utilities": "latest",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.7.0"
+  },
+  "dependencies": {
+    "@flexilla/popper": "latest",
+    "flexipop": "^0.0.0"
+  },
+  "keywords": [
+    "popper",
+    "popover",
+    "tooltip",
+    "js",
+    "ts",
+    "component",
+    "interactive",
+    "intercative component",
+    "flexilla"
+  ],
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unify-ui-dev/flexilla"
+  },
+  "bugs": {
+    "url": "https://github.com/unify-ui-dev/flexilla/issues"
+  },
+  "license": "MIT",
+  "author": "johnkat-mj"
+}
