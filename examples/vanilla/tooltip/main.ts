@@ -1,36 +1,26 @@
 import { Tooltip } from "@flexilla/tooltip"
 import "./../main"
 
-new Tooltip("[data-tooltip]#tooltip-test")
+new Tooltip("[data-tooltip-1]")
 
-new Tooltip("[data-tooltip]#tooltip-testTop",
+new Tooltip("[data-tooltip-2]",
   {
     placement: "top"
   }
 )
 
-new Tooltip(
-  "[data-tooltip]#tooltip-testLeft",
+
+new Tooltip("[data-tooltip-3]",
   {
     placement: "left"
   }
 )
 
-new Tooltip("[data-tooltip]#tooltip-testRight",
+new Tooltip("[data-tooltip-4]",
   {
     placement: "right"
   }
 )
 
+new Tooltip("[data-tooltip-click]")
 
-new Tooltip("[data-tooltip]#tooltip-testClick",
-  {
-    triggerStrategy: "click"
-  }
-)
-
-new Tooltip("[data-tooltip]#tooltip-testHover",
-  {
-    triggerStrategy: "hover"
-  }
-)
