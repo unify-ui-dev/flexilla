@@ -22,24 +22,29 @@ export const setAttributes = (
 		element.setAttribute(key, value);
 };
 
-export const afterTransition = ({
+const afterAnimationOrTransition = ({
 	element,
 	callback,
+	type,
+	keysCheck
 }: {
+	type: "animation" | "transition"
 	element: HTMLElement;
 	callback: () => void;
+	keysCheck: string[]
 }) => {
-	const elementTransition = getComputedStyle(element).transition;
+	const computedStyle = getComputedStyle(element)
+	const elementTransition = type === "transition" ? computedStyle.transition : computedStyle.animation;
 	if (
 		elementTransition !== "none" &&
 		elementTransition !== "" &&
-		elementTransition !== "all 0s ease 0s"
-		&& elementTransition !== "all"
+		!keysCheck.includes(elementTransition)
 	) {
+		const eventName = type === "transition" ? "transitionend" : "animationend"
 		element.addEventListener(
-			"transitionend",
-			function handleTransitionEnd() {
-				element.removeEventListener("transitionend", handleTransitionEnd);
+			eventName,
+			function handleEvent() {
+				element.removeEventListener(eventName, handleEvent);
 				callback();
 			},
 			{ once: true },
@@ -47,12 +52,32 @@ export const afterTransition = ({
 	} else callback();
 };
 
+export const afterTransition = ({
+	element,
+	callback,
+}: {
+	element: HTMLElement;
+	callback: () => void;
+}) => {
+	afterAnimationOrTransition({
+		element,
+		callback,
+		type: "transition",
+		keysCheck: ["all 0s ease 0s", "all"]
+	})
+};
 
-export const dispatchCustomEvent = <T extends object>(
-	element: HTMLElement,
-	eventName: string,
-	detail: T
-): void => {
+export const afterAnimation = ({ element, callback, }: { element: HTMLElement; callback: () => void; }) => {
+
+	afterAnimationOrTransition({
+		element,
+		callback,
+		type: "animation",
+		keysCheck: ["none 0s ease 0s 1 normal none running"]
+	})
+};
+
+export const dispatchCustomEvent = <T extends object>(element: HTMLElement, eventName: string, detail: T): void => {
 	const customEvent = new CustomEvent<T>(eventName, { detail });
 	element.dispatchEvent(customEvent);
 }

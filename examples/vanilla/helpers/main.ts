@@ -1,37 +1,31 @@
-import { keyboardNavigation } from "@flexilla/utilities/accessibility"
-import { toggleDataAttribute } from "@flexilla/utilities/toggler"
-import { $ } from "@flexilla/utilities"
+
+import { actionToggler as toggleDataAttribute } from "@flexilla/utilities/toggler"
+import { $, keyboardNavigation } from "@flexilla/utilities"
 import "./../main"
 
+const popperEl = $("[data-fx-popper]") as HTMLElement
 const navigate = keyboardNavigation({
-    element: "[data-fx-popper]",
-    targetChildren: "a:not([disabled])",
-    direction: "all"
+    containerElement: popperEl,
+    targetChildren: "a:not([disabled]), button:not([disabled])",
+    direction: "up-down"
 })
-
 
 const triggerElement = $("[data-dropdown-trigger]")
 if (triggerElement instanceof HTMLElement) {
-
-    triggerElement.addEventListener("click", () => {
-        const isOpen = $('[data-fx-popper]')?.getAttribute("data-state") === "open"
-        if (!isOpen) {
-            $('[data-fx-popper]')?.focus()
-            navigate.make()
-        }
-        else navigate.destroy()
-    })
-
     toggleDataAttribute({
         trigger: triggerElement,
-        target: "[data-fx-popper]",
-        attributes: {
-            from: {
-                'data-state': 'open'
-            },
-            to: {
-                'data-state': 'close'
+        targets: [
+            {
+                element: popperEl,
+                attributes: {
+                    initial: { 'data-state': 'close' },
+                    to: { 'data-state': 'open' }
+                }
             }
-        }
+        ],
+        onToggle({ isExpanded }) {
+            if (!isExpanded) navigate.destroy()
+            else navigate.make()
+        },
     })
 }

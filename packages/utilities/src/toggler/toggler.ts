@@ -1,18 +1,30 @@
 import { setAttributes } from "../dom-utilities";
 import { $getEl } from "./../selector";
-import { TogglerOptions } from "./types";
+import type { TogglerOptions } from "./types";
 
 
-export const toggleDataAttribute = (
-	options: TogglerOptions
-) => {
-	const { trigger, target, attributes } = options
-	const triggerElement = $getEl(trigger)
-	const targetElement = $getEl(target)
-	let isStateFrom = true;
+export const actionToggler = (options: TogglerOptions) => {
+	const { trigger, targets, onToggle } = options;
+	const triggerElement = $getEl(trigger);
+	let initialStateSetled = false;
+
+	const init = () => {
+		for (const target of targets) {
+			const targetElement = $getEl(target.element);
+			setAttributes(targetElement, target.attributes.initial);
+			initialStateSetled = true
+		}
+	}
+	init()
 	triggerElement.addEventListener("click", () => {
-		const newAttributes = isStateFrom ? attributes.from : attributes.to
-		setAttributes(targetElement, newAttributes)
-		isStateFrom = !isStateFrom
-	})
-}
+		for (const target of targets) {
+			const targetElement = $getEl(target.element);
+			const newAttributes = !initialStateSetled ? target.attributes.initial : target.attributes.to;
+			setAttributes(targetElement, newAttributes);
+		}
+
+		initialStateSetled = !initialStateSetled;
+		onToggle?.({ isExpanded: !initialStateSetled });
+		triggerElement.ariaExpanded = initialStateSetled ? "false" : "true";
+	});
+};

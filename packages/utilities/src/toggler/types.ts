@@ -1,6 +1,9 @@
 type AttributeMap = { [key: string]: string }
 export type TogglerOptions = {
-    trigger: HTMLElement | string,
-	target: HTMLElement | string,
-	attributes: { from: AttributeMap, to: AttributeMap },
+	trigger: HTMLElement | string,
+	onToggle?: ({ isExpanded }: { isExpanded: boolean }) => void,
+	targets: {
+		element: HTMLElement | string,
+		attributes: { initial: AttributeMap, to: AttributeMap }
+	}[]
 }
