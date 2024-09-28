@@ -44,7 +44,7 @@ export default class Accordion {
             }
         }
         this.addEventListeners();
-        initKeyEvents(this.accordionEl, false)
+        initKeyEvents(this.accordionEl)
     }
 
 

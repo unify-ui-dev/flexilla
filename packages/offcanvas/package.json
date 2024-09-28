@@ -7,8 +7,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "./dist/offcanvas.umd.js",
-  "module": "./dist/offcanvas.js",
+  "main": "./dist/offcanvas.js",
+  "module": "./dist/offcanvas.umd.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {

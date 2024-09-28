@@ -2,10 +2,11 @@ import {
     defineConfig,
     presetIcons,
     presetUno,
-    presetAttributify
+    presetAttributify,
+    type Preset
   } from "unocss";
 
-import unifyUI from "@flexilla/uno-preset"
+import unoPreset from "@flexilla/uno-preset"
   
   export default defineConfig({
     content: {
@@ -16,7 +17,7 @@ import unifyUI from "@flexilla/uno-preset"
     presets: [
       presetUno(),
       presetAttributify(),
-      unifyUI(),
+      unoPreset() as Preset,
       presetIcons({
         collections: {
           carbon: () =>

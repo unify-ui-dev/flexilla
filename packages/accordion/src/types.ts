@@ -10,7 +10,6 @@ export type AccordionType = "single" |"multiple"
 export type AccordionOptions = {
     accordionType?: AccordionType,
     defaultValue?: string,
-    allowTriggerOnFocus?: boolean,
     preventClosingAll?: boolean,
     onChangeItem?: ({ expandedItem }: { expandedItem?: ExpandedItem }) => void
 }

@@ -20,7 +20,7 @@ class Dismissible {
         this.dismissButtons = $$("[data-dismiss-btn]", this.dismissibleElement)
         this.onDismiss = onDissmiss
         this.dismissibleElement.setAttribute("aria-hidden", "false")
-        this.init()
+        this.setupDismissible()
     }
 
     private hideFromScreen = () => {
@@ -37,7 +37,7 @@ class Dismissible {
         switch (this.action) {
             case "hide-from-screen":
                 this.dismissibleElement.setAttribute("aria-hidden", "true")
-                this.dismissibleElement.setAttribute("data-state","hidden")
+                this.dismissibleElement.setAttribute("data-state", "hidden")
                 afterTransition({
                     element: this.dismissibleElement,
                     callback: this.hideFromScreen
@@ -46,7 +46,7 @@ class Dismissible {
             default:
                 this.dismissibleElement.setAttribute("data-hidden", "")
                 this.dismissibleElement.setAttribute("aria-hidden", "true")
-                this.dismissibleElement.setAttribute("data-state","removed")
+                this.dismissibleElement.setAttribute("data-state", "removed")
                 afterTransition({
                     element: this.dismissibleElement,
                     callback: this.removeFromDom
@@ -55,7 +55,7 @@ class Dismissible {
         }
     }
 
-    private init() {
+    private setupDismissible() {
         for (const dismissButton of this.dismissButtons) {
             dismissButton.addEventListener("click", this.dismiss)
         }
@@ -69,14 +69,13 @@ class Dismissible {
         const dismissibleEls = $$(selector)
         for (const dismissible of dismissibleEls) new Dismissible(dismissible)
     }
+    /**
+     * 
+     * @param dismissible 
+     * @param action 
+     * @param onDissmiss 
+     * @returns 
+     */
+    static init = (dismissible: string | HTMLElement, action?: "remove-from-dom" | "hide-from-screen", onDissmiss?: () => void) => new Dismissible(dismissible, action, onDissmiss)
 }
-
-/**
- * 
- * @param dismissible 
- * @param action 
- * @param onDissmiss 
- * @returns 
- */
-export const fDismissible = (dismissible: string | HTMLElement, action?: "remove-from-dom" | "hide-from-screen", onDissmiss?: () => void) => new Dismissible(dismissible, action, onDissmiss)
 export default Dismissible

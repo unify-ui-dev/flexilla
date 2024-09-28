@@ -1,5 +1,4 @@
 import { default as Collapse } from "./collapse"
-export { fCollapse } from "./fCollapse"
 export { Collapse }
 
 export type { CollapseOptions, ExpandCollapseOptions } from "./types"

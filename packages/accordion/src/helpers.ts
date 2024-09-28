@@ -13,7 +13,7 @@ const getAdjacentTrigger = (currentTrigger: HTMLElement, goUp: boolean, accordio
     return nextTrigger ?? (goUp ? $d("[data-accordion-trigger]", accordionItems[accordionItems.length - 1]) : $d("[data-accordion-trigger]", accordionItems[0]))
 }
 
-const attachKeyEvent = (event: KeyboardEvent, accordionElement: HTMLElement, allowTriggerOnFocus: boolean) => {
+const attachKeyEvent = (event: KeyboardEvent, accordionElement: HTMLElement) => {
     const focusedTrigger = document.activeElement;
     if (!(focusedTrigger instanceof HTMLElement)) return
 
@@ -22,15 +22,14 @@ const attachKeyEvent = (event: KeyboardEvent, accordionElement: HTMLElement, all
         event.preventDefault(); // Prevent default scrolling behavior
         const nextTrigger = getAdjacentTrigger(focusedTrigger, event.key === 'ArrowUp', accordionElement);
         nextTrigger.focus();
-        allowTriggerOnFocus && nextTrigger.click()
     }
 }
 
 
 
-const initItems = (accordionElement: HTMLElement,allowTriggerOnFocus: boolean) => {
+const initItems = (accordionElement: HTMLElement) => {
     accordionElement.addEventListener("keydown", (e: KeyboardEvent) => {
-        attachKeyEvent(e, accordionElement, allowTriggerOnFocus)
+        attachKeyEvent(e, accordionElement)
     });
 }
 
