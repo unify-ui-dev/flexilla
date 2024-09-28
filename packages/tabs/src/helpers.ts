@@ -1,5 +1,5 @@
 import { $, $d, setAttributes } from "@flexilla/utilities";
-import { ACTIVE_STATE, INACTIVE_STATE, STATE_TO_FALSE, STATE_TO_TRUE, VERTICAL_ORIENTATION } from "./const";
+import { ACTIVE_STATE, INACTIVE_STATE, STATE_TO_FALSE, STATE_TO_TRUE } from "./const";
 import { moveIndicator } from "./indicator";
 
 /**
@@ -9,7 +9,7 @@ const setAllTriggerToFalse = (activeTrigger: HTMLElement, tabTriggers: HTMLEleme
   for (const tabTrigger of tabTriggers) {
     if (tabTrigger !== activeTrigger) {
       setAttributes(tabTrigger, { "data-state": INACTIVE_STATE, tabindex: "-1" })
-      if(tabTrigger instanceof HTMLAnchorElement) tabTrigger.setAttribute("aria-selected","false")
+      if (tabTrigger instanceof HTMLAnchorElement) tabTrigger.setAttribute("aria-selected", "false")
     }
   }
 };
@@ -17,12 +17,11 @@ const setAllTriggerToFalse = (activeTrigger: HTMLElement, tabTriggers: HTMLEleme
 /**
  * Setup the nested tabs if it has a custom indicator
  */
-const setNestedTabsIndicatorCorrectly = ({ tabsOrientation, indicatorTransformDuration, indicatorTransformEaseing, indicator, triggerElement, tabList }: { tabsOrientation: string, indicatorTransformDuration: number, indicatorTransformEaseing: string, indicator: HTMLSpanElement, triggerElement: HTMLElement, tabList: HTMLElement }) => {
+const setNestedTabsIndicatorCorrectly = ({ indicatorTransformDuration, indicatorTransformEaseing, indicator, triggerElement, tabList }: {  indicatorTransformDuration: number, indicatorTransformEaseing: string, indicator: HTMLSpanElement, triggerElement: HTMLElement, tabList: HTMLElement }) => {
   if (!(indicator instanceof HTMLSpanElement) || !(triggerElement instanceof HTMLElement)) return
   moveIndicator({
     triggerElement,
     indicator_: indicator,
-    tabsOrientation,
     transformDuration: indicatorTransformDuration,
     transformEasing: indicatorTransformEaseing,
     tabList
@@ -45,9 +44,11 @@ export const hideAllTabPanels = (activePanel: HTMLElement | undefined, tabPanels
 /**
  * Activates the selected tab and updates the indicator position.
  */
-export const activeTab = ({ triggerElement, tabTriggers, tabsPanelContainer, showAnimation, tabsOrientation, indicatorTransformDuration, indicatorTransformEaseing, tabList }: { triggerElement: HTMLElement, tabTriggers: HTMLElement[], tabsPanelContainer: HTMLElement, showAnimation: string, tabsOrientation: string, indicatorTransformDuration: number, indicatorTransformEaseing: string, tabList: HTMLElement }) => {
+export const activeTab = ({ triggerElement, tabTriggers, tabsPanelContainer, showAnimation,  indicatorTransformDuration, indicatorTransformEaseing, tabList }: { triggerElement: HTMLElement, tabTriggers: HTMLElement[], tabsPanelContainer: HTMLElement, showAnimation: string, indicatorTransformDuration: number, indicatorTransformEaseing: string, tabList: HTMLElement }) => {
   const currentTab = $d("[data-tab-panel][data-state=active]", tabsPanelContainer)
-  if (currentTab) {
+  
+
+  if (currentTab instanceof HTMLElement) {
     setAttributes(currentTab, { "data-state": "hidden" })
     currentTab.hidden = true
   }
@@ -58,7 +59,7 @@ export const activeTab = ({ triggerElement, tabTriggers, tabsPanelContainer, sho
   toSelectTab.hidden = false
   setAttributes(toSelectTab, { "data-state": ACTIVE_STATE, "aria-hidden": STATE_TO_FALSE })
   setAttributes(triggerElement, { "data-state": ACTIVE_STATE, tabindex: "0" })
-  if(triggerElement instanceof HTMLAnchorElement) triggerElement.setAttribute("aria-selected","true")
+  if (triggerElement instanceof HTMLAnchorElement) triggerElement.setAttribute("aria-selected", "true")
 
   if (showAnimation && showAnimation !== "") {
     toSelectTab.style.setProperty("--un-tab-show-animation", `${showAnimation}`)
@@ -70,7 +71,6 @@ export const activeTab = ({ triggerElement, tabTriggers, tabsPanelContainer, sho
   moveIndicator({
     triggerElement,
     indicator_: indicator,
-    tabsOrientation,
     transformDuration: indicatorTransformDuration,
     transformEasing: indicatorTransformEaseing,
     tabList
@@ -85,7 +85,6 @@ export const activeTab = ({ triggerElement, tabTriggers, tabsPanelContainer, sho
     if (childIndicator instanceof HTMLSpanElement && triggerElement instanceof HTMLElement && !childTab.hasAttribute("data-nested-indicator-seteled")) {
       childTab.setAttribute("data-nested-indicator-seteled", '')
       setNestedTabsIndicatorCorrectly({
-        tabsOrientation: tabsOrientation,
         indicatorTransformDuration: indicatorTransformDuration,
         indicatorTransformEaseing: indicatorTransformEaseing,
         indicator: childIndicator,
@@ -102,14 +101,13 @@ export const activeTab = ({ triggerElement, tabTriggers, tabsPanelContainer, sho
 /**
 * Handles keydown events for tab triggers.
 */
-export const handleKeyEvent = (event: KeyboardEvent, tabTriggers: HTMLElement[], tabsOrientation: string) => {
+export const handleKeyEvent = (event: KeyboardEvent, tabTriggers: HTMLElement[]) => {
   const currentIndex = tabTriggers.findIndex(
     (tabTrigger) => tabTrigger.getAttribute("data-state") === ACTIVE_STATE
   );
 
   const direction =
     event.key === "ArrowUp" || event.key === "ArrowLeft" ? -1 : 1;
-  const isVertical = tabsOrientation === VERTICAL_ORIENTATION;
 
   const isValidIndex = (index: number) =>
     !tabTriggers[index].hasAttribute("disabled");
@@ -123,8 +121,7 @@ export const handleKeyEvent = (event: KeyboardEvent, tabTriggers: HTMLElement[],
   };
 
   if (
-    (isVertical && (event.key === "ArrowUp" || event.key === "ArrowDown")) ||
-    (!isVertical && (event.key === "ArrowLeft" || event.key === "ArrowRight"))
+    event.key === "ArrowUp" || event.key === "ArrowDown" || event.key === "ArrowLeft" || event.key === "ArrowRight"
   ) {
     event.preventDefault();
     const nextValidIndex = getNextIndex(

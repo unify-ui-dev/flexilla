@@ -1,87 +1,70 @@
 import { appendBefore, setAttributes } from "@flexilla/utilities";
-import { VERTICAL_ORIENTATION } from "./const";
 
 
-/**
- * Creates the indicator element and appends it to the tabList.
- */
-export const createIndicator = ({ activeTabTrigger, indicatorClassName, tabsOrientation, tabList }: { activeTabTrigger: HTMLElement, indicatorClassName: string, tabsOrientation: string, tabList: HTMLElement }) => {
+export const createIndicator = ({
+    activeTabTrigger,
+    indicatorClassName,
+    tabList
+}: {
+    activeTabTrigger: HTMLElement,
+    indicatorClassName: string,
+    tabList: HTMLElement
+}) => {
     if (!indicatorClassName || indicatorClassName === "") return;
-
-
-    const indicatorClasses = indicatorClassName
 
     const indicator_ = document.createElement("span");
     setAttributes(indicator_, {
         "data-tab-indicator": "",
         "aria-hidden": "true"
-    })
-    const transformFunction = tabsOrientation === VERTICAL_ORIENTATION ? getTransformY : getTransformX;
+    });
 
-    indicator_.style.setProperty(
-        "transform", transformFunction(activeTabTrigger)
-    );
-
-    const classesArray = indicatorClasses ? indicatorClasses.split(" ") : [];
+    const classesArray = indicatorClassName.split(" ");
     indicator_.classList.add(...classesArray);
-    const indicatoBeforeEl = activeTabTrigger.parentElement === tabList 
-    ? activeTabTrigger : activeTabTrigger.parentElement as HTMLElement
+    const indicatoBeforeEl = activeTabTrigger.parentElement === tabList
+        ? activeTabTrigger
+        : activeTabTrigger.parentElement as HTMLElement;
+
     appendBefore({
         newElement: indicator_,
         existingElement: indicatoBeforeEl
-    })
+    });
 
-    return indicator_
+    return indicator_;
 };
 
-/**
- * Transforms an element's position and size to apply to the indicator.
- */
-const getTransformX = (triggerElement: HTMLElement) => {
-    const transform = {
-        x: triggerElement.offsetLeft,
-        scaleX: triggerElement.offsetWidth / 100,
-    };
-    return `translateX(${transform.x}px) scaleX(${transform.scaleX}px)`;
-};
-
-/**
- * Transforms an element's position and size to apply to the indicator.
- */
-const getTransformY = (triggerElement: HTMLElement) => {
-    const transform = {
-        y: triggerElement.offsetTop,
-        scaleY: triggerElement.offsetHeight / 10,
-    };
-    return `translateY(${transform.y}px) scaleY(${transform.scaleY})`;
-};
 
 /**
  * Moves the indicator to the position of the given element.
  */
-export const moveIndicator = ({ triggerElement, indicator_, tabsOrientation, transformDuration, transformEasing, tabList }:
-    {
-        triggerElement: HTMLElement,
-        indicator_: HTMLSpanElement | undefined, tabsOrientation: string,
-        transformDuration?: number,
-        transformEasing?: string,
-        tabList: HTMLElement
-    }) => {
-
-    tabList.style.setProperty("--un-tab-indicator-height", `${tabsOrientation === VERTICAL_ORIENTATION ? 10 : triggerElement.clientHeight}px`)
-    tabList.style.setProperty("--un-tab-indicator-width", `${tabsOrientation === VERTICAL_ORIENTATION ? triggerElement.clientWidth : 100}px`)
-    tabList.style.setProperty("--un-tab-indicator-top", `${tabsOrientation === VERTICAL_ORIENTATION ? 0 : triggerElement.offsetTop}px`)
-    tabList.style.setProperty("--un-tab-indicator-left", `${tabsOrientation === VERTICAL_ORIENTATION ? triggerElement.offsetLeft : 0}px`)
+export const moveIndicator = ({
+    triggerElement,
+    indicator_,
+    transformDuration = 300,
+    transformEasing = 'ease'
+}: {
+    triggerElement: HTMLElement,
+    indicator_: HTMLSpanElement | undefined,
+    transformDuration?: number,
+    transformEasing?: string,
+    tabList: HTMLElement
+}) => {
 
     if (!(indicator_ instanceof HTMLElement)) return;
+
     indicator_.animate(
         [
             {
-                transform:
-                    tabsOrientation === VERTICAL_ORIENTATION
-                        ? getTransformY(triggerElement)
-                        : getTransformX(triggerElement),
+                top: indicator_.style.top,
+                left: indicator_.style.left,
+                width: indicator_.style.width,
+                height: indicator_.style.height
             },
+            {
+                top: `${triggerElement.offsetTop}px`,
+                left: `${triggerElement.offsetLeft}px`,
+                width: `${triggerElement.offsetWidth}px`,
+                height: `${triggerElement.offsetHeight}px`
+            }
         ],
         {
             fill: "both",
