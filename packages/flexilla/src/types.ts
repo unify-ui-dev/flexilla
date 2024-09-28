@@ -9,4 +9,6 @@ export type FlexillaOptions = {
     offcanvas?: string;
     tabs?: string;
     tooltip?: string;
+    popover?:string
 };
+

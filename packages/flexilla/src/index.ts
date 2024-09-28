@@ -1,14 +1,14 @@
 import "./flexilla.css"
-import { Accordion, fAccordion } from "@flexilla/accordion"
-import { AutoResizeTextArea, fAutoResizableTextArea } from "@flexilla/auto-resize-area"
-import { Collapse, fCollapse } from "@flexilla/collapse"
-import { CustomRange, fCustomRange } from "@flexilla/custom-range"
-import { Dismissible, fDismissible } from "@flexilla/dismissible"
-import { Dropdown, fDropdown } from "@flexilla/dropdown"
-import { Modal, fModal } from "@flexilla/modal"
-import { OffCanvas, fOffcanvas } from "@flexilla/offcanvas"
-import { Tabs, fTabs } from "@flexilla/tabs"
-import { Tooltip, fTooltip } from "@flexilla/tooltip"
+import { Accordion } from "@flexilla/accordion"
+import { AutoResizeTextArea } from "@flexilla/auto-resize-area"
+import { Collapse } from "@flexilla/collapse"
+import { CustomRange } from "@flexilla/custom-range"
+import { Dismissible } from "@flexilla/dismissible"
+import { Dropdown } from "@flexilla/dropdown"
+import { Modal } from "@flexilla/modal"
+import { OffCanvas } from "@flexilla/offcanvas"
+import { Tabs } from "@flexilla/tabs"
+import { Tooltip } from "@flexilla/tooltip"
 
 import type { AccordionOptions } from "@flexilla/accordion"
 import type { CollapseOptions } from "@flexilla/collapse"
@@ -17,6 +17,7 @@ import type { OffcanvasOptions } from "@flexilla/offcanvas"
 import type { TabsOptions } from "@flexilla/tabs"
 import type { DropdownOptions } from "@flexilla/dropdown"
 import type { TooltipOptions } from "@flexilla/tooltip"
+import { Popover, type PopoverOptions } from "@flexilla/popover"
 import type { FlexillaOptions } from "./types"
 
 /**
@@ -24,7 +25,7 @@ import type { FlexillaOptions } from "./types"
  * @param options 
  */
 const initFlexilla = (
-    options:FlexillaOptions
+    options: FlexillaOptions
 ) => {
     Accordion.autoInit(options.accordion)
     AutoResizeTextArea.autoInit(options.autoresize)
@@ -35,13 +36,17 @@ const initFlexilla = (
     Modal.autoInit(options.modal)
     OffCanvas.autoInit(options.offcanvas)
     Tabs.autoInit(options.tabs)
-    Tooltip.autoInit(options.tooltip)
+    Popover.autoInit(options.popover)
+    // Tooltip.autoInit(options.tooltip)
 }
 
 export {
-    Accordion, AutoResizeTextArea, Collapse, CustomRange, Dismissible, Dropdown, Modal, OffCanvas, Tabs, Tooltip, AccordionOptions, CollapseOptions
-    , ModalOptions, TabsOptions, OffcanvasOptions, FlexillaOptions,
-    DropdownOptions, TooltipOptions,
-    fAccordion, fAutoResizableTextArea, fCollapse, fCustomRange, fDismissible, fDropdown, fModal, fOffcanvas, fTabs, fTooltip,
+    Accordion, AutoResizeTextArea, Collapse,
+    CustomRange, Dismissible, Dropdown, Modal, OffCanvas, Tabs, Tooltip, Popover,
     initFlexilla
+}
+export type {
+    AccordionOptions, CollapseOptions
+    , ModalOptions, TabsOptions, OffcanvasOptions, FlexillaOptions,
+    DropdownOptions, TooltipOptions, PopoverOptions
 }
