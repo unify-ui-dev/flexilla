@@ -1,21 +1,12 @@
 /** Needed to position popper correctly */
 [data-fx-popper] {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    transform: translate(var(--fx-popper-placement-x), var(--fx-popper-placement-y));
-    -webkit-transform: translate(var(--fx-popper-placement-x), var(--fx-popper-placement-y));
-    -moz-transform: translate(var(--fx-popper-placement-x), var(--fx-popper-placement-y));
-    -ms-transform: translate(var(--fx-popper-placement-x), var(--fx-popper-placement-y));
-    -o-transform: translate(var(--fx-popper-placement-x), var(--fx-popper-placement-y));
+    position: fixed;
+    left    : var(--fx-popper-placement-x, 0px);
+    top     : var(--fx-popper-placement-y, 0px);
 }
 
 
-/** dropdpdown container must have relative position */
-[data-fx-dropdown],
-[data-fx-tooltip] {
-    position: relative;
-}
+
 
 [data-fx-dropdown] [data-fx-popper],
 [data-fx-tooltip] [data-fx-popper],
