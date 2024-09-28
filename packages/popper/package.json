@@ -1,7 +1,7 @@
 {
   "name": "@flexilla/popper",
   "private": false,
-  "version": "2.0.2",
+  "version": "2.0.3",
   "type": "module",
   "description": "Deprecated: This package is no longer maintained. Please use Replacement Package (https://github.com/unify-ui-dev/flexipop) instead.",
   "deprecated": "This package is no longer maintained. Please use Replacement Package (https://github.com/unify-ui-dev/flexipop) instead.",
