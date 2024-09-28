@@ -5,10 +5,9 @@ export type IndicatorOptions = {
 }
 
 export type TabsOptions = {
-    orientation?: "horizontal" | "vertical"
     defaultValue?: string,
     animationOnShow?: string,
-    indicatorOptions?:IndicatorOptions,
+    indicatorOptions?: IndicatorOptions,
     onChange?: () => void,
     onChangeTab?: ({ currentTrigger, currentPanel }: { currentTrigger?: HTMLElement, currentPanel?: HTMLElement }) => void
 };
