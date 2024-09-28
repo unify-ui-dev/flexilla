@@ -3,8 +3,7 @@
   "private": false,
   "version": "0.0.3",
   "type": "module",
-  "description": "Deprecated: This package is no longer maintained. Please use Replacement Package (https://www.npmjs.com/package/@unifydev/unify-variant) instead.",
-  "deprecated": "This package is no longer maintained. Please use Replacement Package (https://www.npmjs.com/package/@unifydev/unify-variant) instead.",
+  "description": "UnoCSS variants for Flexilla",
   "publishConfig": {
     "access": "public"
   },
@@ -33,13 +32,12 @@
     "format": "biome format --write ./src"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.5.1",
     "@types/node": "^20.11.24",
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
     "unbuild": "^2.0.0",
-    "unocss": "^0.58.5"
+    "unocss": "^0.62.4"
   },
   "peerDependencies": {
     "unocss": ">=0.58.5  <1.0.0"
