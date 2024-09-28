@@ -1,22 +1,22 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
-
+import sharedConfig from './../../shared/vite.config.shared';
 
 export default defineConfig({
+  ...sharedConfig,
   build: {
-    outDir: 'dist',
+    ...sharedConfig.build,
     lib: {
-      entry:resolve(__dirname, 'src/index.ts'),
+      entry: resolve(__dirname, 'src/index.ts'),
       name: '@flexilla/flexilla',
-      fileName: 'flexilla',
+      fileName: 'flex',
     },
-    rollupOptions: {
-      external: [],
-      output: {
-        globals: {},
-        assetFileNames: "flexilla.[ext]"
-      },
+    rollupOptions:{
+      output:{
+        assetFileNames:"flex.[ext]"
+      }
     }
   },
 });
+
