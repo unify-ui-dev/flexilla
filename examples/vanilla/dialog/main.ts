@@ -1,38 +1,34 @@
-import { Modal, ModalOptions } from "@flexilla/flexilla"
+import { Modal, ModalOptions } from "@flexilla/modal"
 import "./../main"
 
 new Modal("[data-modal-test-1]")
 
 new Modal("[data-modal-test-1b]")
-
+let isFailed = true
 const options: ModalOptions = {
     animateContent: {
         enterAnimation: "slideIn .5s linear",
         exitAnimation: "slideOut .2s linear"
     },
-    onHide() {
-        console.log("Modal closed")
+    beforeHide: () => {
+        if (isFailed) {
+            isFailed = false
+            return { cancelAction: true }
+        }
+
     },
-    onShow: () => {
-        console.log("Modal Open")
-    }
+
 }
+new Modal("[data-modal-test-2]", {
+    beforeHide: () => {
+        console.log("Going")
+    },
+})
 new Modal(
     "[data-modal-test-3]",
     options
 )
 
-new Modal(
-    "[data-modal-test-2]",
-    {
-        onHide() {
-            console.log("Modal closed")
-        },
-        onShow: () => {
-            console.log("Modal Open")
-        }
-    }
-)
 
 new Modal(
     "[data-modal-prevent]",
@@ -41,12 +37,6 @@ new Modal(
         animateContent: {
             enterAnimation: "slideIn .3s linear",
         },
-        onHide() {
-            console.log("Modal closed")
-        },
-        onShow: () => {
-            console.log("Modal Open")
-        }
     },
     "[data-custom-trigger]"
 )
@@ -67,12 +57,6 @@ new Modal(
         animateContent: {
             enterAnimation: "slideIn .3s linear",
         },
-        onHide() {
-            console.log("Modal closed")
-        },
-        onShow: () => {
-            console.log("Modal Open")
-        }
     },
     "[data-custom-trigger-stack]"
 )

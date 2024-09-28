@@ -1,17 +1,8 @@
-import { afterTransition, appendBefore } from "@flexilla/utilities"
+import { appendBefore } from "@flexilla/utilities"
 
-const destroyAfter = (overlayElement: HTMLElement) => {
+export const destroyOverlay = (overlayElement: HTMLElement | null) => {
+    if (!(overlayElement instanceof HTMLElement)) return
     overlayElement.parentElement?.removeChild(overlayElement)
-}
-
-export const destroyOverlay = (overlayElement: HTMLElement) => {
-    overlayElement.setAttribute("data-state", "close")
-    afterTransition({
-        element: overlayElement,
-        callback() {
-            destroyAfter(overlayElement)
-        },
-    })
 }
 
 export const buildOverlay = (
@@ -23,9 +14,8 @@ export const buildOverlay = (
 ) => {
     const overlayEl = document.createElement("span");
     overlayEl.setAttribute("aria-hidden", "true");
-    overlayEl.setAttribute("data-state", "open")
     appendBefore({ newElement: overlayEl, existingElement: modalContent });
     overlayEl.classList.add(...overlayClassName);
-    overlayEl.setAttribute("data-modal-overlay", "overlay-bg");
+    overlayEl.setAttribute("data-modal-overlay", "");
     return overlayEl
 }

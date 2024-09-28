@@ -17,7 +17,7 @@ class Modal {
      * @param options 
      * @param triggerElement 
      */
-    constructor(modal: string | HTMLElement, options: ModalOptions = {}, triggerElement?: string|HTMLElement) {
+    constructor(modal: string | HTMLElement, options: ModalOptions = {}, triggerElement?: string | HTMLElement) {
         const modalElement = typeof modal === "string" ? $(modal) : modal
         if (!(modalElement instanceof HTMLElement)) throw new Error("Invalid provided HTMLElement")
 
@@ -44,14 +44,23 @@ class Modal {
         this.isHidden = isHidden
     }
 
+
     /**
      * auto init Modals based on the selector provided
      * @param selector {string} default is [data-fx-modal] attribute
      */
-    public static autoInit = (selector="[data-fx-modal]")=>{
+    public static autoInit = (selector: string = "[data-fx-modal]") => {
         const modals = $$(selector)
-        for(const modal of modals) new Modal(modal)
+        for (const modal of modals) new Modal(modal)
     }
+
+    /**
+     * Modal Component
+     * @param modal 
+     * @param options 
+     * @param triggerElement 
+     */
+    static init = (modal: string | HTMLElement, options: ModalOptions = {}, triggerElement?: string | HTMLElement) => new Modal(modal, options, triggerElement)
 }
 
 export default Modal
