@@ -25,7 +25,7 @@ export const presetVariants = (options: PrimitivesOptions = {}): Variant => {
     } = options;
 
     return {
-        name: 'unify-ui-variant',
+        name: 'flexilla-variant',
         match: (matcher: string) => {
             const regex = new RegExp(`^(peer-|group-|where-)?${prefix}(-not)?-(${variants})[:-]`);
             const match = matcher.match(regex);

@@ -3,6 +3,9 @@ const plugin = require("tailwindcss/plugin");
 module.exports = plugin(({ addVariant, e, addComponents }) => {
   const validStateValues = [
     "open",
+    "opened",
+    "closed",
+    "resized",
     "not-open",
     "visible",
     "not-visible",
@@ -67,6 +70,10 @@ module.exports = plugin(({ addVariant, e, addComponents }) => {
   //
   addComponents({
     ".ui-popper": {
+      position: "fixed",
+      top: "var(--fx-popper-placement-y)",
+      left: "var(--fx-popper-placement-x)",
+    },".ui-popper-absolute": {
       position: "absolute",
       top: "var(--fx-popper-placement-y)",
       left: "var(--fx-popper-placement-x)",
