@@ -4,7 +4,7 @@ class CustomRangeIndicator {
     private indicatorElement: HTMLSpanElement
     private indicatorClassname: string[]
 
-    constructor(containerElement_: string|HTMLElement, rangeIndicator?: string) {
+    constructor(containerElement_: string | HTMLElement, rangeIndicator?: string) {
         const containerElement = typeof containerElement_ === "string" ? document.querySelector(`${containerElement_}`) : containerElement_
         if (!(containerElement instanceof HTMLElement)) throw new Error("No valide container element")
 
@@ -15,7 +15,7 @@ class CustomRangeIndicator {
 
         this.indicatorClassname = rangeIndicator?.split(" ") || (this.rangeContainer.dataset.rangeIndicator)?.split(" ") || []
         this.indicatorElement = this.initIndicator()
-        this.init()
+        this.initRange()
         this.updateIndicatorSize()
     }
 
@@ -48,7 +48,7 @@ class CustomRangeIndicator {
         this.indicatorElement.style.width = `${size}`;
     }
 
-    private init() {
+    private initRange() {
         this.rangeElement.addEventListener("input", this.updateIndicatorSize)
     }
 
@@ -56,12 +56,11 @@ class CustomRangeIndicator {
      * auto init the Custom Input Range based on the selector provided
      * @param selector {string} default is [data-fx-custom-range]
      */
-    public static autoInit = (selector="[data-fx-custom-range]") => {
+    static autoInit = (selector = "[data-fx-custom-range]") => {
         const inputRanges = Array.from(document.querySelectorAll(selector)) as HTMLInputElement[]
-        for(const inputRange of inputRanges) new CustomRangeIndicator(inputRange)
+        for (const inputRange of inputRanges) new CustomRangeIndicator(inputRange)
     }
+    static init = (containerElement_: string | HTMLElement, rangeIndicator?: string) => new CustomRangeIndicator(containerElement_, rangeIndicator)
 }
-
-export const fCustomRangeIndicator = (containerElement_: string|HTMLElement, rangeIndicator?: string)=> new CustomRangeIndicator(containerElement_, rangeIndicator)
 
 export default CustomRangeIndicator

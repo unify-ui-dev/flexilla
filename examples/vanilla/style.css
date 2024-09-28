@@ -1,0 +1,30 @@
+.ui-popper {
+    position: absolute;
+    left    : var(--fx-popper-placement-x);
+    top     : var(--fx-popper-placement-y);
+}
+
+.ui-popper {
+    position: absolute;
+    left    : var(--fx-popper-placement-x);
+    top     : var(--fx-popper-placement-y);
+}
+
+.ui-tabs-indicator {
+    position        : absolute;
+    top             : var(--un-tab-indicator-top);
+    left            : var(--un-tab-indicator-left);
+    width           : var(--un-tab-indicator-width);
+    height          : var(--un-tab-indicator-height);
+    transform-origin: 0 0;
+}
+
+.ui-animated-tab-panel {
+  animation: var(--un-tab-show-animation);
+  animation-fill-mode: both;
+}
+
+.ui-overlay{
+  position: fixed;
+  inset: 0;
+}

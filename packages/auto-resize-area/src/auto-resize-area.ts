@@ -30,8 +30,9 @@ class AutoResizableTextArea {
             }
         }
     }
+
+    static init = (textarea: string | HTMLTextAreaElement) => new AutoResizableTextArea(textarea)
 }
 
 
-export const fAutoResizableTextArea = (textarea: string | HTMLTextAreaElement) => new AutoResizableTextArea(textarea)
 export default AutoResizableTextArea

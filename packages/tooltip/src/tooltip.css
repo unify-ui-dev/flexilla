@@ -1,12 +1,13 @@
-@import url(@flexilla/popper/popper.css);
-[data-fx-tooltip] {
-    position: relative;
+[data-fx-popper] {
+    position: fixed;
+    left    : var(--fx-popper-placement-x, 0px);
+    top     : var(--fx-popper-placement-y, 0px);
 }
 
 [data-fx-tooltip] [data-fx-popper] {
-    visibility: hidden;
+    visibility: hidden
 }
 
-[data-fx-tooltip][data-state="open"] [data-fx-popper] {
-    visibility: visible;
+[data-fx-tooltip][data-state=open] [data-fx-popper] {
+    visibility: visible
 }

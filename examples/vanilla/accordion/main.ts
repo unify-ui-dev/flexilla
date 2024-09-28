@@ -33,6 +33,5 @@ new Accordion(
     document.querySelector('[data-accordion-5]') as HTMLElement,
     {
         defaultValue: "accordion-1",
-        allowTriggerOnFocus: true
     }
 )

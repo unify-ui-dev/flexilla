@@ -41,15 +41,14 @@ const afterAnimationOrTransition = ({
 		!keysCheck.includes(elementTransition)
 	) {
 		const eventName = type === "transition" ? "transitionend" : "animationend"
-		element.addEventListener(
-			eventName,
-			function handleEvent() {
-				element.removeEventListener(eventName, handleEvent);
-				callback();
-			},
-			{ once: true },
-		);
-	} else callback();
+		const handleEvent = () => {
+            element.removeEventListener(eventName, handleEvent);
+            callback();
+        };
+		element.addEventListener(eventName, handleEvent, { once: true });
+	} else {
+		callback();
+	}
 };
 
 export const afterTransition = ({
