@@ -1,7 +1,7 @@
 {
   "name": "@flexilla/accordion",
   "private": false,
-  "version": "2.0.2",
+  "version": "2.0.3",
   "type": "module",
   "description": "A versatile and interactive accordion component for creating collapsible sections in web applications, conserving space and improving user experience",
   "publishConfig": {
@@ -38,8 +38,8 @@
     "format": "biome format --write ./src"
   },
   "dependencies": {
-    "@flexilla/utilities": "latest",
-    "@flexilla/collapse": "latest"
+    "@flexilla/collapse": "latest",
+    "@flexilla/utilities": "latest"
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.1",
