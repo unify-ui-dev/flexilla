@@ -1,17 +1,8 @@
----
-import type { HTMLAttributes } from "astro/types";
-
-interface Props extends HTMLAttributes<"div"> {}
-
-const { ...props } = Astro.props;
----
-
 <div
   data-accordion-example
   data-default-value="accordion-1"
   data-accordion-type="single"
   class="space-y-2 bg-zinc2/40 dark-bg-zinc9/60 rd-md"
-  {...props}
 >
   <div data-accordion-item data-accordion-value="accordion-1" class="rd-md">
     <button

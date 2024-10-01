@@ -78,32 +78,17 @@ const initAllCustomComponents = () => {
 
 
 export const initAppScript = () => {
-    const allTabs = $$("[data-tab-fx-site]")
-    const allCollapses = $$("[data-collapsible-example]")
-    const allAccordionWithAttribute = $$("[data-accordion-example]")
     const dismissibleEls = $$("[data-dismissible]")
-    document.addEventListener("DOMContentLoaded", () => {
+    Collapse.autoInit("[data-collapsible-example]")
+    Tabs.autoInit("[data-tab-fx-site]")
+    Accordion.autoInit("[data-accordion-example]")
 
+    initAllCustomComponents()
+    initTableOfContent()
 
-        initAllCustomComponents()
-        initTableOfContent()
-
-
-        for (const tabs of allTabs) {
-            new Tabs(tabs as HTMLElement);
-        }
-        for (const accordion of allAccordionWithAttribute) {
-            new Accordion(accordion as HTMLElement)
-        }
-
-        for (const collapse of allCollapses) {
-            new Collapse(collapse)
-        }
-
-        for (const dismissEl of dismissibleEls) {
-            new Dismissible(dismissEl)
-        }
-    })
+    for (const dismissEl of dismissibleEls) {
+        new Dismissible(dismissEl)
+    }
 }
 
 

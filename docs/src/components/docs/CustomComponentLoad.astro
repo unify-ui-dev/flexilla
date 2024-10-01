@@ -6,9 +6,10 @@ import { CopyInBlockBtn } from "@components/preact/CopyInBlockBtn";
 
 type Props = {
     source: string;
+    noRoundedTop?: boolean;
 };
 
-const { source } = Astro.props;
+const { source, noRoundedTop } = Astro.props;
 const componentData = codeData[source] || [];
 ---
 
@@ -45,7 +46,9 @@ const componentData = codeData[source] || [];
                         >
                             <div
                                 data-tab-list-wrapper
-                                class="flex items-center wfull relative bg-white dark-bg-zinc950 rd-t-xl b b-zinc2/60 dark-b-zinc8/30 text-sm text-zinc7 dark-text-zinc3 h12"
+                                class={`
+                                    flex items-center wfull relative bg-white dark-bg-zinc950 b b-zinc2/60 dark-b-zinc8/30 text-sm text-zinc7 dark-text-zinc3 h12
+                                    ${noRoundedTop ? "b-t-0" : "rd-t-xl "}`}
                             >
                                 <ul
                                     role="tablist"
@@ -127,21 +130,29 @@ const componentData = codeData[source] || [];
                         </div>
                     </>
                 ) : (
-                    <div class="code-block">
-                        <div class="flex items-center wfull relative bg-white dark-bg-zinc950 rd-t-xl b b-zinc2/90 dark-b-zinc8/60 text-sm text-zinc7 dark-text-zinc3 h12">
+                    <div class="grid">
+                        <div
+                            class={`flex items-center wfull relative bg-white dark-bg-zinc950 ${noRoundedTop ? "b-t-0" : "rd-t-xl"} b b-zinc2/90 dark-b-zinc8/60 text-sm text-zinc7 dark-text-zinc3 h12`}
+                        >
                             {subkey.items[0].title} ({subkey.items[0].lang})
                         </div>
-                        <div class="flex-1 overflow-hidden rd-b-xl b b-t-0 b-zinc2/90 dark-b-zinc8/60 bg-zinc1/60 dark-bg-zinc9/60 max-h96">
+                        <div class="flex w-full overflow-hidden rd-b-xl b b-t-0 b-zinc2/90 dark-b-zinc8/60 bg-zinc1/60 dark-bg-zinc9/60 max-h96">
                             <div
-                                data-hidden-scrollbar-s
-                                data-overlayscrollbars-initialize
-                                class="size-full overflow-auto"
+                                data-code-component
+                                class="group overflow-hidden max-h96 wfull grid relative"
                             >
-                                <CustomCode
-                                    lang={subkey.items[0].lang}
-                                    code={subkey.items[0].code}
-                                    client:load
-                                />
+                                <CopyInBlockBtn client:only="preact" />
+                                <div
+                                    data-hidden-scrollbar-s
+                                    data-overlayscrollbars-initialize
+                                    class="w-full flex hfull overflow-auto"
+                                >
+                                    <CustomCode
+                                        lang={subkey.items[0].lang}
+                                        code={subkey.items[0].code}
+                                        client:load
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>

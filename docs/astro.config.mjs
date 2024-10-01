@@ -6,7 +6,6 @@ import { transformerNotationDiff } from "shikiji-transformers";
 import vercel from "@astrojs/vercel/serverless";
 import partytown from "@astrojs/partytown";
 
-import db from "@astrojs/db";
 
 import vue from "@astrojs/vue";
 
@@ -31,7 +30,7 @@ export default defineConfig({
     config: {
       forward: ["dataLayer.push"],
     },
-  }), db(), vue()],
+  }), vue()],
   output: "server",
   adapter: vercel(),
 });
