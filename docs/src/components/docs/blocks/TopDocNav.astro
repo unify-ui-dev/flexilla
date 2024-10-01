@@ -1,19 +1,10 @@
 ---
-import type { MarkdownHeading } from "astro";
-import TableContent from "./TableContent.astro";
-import { ResponsiveShow } from "@components/preact/ResponsiveShow";
 
-interface Props {
-  headings: MarkdownHeading[];
-}
-
-const { headings } = Astro.props;
 ---
 
 <div class="flex h14 top-17.5 sticky xl-hidden z40">
   <div
-    class="relative hfull wfull flex px5 sm-px10 justify-between items-center before-absolute before-content-empty before-inset-0 before-z0
-before-b-b before-b-b-zinc2/60 dark-before-b-zinc8/60 before-bg-white/60 dark-before-bg-zinc950/60 before-backdrop-blur-xl"
+    class="relative hfull wfull flex px5 sm-px10 justify-between items-center before-absolute before-content-empty before-inset-0 before-z0 before-b-b before-b-b-zinc2/60 dark-before-b-zinc8/60 before-bg-white/60 dark-before-bg-zinc950/60 before-backdrop-blur-xl"
   >
     <div class="relative z10 wfull">
       <button
@@ -25,53 +16,6 @@ before-b-b before-b-b-zinc2/60 dark-before-b-zinc8/60 before-bg-white/60 dark-be
         <span aria-hidden="true" class="i-carbon-list flex"></span>
         On this page
       </button>
-      <div
-        data-table-of-content-mobile
-        data-state="close"
-        class="absolute top-[calc(100%+12px)] left-0 flex flex-col xl-hidden bg-red wfull max-wmd min-w50 hmax max-h90 overflow-hidden overflow-y-auto invisible fx-open-visible op0 translate-y-4 fx-open-translate-y-0 fx-open-op100 lg-fx-open-invisible p4 pt1 rd-xl b b-zinc2/90 dark-b-zinc8/60 bg-zinc1/90 dark-bg-zinc9/80 backdrop-blur-xl ease-linear duration-300 transition-all"
-        aria-hidden="true"
-        hidden
-      >
-        <ResponsiveShow deviceShow="desktop-to-mobile" client:only="preact">
-          <TableContent headings={headings} />
-        </ResponsiveShow>
-      </div>
     </div>
   </div>
 </div>
-
-<script>
-  import { $ } from "@assets/js/selector";
-  const tabOfContentMob = $("[data-table-of-content-mobile]");
-  const trigger = $("[data-trigger-tab-content]");
-  if (tabOfContentMob && trigger) {
-    const toggleTabOfContent = () => {
-      const isOpened = trigger.getAttribute("aria-expanded") === "true";
-      trigger.setAttribute("aria-expanded", `${!isOpened}`);
-      tabOfContentMob.setAttribute("data-state", `${isOpened ? "close" : "open"}`);
-      tabOfContentMob.setAttribute("aria-hidden", `${isOpened}`);
-      tabOfContentMob.hidden = isOpened;
-      document.body.style.overflowY = `${isOpened ? "auto" : "hidden"}`;
-      if (!isOpened) {
-        document.addEventListener("click", hideOnClickOutSide);
-      } else {
-        document.removeEventListener("click", hideOnClickOutSide);
-      }
-    };
-    const hideTabOfContent = () => {
-      trigger.setAttribute("aria-expanded", "false");
-      tabOfContentMob.setAttribute("data-state", "close");
-      tabOfContentMob.setAttribute("aria-hidden", "true");
-      tabOfContentMob.hidden = true;
-      document.body.style.overflowY = "auto";
-      document.removeEventListener("click", hideOnClickOutSide);
-    };
-    const hideOnClickOutSide = (ev: MouseEvent) => {
-      if (!trigger.contains(ev.target as Node)){
-        hideTabOfContent();
-      }
-    };
-    trigger.addEventListener("click", toggleTabOfContent);
-    tabOfContentMob.addEventListener("click", hideTabOfContent);
-  }
-</script>

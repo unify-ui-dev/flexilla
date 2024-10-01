@@ -1,8 +1,7 @@
 ---
 export const prerender = true;
 
-import {sidebarItemFlaterned} from "@helper/doc-helper"
-
+import { sidebarItemFlaterned } from "@helper/doc-helper";
 import { removeBeforeLastSlash } from "@helper/string-helper";
 import { getCollection } from "astro:content";
 
@@ -11,7 +10,7 @@ import { components } from "@components/docs/AllComponents.astro";
 import { getPagger } from "@helper/doc-helper";
 import LinkNavControl from "@components/docs/ui/LinkNavControl.astro";
 import BoxContribution from "@components/docs/blocks/BoxContribution.astro";
-import DeskTableOfContent from "@components/docs/blocks/DeskTableOfContent.astro";
+import TableContent from "@components/docs/blocks/TableContent.astro";
 
 export async function getStaticPaths() {
   const docs = await getCollection("docs");
@@ -44,7 +43,7 @@ type metaTag = {
 };
 
 const metaData: metaTag = sidebarItemFlaterned.find(
-  (metaTag) => metaTag.name === pageSlugId
+  (metaTag) => metaTag.name === pageSlugId,
 ) || {
   description: "Flexilla Docs, Interactive Components Library",
   keywords: "flexilla docs",
@@ -77,8 +76,7 @@ const metaData: metaTag = sidebarItemFlaterned.find(
             gap-2.5
           >
             Docs
-            <span aria-hidden="true" un-flex i-carbon-chevron-right
-            ></span>
+            <span aria-hidden="true" un-flex i-carbon-chevron-right></span>
           </a>
         </li>
         <li un-truncate text-zinc6 dark-text-zinc4>
@@ -90,7 +88,7 @@ const metaData: metaTag = sidebarItemFlaterned.find(
       >
         {title}
       </h1>
-      <p class=" text-zinc7 dark-text-zinc3">
+      <p class="text-zinc7 dark-text-zinc3">
         {description}
       </p>
     </div>
@@ -128,17 +126,23 @@ const metaData: metaTag = sidebarItemFlaterned.find(
   </article>
   {
     !hideTableOfContent ? (
-      <div class="hidden xl-sticky xl-top-17.5 xl-h-[calc(100vh-4.375rem)] invisible xl-visible xl-flex xl-flex-col lg-gap-y8">
-        <div class="lg-hfull lg-overflow-hidden overflow-hidden">
-          <div
-            data-hidden-scrollbar-s
-            data-overlayscrollbars-initialize
-            class="lg-hfull lg-overflow-hidden lg-overflow-y-auto"
-          >
-            <DeskTableOfContent headings={headings} />
-          </div>
-        </div>
-        <div>
+      <div
+        data-tabs-content
+        class="invisible op0 fixed left-[--tabs-left] z80 xl-z-auto
+      top-[--tabs-top] fx-open-visible fx-open-op100 xl-op100 xl-visible 
+      w56 xl-wauto p1px bg-zinc1/60 dark-bg-zinc9/60 backdrop-blur-lg overflow-hidden rd-xl xl-!bg-transparent
+      xl-sticky xl-top-17.5 h-[calc(100vh-14rem)] xl-h-[calc(100vh-4.375rem)] invisible xl-visible xl-flex xl-flex-col lg-gap-y8"
+      >
+        <div
+          class="hfull overflow-hidden overflow-y-auto p6 xl-p0"
+          data-hidden-scrollbar-s
+          data-overlayscrollbars-initialize
+        >
+          <h2 class="font-semibold hidden lg-flex text-zinc8 dark-text-zinc2 py05">
+            On this page
+          </h2>
+          <TableContent headings={headings} />
+
           <BoxContribution
             fileName={id}
             contribLink="https://github.com/unify-ui-dev/flexilla/blob/main/CONTRIBUTING.MD"
@@ -148,6 +152,3 @@ const metaData: metaTag = sidebarItemFlaterned.find(
     ) : null
   }
 </DocsLayout>
-<script>
-  import "@assets/js/doc-script";
-</script>

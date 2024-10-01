@@ -11,7 +11,7 @@ const { values, autoHeight } = Astro.props;
   data-tab-fx-site
   data-fx-tabs
   data-indicator-class-name="ui-tabs-indicator before-absolute before-bottom-0 before-content-empty before-h0.5 before-rd-full before-inset-x-0 before-bg-zinc8 dark-before-bg-white"
-  class="my4 first-mt0 last-mb0"
+  class="my4 first-mt0 last-mb0 grid"
 >
   <ul
     role="tablist"
@@ -28,7 +28,7 @@ const { values, autoHeight } = Astro.props;
             role="tab"
             aria-controls={value}
             aria-label={`${value}`}
-            class="flex cursor-pointer disabled-cursor-not-allowed disabled-op80 px4 pt1.5 pb2.5 data-[state=active]-text-zinc9 dark-data-[state=active]-text-white outline-none focus-outline focus-outline-zinc5/50"
+            class="flex cursor-pointer disabled-cursor-not-allowed disabled-op80 px4 pt1.5 pb2.5 fx-active-text-zinc9 dark-fx-active-text-white outline-none"
           >
             {value}
           </a>
@@ -38,7 +38,7 @@ const { values, autoHeight } = Astro.props;
   </ul>
   <div
     data-panels-container
-    class={`pt6 children-bg-zinc1/60 children-dark-bg-zinc9/60 children-b children-b-zinc2/90 children-dark-b-zinc8/60 children-rd-xl ${autoHeight ? "children-hmax" : "children-h96"}`}
+    class={`pt6 grid ${autoHeight ? "children-hmax" : "children-h96"}`}
   >
     <slot />
   </div>

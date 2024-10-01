@@ -29,7 +29,7 @@
       ]
     },
     "allowJs": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "jsxImportSource": "preact"
   }
 }

@@ -61,9 +61,6 @@ const {
       />
       <div class="flex flex-col">
         <div
-          data-fx-tooltip
-          data-demo-tooltip
-          data-offset-distance="0"
           class="wmax relative"
         >
         {
@@ -72,7 +69,8 @@ const {
           ):null
         }
           <a
-            data-fx-tooltip-trigger
+            data-popover-trigger
+            data-popover-id={id}
             href={profile_link}
             target="_blank"
             rel="noopener noreferrer"
@@ -82,7 +80,11 @@ const {
             {user_name}
           </a>
           <div
-            data-fx-popper
+            data-fx-popover
+            id={id}
+            data-offset-distance="0"
+            data-trigger-strategy="hover"
+            data-prevent-close-inside
             class="ui-popper op0 invisible transition-opacity duration-200 fx-open-op100 fx-open-visible b b-zinc2/80 dark-b-zinc8/80 bg-zinc1/90 dark-bg-zinc9/90 backdrop-blur-xl rd-xl w70 sm-w84 z50 overflow-hidden"
           >
             <div
@@ -166,13 +168,11 @@ const {
       </span>
       <span>{role}</span>
       <div
-        data-fx-dropdown
-        data-demo-dropdown
-        data-placement="bottom-middle"
         class="relative wmax"
       >
         <Button
           data-dropdown-trigger
+          data-dropdown-id={`dropdown-more-options-${id}`}
           size={"icons-sm"}
           variant={"flat"}
           radius={"md"}
@@ -182,7 +182,9 @@ const {
           <span aria-hidden="true" class="flex i-fx-dots text-2xl"/>
         </Button>
         <div
-          data-fx-popper
+          id={`dropdown-more-options-${id}`}
+          data-fx-dropdown
+          data-placement="bottom-middle"
           class="ui-popper op0 invisible transition-opacity duration-200 fx-open-op100 fx-open-visible b b-zinc2/80 dark-b-zinc8/80 bg-zinc1/80 dark-bg-zinc9/80 backdrop-blur-xl p2.5 rd-xl w54 z40"
         >
           <ul class="wfull children-flex text-sm text-zinc7 dark-text-zinc3">

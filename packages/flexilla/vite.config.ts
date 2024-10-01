@@ -10,11 +10,11 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: '@flexilla/flexilla',
-      fileName: 'flex',
+      fileName: 'flexilla',
     },
     rollupOptions:{
       output:{
-        assetFileNames:"flex.[ext]"
+        assetFileNames:"flexilla.[ext]"
       }
     }
   },
