@@ -56,7 +56,7 @@ export const getIcon = (iconName: string) => {
               role="tab"
               aria-controls={trigger.value}
               aria-label={`${trigger.value}`}
-              class="relative flex items-center gap-x1 disabled-cursor-not-allowed disabled-op80 px3.5 py2 fx-active-text-zinc9 dark-fx-active-text-white outline-none focus-outline focus-outline-zinc2 dark-focus-outline-zinc8"
+              class="relative flex items-center gap-x1 disabled-cursor-not-allowed disabled-op80 px3.5 py2 fx-active-text-zinc9 dark-fx-active-text-white outline-none"
             >
               {trigger.icon && trigger.icon !== "" ? (
                 getIcon(trigger.icon)?.startsWith("/icons/") ? (
@@ -96,5 +96,6 @@ export const getIcon = (iconName: string) => {
   [data-tab-code-content] [data-code-component] {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
+    border: 0px !important;
   }
 </style>

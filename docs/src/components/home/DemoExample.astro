@@ -5,7 +5,7 @@ import Link from "@components/atoms/Link.astro";
 import { users } from "@data/demo-users";
 ---
 
-<demo-contenair>
+<div>
   <div
     data-demo-box
     class="wfull lg-max-w44rem xl-max-w3xl mx-auto relative xl-px0 hidden lg-grid pt18"
@@ -31,12 +31,7 @@ import { users } from "@data/demo-users";
         </div>
       </form>
       <div class="flex items-center gap-x2">
-        <div
-          data-fx-dropdown
-          data-demo-dropdown
-          data-placement="bottom-end"
-          class="relative"
-        >
+        <div>
           <img
             src="/vector/dropdown.png"
             width="162.46"
@@ -47,6 +42,7 @@ import { users } from "@data/demo-users";
           <Button
             size={"md"}
             data-dropdown-trigger
+            data-dropdown-id="export-dropdown"
             radius={"md"}
             variant={"gradient"}
             class=""
@@ -57,31 +53,33 @@ import { users } from "@data/demo-users";
             Export
             <span aria-hidden="true" class="flex i-carbon-caret-down"></span>
           </Button>
-          <div
-            data-fx-popper
-            class="ui-popper op0 invisible transition-opacity duration-200 fx-open-op100 fx-open-visible b b-zinc2/80 dark-b-zinc8/80 bg-zinc1/80 dark-bg-zinc9/80 backdrop-blur-xl p2.5 rd-xl w54 z40"
-          >
-            <ul class="wfull children-flex text-sm text-zinc7 dark-text-zinc3">
-              <li>
-                <button
-                  aria-label="button action"
-                  class="flex wfull items-center gap-x3 px4 py2 hover-bg-zinc2/60 dark-hover-bg-zinc8/60 outline-transparent rd-lg focus-bg-zinc2/90 dark-focus-bg-zinc8/90 focus-outline focus-outline-zinc4 dark-focus-outline-zinc6"
-                >
-                  <span aria-hidden="true" class="flex i-carbon-csv"></span>
-                  <span class="line-clamp-1">Export to CSV</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  aria-label="button action"
-                  class="flex wfull items-center gap-x3 px4 py2 hover-bg-zinc2/60 dark-hover-bg-zinc8/60 outline-transparent rd-lg focus-bg-zinc2/90 dark-focus-bg-zinc8/90 focus-outline focus-outline-zinc4 dark-focus-outline-zinc6"
-                >
-                  <span aria-hidden="true" class="flex i-carbon-json"></span>
-                  <span class="line-clamp-1">Export to JSON</span>
-                </button>
-              </li>
-            </ul>
-          </div>
+        </div>
+        <div
+          id="export-dropdown"
+          data-fx-dropdown
+          data-placement="bottom-end"
+          class="ui-popper op0 invisible transition-opacity duration-200 fx-open-op100 fx-open-visible b b-zinc2/80 dark-b-zinc8/80 bg-zinc1/80 dark-bg-zinc9/80 backdrop-blur-xl p2.5 rd-xl w54 z40"
+        >
+          <ul class="wfull children-flex text-sm text-zinc7 dark-text-zinc3">
+            <li>
+              <button
+                aria-label="button action"
+                class="flex wfull items-center gap-x3 px4 py2 hover-bg-zinc2/60 dark-hover-bg-zinc8/60 outline-transparent rd-lg focus-bg-zinc2/90 dark-focus-bg-zinc8/90 focus-outline focus-outline-zinc4 dark-focus-outline-zinc6"
+              >
+                <span aria-hidden="true" class="flex i-carbon-csv"></span>
+                <span class="line-clamp-1">Export to CSV</span>
+              </button>
+            </li>
+            <li>
+              <button
+                aria-label="button action"
+                class="flex wfull items-center gap-x3 px4 py2 hover-bg-zinc2/60 dark-hover-bg-zinc8/60 outline-transparent rd-lg focus-bg-zinc2/90 dark-focus-bg-zinc8/90 focus-outline focus-outline-zinc4 dark-focus-outline-zinc6"
+              >
+                <span aria-hidden="true" class="flex i-carbon-json"></span>
+                <span class="line-clamp-1">Export to JSON</span>
+              </button>
+            </li>
+          </ul>
         </div>
         <div class="relative">
           <img
@@ -198,8 +196,6 @@ import { users } from "@data/demo-users";
               class="flex-1 py2 px5 rd-lg bg-zinc1/80 dark-bg-zinc9/80 text-zinc7 dark-text-zinc3 text-sm b b-zinc2/80 dark-b-zinc8/80 outline-transparent focus-outline focus-outline-zinc3/80 dark-focus-outline-zinc7/80"
             />
             <Button
-              data-modal-trigger
-              data-modal-target="modal-message-def"
               size={"sm"}
               radius={"md"}
               class=""
@@ -268,34 +264,5 @@ import { users } from "@data/demo-users";
       </div>
     </dialog>
   </div>
-</demo-contenair>
+</div>
 
-<script>
-  import { breakpoint } from "@assets/js/breakpoint-native";
-  import "@assets/js/demo-example";
-
-  class DemoDesktop extends HTMLElement {
-    private demoBox: HTMLElement | null;
-    constructor() {
-      super();
-      this.demoBox = this.querySelector("[data-demo-box]");
-      this.initAll();
-    }
-
-    private initAll() {
-      this.toggleVisibility();
-      window.addEventListener("resize", this.toggleVisibility);
-    }
-
-    private toggleVisibility = () => {
-      if (this.demoBox instanceof HTMLElement) {
-        const isNotLarge = breakpoint !== "xl" && breakpoint !== "lg"
-        this.demoBox.hidden = isNotLarge;
-        this.demoBox.setAttribute("aria-hidden",`${isNotLarge ? "true" : "false"}`
-        );
-        this.demoBox.style.display =isNotLarge ? "none" : "";
-      }
-    };
-  }
-  customElements.define("demo-contenair", DemoDesktop);
-</script>

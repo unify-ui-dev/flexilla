@@ -6,7 +6,8 @@ import { transformerNotationDiff } from "shikiji-transformers";
 import vercel from "@astrojs/vercel/serverless";
 import partytown from "@astrojs/partytown";
 
-import db from "@astrojs/db";
+
+import vue from "@astrojs/vue";
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,19 +24,13 @@ export default defineConfig({
       transformers: [transformerNotationDiff()],
     },
   },
-  integrations: [
-    UnoCSS({
-      injectReset: true,
-    }),
-    preact(),
-    mdx(),
-    partytown({
-      config: {
-        forward: ["dataLayer.push"],
-      },
-    }),
-    db(),
-  ],
+  integrations: [UnoCSS({
+    injectReset: true,
+  }), preact(), mdx(), partytown({
+    config: {
+      forward: ["dataLayer.push"],
+    },
+  }), vue()],
   output: "server",
   adapter: vercel(),
 });

@@ -1,4 +1,5 @@
-const switchTheme = document.querySelector("[data-switch-theme]") as HTMLElement
+export const initAppTheme = ()=>{
+    const switchTheme = document.querySelector("[data-switch-theme]") as HTMLElement
 const docElement = document.documentElement;
 
 const getThemePreference = () => {
@@ -19,4 +20,5 @@ if (switchTheme instanceof HTMLElement) {
         docElement.classList[isDarkTheme_ ? "remove" : "add"]("dark");
         localStorage.setItem("theme", isDarkTheme_ ? "light" : "dark");
     });
+}
 }

@@ -15,13 +15,12 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
-    "@astrojs/db": "^0.14.1",
     "@astrojs/mdx": "^3.1.7",
     "@astrojs/partytown": "^2.1.2",
     "@astrojs/preact": "^3.5.3",
     "@astrojs/vercel": "^7.8.1",
-    "@flexilla/flexilla": "^2.0.61",
-    "@fontsource-variable/inter": "^5.0.17",
+    "@astrojs/vue": "^4.5.1",
+    "@flexilla/flexilla": "^2.0.63",
     "@fontsource/geist-sans": "^5.1.0",
     "@preact/signals": "^1.2.2",
     "astro": "^4.15.9",
@@ -30,11 +29,13 @@
     "overlayscrollbars": "^2.5.0",
     "preact": "^10.19.6",
     "tailwind-merge": "^2.2.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vue": "^3.5.10"
   },
   "devDependencies": {
     "@flexilla/uno-preset": "^0.0.4",
     "@iconify-json/carbon": "^1.1.30",
+    "@shikijs/transformers": "^1.20.0",
     "@unocss/preset-icons": "^0.58.5",
     "shikiji-transformers": "^0.10.2",
     "unocss": "^0.63.0"

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -11,23 +11,22 @@
   </style>
 </head>
 
-<body class="bg-white dark-bg-zinc950">
+<body>
   <section class="mx-auto space-y-16 max-w2xl py20">
     <div class="space-y-6">
-      <h1 class="text-xl font-semibold text-zinc9 dark-text-white">
+      <h1 class="text-xl font-semibold text-zinc-900 dark:text-white">
         Collapse
       </h1>
-      <div class="p10 rd-lg bg-gradient-to-bl from-blue6 via-indigo4 to-sky6">
+      <div class="p-10 rounded-lg bg-gradient-to-bl from-blue-600 via-indigo-400 to-sky-600">
         <div class="flex flex-col gap3">
-          <div class="flex wmax">
-            <button data-collapse-trigger data-target="collapse1"
-              class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
-              Trigger Collapse
-            </button>
-          </div>
+          <button data-collapse-trigger data-target="collapse1"
+            class="bg-zinc-800 text-white px-4 py-2 rounded-lg text-sm">
+            Trigger collapse
+          </button>
           <div data-collapsible-1 id="collapse1"
-            class="overflow-hidden transition-all duration-300 ease-linear overflow-hidden w-full max-h-0 fx-open-max-h-none">
-            <div class="rd-md w-full bg-zinc1/5 dark-bg-zinc9/5 b b-zinc2/30 dark-b-zinc8/20 p4 inline-flex overflow-hidden">
+            class="overflow-hidden transition-all duration-300 ease-linear overflow-hidden w-full max-h-0 fx-open:max-h-none">
+            <div
+              class="rounded-md w-full bg-zinc-100/5 dark:bg-zinc-900/5 border border-gray-200 dark:border-gray-800 p-4 inline-flex overflow-hidden">
               <p class="inline-flex">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam, dolorum, incidunt facilis quasi
                 non ea mollitia odio, iure adipisci
@@ -38,22 +37,20 @@
       </div>
     </div>
     <div class="space-y-6">
-      <h1 class="text-xl font-semibold text-zinc9 dark-text-white">
+      <h1 class="text-xl font-semibold text-zinc-900 dark:text-white">
         Trigger Multiple Collapse
       </h1>
-      <div class="p10 rd-lg bg-gradient-to-bl from-zinc6 via-neutral4 to-zinc6">
+      <div class="p-10 rounded-lg bg-gradient-to-bl from-gray-600 via-neutral-400 to-zinc-600">
         <div class="flex flex-col gap3">
-          <div class="flex wmax">
-            <button data-collapse-trigger data-target="collapse4 collapse5"
-              class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
-              Trigger Two Collapse
-            </button>
-          </div>
-          <div class="grid sm-grid-cols-2 gap-4">
+          <button data-collapse-trigger data-target="collapse4 collapse5"
+            class="bg-zinc-800 text-white px-4 py-2 rounded-lg text-sm w-max">
+            Trigger Two Collapse
+          </button>
+          <div class="grid sm:grid-cols-2 gap-4">
             <div data-collapsible-4 id="collapse4"
               class="overflow-hidden transition-all duration-300 ease-linear overflow-hidden w-full">
               <div
-                class=" rd-md w-full bg-zinc1/5 dark-bg-zinc9/5 b b-zinc2/30 dark-b-zinc8/20 p4 text-zinc7 dark-text-zinc3">
+                class=" rounded-md w-full bg-zinc-100/5 dark:bg-zinc-900/5 border border-gray-200 dark:border-gray-800 p-4 inline-flex overflow-hidden">
                 <p class="inline-flex">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam, dolorum, incidunt facilis quasi
                   non ea mollitia odio, iure adipisci
@@ -62,7 +59,8 @@
             </div>
             <div data-collapsible-5 id="collapse5"
               class="overflow-hidden transition-all duration-300 ease-linear overflow-hidden">
-              <div class="rd-md w-full bg-zinc1/5 dark-bg-zinc9/5 b b-zinc2/30 dark-b-zinc8/20 p4 text-zinc7 dark-text-zinc3">
+              <div
+                class="rounded-md w-full bg-zinc-100/5 dark:bg-zinc-900/5 border border-gray-200 dark:border-gray-800 p-4">
                 <p class="">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam, dolorum, incidunt facilis quasi
                   non ea mollitia odio, iure adipisci

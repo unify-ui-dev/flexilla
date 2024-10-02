@@ -1,10 +1,10 @@
 ---
-import '@fontsource-variable/inter';
-import SEO from "./SEO.astro"
-import {type SeoType} from "@/types/index"
+import SEO from "./SEO.astro";
+import { type SeoType } from "@/types/index";
 import "@assets/css/global.css";
+import { ViewTransitions } from "astro:transitions";
 interface Props {
-  seo:SeoType,
+  seo: SeoType;
 }
 
 const { seo } = Astro.props;
@@ -16,32 +16,41 @@ const { seo } = Astro.props;
     <SEO seo={seo}>
       <link rel="sitemap" href="/sitemap-index.xml" />
     </SEO>
-    <script is:inline>
-      const docEl = document.documentElement;
-  const getThemePreference = () => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
-    }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  };
-  const isDark = getThemePreference() === "dark";
-  docEl.classList[isDark ? "add" : "remove"]("dark");
 
-  if (typeof localStorage !== "undefined") {
-    const observer = new MutationObserver(() => {
-      const isDark = docEl.classList.contains("dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-    });
-    observer.observe(docEl, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-  }
+    <ViewTransitions />
+    <script is:inline>
+      const initTheme = () => {
+        const docEl = document.documentElement;
+        const getThemePreference = () => {
+          if (
+            typeof localStorage !== "undefined" &&
+            localStorage.getItem("theme")
+          ) {
+            return localStorage.getItem("theme");
+          }
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        };
+        const isDark = getThemePreference() === "dark";
+        docEl.classList[isDark ? "add" : "remove"]("dark");
+      };
+      initTheme()
+      document.addEventListener("astro:after-swap", initTheme);
+      if (typeof localStorage !== "undefined") {
+        const docEl = document.documentElement;
+        const observer = new MutationObserver(() => {
+          const isDark = docEl.classList.contains("dark");
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+        observer.observe(docEl, {
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+      }
     </script>
     <!-- Google tag (gtag.js) -->
-    <script is:inline
+    <!-- <script is:inline
       type="text/partytown"
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-4041S1SLCY"></script>
@@ -53,38 +62,40 @@ const { seo } = Astro.props;
       gtag("js", new Date());
 
       gtag("config", "G-4041S1SLCY");
-    </script>
+    </script> -->
   </head>
   <body
-    class="overflow-x-hidden overflow-y-auto bg-white dark-bg-zinc950 text-zinc7 dark-text-zinc3"
+    class="overflow-x-hidden overflow-y-auto lg-overflow-y-auto bg-white dark-bg-zinc950 text-zinc7 dark-text-zinc3"
   >
     <slot />
   </body>
 </html>
 <script>
-  import "@assets/js/theme";
+  import { initAppTheme } from "@assets/js/theme";
+  initAppTheme()
+  document.addEventListener("astro:after-swap", initAppTheme);
 </script>
 <style is:global>
   body:before {
     content: "small";
     display: none;
-}
+  }
 
-@media (min-width: 768px) {
+  @media (min-width: 768px) {
     body:before {
-        content: "md";
+      content: "md";
     }
-}
+  }
 
-@media (min-width: 1024px) and (max-width:1247px) {
+  @media (min-width: 1024px) and (max-width: 1247px) {
     body:before {
-        content: "lg";
+      content: "lg";
     }
-}
+  }
 
-@media (min-width: 1248px) {
+  @media (min-width: 1248px) {
     body:before {
-        content: "xl";
+      content: "xl";
     }
-}
+  }
 </style>

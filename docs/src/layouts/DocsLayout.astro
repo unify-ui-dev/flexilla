@@ -54,5 +54,14 @@ const seo: SeoType = {
   </div>
 </BaseLayout>
 <script>
-  import "@assets/js/sample-scrollbar";
+  import { initScroll } from "@assets/js/sample-scrollbar";
+  import { initAppScript } from "@assets/js/doc-script";
+
+
+  const initScriptInDocs = () => {
+    initScroll();
+    initAppScript();
+  };
+  initScriptInDocs();
+  document.addEventListener("astro:after-swap", initScriptInDocs);
 </script>
