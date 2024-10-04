@@ -11,6 +11,8 @@ import { getPagger } from "@helper/doc-helper";
 import LinkNavControl from "@components/docs/ui/LinkNavControl.astro";
 import BoxContribution from "@components/docs/blocks/BoxContribution.astro";
 import TableContent from "@components/docs/blocks/TableContent.astro";
+import { reference } from "astro:content";
+import Link from "@components/atoms/Link.astro";
 
 export async function getStaticPaths() {
   const docs = await getCollection("docs");
@@ -25,7 +27,7 @@ const { doc_content } = Astro.props;
 const {
   slug,
   id,
-  data: { title, description, hidePagination, hideTableOfContent },
+  data: { title, description, hidePagination, hideTableOfContent, references },
 } = doc_content;
 
 const { Content, headings } = await doc_content.render();
@@ -91,6 +93,24 @@ const metaData: metaTag = sidebarItemFlaterned.find(
       <p class="text-zinc7 dark-text-zinc3">
         {description}
       </p>
+      {
+        references && references.length > 0 ? (
+          <div class="flex items-center flex-wrap gap-1">
+            {references.map((reference) =>
+              Object.entries(reference).map(([key, value]) => (
+                <Link
+                  href={value}
+                  size={"sm"}
+                  variant={"none"}
+                  class="bg-zinc1 dark-bg-zinc9/60 b b-zinc2 dark-b-zinc9/30 text-zinc8 dark-text-zinc2"
+                >
+                  {key}
+                </Link>
+              )),
+            )}
+          </div>
+        ) : null
+      }
     </div>
     <div data-doc-content class="py10 wfull">
       <Content components={{ ...components }} />

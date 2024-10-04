@@ -1,4 +1,53 @@
 ---
-title: Accordion Component
+title: Auto Resize TextArea
 description: djkfjdf
 ---
+
+The **AutoResize TextArea** component automatically adjusts its height based on the user's input, eliminating the need for scrollbars and providing a better user experience for multiline text input fields.
+
+
+## Installation
+
+To use the **AutoResize** functionality for a textarea element, you can install it via npm:
+
+```bash
+npm i @flexilla/autoresize
+```
+
+## HTML Markup
+
+Here's a basic example of the HTML structure required for the auto-resize functionality:
+
+```html
+<!-- TextArea Element -->
+<textarea id="myTextarea" placeholder="Type something..."></textarea>
+```
+
+### Example
+
+You can initialize the **AutoResize** component programmatically by passing the textarea element or its selector:
+
+```js
+import { AutoResize } from '@flexilla/autoresize';
+
+// Initialize the AutoResize on the textarea element
+const autoResizingTextarea = new AutoResize('#myTextarea');
+```
+
+
+The **AutoResize** component listens for input events on the textarea and dynamically adjusts its height to fit the content. This removes the need for users to manually resize or scroll within the textarea.
+
+### Example Usage
+
+Here's an example of initializing and using the **AutoResize** component:
+
+```html
+<!-- TextArea Element -->
+<textarea id="myTextarea" rows="1" placeholder="Start typing..."></textarea>
+
+<script type="module">
+  import { AutoResize } from '@flexilla/autoresize';
+  // Initialize the auto-resize functionality
+  const myTextarea = new AutoResize('#myTextarea');
+</script>
+```

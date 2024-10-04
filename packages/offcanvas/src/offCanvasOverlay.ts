@@ -12,7 +12,7 @@ const getOptionClassNameFromOptions = (options: BackdropOptions | undefined) => 
         }
     }
     const { backdropClass } = options
-    return { backdropClass: backdropClass || "", isHidden: false }
+    return { backdropClass: backdropClass, isHidden: false }
 }
 
 const destroyAfter = (overlayElement: HTMLElement) => overlayElement.parentElement?.removeChild(overlayElement)
@@ -33,7 +33,8 @@ export const destroyOverlay = (overlayElement: HTMLElement) => {
 export const createOverlay = (options: BackdropOptions | undefined, overlayClassName: string, offcanvasId: string): HTMLDivElement | undefined => {
     if (!options) return
     const { backdropClass, isHidden } = getOptionClassNameFromOptions(options)
-    const overlayClassName_ = backdropClass !== "" && backdropClass || overlayClassName
+    const settingOverlay = backdropClass !== "" ? backdropClass : ""
+    const overlayClassName_ = (settingOverlay !== "" ? settingOverlay : overlayClassName) || ""
     if (overlayClassName_ === "" || isHidden) return
     const overlayElement = document.createElement("div")
     overlayElement.setAttribute("aria-hidden", "true")

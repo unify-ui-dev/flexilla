@@ -60,8 +60,18 @@ class Tooltip {
         })
 
     }
+
+
     setShowOptions = ({ placement, offsetDistance }: { placement: Placement, offsetDistance?: number }) => {
         this.PopoverInstance.setShowOptions({ placement, offsetDistance })
+    }
+
+    show = () => {
+        this.PopoverInstance.show()
+    }
+
+    hide = () => {
+        this.PopoverInstance.hide()
     }
 
     /**

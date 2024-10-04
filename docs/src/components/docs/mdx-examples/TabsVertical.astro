@@ -1,0 +1,76 @@
+<div class="p4 md-p10 wfull">
+    <div
+        data-tab-fx-site
+        data-fx-tabs
+        data-orientation="vertical"
+        class="flex items-start wfull"
+    >
+        <ul
+            data-tab-list
+            role="tablist"
+            class="flex flex-col p0.5 wmax relative bg-zinc1 dark-bg-zinc9/50 rd-md"
+        >
+            <li role="presentation" class="flex">
+                <a
+                    href="#"
+                    data-tabs-trigger
+                    data-target="tab1"
+                    class="px4 py2 rd fx-active-bg-zinc2 dark-fx-active-bg-zinc8 text-zinc7 dark-text-zinc3 disabled-cursor-not-allowed disabled-op80 relative wfull"
+                >
+                    Tab 1
+                </a>
+            </li>
+            <li role="presentation" class="flex">
+                <a
+                    href="#"
+                    data-tabs-trigger
+                    data-target="tab2"
+                    class="px4 py2 rd fx-active-bg-zinc2 dark-fx-active-bg-zinc8 text-zinc7 dark-text-zinc3 disabled-cursor-not-allowed disabled-op80 relative wfull"
+                >
+                    Tab2
+                </a>
+            </li>
+            <li role="presentation" class="flex">
+                <a
+                    href="#"
+                    data-tabs-trigger
+                    data-target="tab3"
+                    class="px4 py2 rd fx-active-bg-zinc2 dark-fx-active-bg-zinc8 text-zinc7 dark-text-zinc3 disabled-cursor-not-allowed disabled-op80 relative wfull"
+                >
+                    Tab3
+                </a>
+            </li>
+        </ul>
+        <div data-panels-container class="flex-1">
+            <section
+                role="tabpanel"
+                class="hidden fx-active-flex bg-zinc1 dark-bg-zinc9/50 ring-offset-zinc950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-zinc2 dark-b-zinc8 rd-md ml2"
+                data-tab-panel
+                id="tab1"
+                aria-labelledby="tab1"
+            >
+                Tab 1 Content
+            </section>
+            <section
+                role="tabpanel"
+                data-state="active"
+                class="hidden fx-active-flex bg-zinc1 dark-bg-zinc9/50 ring-offset-zinc950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-zinc2 dark-b-zinc8 rd-md ml2"
+                data-tab-panel
+                id="tab2"
+                data-state="active"
+                aria-labelledby="tab2"
+            >
+                Tab 2 Content
+            </section>
+            <section
+                role="tabpanel"
+                class="hidden fx-active-flex bg-zinc1 dark-bg-zinc9/50 ring-offset-zinc950 h48 p20 focus-visible-outline-none focus-visible-ring-2 focus-visible-ring-red5 focus-visible-ring-offset-2 b b-zinc2 dark-b-zinc8 rd-md ml2"
+                data-tab-panel
+                id="tab3"
+                aria-labelledby="tab3"
+            >
+                Tab 3 Content
+            </section>
+        </div>
+    </div>
+</div>

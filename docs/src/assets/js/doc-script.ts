@@ -1,4 +1,4 @@
-import { Tabs, Accordion, Collapse, Dismissible } from "@flexilla/flexilla";
+import { Tabs, Accordion, Collapse, Dismissible, Popover, Dropdown, Tooltip, Modal, OffCanvas } from "@flexilla/flexilla";
 import { $$, $ } from "./selector";
 
 
@@ -78,17 +78,30 @@ const initAllCustomComponents = () => {
 
 
 export const initAppScript = () => {
-    const dismissibleEls = $$("[data-dismissible]")
+    Dismissible.autoInit("[data-dismissible]")
     Collapse.autoInit("[data-collapsible-example]")
     Tabs.autoInit("[data-tab-fx-site]")
     Accordion.autoInit("[data-accordion-example]")
-
+    Popover.autoInit("[data-fx-popover]")
     initAllCustomComponents()
     initTableOfContent()
-
-    for (const dismissEl of dismissibleEls) {
-        new Dismissible(dismissEl)
-    }
+    Dropdown.autoInit("[data-dropdown-demo]")
+    Modal.autoInit("[data-modal-demo]")
+    OffCanvas.autoInit("[data-slideover-demo]")
+    OffCanvas.init("[data-slideover-demo-overlay]",{
+        backdrop: {
+            visibility: "visible",
+            backdropClass: "ui-overlay bg-gray8/50 flex z80"
+        }
+    })
+    OffCanvas.init("[data-slideover-demo-overlay2]",{
+        backdrop: {
+            visibility: "visible",
+            backdropClass: "ui-overlay bg-zinc8/20 backdrop-filter backdrop-blur-md flex z80"
+        }
+    })
+    const tooltips = $$("[data-tooltip-demo]")
+    for (const tooltip of tooltips) Tooltip.init(tooltip)
 }
 
 

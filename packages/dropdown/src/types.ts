@@ -1,4 +1,4 @@
-import type { Placement } from "@flexilla/popover"
+import type { Placement } from "flexipop"
 
 type EventEffect = {
     disableOnScroll?: boolean,

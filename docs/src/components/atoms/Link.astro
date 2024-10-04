@@ -9,13 +9,37 @@ interface Props
     VariantProps<typeof buttonVariants> {
   href: string;
 }
-const { class: className, variant, size, href, ...props } = Astro.props;
+const {
+  class: className,
+  variant,
+  size,
+  href,
+  "aria-label": label,
+  ...props
+} = Astro.props;
+const href_ = href;
 ---
 
-<a
-  href={href}
-  class={`${cn(buttonVariants({ variant, size }), className)}`}
-  {...props}
->
-  <slot />
-</a>
+{
+  (href_ && href_.startsWith("/")) || (href_ && href_.startsWith("#")) ? (
+    <a
+      href={href}
+      aria-label={!label || label === "" ? `Link to ${href}` : label}
+      class={`${cn(buttonVariants({ variant, size }), className)}`}
+      {...props}
+    >
+      <slot />
+    </a>
+  ) : (
+    <a
+      href={href_}
+      aria-label={!label || label === "" ? `Link to ${href}` : label}
+      target="_blank"
+      rel="noopener noreferrer"
+      class={`${cn(buttonVariants({ variant, size }), className)}`}
+      {...props}
+    >
+      <slot />
+    </a>
+  )
+}
