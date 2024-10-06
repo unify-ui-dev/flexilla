@@ -2,7 +2,6 @@
 export const prerender = true;
 
 import { sidebarItemFlaterned } from "@helper/doc-helper";
-import { removeBeforeLastSlash } from "@helper/string-helper";
 import { getCollection } from "astro:content";
 
 import DocsLayout from "@layouts/DocsLayout.astro";
@@ -11,13 +10,12 @@ import { getPagger } from "@helper/doc-helper";
 import LinkNavControl from "@components/docs/ui/LinkNavControl.astro";
 import BoxContribution from "@components/docs/blocks/BoxContribution.astro";
 import TableContent from "@components/docs/blocks/TableContent.astro";
-import { reference } from "astro:content";
 import Link from "@components/atoms/Link.astro";
 
 export async function getStaticPaths() {
   const docs = await getCollection("docs");
   return docs.map((doc) => ({
-    params: { slug: removeBeforeLastSlash(doc.slug) },
+    params: { slug: doc.slug },
     props: { doc_content: doc },
   }));
 }
@@ -32,11 +30,11 @@ const {
 
 const { Content, headings } = await doc_content.render();
 
-const pageSlugId = removeBeforeLastSlash(slug);
+const pageSlugId = slug
 
 const activeItem = slug.includes("framework-guide")
   ? "framework-guide"
-  : removeBeforeLastSlash(slug);
+  : `${slug}`;
 
 const { next: nextSlug, prev: prevSlug, current } = getPagger(pageSlugId);
 type metaTag = {

@@ -12,25 +12,24 @@ This guide will help you get started with Flexilla
 <Stepper>
 <Step>
 ### Install the full Libary
-<BoxCodeLang text={"Shell"} icon={"shell"}>
+
 ```bash
 npm i @flexilla/flexilla
 ```
-</BoxCodeLang>
+
 </Step>
 <Step>
 ### Usage
-<BoxCodeLang text={"script"} icon={"js"}>
+
 ```js
 import {Accordion, Tabs} from "@flexilla/flexilla"
 
 const accordion = new Accordion("#my-accordion")
-
 const tabs = new  Tabs("#my-tabs",{ 
     // options
 })
 ```
-</BoxCodeLang>
+
 </Step>
 </Stepper>
 
@@ -38,16 +37,17 @@ const tabs = new  Tabs("#my-tabs",{
 
 <Stepper>
 <Step>
+
 ### Install the full Libary
-<BoxCodeLang text={"Shell"} icon={"shell"}>
+
 ```bash
 npm i @flexilla/collapse
 ```
-</BoxCodeLang>
+
 </Step>
 <Step>
 ### Usage
-<BoxCodeLang text={"script"} icon={"js"}>
+
 ```js
 import {Collapse} from "@flexilla/collapse"
 
@@ -55,7 +55,7 @@ new Accordion("#my-collapse",{
     // options
 })
 ```
-</BoxCodeLang>
+
 </Step>
 </Stepper>
 
@@ -65,7 +65,7 @@ new Accordion("#my-collapse",{
 <Step>
 ### Import from CDN
 All components
-<BoxCodeLang text={"index.html"} icon={"html"}>
+
 ```html
 <script type="module">
 import {
@@ -77,30 +77,26 @@ new Tabs("#hego")
 new Accordion("#myAccordion")
 </script>
 ```
-</BoxCodeLang>
 
 ### Import a single Package
-<BoxCodeLang text={"index.html"} icon={"html"}>
+
 ```html
 <script type="module">
 import * as flexillatabs from 'https://cdn.jsdelivr.net/npm/@flexilla/tabs@latest/+esm';
 new flexillatabs.Tabs("#tabs")
 </script>
 ```
-</BoxCodeLang>
+
 </Step>
 </Stepper>
 
 
 ## With Module (require)
 
-
-<BoxCodeLang text={"script"} icon={"js"}>
 ```js
 const Accordion = require('@flexilla/accordion');
 new Accordion("#myAccordion")
 ```
-</BoxCodeLang>
 
 ## Styling
 

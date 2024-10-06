@@ -17,7 +17,7 @@ const { heading: h } = Astro.props;
       href={`#${h.slug}`}
       class="hover-text-zinc9
       dark-hover-text-white
-      ease-linear duration-200 lg-pl4"
+      ease-linear duration-200 lg-ml4 inline-flex"
     >
       {h.text}
     </a>
@@ -27,13 +27,8 @@ const { heading: h } = Astro.props;
           <li>
             <a
               href={`#${sub.slug}`}
-              un-flex
-              items-center
-              gap-x1
-              hover-text-zinc9
-              dark-hover-text-white
-              ease-linear
-              duration-200
+              class="flex items-center
+              gap-x1  hover-text-zinc9 dark-hover-text-white ease-linear duration-200"
             >
               {sub.text}
             </a>

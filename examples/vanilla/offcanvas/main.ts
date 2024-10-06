@@ -2,11 +2,7 @@ import { OffCanvas} from "@flexilla/offcanvas"
 import "./../main"
 
 OffCanvas.init("[data-slideover-from-left]",
-    {
-        backdrop: {
-            visibility: "hidden",
-        }
-    }
+
 )
 
 
@@ -15,19 +11,12 @@ new OffCanvas(
 )
 new OffCanvas("[data-slideover-from-bottom]",
     {
-        backdrop: {
-            visibility: "visible",
-            backdropClass: "ui-overlay bg-gray8/50"
-        }
+        backdrop:"ui-overlay bg-gray8/50"
     }
 )
 
 new OffCanvas("[data-slideover-from-right]",
     {
-        backdrop: {
-            visibility: "visible",
-            backdropClass: "ui-overlay bg-gray8/50"
-        }
     }
 )
 new OffCanvas("[data-offcanvas-withbackdrop]")

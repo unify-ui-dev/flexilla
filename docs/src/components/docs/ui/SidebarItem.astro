@@ -1,26 +1,39 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Props {
-  icon?: string;
+  icon: string;
   text: string;
   href: string;
   draft?: boolean;
-  activeItem:string
+  activeItem: string;
 }
 
 const { icon, text, href, draft, activeItem } = Astro.props;
+const isActive = href === `/docs/${activeItem}`
 ---
 
-<li  class="wfull pr2.5">
+<li class="wfull pr2.5">
   <a
     href={href}
-    class={
-        `flex items-center gap-x3 py1 wfull
-        ${href === `/docs/${activeItem}` ? "text-zinc9 dark-text-white font-500" : "hover-text-zinc9 dark-hover-text-white"}
-        ${draft? "pointer-events-none op80 select-none":""}
-        `
-    }
+    class={`flex items-center gap-x3 py1 wfull
+        ${isActive ? "text-zinc9 dark-text-white font-500" : "hover-text-zinc9 dark-hover-text-white"}
+        ${draft ? "pointer-events-none op80 select-none" : ""}
+        `}
   >
-    <span aria-hidden="true" class={` ${icon} flex text-lg`}></span>
+    {
+      icon.startsWith("/") ? (
+        <Image
+          src={icon}
+          alt={`icon - ${icon}`}
+          class="h4 wauto dark-grayscale-90"
+          width={40}
+          height={40}
+        />
+      ) : (
+        <span aria-hidden="true" class={` ${icon} ${icon.includes("uno") && !isActive ? "text-zinc6 dark-text-zinc4" :""} flex text-lg`} />
+      )
+    }
     <span class="flex-1">{text}</span>
     {
       draft ? (

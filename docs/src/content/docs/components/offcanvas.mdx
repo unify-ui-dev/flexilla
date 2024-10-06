@@ -1,7 +1,8 @@
 ---
 title: Offcanvas Component
-description: djkfjdf
+description: Discover how to implement and customize the Offcanvas component for sliding panels and sidebars.
 ---
+
 
 The **Offcanvas** component allows you to create a sliding panel that appears from the side of the screen, commonly used for navigation menus or sidebars. This component is fully customizable, supporting backdrop visibility, body scroll control, and various lifecycle hooks for more control over its behavior.
 
@@ -129,14 +130,7 @@ Allows the body to scroll while the offcanvas is open. Set this to `false` to lo
 
 ### `backdrop`
 
-Controls the visibility and appearance of the backdrop behind the offcanvas panel. The `backdrop` option has two types:
-
-- **`BackdropVisible`**:
-    - **`visibility`**: `"visible"` (required to show the backdrop).
-    - **`backdropClass`**: Custom class to style the backdrop (optional).
-
-- **`BackdropHidden`**:
-    - **`visibility`**: `"hidden"` (hides the backdrop).
+Setting the backdrop classes
 
 #### Example:
 
@@ -186,16 +180,10 @@ Controls the visibility and appearance of the backdrop behind the offcanvas pane
   <TabPanel value="js-tb">
 ```js
 OffCanvas.init("#slide-over-overlay1",{
-    backdrop: {
-        visibility: "visible",
-        backdropClass: "ui-overlay bg-gray8/50 flex z80"
-    }
+    backdrop: "ui-overlay bg-gray8/50 flex z80"
 })
 OffCanvas.init("#slide-over-overlay2",{
-    backdrop: {
-        visibility: "visible",
-        backdropClass: "ui-overlay bg-zinc8/20 backdrop-filter backdrop-blur-md flex z80"
-    }
+    backdrop: "ui-overlay bg-zinc8/20 backdrop-filter backdrop-blur-md flex z80"
 })
 ```
   </TabPanel>
@@ -232,10 +220,7 @@ import { Offcanvas } from '@flexilla/offcanvas';
 const offcanvas = new Offcanvas('#myOffcanvas', {
   staticBackdrop: true,
   allowBodyScroll: false,
-  backdrop: {
-    visibility: 'visible',
-    backdropClass: 'custom-backdrop-class'
-  },
+  backdrop: 'custom-backdrop-class',
   beforeHide() {
     console.log('Before offcanvas hides');
     return { cancelAction: false }; // You can cancel hide by setting cancelAction to true

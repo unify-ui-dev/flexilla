@@ -33,18 +33,7 @@ const grouppedHeadings = headings.reduce((array, heading) => {
   w-full
   un-xl="b-l b-l-zinc2/80 dark-b-l-zinc8/80 pt0"
 >
-  <ol space-y-2>
-    <li>
-      <a
-        href={`#_top`}
-        class="hover-text-zinc9
-        dark-hover-text-white
-        ease-linear
-        duration-200 lg-pl4"
-      >
-        Overview
-      </a>
-    </li>
+  <ol class="space-y-2">
     {grouppedHeadings.map((h) => <TableOfContentsHeading heading={h} />)}
   </ol>
 </nav>

@@ -1,45 +1,50 @@
 ---
-title: Auto Resize TextArea
-description: djkfjdf
+title: Auto-Resize TextArea
+description: Automatically adjusting the height of text areas based on the content.
 ---
 
-The **AutoResize TextArea** component automatically adjusts its height based on the user's input, eliminating the need for scrollbars and providing a better user experience for multiline text input fields.
 
+The **Auto-Resize TextArea** component automatically adjusts its height to fit the user's input, removing the need for scrollbars and enhancing the experience when working with multiline text fields. This ensures that users don't have to resize or scroll within the textarea.
 
 ## Installation
 
-To use the **AutoResize** functionality for a textarea element, you can install it via npm:
+To add auto-resizing functionality to your textarea, install the **AutoResize** component via npm (or any other package manager):
 
 ```bash
 npm i @flexilla/autoresize
 ```
 
-## HTML Markup
+## Usage
 
-Here's a basic example of the HTML structure required for the auto-resize functionality:
+### HTML Structure
+
+To make a textarea auto-resizable, use a basic HTML structure like this:
 
 ```html
 <!-- TextArea Element -->
 <textarea id="myTextarea" placeholder="Type something..."></textarea>
 ```
 
-### Example
+<PreviewBox>
+<AutoresizeDefault/>
+</PreviewBox>
+
+### Initialization
 
 You can initialize the **AutoResize** component programmatically by passing the textarea element or its selector:
 
 ```js
 import { AutoResize } from '@flexilla/autoresize';
 
-// Initialize the AutoResize on the textarea element
+// Initialize AutoResize on the textarea element
 const autoResizingTextarea = new AutoResize('#myTextarea');
 ```
 
+Once initialized, the textarea will dynamically resize based on its content, ensuring a smooth user experience without scrollbars.
 
-The **AutoResize** component listens for input events on the textarea and dynamically adjusts its height to fit the content. This removes the need for users to manually resize or scroll within the textarea.
+### Full Example
 
-### Example Usage
-
-Here's an example of initializing and using the **AutoResize** component:
+Here’s a full example demonstrating how to set up and use the **AutoResize** component:
 
 ```html
 <!-- TextArea Element -->
@@ -47,7 +52,8 @@ Here's an example of initializing and using the **AutoResize** component:
 
 <script type="module">
   import { AutoResize } from '@flexilla/autoresize';
-  // Initialize the auto-resize functionality
+  
+  // Enable auto-resize functionality on the textarea
   const myTextarea = new AutoResize('#myTextarea');
 </script>
 ```

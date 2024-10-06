@@ -1,6 +1,7 @@
 ---
 import Button from "@components/atoms/Button.astro";
 import Link from "@components/atoms/Link.astro";
+import { Image } from "astro:assets";
 
 interface Props {
   id: string;
@@ -52,11 +53,11 @@ const {
   </div>
   <div class="flex-1 flex flex-col sm-flex-row sm-items-center gap-x4">
     <div class="flex items-center gap-x4 flex-1">
-      <img
+      <Image
         src={avatar}
-        width="140"
-        height="140"
-        alt="Avatar"
+        width={140}
+        height={140}
+        alt={`Avatar de ${user_name}`}
         class="size-10 rd-full object-cover"
       />
       <div class="flex flex-col">
@@ -65,7 +66,7 @@ const {
         >
         {
           id === "us1" ? (
-        <img src="/vector/tooltip.png" width="100.4" height="108.47" alt="vector show popover" class="absolute bottom-0.5 left-full wauto rotate-30"/>
+        <img src="/vector/tooltip.png" width="100.4" height="108.47" alt="vector show popover" class="absolute bottom-0.5 left-full wauto rotate-30 hidden sm-flex"/>
           ):null
         }
           <a
@@ -96,11 +97,11 @@ const {
             </div>
             <div class="p4 space-y-6">
               <div class="flex justify-between">
-                <img
+                <Image
                   src={avatar}
-                  alt="Avatar"
-                  width="140"
-                  height="140"
+                  alt={`avatar de ${user_name}`}
+                  width={140}
+                  height={140}
                   class="size-13 rd-full object-cover"
                 />
                 <Link
