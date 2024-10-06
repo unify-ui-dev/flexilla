@@ -1,5 +1,5 @@
 import { CreatePopover, type Placement } from "@flexilla/popover"
-import { $ } from "@flexilla/utilities"
+import { $, $$ } from "@flexilla/utilities"
 import type { TooltipOptions } from "./types"
 
 
@@ -81,6 +81,15 @@ class Tooltip {
      */
     static init(tooltipEl: string | HTMLElement, options?: TooltipOptions) {
         return new Tooltip(tooltipEl, options)
+    }
+
+    /**
+     * auto init Tabs Elements based on the selector provided
+     * @param selector {string} default is [data-fx-tabs] attribute
+     */
+    static autoInit = (selector: string = "[data-fx-tooltip]") => {
+        const tooltipEls = $$(selector)
+        for (const tooltip of tooltipEls) new Tooltip(tooltip)
     }
 }
 

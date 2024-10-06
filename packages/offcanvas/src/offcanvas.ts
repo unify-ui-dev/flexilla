@@ -1,5 +1,5 @@
 
-import { BackdropOptions, OffcanvasOptions } from "./types"
+import type { OffcanvasOptions } from "./types"
 import { closeAllOpenedOffcanvas, toggleOffCanvasState } from "./helpers"
 import { appendBefore, $$, $ } from "@flexilla/utilities"
 import { createOverlay, destroyOverlay } from "./offCanvasOverlay"
@@ -13,8 +13,7 @@ class Offcanvas {
     private offCanvasCloseBtns: HTMLElement[]
     private allowBodyScroll: boolean
     private staticBackdrop: boolean
-    private backdropClass: string
-    private backdrop: BackdropOptions | undefined
+    private backdrop: string
     private options: OffcanvasOptions
 
     /**
@@ -35,8 +34,7 @@ class Offcanvas {
         const offCanvasId = this.offCanvasElement.getAttribute("id")
         this.offCanvasTriggers = this.findOffCanvasElements("[data-offcanvas-trigger]", false, offCanvasId);
         this.offCanvasCloseBtns = this.findOffCanvasElements("[data-offcanvas-close]", true, offCanvasId, this.offCanvasElement);
-        this.backdrop = overlay
-        this.backdropClass = this.offCanvasElement.dataset.offcanvasBackdrop || ""
+        this.backdrop = overlay || this.offCanvasElement.dataset.offcanvasBackdrop || ""
         this.setupOffcanvas()
     }
 
@@ -85,7 +83,6 @@ class Offcanvas {
         const id = this.offCanvasElement.getAttribute("id") as string
         const overlayElement = createOverlay(
             this.backdrop,
-            this.backdropClass,
             id
         )
         if (overlayElement instanceof HTMLElement) {

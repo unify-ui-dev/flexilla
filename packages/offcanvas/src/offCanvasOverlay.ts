@@ -1,19 +1,4 @@
 import { afterTransition } from "@flexilla/utilities";
-import { BackdropOptions } from "./types";
-
-const getOptionClassNameFromOptions = (options: BackdropOptions | undefined) => {
-
-    if (!options) return { backdropClass: "", isHidden: false }
-    const { visibility } = options
-    if (visibility === "hidden") {
-        return {
-            backdropClass: "",
-            isHidden: true
-        }
-    }
-    const { backdropClass } = options
-    return { backdropClass: backdropClass, isHidden: false }
-}
 
 const destroyAfter = (overlayElement: HTMLElement) => overlayElement.parentElement?.removeChild(overlayElement)
 
@@ -30,12 +15,10 @@ export const destroyOverlay = (overlayElement: HTMLElement) => {
 
 }
 
-export const createOverlay = (options: BackdropOptions | undefined, overlayClassName: string, offcanvasId: string): HTMLDivElement | undefined => {
-    if (!options) return
-    const { backdropClass, isHidden } = getOptionClassNameFromOptions(options)
-    const settingOverlay = backdropClass !== "" ? backdropClass : ""
-    const overlayClassName_ = (settingOverlay !== "" ? settingOverlay : overlayClassName) || ""
-    if (overlayClassName_ === "" || isHidden) return
+export const createOverlay = (backdrop: string, offcanvasId: string): HTMLDivElement | undefined => {
+
+    const overlayClassName_ = backdrop
+    if (overlayClassName_ === "" || !overlayClassName_) return
     const overlayElement = document.createElement("div")
     overlayElement.setAttribute("aria-hidden", "true")
     overlayElement.setAttribute("data-state", "visible")
