@@ -8,7 +8,7 @@ const initTableOfContent = () => {
     if (tabOfContentMob && trigger) {
         const positionateTabs = () => {
             const { height, top, left } = trigger.getBoundingClientRect();
-            tabOfContentMob.style.setProperty("--tabs-top", `${height + top}px`)
+            tabOfContentMob.style.setProperty("--tabs-top", `${height + top + 6}px`)
             tabOfContentMob.style.setProperty("--tabs-left", `${left}px`)
         };
         const toggleTabOfContent = () => {
@@ -89,23 +89,7 @@ export const initAppScript = () => {
     Modal.autoInit("[data-modal-demo]")
     OffCanvas.autoInit("[data-slideover-demo]")
     AutoResizeTextArea.autoInit("[data-autoresizable]")
-    const offcanvasOverlay = document.querySelector("[data-slideover-demo-overlay]")
-    const offcanvasOverlay2 = document.querySelector("[data-slideover-demo-overlay2]")
-    if (offcanvasOverlay instanceof HTMLElement) OffCanvas.init(offcanvasOverlay, {
-        backdrop: {
-            visibility: "visible",
-            backdropClass: "ui-overlay bg-gray8/50 flex z80"
-        }
-    })
-    if (offcanvasOverlay2 instanceof HTMLElement) OffCanvas.init(offcanvasOverlay2, {
-        backdrop: {
-            visibility: "visible",
-            backdropClass: "ui-overlay bg-zinc8/20 backdrop-filter backdrop-blur-md flex z80"
-        }
-    })
-
-    const tooltips = $$("[data-tooltip-demo]")
-    for (const tooltip of tooltips) Tooltip.init(tooltip)
+    Tooltip.autoInit("[data-tooltip-demo]")
 }
 
 

@@ -39,6 +39,10 @@ new CreatePopper(
 **Note:** The `popperElement` should have its `position` set to `fixed`.
 </Callout>
 
+<PreviewBox>
+<PopperDefault/>
+</PreviewBox>
+
 ### Required Styles for the popperElement
 
 ```css
@@ -56,7 +60,7 @@ Flexipop also supports poppers with `position: absolute`. This version is useful
 ### Installation for Absolute Positioning
 
 ```js
-import { CreatePopper } from 'flexipop/with-absolute';
+import { UseCreatePopperAbsolute as CreatePopper } from 'flexipop/with-absolute';
 
 new CreatePopper(
   referenceElement,  // The reference element (HTMLElement)
@@ -97,6 +101,7 @@ new CreatePopper(
 <Callout type="note"> 
   **Important:** Be sure that the parent container has `position: relative`, and the `popperElement` has `position: absolute`.
 </Callout>
+
 
 ## Options
 
