@@ -1,0 +1,35 @@
+<div class="flex items-center gap-3">
+    <button
+        data-offcanvas-trigger
+        data-target="slide-over-overlay"
+        aria-controls="slide-over-overlay"
+        class="bg-neutral8 text-white px4 py2 rd-lg text-sm"
+    >
+        Overlay
+    </button>
+    <button
+        data-offcanvas-trigger
+        data-target="slide-over-overlay1"
+        aria-controls="slide-over-overlay1"
+        class="bg-neutral8 text-white px4 py2 rd-lg text-sm"
+    >
+        Overlay with blur
+    </button>
+</div>
+<div data-slideover-demo
+    data-offcanvas-backdrop="ui-overlay bg-gray8/50 flex z80"
+    id="slide-over-overlay"
+    aria-labelledby="slide-over-overlay"
+    class="fixed h100dvh wfull max-wsm -right-full top-0 fx-open-right-0 ease-linear duration-200 p4 bg-zinc1 dark-bg-zinc9 flex z90"
+>
+    <div class="size-full b b-dashed b-zinc2 dark-b-zinc8"></div>
+</div>
+<div
+    data-slideover-demo
+    data-offcanvas-backdrop="ui-overlay bg-zinc8/20 backdrop-filter backdrop-blur-md flex z80"
+    id="slide-over-overlay1"
+    aria-labelledby="slide-over-overlay1"
+    class="fixed h100dvh wfull max-wsm -right-full top-0 fx-open-right-0 ease-linear duration-200 p4 bg-zinc1 dark-bg-zinc9 flex z90"
+>
+    <div class="size-full b b-dashed b-zinc2 dark-b-zinc8"></div>
+</div>

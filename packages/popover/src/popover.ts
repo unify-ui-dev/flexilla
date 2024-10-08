@@ -197,9 +197,6 @@ class CreatePopover {
             this.triggerElement.addEventListener("mouseenter", this.showOnMouseEnter)
         }
     }
-
-
-
 }
 
 class Popover {
@@ -249,6 +246,13 @@ class Popover {
     }
     setShowOptions = ({ placement, offsetDistance }: { placement: Placement, offsetDistance?: number }) => {
         this.PopoverInstance.setShowOptions({ placement, offsetDistance })
+    }
+
+    show=()=>{
+        this.PopoverInstance.show()
+    }
+    hide=()=>{
+        this.PopoverInstance.hide()
     }
 
     static init(popoverEl: string | HTMLElement, options?: PopoverOptions) {

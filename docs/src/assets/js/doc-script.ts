@@ -1,4 +1,4 @@
-import { Tabs, Accordion, Collapse, Dismissible } from "@flexilla/flexilla";
+import { Tabs, Accordion, Collapse, Dismissible, Popover, Dropdown, Tooltip, Modal, OffCanvas, AutoResizeTextArea } from "@flexilla/flexilla";
 import { $$, $ } from "./selector";
 
 
@@ -8,7 +8,7 @@ const initTableOfContent = () => {
     if (tabOfContentMob && trigger) {
         const positionateTabs = () => {
             const { height, top, left } = trigger.getBoundingClientRect();
-            tabOfContentMob.style.setProperty("--tabs-top", `${height + top}px`)
+            tabOfContentMob.style.setProperty("--tabs-top", `${height + top + 6}px`)
             tabOfContentMob.style.setProperty("--tabs-left", `${left}px`)
         };
         const toggleTabOfContent = () => {
@@ -78,17 +78,18 @@ const initAllCustomComponents = () => {
 
 
 export const initAppScript = () => {
-    const dismissibleEls = $$("[data-dismissible]")
+    Dismissible.autoInit("[data-dismissible]")
     Collapse.autoInit("[data-collapsible-example]")
     Tabs.autoInit("[data-tab-fx-site]")
     Accordion.autoInit("[data-accordion-example]")
-
+    Popover.autoInit("[data-fx-popover]")
     initAllCustomComponents()
     initTableOfContent()
-
-    for (const dismissEl of dismissibleEls) {
-        new Dismissible(dismissEl)
-    }
+    Dropdown.autoInit("[data-dropdown-demo]")
+    Modal.autoInit("[data-modal-demo]")
+    OffCanvas.autoInit("[data-slideover-demo]")
+    AutoResizeTextArea.autoInit("[data-autoresizable]")
+    Tooltip.autoInit("[data-tooltip-demo]")
 }
 
 

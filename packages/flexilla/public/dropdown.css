@@ -5,9 +5,9 @@
 }
 
 [data-fx-dropdown] [data-fx-popper] {
-    visibility: hidden
+    visibility: hidden;
 }
 
 [data-fx-dropdown][data-state=open] [data-fx-popper] {
-    visibility: visible
+    visibility: visible;
 }

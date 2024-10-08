@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
   <meta charset="UTF-8" />
@@ -14,24 +14,24 @@
   </style>
 </head>
 
-<body class="pt14">
+<body class="pt14 bg-white dark-bg-zinc950">
   <section class="max-w3xl mxauto space-y-16 relative z20 pb20">
     <div class="space-y-6">
       <div space-y-1>
-        <h1 class="text-xl font-semibold text-gray9 dark-text-white">
+        <h1 class="text-xl font-semibold text-zinc9 dark-text-white">
             Popover
         </h1>
-        <p text-gray7>
+        <p text-zinc7>
             Popover is an extention of tooltip
         </p>
     </div>
       <div
         class="p10 rd-lg bg-gradient-to-bl from-blue6 via-indigo4 to-sky6 h96 flex gap-4 items-center justify-center">
         <div data-us-parent class="relative">
-          <button data-fx-tooltip-trigger data-popover-target="" class="bg-neutral8 text-white px-4 py-2 rounded-lg text-sm">
+          <button data-fx-tooltip-trigger data-popover-target="popover-example" class="bg-neutral8 text-white px4 py2 rd-lg text-sm">
             Show PopOver
           </button>
-          <div data-fx-popper data-popover-content id="" class="ui-popper invisible op0 fx-open-visible fx-open-op100 w64 z20 p-6 bg-gray-200 dark:bg-gray-800 rounded-md h-48">
+          <div data-fx-popper data-popover-content id="popover-example" class="ui-popper invisible op0 fx-open-visible fx-open-op100 w64 z20 p6 bg-zinc1 dark-bg-zinc9/50 rd-md h48">
             this is content
           </div>
         </div>

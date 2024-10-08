@@ -89,6 +89,14 @@ class Dropdown {
         this.options.onHide?.()
     }
 
+    show = () => {
+        this.CreatePopoverInstance.show()
+    }
+
+    hide = () => {
+        this.CreatePopoverInstance.hide()
+    }
+
 
     setShowOptions = ({ placement, offsetDistance }: { placement: Placement, offsetDistance?: number }) => {
         this.CreatePopoverInstance.setShowOptions({ placement, offsetDistance })

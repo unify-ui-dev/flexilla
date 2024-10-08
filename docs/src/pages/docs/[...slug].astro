@@ -2,7 +2,6 @@
 export const prerender = true;
 
 import { sidebarItemFlaterned } from "@helper/doc-helper";
-import { removeBeforeLastSlash } from "@helper/string-helper";
 import { getCollection } from "astro:content";
 
 import DocsLayout from "@layouts/DocsLayout.astro";
@@ -11,11 +10,12 @@ import { getPagger } from "@helper/doc-helper";
 import LinkNavControl from "@components/docs/ui/LinkNavControl.astro";
 import BoxContribution from "@components/docs/blocks/BoxContribution.astro";
 import TableContent from "@components/docs/blocks/TableContent.astro";
+import Link from "@components/atoms/Link.astro";
 
 export async function getStaticPaths() {
   const docs = await getCollection("docs");
   return docs.map((doc) => ({
-    params: { slug: removeBeforeLastSlash(doc.slug) },
+    params: { slug: doc.slug },
     props: { doc_content: doc },
   }));
 }
@@ -25,16 +25,16 @@ const { doc_content } = Astro.props;
 const {
   slug,
   id,
-  data: { title, description, hidePagination, hideTableOfContent },
+  data: { title, description, hidePagination, hideTableOfContent, references },
 } = doc_content;
 
 const { Content, headings } = await doc_content.render();
 
-const pageSlugId = removeBeforeLastSlash(slug);
+const pageSlugId = slug
 
 const activeItem = slug.includes("framework-guide")
   ? "framework-guide"
-  : removeBeforeLastSlash(slug);
+  : `${slug}`;
 
 const { next: nextSlug, prev: prevSlug, current } = getPagger(pageSlugId);
 type metaTag = {
@@ -91,6 +91,24 @@ const metaData: metaTag = sidebarItemFlaterned.find(
       <p class="text-zinc7 dark-text-zinc3">
         {description}
       </p>
+      {
+        references && references.length > 0 ? (
+          <div class="flex items-center flex-wrap gap-1">
+            {references.map((reference) =>
+              Object.entries(reference).map(([key, value]) => (
+                <Link
+                  href={value}
+                  size={"sm"}
+                  variant={"none"}
+                  class="bg-zinc1 dark-bg-zinc9/60 b b-zinc2 dark-b-zinc9/30 text-zinc8 dark-text-zinc2"
+                >
+                  {key}
+                </Link>
+              )),
+            )}
+          </div>
+        ) : null
+      }
     </div>
     <div data-doc-content class="py10 wfull">
       <Content components={{ ...components }} />
@@ -130,7 +148,7 @@ const metaData: metaTag = sidebarItemFlaterned.find(
         data-tabs-content
         class="invisible op0 fixed left-[--tabs-left] z80 xl-z-auto
       top-[--tabs-top] fx-open-visible fx-open-op100 xl-op100 xl-visible 
-      w56 xl-wauto p1px bg-zinc1/60 dark-bg-zinc9/60 backdrop-blur-lg overflow-hidden rd-xl xl-!bg-transparent
+      w64 xl-wauto p1px bg-zinc1/60 dark-bg-zinc9/60 backdrop-blur-lg overflow-hidden rd-xl xl-!bg-transparent
       xl-sticky xl-top-17.5 h-[calc(100vh-14rem)] xl-h-[calc(100vh-4.375rem)] invisible xl-visible xl-flex xl-flex-col lg-gap-y8"
       >
         <div
@@ -138,7 +156,7 @@ const metaData: metaTag = sidebarItemFlaterned.find(
           data-hidden-scrollbar-s
           data-overlayscrollbars-initialize
         >
-          <h2 class="font-semibold hidden lg-flex text-zinc8 dark-text-zinc2 py05">
+          <h2 class="font-semibold hidden lg-flex text-zinc8 dark-text-zinc2 pb4 xl-pt05">
             On this page
           </h2>
           <TableContent headings={headings} />

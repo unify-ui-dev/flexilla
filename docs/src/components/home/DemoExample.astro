@@ -5,264 +5,260 @@ import Link from "@components/atoms/Link.astro";
 import { users } from "@data/demo-users";
 ---
 
-<div>
+<div
+  data-demo-box
+  class="wfull lg-max-w44rem xl-max-w3xl mx-auto relative xl-px0 hidden sm-grid pt18 px5 sm-px10"
+>
   <div
-    data-demo-box
-    class="wfull lg-max-w44rem xl-max-w3xl mx-auto relative xl-px0 hidden lg-grid pt18"
+    data-user-demo-desktop
+    class="wfull flex flex-col-reverse sm-flex-row sm-justify-between sm-items-center mb6 relative gap4"
+  >
+    <form action="#someaction" class="wfull sm-wmax">
+      <div class="relative wfull">
+        <input
+          type="search"
+          placeholder="Start tapping..."
+          class="px3 py1.5 wfull rd-md bg-white dark-bg-neutral950 b b-zinc2/80 dark-b-zinc8/80 focus-b-transparent focus-outline focus-outline-2 focus-outline-zinc3 dark-focus-outline-zinc7 placeholder-text-zinc4 dark-placeholder-text-zinc6 text-zinc7 dark-text-zinc3 ring-0 ring-inset focus-ring-transparent focus-outline-offset-0"
+        />
+        <span
+          aria-hidden="true"
+          class="absolute right-3 hfull flex items-center top-0 text-gray7 dark-text-gray3 pointer-events-none"
+        >
+          <span aria-hidden="true" class="flex i-carbon-search text-lg"></span>
+        </span>
+      </div>
+    </form>
+    <div class="flex items-center gap-x2">
+      <div class="relative">
+        <img
+          src="/vector/dropdown.png"
+          width="162.46"
+          height="90.11"
+          alt="vector open dropdown"
+          class="absolute right-full -top-4 hidden md-flex"
+        />
+        <Button
+          size={"md"}
+          data-dropdown-trigger
+          data-dropdown-id="export-dropdown"
+          radius={"md"}
+          variant={"gradient"}
+          class=""
+          aria-label="Export Btn"
+          class="gap-x2"
+        >
+          <span aria-hidden="true" class="flex i-carbon-download"></span>
+          Export
+          <span aria-hidden="true" class="flex i-carbon-caret-down"></span>
+        </Button>
+      </div>
+      <div
+        id="export-dropdown"
+        data-fx-dropdown
+        data-placement="bottom-end"
+        class="ui-popper op0 invisible transition-opacity duration-200 fx-open-op100 fx-open-visible b b-zinc2/80 dark-b-zinc8/80 bg-zinc1/80 dark-bg-zinc9/80 backdrop-blur-xl p2.5 rd-xl w54 z40"
+      >
+        <ul class="wfull children-flex text-sm text-zinc7 dark-text-zinc3">
+          <li>
+            <button
+              aria-label="button action"
+              class="flex wfull items-center gap-x3 px4 py2 hover-bg-zinc2/60 dark-hover-bg-zinc8/60 outline-transparent rd-lg focus-bg-zinc2/90 dark-focus-bg-zinc8/90 focus-outline focus-outline-zinc4 dark-focus-outline-zinc6"
+            >
+              <span aria-hidden="true" class="flex i-carbon-csv"></span>
+              <span class="line-clamp-1">Export to CSV</span>
+            </button>
+          </li>
+          <li>
+            <button
+              aria-label="button action"
+              class="flex wfull items-center gap-x3 px4 py2 hover-bg-zinc2/60 dark-hover-bg-zinc8/60 outline-transparent rd-lg focus-bg-zinc2/90 dark-focus-bg-zinc8/90 focus-outline focus-outline-zinc4 dark-focus-outline-zinc6"
+            >
+              <span aria-hidden="true" class="flex i-carbon-json"></span>
+              <span class="line-clamp-1">Export to JSON</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="relative">
+        <img
+          src="/vector/modal.png"
+          width="100.4"
+          height="108.47"
+          alt="vector show modal"
+          class="absolute bottom-12 right-0 md-left-8 h16 wauto md-h22 hidden sm-flex"
+        />
+        <Button
+          data-modal-trigger
+          data-modal-target="modal-message-def"
+          size={"md"}
+          radius={"md"}
+          variant={"gradient"}
+          class=""
+          aria-label="Invite"
+          class="gap-x2"
+        >
+          <span aria-hidden="true" class="flex i-carbon-add"></span>
+          Invite
+        </Button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="b rd-xl b-zinc2/80 dark-b-zinc8/80 bg-white dark-bg-zinc950 relative wfull"
   >
     <div
-      data-user-demo-desktop
-      class="wfull flex flex-col-reverse sm-flex-row sm-justify-between sm-items-center mb6 relative gap4"
+      class="h12 rd-t-xl flex items-center justify-between px3 bg-zinc1/80 dark-bg-zinc9/80 text-sm text-zinc6 dark-text-zinc4"
     >
-      <form action="#someaction" class="wfull sm-wmax">
-        <div class="relative wfull">
-          <input
-            type="search"
-            placeholder="Start tapping..."
-            class="px3 py1.5 wfull rd-md bg-white dark-bg-neutral950 b b-zinc2/80 dark-b-zinc8/80 focus-b-transparent focus-outline focus-outline-2 focus-outline-zinc3 dark-focus-outline-zinc7 placeholder-text-zinc4 dark-placeholder-text-zinc6 text-zinc7 dark-text-zinc3 ring-0 ring-inset focus-ring-transparent focus-outline-offset-0"
-          />
-          <span
-            aria-hidden="true"
-            class="absolute right-3 hfull flex items-center top-0 text-gray7 dark-text-gray3 pointer-events-none"
+      <div class="flex items-center gap-x4">
+        <div class="min-wmax flex group">
+          <label
+            for="check-id"
+            class="relative flex items-center justify-center size-4 rd-md b b-zinc2/80 dark-b-zinc8/80 has-checked-bg-zinc8 dark-has-checked-bg-white"
           >
-            <span aria-hidden="true" class="flex i-carbon-search text-lg"
+            <input
+              type="checkbox"
+              id="check-id"
+              name="check-id"
+              class="peer invisible absolute"
+            />
+            <span
+              aria-hidden="true"
+              class="invisible i-carbon-checkmark peer-checked-visible flex text-white dark-text-zinc9 font-semibold text-xs"
             ></span>
-          </span>
+            <span aria-hidden="true" class="sr-only">Checkbox</span>
+          </label>
         </div>
-      </form>
-      <div class="flex items-center gap-x2">
-        <div>
-          <img
-            src="/vector/dropdown.png"
-            width="162.46"
-            height="90.11"
-            alt="vector open dropdown"
-            class="absolute right-full -top-4 hidden md-flex"
-          />
-          <Button
-            size={"md"}
-            data-dropdown-trigger
-            data-dropdown-id="export-dropdown"
-            radius={"md"}
-            variant={"gradient"}
-            class=""
-            aria-label="Export Btn"
-            class="gap-x2"
-          >
-            <span aria-hidden="true" class="flex i-carbon-download"></span>
-            Export
-            <span aria-hidden="true" class="flex i-carbon-caret-down"></span>
-          </Button>
-        </div>
-        <div
-          id="export-dropdown"
-          data-fx-dropdown
-          data-placement="bottom-end"
-          class="ui-popper op0 invisible transition-opacity duration-200 fx-open-op100 fx-open-visible b b-zinc2/80 dark-b-zinc8/80 bg-zinc1/80 dark-bg-zinc9/80 backdrop-blur-xl p2.5 rd-xl w54 z40"
+        Member
+      </div>
+      <div>
+        <Button
+          size={"sm"}
+          variant={"flat"}
+          aria-label="Export Btn"
+          class="gap-x2"
         >
-          <ul class="wfull children-flex text-sm text-zinc7 dark-text-zinc3">
-            <li>
-              <button
-                aria-label="button action"
-                class="flex wfull items-center gap-x3 px4 py2 hover-bg-zinc2/60 dark-hover-bg-zinc8/60 outline-transparent rd-lg focus-bg-zinc2/90 dark-focus-bg-zinc8/90 focus-outline focus-outline-zinc4 dark-focus-outline-zinc6"
-              >
-                <span aria-hidden="true" class="flex i-carbon-csv"></span>
-                <span class="line-clamp-1">Export to CSV</span>
-              </button>
-            </li>
-            <li>
-              <button
-                aria-label="button action"
-                class="flex wfull items-center gap-x3 px4 py2 hover-bg-zinc2/60 dark-hover-bg-zinc8/60 outline-transparent rd-lg focus-bg-zinc2/90 dark-focus-bg-zinc8/90 focus-outline focus-outline-zinc4 dark-focus-outline-zinc6"
-              >
-                <span aria-hidden="true" class="flex i-carbon-json"></span>
-                <span class="line-clamp-1">Export to JSON</span>
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div class="relative">
-          <img
-            src="/vector/modal.png"
-            width="100.4"
-            height="108.47"
-            alt="vector show modal"
-            class="absolute bottom-12 right-0 md-left-8 h16 wauto md-h22"
+          Member
+          <span aria-hidden="true" class="flex i-carbon-caret-down"></span>
+        </Button>
+      </div>
+    </div>
+    <div class="wfull divide-y divide-zinc2/80 dark-divide-zinc8/80 grid">
+      {users.map((user) => <DemoRow {...user} />)}
+    </div>
+  </div>
+  <div data-mob-user class="grid wfull xl-hidden gap-4"></div>
+</div>
+<div
+  data-fx-modal
+  data-modal-invite
+  data-modal-id="modal-message-def"
+  data-modal-overlay="ui-overlay bg-zinc2/60 dark-bg-zinc8/50 backdrop-blur-lg"
+  class="justify-center items-start p4 fixed wscreen hscreen top-0 left-0 z90 hidden fx-open-flex"
+  aria-hidden="true"
+>
+  <dialog
+    data-modal-content
+    data-enter-animation="fadeInScale .4s linear"
+    data-exit-animation="fadeOutScale .1s linear"
+    class="relative ui-animated-modal-content bg-white dark-bg-zinc950 rd-lg overflow-hidden wfull max-w600px p8 flex flex-col gap-y4 items-center ease-linear transition-all"
+  >
+    <Button
+      data-close-modal
+      size={"icons-md"}
+      variant={"flat"}
+      aria-label="close modal"
+      class="absolute top-4 right-4"
+    >
+      <span
+        aria-hidden="true"
+        class="flex i-carbon-close text-xl text-zinc7 dark-text-zinc3"></span>
+    </Button>
+    <div
+      class="wmax p3 rd-full bg-zinc2 dark-bg-zinc8 text-zinc8 dark-text-zinc2 mt4"
+    >
+      <span aria-hidden="true" class="flex i-carbon-chat text-md"></span>
+    </div>
+    <h2 class="font-semibold text-zinc9 dark-text-white">
+      Invite a member to UnifyUI Dev Team
+    </h2>
+    <div class="pt8 wfull flex flex-col space-y-4">
+      <form action="#action" class="wfull">
+        <label for="user_n" class="text-sm text-zinc6 dark-text-zinc4"
+          >Search by username, full name or email address</label
+        >
+        <div class="flex relative wfull hmax">
+          <input
+            type="text"
+            name="user_n"
+            id="user_n"
+            class="flex-1 py2 px5 rd-lg bg-zinc1/80 dark-bg-zinc9/80 text-zinc7 dark-text-zinc3 text-sm b b-zinc2/80 dark-b-zinc8/80 outline-transparent focus-outline focus-outline-zinc3/80 dark-focus-outline-zinc7/80"
           />
           <Button
-            data-modal-trigger
-            data-modal-target="modal-message-def"
-            size={"md"}
+            size={"sm"}
             radius={"md"}
-            variant={"gradient"}
             class=""
             aria-label="Invite"
-            class="gap-x2"
+            class="absolute right-3px top-1/2 -translate-y-1/2"
           >
-            <span aria-hidden="true" class="flex i-carbon-add"></span>
             Invite
           </Button>
         </div>
-      </div>
-    </div>
-    <div
-      class="b rd-xl b-zinc2/80 dark-b-zinc8/80 bg-white dark-bg-zinc950 relative wfull"
-    >
-      <div
-        class="h12 rd-t-xl flex items-center justify-between px3 bg-zinc1/80 dark-bg-zinc9/80 text-sm text-zinc6 dark-text-zinc4"
+      </form>
+      <a
+        href="#link_invite"
+        aria-label="Invite a billing manager"
+        class="text-blue6 dark-text-blue5 hover-underline underline-offset-3 wmax"
+        >Invite a billing manager</a
       >
-        <div class="flex items-center gap-x4">
-          <div class="min-wmax flex group">
-            <label
-              for="check-id"
-              class="relative flex items-center justify-center size-4 rd-md b b-zinc2/80 dark-b-zinc8/80 has-checked-bg-zinc8 dark-has-checked-bg-white"
-            >
-              <input
-                type="checkbox"
-                id="check-id"
-                name="check-id"
-                class="peer invisible absolute"
-              />
-              <span
-                aria-hidden="true"
-                class="invisible i-carbon-checkmark peer-checked-visible flex text-white dark-text-zinc9 font-semibold text-xs"
-              ></span>
-              <span aria-hidden="true" class="sr-only">Checkbox</span>
-            </label>
-          </div>
-          Member
-        </div>
-        <div>
-          <Button
-            size={"sm"}
-            variant={"flat"}
-            aria-label="Export Btn"
-            class="gap-x2"
-          >
-            Member
-            <span aria-hidden="true" class="flex i-carbon-caret-down"></span>
-          </Button>
-        </div>
-      </div>
-      <div class="wfull divide-y divide-zinc2/80 dark-divide-zinc8/80 grid">
-        {users.map((user) => <DemoRow {...user} />)}
-      </div>
-    </div>
-    <div data-mob-user class="grid wfull xl-hidden gap-4"></div>
-  </div>
-  <div
-    data-fx-modal
-    data-modal-invite
-    data-modal-id="modal-message-def"
-    data-modal-overlay="ui-overlay bg-zinc2/60 dark-bg-zinc8/50 backdrop-blur-lg"
-    class="justify-center items-start p4 fixed wscreen hscreen top-0 left-0 z90 hidden fx-open-flex"
-    aria-hidden="true"
-  >
-    <dialog
-      data-modal-content
-      data-enter-animation="fadeInScale .4s linear"
-      data-exit-animation="fadeOutScale .1s linear"
-      class="relative ui-animated-modal-content bg-white dark-bg-zinc950 rd-lg overflow-hidden wfull max-w600px p8 flex flex-col gap-y4 items-center ease-linear transition-all"
-    >
-      <Button
-        data-close-modal
-        size={"icons-md"}
-        variant={"flat"}
-        aria-label="close modal"
-        class="absolute top-4 right-4"
-      >
-        <span
-          aria-hidden="true"
-          class="flex i-carbon-close text-xl text-zinc7 dark-text-zinc3"></span>
-      </Button>
-      <div
-        class="wmax p3 rd-full bg-zinc2 dark-bg-zinc8 text-zinc8 dark-text-zinc2 mt4"
-      >
-        <span aria-hidden="true" class="flex i-carbon-chat text-md"></span>
-      </div>
-      <h2 class="font-semibold text-zinc9 dark-text-white">
-        Invite a member to UnifyUI Dev Team
-      </h2>
-      <div class="pt8 wfull flex flex-col space-y-4">
-        <form action="#action" class="wfull">
-          <label for="user_n" class="text-sm text-zinc6 dark-text-zinc4"
-            >Search by username, full name or email address</label
-          >
-          <div class="flex relative wfull hmax">
-            <input
-              type="text"
-              name="user_n"
-              id="user_n"
-              class="flex-1 py2 px5 rd-lg bg-zinc1/80 dark-bg-zinc9/80 text-zinc7 dark-text-zinc3 text-sm b b-zinc2/80 dark-b-zinc8/80 outline-transparent focus-outline focus-outline-zinc3/80 dark-focus-outline-zinc7/80"
-            />
-            <Button
-              size={"sm"}
-              radius={"md"}
-              class=""
-              aria-label="Invite"
-              class="absolute right-3px top-1/2 -translate-y-1/2"
-            >
-              Invite
-            </Button>
-          </div>
-        </form>
-        <a
-          href="#link_invite"
-          aria-label="Invite a billing manager"
-          class="text-blue6 dark-text-blue5 hover-underline underline-offset-3 wmax"
-          >Invite a billing manager</a
+      <span aria-hidden="true" class="flex wfull"></span>
+      <div class="relative flex wfull">
+        <img
+          src="/vector/dissmissible.png"
+          width="92.47"
+          height="82.47"
+          alt="vector show modal"
+          class="absolute bottom-full right-8"
+        />
+        <div
+          data-dismissible-demo
+          data-action="remove-from-dom"
+          class="rd-lg ppx bg-gradient-to-tl from-blue4 to-indigo7 dark-from-purple6 dark-to-indigo5"
         >
-        <span aria-hidden="true" class="flex wfull"></span>
-        <div class="relative flex wfull">
-          <img
-            src="/vector/dissmissible.png"
-            width="92.47"
-            height="82.47"
-            alt="vector show modal"
-            class="absolute bottom-full right-8"
-          />
           <div
-            data-dismissible-demo
-            data-action="remove-from-dom"
-            class="rd-lg ppx bg-gradient-to-tl from-blue4 to-indigo7 dark-from-purple6 dark-to-indigo5"
+            class="wfull bg-white dark-bg-zinc950 p3 rd-7px flex items-center gap-x4"
           >
             <div
-              class="wfull bg-white dark-bg-zinc950 p3 rd-7px flex items-center gap-x4"
+              class="flex flex-1 flex-col text-sm text-zinc8 dark-text-zinc2"
             >
-              <div
-                class="flex flex-1 flex-col text-sm text-zinc8 dark-text-zinc2"
-              >
-                <div>
-                  Authenticate members with
-                  <a
-                    href="#link"
-                    aria-label="link"
-                    class="text-blue6 dark-text-blue5">SAML single sign-on</a
-                  >
-                </div>
-                <span class="text-sm text-zinc6 dark-text-zinc4"
-                  >Try it in a 30-day trial of GitHub Enterprise.</span
-                >
-              </div>
-              <div class="flex items-center gap-x3 wmax">
-                <Link
+              <div>
+                Authenticate members with
+                <a
                   href="#link"
-                  variant={"gradient"}
-                  aria-label="Start free trial"
-                  size={"sm"}
-                  radius={"sm"}
+                  aria-label="link"
+                  class="text-blue6 dark-text-blue5">SAML single sign-on</a
                 >
-                  Start a free trial
-                </Link>
-                <button aria-label="Start" data-dismiss-btn>
-                  <span aria-hidden="true" class="flex i-carbon-close"></span>
-                </button>
               </div>
+              <span class="text-sm text-zinc6 dark-text-zinc4"
+                >Try it in a 30-day trial of GitHub Enterprise.</span
+              >
+            </div>
+            <div class="flex items-center gap-x3 wmax">
+              <Link
+                href="#link"
+                variant={"gradient"}
+                aria-label="Start free trial"
+                size={"sm"}
+                radius={"sm"}
+              >
+                Start a free trial
+              </Link>
+              <button aria-label="Start" data-dismiss-btn>
+                <span aria-hidden="true" class="flex i-carbon-close"></span>
+              </button>
             </div>
           </div>
         </div>
       </div>
-    </dialog>
-  </div>
+    </div>
+  </dialog>
 </div>
-
