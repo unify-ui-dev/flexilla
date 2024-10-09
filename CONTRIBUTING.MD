@@ -17,29 +17,29 @@ Every contribution is welcome to this open source project. However, before submi
 ## Don't know how to contribute or new to Open Source?
 
 Take a look at :
-1. [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/){:target="_blank"}
-2. [How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github){:target="_blank"}
+1. [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)
+2. [How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
 
 ## Have a question?
 
-1. Check our [Github Issues](https://github.com/unify-ui-dev/flexilla/issues){:target="_blank"} to see if someone has already answered your question.
-2. Or Contact one of maintainers
+1. Check our [Github Issues](https://github.com/unify-ui-dev/flexilla/issues) to see if someone has already answered your question.
+2. Go to the [Discor Server](https://discord.gg/6VN6zTPZAy)
+3. Or Contact one of maintainers
 
 ### Prerequisites
 
 - Code Editor
 - NodeJS
 
-#### Vs Code Extensions
+#### Tools
 
-1. [Biome JS](https://biomejs.dev/){:target="_blank"}
-2. [Vite JS](https://lerna.js.org/){:target="_blank"}
-3. [Lerna](https://biomejs.dev/){:target="_blank"}
-
+2. [Vite JS](https://lerna.js.org/)
+3. [Lerna](https://biomejs.dev/)
 
 
 ## commit-convention
 
+Read [this](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ## Pull Request Guidelines
 
@@ -67,24 +67,22 @@ Make sure to install the dependencies:
 npm install
 ```
 
-1. Link a package on local
-
-- navigate to the package folder
-```bash
-npm run build
-```
-And
-```bash
-npm link
-```
-
-- navigate to the folder where you want to link the package
-```bash
-npm link package-name
-```
 
 ### Build packages
 
 ```bash
 npx lerna run build
+```
+
+**Build a single package**
+
+Navigate to the needed package and run 
+
+```bash
+npm run build
+```
+or 
+
+```bash
+npx lerna run build -scope=@packageToBuild
 ```
