@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import UnoCSS from "unocss/astro";
 import preact from "@astrojs/preact";
 import mdx from "@astrojs/mdx";
-import { transformerNotationDiff } from "shikiji-transformers";
+import { transformerNotationDiff } from "@shikijs/transformers";
 import vercel from "@astrojs/vercel/serverless";
 import partytown from "@astrojs/partytown";
 

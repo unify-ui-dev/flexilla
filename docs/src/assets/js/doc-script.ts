@@ -88,6 +88,8 @@ export const initAppScript = () => {
     Dropdown.autoInit("[data-dropdown-demo]")
     Modal.autoInit("[data-modal-demo]")
     OffCanvas.autoInit("[data-slideover-demo]")
+    const sidebar = $("[data-sidebar-offcanvas]")
+    if(sidebar instanceof HTMLElement) OffCanvas.init(sidebar)
     AutoResizeTextArea.autoInit("[data-autoresizable]")
     Tooltip.autoInit("[data-tooltip-demo]")
 }

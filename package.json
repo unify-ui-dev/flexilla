@@ -15,5 +15,8 @@
     "@types/node": "^20.11.5",
     "lerna": "^8.0.2",
     "vite": "^5.0.11"
+  },
+  "dependencies": {
+    "overlayscrollbars": "^2.10.0"
   }
 }
