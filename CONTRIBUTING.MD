@@ -23,7 +23,7 @@ Take a look at :
 ## Have a question?
 
 1. Check our [Github Issues](https://github.com/unify-ui-dev/flexilla/issues) to see if someone has already answered your question.
-2. Go to the [Discor Server](https://discord.gg/6VN6zTPZAy)
+2. Go to the [Discord Server](https://discord.gg/6VN6zTPZAy)
 3. Or Contact one of maintainers
 
 ### Prerequisites
