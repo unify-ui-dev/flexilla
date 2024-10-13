@@ -3,12 +3,15 @@ import type { AccordionOptions, AccordionType } from "./types";
 import { getAccordionItemMetadata } from "./util";
 import { $, $$, $d, dispatchCustomEvent } from "@flexilla/utilities";
 import { initKeyEvents } from "./helpers";
+import { debounce, throttle } from "./util";
 
 
 export default class Accordion {
     private accordionEl: HTMLElement;
     private options: AccordionOptions;
     private items: HTMLElement[];
+    private handleTriggerClick = throttle(this.handleTriggerClickImpl.bind(this), 100); // Throttle the click event
+    private handleTriggerHover = debounce(this.handleTriggerHoverImpl.bind(this), 100); // Debounce the hover event
 
     constructor(accordion: string | HTMLElement, options: AccordionOptions = {}) {
         this.accordionEl = typeof accordion === "string" ? document.querySelector(accordion) as HTMLElement : accordion;
@@ -103,6 +106,15 @@ export default class Accordion {
     private addEventListeners() {
         this.items.forEach(item => {
             const trigger = $("[data-accordion-trigger]", item);
+            // Add click event listener with throttling
+            trigger?.addEventListener("click", this.handleTriggerClick.bind(this, item));
+
+            // Add hover event listeners with debouncing
+            trigger?.addEventListener("mouseenter", this.handleTriggerHover.bind(this, item, true));
+            trigger?.addEventListener("mouseleave", this.handleTriggerHover.bind(this, item, false));
+
+            // Add keyboard event listener with throttling
+            trigger?.addEventListener("keydown", this.handleKeyboardEvent.bind(this, item));
             trigger?.addEventListener("click", (e) => {
                 e.preventDefault();
                 const isOpened = item.getAttribute("data-state") === "open";
@@ -119,6 +131,34 @@ export default class Accordion {
             });
         });
     }
+
+    private handleTriggerClickImpl(item: HTMLElement) {
+        const isOpened = item.getAttribute("data-state") === "open";
+        let state: "open" | "close" = isOpened ? "close" : "open";
+    
+        if (this.options.preventClosingAll) {
+          if (this.options.accordionType === "single" && isOpened) return;
+          if (this.options.accordionType === "multiple" && this.items.filter((i) => i.getAttribute("data-state") === "open").length === 1 && isOpened) return;
+        }
+    
+        this.setItemState(item, state);
+        if (this.options.accordionType === "single") this.closeOther({ current: item });
+        this.dispatchedEvent(item);
+      }
+    
+      private handleTriggerHoverImpl(item: HTMLElement, isHovered: boolean) {
+        if (isHovered) {
+          this.setItemState(item, "open");
+        } else {
+          this.setItemState(item, "close");
+        }
+      }
+    
+      private handleKeyboardEvent(item: HTMLElement, event: KeyboardEvent) {
+        if (event.key === " " || event.key === "Enter") {
+          this.handleTriggerClickImpl(item);
+        }
+      }
 
     public show(id: string) {
         const item = $d(`[data-accordion-item][data-accordion-value="${id}"]`, this.accordionEl)
