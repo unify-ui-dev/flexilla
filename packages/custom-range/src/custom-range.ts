@@ -21,7 +21,11 @@ class CustomRangeIndicator {
 
     private initIndicator() {
         const indicator = document.createElement("span");
-        indicator.classList.add("range-indicator"); 
+
+        if (this.indicatorClassname.length > 0) {
+            indicator.classList.add(...this.indicatorClassname);
+        }
+
         this.rangeContainer.append(indicator);
         return indicator;
     }
@@ -31,8 +35,8 @@ class CustomRangeIndicator {
             ((parseFloat(this.rangeElement.value) - parseFloat(this.rangeElement.min)) /
                 (parseFloat(this.rangeElement.max) - parseFloat(this.rangeElement.min))) * 100;
 
-        this.indicatorElement.style.width = `${Math.min(Math.max(sizePercentage + 20, 20), 100)}%`; 
-        this.indicatorElement.style.left = `calc(${sizePercentage}% - 10px)`; 
+        this.indicatorElement.style.width = `${Math.min(Math.max(sizePercentage + 20, 20), 100)}%`;
+        this.indicatorElement.style.left = `calc(${sizePercentage}% - 10px)`;
     }
 
     private initRange() {
